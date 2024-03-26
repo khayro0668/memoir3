@@ -39,6 +39,7 @@ function generateDiv(room) {
         </div>`;
 }
 
+// hhhhhhhhhhhhhhhhhhhhhhhh
 // Function to show room id in an alert
 function showInformationOfSelectedRoom(room) {
     var informationDiv = `
