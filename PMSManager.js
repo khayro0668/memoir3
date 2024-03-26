@@ -34,7 +34,7 @@ function generateDiv(room) {
             <div class='bottom'>
                 <p>${title}</p>
                 <h2>$${price}.00</h2>
-                <button onclick="showInformationOfSelectedRoom('${room}')">Add</button>
+                <button onclick="showInformationOfSelectedRoom('${room}')">visit</button>
             </div>
         </div>`;
 }
