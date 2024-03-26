@@ -38,6 +38,42 @@ function generateDiv(room) {
         </div>`;
 }
 
+/*                                dropdown function                             */
+// JavaScript for Dropdown
+document.addEventListener("DOMContentLoaded", function () {
+    const dropdownBtn = document.querySelector(".dropdown-btn");
+    const dropdownContent = document.querySelector(".dropdown-content");
+    const dropdownOptions = document.querySelectorAll(".dropdown-content a");
+
+    dropdownBtn.addEventListener("click", function () {
+        dropdownContent.classList.toggle("show");
+    });
+
+    // Event listener for each option
+    dropdownOptions.forEach(function (option) {
+        option.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the default action of the link
+            const selectedOption = event.target.textContent;
+            dropdownBtn.textContent = selectedOption; // Set button text to selected option
+        });
+    });
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches(".dropdown-btn")) {
+            const dropdowns = document.querySelectorAll(".dropdown-content");
+            dropdowns.forEach(function (dropdown) {
+                if (dropdown.classList.contains("show")) {
+                    dropdown.classList.remove("show");
+                }
+            });
+        }
+    }
+});
+
+/********************************************************************************/
+
+/*                            classes                                 */
 class Hotel {
     listOfRooms;
     constructor() {
@@ -63,13 +99,21 @@ class Room {
     resident;
     isReserved;
     rating;
-    
+    price;
+    durationOfreservation;
+    startDate;
+    endDate;
+    countdown;
+    keyStatus;
+    BookingLink;
+
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
         this.roomNumber = roomNumber;
         this.id = this.floorNumber.toString() + '-' + this.roomNumber.toString();
         this.resident = getRandomResident();
         this.isReserved = true;
+        this.price = 0;
     }
 }
 
