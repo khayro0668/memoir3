@@ -1,5 +1,6 @@
 
 var hotel;
+var listOfActions = [];
 
 window.onload = function () {
     hotel = new Hotel();
@@ -33,9 +34,26 @@ function generateDiv(room) {
             <div class='bottom'>
                 <p>${title}</p>
                 <h2>$${price}.00</h2>
-                <button>Add</button>
+                <button onclick="showInformationOfSelectedRoom('${room}')">Add</button>
             </div>
         </div>`;
+}
+
+// Function to show room id in an alert
+function showInformationOfSelectedRoom(room) {
+    var informationDiv = `
+     <h1>floor : ${room.floor}</h2>
+     <h1>room :  ${room.room}</h2>
+     <br>
+     <button onclick="goBacktoLastAction('container')">back</button>
+    `;
+
+    listOfActions.push(document.getElementById('container').innerHTML);
+    document.getElementById('container').innerHTML = informationDiv;
+}
+
+function goBacktoLastAction(id){
+    document.getElementById(id).innerHTML = listOfActions[listOfActions.length - 1];
 }
 
 /*                                dropdown function                             */
@@ -70,6 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+/********************************************************/
+/********************************************************/
 
 /********************************************************************************/
 
@@ -106,6 +127,7 @@ class Room {
     countdown;
     keyStatus;
     BookingLink;
+    numberOfBeds;
 
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
@@ -114,6 +136,7 @@ class Room {
         this.resident = getRandomResident();
         this.isReserved = true;
         this.price = 0;
+        this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
     }
 }
 
