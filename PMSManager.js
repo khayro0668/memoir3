@@ -63,7 +63,7 @@ class Room {
     resident;
     isReserved;
     rating;
-
+    
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
         this.roomNumber = roomNumber;
