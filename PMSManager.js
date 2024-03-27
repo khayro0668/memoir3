@@ -34,27 +34,29 @@ function generateDiv(room) {
             <div class='bottom'>
                 <p>${title}</p>
                 <h2>$${price}.00</h2>
-                <button onclick="showInformationOfSelectedRoom('${room}')">visit</button>
+                <button onclick="showInformationOfSelectedRoom('${room}')" id = "button-of-card">visit</button>
             </div>
         </div>`;
 }
-//wassim
-// hhhhhhhhhhhhhhhhhhhhhhhh
-// Function to show room id in an alert
+
 function showInformationOfSelectedRoom(room) {
     var informationDiv = `
-     <h1>floor : ${room.floor}</h2>
-     <h1>room :  ${room.room}</h2>
-     <br>
-     <button onclick="goBacktoLastAction('container')">back</button>
+    <div class = "eventBar">
+      <button onclick="goBacktoLastAction('container')"><i class="fa-solid fa-turn-up"></i></button>
+      <button><i class="fa-solid fa-clock"></i></button>
+   </div>
+   <div class = "showInformationOfRoom">
+
+   </div>
     `;
 
     listOfActions.push(document.getElementById('container').innerHTML);
     document.getElementById('container').innerHTML = informationDiv;
 }
 
-function goBacktoLastAction(id){
+function goBacktoLastAction(id) {
     document.getElementById(id).innerHTML = listOfActions[listOfActions.length - 1];
+    listOfActions.pop();
 }
 
 /*                                dropdown function                             */
