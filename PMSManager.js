@@ -34,13 +34,24 @@ function generateDiv(room) {
             <div class='bottom'>
                 <p>${title}</p>
                 <h2>$${price}.00</h2>
-                <button onclick="showInformationOfSelectedRoom('${room}')" id = "button-of-card">visit</button>
+                <button onclick="showInformationOfSelectedRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>
             </div>
         </div>`;
 }
 
+
+
+
 function showInformationOfSelectedRoom(room) {
+    const foundRoom = hotel.listOfRooms.find(r => r.id === room.id);
+
+    if (!foundRoom) {
+        console.error("Room not found.");
+        return;
+    }
+
     var informationDiv = `
+<<<<<<< HEAD
     <div class = "eventBar">
       <button onclick="goBacktoLastAction('container')"><i class="fa-solid fa-turn-up"></i></button>
       <button onclick = "generateDivOfClock()"><i class="fa-solid fa-clock"></i></button>
@@ -49,10 +60,141 @@ function showInformationOfSelectedRoom(room) {
       <h1></h1>
    </div>
     `;
+=======
+        <div class="eventBar">
+            <button onclick="goBacktoLastAction('container')"><i class="fa-solid fa-turn-up"></i></button>
+            <button><i class="fa-solid fa-clock"></i></button>
+        </div>
+        <div class="showInformationOfRoom">
+    <h2>${room.id}</h2>
+    <div class="roomInfo">
+        <label>Price:</label>
+        <input type="number" value="${room.price}">
+    </div>
+    <div class="roomInfo">
+        <label>Number of Beds:</label>
+        <input type="number" value="${room.numberOfBeds}">
+    </div>
+    <div class="roomInfo">
+        <label>Resident:</label>
+        <input type="text" value="${room.resident}">
+    </div>
+    <div class="roomInfo">
+        <label>Is Reserved:</label>
+        <input type="checkbox" ${room.isReserved ? 'checked' : ''}>
+    </div>
+    <div class="roomInfo">
+        <label>Rating:</label>
+        <input type="number" value="${room.rating}">
+    </div>
+    <div class="roomInfo">
+        <label>Duration of Reservation:</label>
+        <input type="number" value="${room.durationOfReservation}">
+    </div>
+    <div class="roomInfo">
+        <label>Start Date:</label>
+        <input type="date" value="${room.startDate}">
+    </div>
+    <div class="roomInfo">
+        <label>End Date:</label>
+        <input type="date" value="${room.endDate}">
+    </div>
+    <div class="roomInfo">
+        <label>Countdown:</label>
+        <input type="number" value="${room.countdown}">
+    </div>
+    <div class="roomInfo">
+        <label>Key Status:</label>
+        <input type="text" value="${room.keyStatus}">
+    </div>
+    <div class="roomInfo">
+        <label>Booking Link:</label>
+        <input type="text" value="${room.bookingLink}">
+    </div>
+    <!-- Add more room information here as needed -->
+    <button onclick="saveRoomInformation(${JSON.stringify(room).replace(/"/g, '&quot;')})">Save</button>
 
-    listOfActions.push(document.getElementById('container').innerHTML);
+</div>
+<div class="showInformationOfRoom">
+`;
+>>>>>>> 0b14076c006aaf89d49ff39119e0fbe315fa8840
+
+listOfActions.push(document.getElementById('container').innerHTML);
     document.getElementById('container').innerHTML = informationDiv;
 }
+function saveRoomInformation(room) {
+    console.log("Saving room information...");
+    
+    // Log initial room object
+    console.log("Initial room object:", room);
+
+    var inputs = document.querySelectorAll('.roomInfo input');
+    inputs.forEach(input => {
+        var label = input.previousElementSibling.textContent.trim();
+        var value = input.value;
+
+        // Update room object based on label
+        switch(label) {
+            case 'Price:':
+                room.price = parseFloat(value);
+                break;
+            case 'Number of Beds:':
+                room.numberOfBeds = parseInt(value);
+                break;
+            case 'Resident:':
+                room.resident = value;
+                break;
+            case 'Is Reserved:':
+                room.isReserved = input.checked;
+                break;
+            case 'Rating:':
+                room.rating = parseInt(value);
+                break;
+            case 'Duration of Reservation:':
+                room.durationOfReservation = parseInt(value);
+                break;
+            case 'Start Date:':
+                room.startDate = value;
+                break;
+            case 'End Date:':
+                room.endDate = value;
+                break;
+            case 'Countdown:':
+                room.countdown = parseInt(value);
+                break;
+            case 'Key Status:':
+                room.keyStatus = value;
+                break;
+            case 'Booking Link:':
+                room.bookingLink = value;
+                break;
+        }
+    });
+
+ // Log updated room object
+ console.log("Updated room object:", room);
+
+ // Find the index of the room in the hotel list
+ const index = hotel.listOfRooms.findIndex(r => r.id === room.id);
+ // Update the room object in the hotel list
+ hotel.listOfRooms[index] = room;
+
+ // Log updated hotel list
+ console.log("Updated hotel list:", hotel.listOfRooms);
+
+ // Now the room object has been updated with the new values in the hotel list
+ console.log("Room information saved successfully.");
+ showMessage("Room information saved successfully.");
+}
+
+
+
+function showMessage(message) {
+    // Display the message in an alert box or any other UI element
+    alert(message);
+}
+
+
 
 function goBacktoLastAction(id) {
     document.getElementById(id).innerHTML = listOfActions[listOfActions.length - 1];
@@ -140,8 +282,58 @@ class Room {
         this.isReserved = true;
         this.price = 0;
         this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
+        this.rating = getRandomRating();
+        this.durationOfReservation = getRandomDuration();
+        this.startDate = getRandomStartDate();
+        this.endDate = getRandomEndDate();
+        this.countdown = getRandomCountdown();
+        this.keyStatus = getRandomKeyStatus();
+        this.bookingLink = getRandomBookingLink();
     }
 }
+
+// Sample functions to generate random values for properties
+function getRandomRating() {
+    // Generate random rating between 0 and 5
+    return Math.floor(Math.random() * 6);
+}
+
+function getRandomDuration() {
+    // Generate random duration between 1 and 10 days
+    return Math.floor(Math.random() * 10) + 1;
+}
+
+function getRandomStartDate() {
+    // Generate random start date (year-month-day)
+    const year = 2024;
+    const month = Math.floor(Math.random() * 12) + 1; // Random month between 1 and 12
+    const day = Math.floor(Math.random() * 28) + 1; // Random day between 1 and 28
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+}
+function getRandomEndDate() {
+    // Generate random end date (year-month-day)
+    const startDate = new Date(getRandomStartDate());
+    const endDate = new Date(startDate.getTime() + (Math.floor(Math.random() * 10) + 1) * 24 * 60 * 60 * 1000); // Add random duration in milliseconds
+    return endDate.toISOString().split('T')[0];
+}
+
+
+function getRandomCountdown() {
+    // Generate random countdown (days)
+    return Math.floor(Math.random() * 10) + 1;
+}
+
+function getRandomKeyStatus() {
+    // Generate random key status
+    const statuses = ['Available', 'Occupied', 'Out of Service'];
+    return statuses[Math.floor(Math.random() * statuses.length)];
+}
+
+function getRandomBookingLink() {
+    // Generate random booking link
+    return "https://example.com/booking"; // Replace with actual booking link generation logic
+}
+
 
 function getRandomResident() {
     const names = [
