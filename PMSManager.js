@@ -4,11 +4,10 @@ var listOfActions = [];
 
 window.onload = function () {
     hotel = new Hotel();
-    console.log(hotel.listOfRooms);
-    generateTableOfRooms();
+        generateTableOfRooms('showInformation');
 };
 
-function generateTableOfRooms() {
+function generateTableOfRooms(id) {
     var table = '<table>'
     for (let i = 0; i < hotel.listOfRooms.length - 5; i += 5) {
         table += '<tr>'
@@ -19,7 +18,7 @@ function generateTableOfRooms() {
     }
 
     table += '</table>';
-    document.getElementById('showInformation').innerHTML = table;
+    document.getElementById(id).innerHTML = table;
 }
 
 function generateDiv(room) {
@@ -51,18 +50,8 @@ function showInformationOfSelectedRoom(room) {
     }
 
     var informationDiv = `
-<<<<<<< HEAD
-    <div class = "eventBar">
-      <button onclick="goBacktoLastAction('container')"><i class="fa-solid fa-turn-up"></i></button>
-      <button onclick = "generateDivOfClock()"><i class="fa-solid fa-clock"></i></button>
-   </div>
-   <div class = "showInformationOfRoom">
-      <h1></h1>
-   </div>
-    `;
-=======
         <div class="eventBar">
-            <button onclick="goBacktoLastAction('container')"><i class="fa-solid fa-turn-up"></i></button>
+            <button onclick="goBacktoLastAction()"><i class="fa-solid fa-turn-up"></i></button>
             <button><i class="fa-solid fa-clock"></i></button>
         </div>
         <div class="showInformationOfRoom">
@@ -115,13 +104,12 @@ function showInformationOfSelectedRoom(room) {
     <button onclick="saveRoomInformation(${JSON.stringify(room).replace(/"/g, '&quot;')})">Save</button>
 
 </div>
-<div class="showInformationOfRoom">
+<div class="showInformationOfRoom"></div>
 `;
->>>>>>> 0b14076c006aaf89d49ff39119e0fbe315fa8840
 
-listOfActions.push(document.getElementById('container').innerHTML);
     document.getElementById('container').innerHTML = informationDiv;
 }
+
 function saveRoomInformation(room) {
     console.log("Saving room information...");
     
@@ -196,9 +184,9 @@ function showMessage(message) {
 
 
 
-function goBacktoLastAction(id) {
-    document.getElementById(id).innerHTML = listOfActions[listOfActions.length - 1];
-    listOfActions.pop();
+function goBacktoLastAction() {
+   generateDivHome('container');
+   generateTableOfRooms('showInformation');
 }
 
 /*                                dropdown function                             */
@@ -211,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownBtn.addEventListener("click", function () {
         dropdownContent.classList.toggle("show");
     });
-
+    
     // Event listener for each option
     dropdownOptions.forEach(function (option) {
         option.addEventListener("click", function (event) {

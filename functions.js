@@ -1,13 +1,24 @@
 function generateDivOfClock() {
-    document.getElementById('showInformationOfRoom').innerHTML = (`
-   <p>Start Date / Time:<br /> 
-     <input type = "date" id="start_dt" class='datepicker' size='11' title='D-MMM-YYYY' /> 
-      <input id="start_tm" class='timepicker' size='5'  title='HH:MM' /> 
-   </p> 
-  
-   <p>End Date:<br /> 
-     <input id="end_dt" class='datepicker' size='11' title='D-MMM-YYYY' /> 
-     <input id="end_tm" class='timepicker' size='5'  title='HH:MM' /> 
-   </p> 
-    `);
+
+}
+
+function generateDivHome(id) {
+    var UI = ` 
+    <div class="container" id="container">
+       <div class="setParameters">
+         <div class="dropdown">
+            <button class="dropdown-btn">Dropdown<i class="fa-regular fa-turn-left"></i></button>
+            <div class="dropdown-content" id="dropdownContent">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+            </div>
+        </div>
+       </div>
+       <div class="showInformation" id="showInformation">
+      </div>
+  </div>
+`;
+
+document.getElementById(id).innerHTML = UI;
 }
