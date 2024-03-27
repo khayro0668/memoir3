@@ -23,7 +23,7 @@ function generateTableOfRooms() {
 }
 
 function generateDiv(room) {
-    var image = "216719593.jpg"; // assuming this is a static image for now
+    var image = "216719593.jpg";
     var title = room.id;
     var price = room.price;
     return `
@@ -43,10 +43,10 @@ function showInformationOfSelectedRoom(room) {
     var informationDiv = `
     <div class = "eventBar">
       <button onclick="goBacktoLastAction('container')"><i class="fa-solid fa-turn-up"></i></button>
-      <button><i class="fa-solid fa-clock"></i></button>
+      <button onclick = "generateDivOfClock()"><i class="fa-solid fa-clock"></i></button>
    </div>
    <div class = "showInformationOfRoom">
-
+      <h1></h1>
    </div>
     `;
 
