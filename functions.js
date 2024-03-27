@@ -4,7 +4,6 @@ function generateDivOfClock() {
 
 function generateDivHome(id) {
     var UI = ` 
-    <div class="container" id="container">
        <div class="setParameters">
          <div class="dropdown">
             <button class="dropdown-btn">Dropdown<i class="fa-regular fa-turn-left"></i></button>
@@ -17,7 +16,6 @@ function generateDivHome(id) {
        </div>
        <div class="showInformation" id="showInformation">
       </div>
-  </div>
 `;
 
 document.getElementById(id).innerHTML = UI;
