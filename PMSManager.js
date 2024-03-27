@@ -104,7 +104,6 @@ function showInformationOfSelectedRoom(room) {
     <button onclick="saveRoomInformation(${JSON.stringify(room).replace(/"/g, '&quot;')})">Save</button>
 
 </div>
-<div class="showInformationOfRoom"></div>
 `;
 
     document.getElementById('container').innerHTML = informationDiv;
@@ -181,7 +180,6 @@ function showMessage(message) {
     // Display the message in an alert box or any other UI element
     alert(message);
 }
-
 
 
 function goBacktoLastAction() {
