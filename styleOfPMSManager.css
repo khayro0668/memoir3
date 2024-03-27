@@ -7,12 +7,12 @@ body {
     display: flex;
     align-items: center;
     /* justify-content: space-between; */
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 5px;
     padding: 15px;
     width: 80%;
     height: 80%;
-    background-image: url('216719593.jpg');
+    background-image: url('hotel.jpg');
     background-size: cover;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .bottom {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     text-align: center;
     display: flex;
@@ -49,15 +49,19 @@ h2 {
 }
 
 button {
-    width: 100%;
-    margin-right: 50px;
+    width: 170%;
+    margin-right: 55px;
+    margin-top: 20px;
     position: relative;
     border: none;
     border-radius: 5px;
     background-color: goldenrod;
-    padding: 7px 25px;
+    padding: 7px 25px ;
     cursor: pointer;
     color: white;
+    outline: none;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 }
 
 button:hover {
@@ -123,4 +127,14 @@ button:hover {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.price{
+  
+    margin-right: 60px;
+
+}
+.dropdown-btn{
+    border-radius: 20px;
+}
+
 /********************************************/

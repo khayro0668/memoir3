@@ -13,7 +13,7 @@ function generateTableOfRooms() {
     for (let i = 0; i < hotel.listOfRooms.length - 5; i += 5) {
         table += '<tr>'
         for (let j = i; j < i + 5; j++) {
-            table += '<td>' + generateDiv(hotel.listOfRooms[j]) + '</td>';
+            table += '<td class="td">' + generateDiv(hotel.listOfRooms[j]) + '</td>';
         }
         table += '</tr>'
     }
@@ -32,9 +32,9 @@ function generateDiv(room) {
                 <img class="images" src="${image}" alt="Room Image">
             </div>
             <div class='bottom'>
-                <p>${title}</p>
-                <h2>$${price}.00</h2>
-                <button onclick="showInformationOfSelectedRoom('${room}')">Add</button>
+                <p class="price">${title}</p>
+                <h2 class="price">$${price}.00</h2>
+                <button onclick="showInformationOfSelectedRoom('${room}')">visit</button>
             </div>
         </div>`;
 }
