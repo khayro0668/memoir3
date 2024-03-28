@@ -8,9 +8,9 @@ window.onload = function () {
 
 function generateTableOfRooms(id) {
     var table = '<table>'
-    for (let i = 0; i < hotel.listOfRooms.length - 5; i += 5) {
+    for (let i = 0; i < hotel.listOfRooms.length - 8; i += 8) {
         table += '<tr>'
-        for (let j = i; j < i + 5; j++) {
+        for (let j = i; j < i + 8; j++) {
             table += '<td>' + generateDiv(hotel.listOfRooms[j]) + '</td>';
         }
         table += '</tr>'
@@ -22,12 +22,13 @@ function generateTableOfRooms(id) {
 
 function generateDiv(room) {
     var title = room.id;
-    var price = room.price;
+    var isreserved = room.isReserved;
     return `
         <div class="box">
+            <div class = "status">
+            </div>
             <div class='bottom'>
                 <p class="pr">${title}</p>
-                <h2 class="pr">$${price}.00</h2>
                 <button onclick="showInformationOfSelectedRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>
             </div>
         </div>`;
