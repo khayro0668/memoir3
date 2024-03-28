@@ -22,14 +22,10 @@ function generateTableOfRooms(id) {
 }
 
 function generateDiv(room) {
-    var image = "216719593.jpg";
     var title = room.id;
     var price = room.price;
     return `
         <div class="box">
-            <div class="img-box">
-                <img class="images" src="${image}" alt="Room Image">
-            </div>
             <div class='bottom'>
                 <p>${title}</p>
                 <h2>$${price}.00</h2>
@@ -37,8 +33,6 @@ function generateDiv(room) {
             </div>
         </div>`;
 }
-
-
 
 
 function showInformationOfSelectedRoom(room) {
