@@ -1,4 +1,3 @@
-
 var hotel;
 var listOfActions = [];
 
@@ -27,8 +26,8 @@ function generateDiv(room) {
     return `
         <div class="box">
             <div class='bottom'>
-                <p>${title}</p>
-                <h2>$${price}.00</h2>
+                <p class="pr">${title}</p>
+                <h2 class="pr">$${price}.00</h2>
                 <button onclick="showInformationOfSelectedRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>
             </div>
         </div>`;
