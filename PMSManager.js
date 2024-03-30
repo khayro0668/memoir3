@@ -4,54 +4,30 @@ var valueOfFloorNumberDropdawn = -1;
 var valueOfRoomNumberDropdawn = -1;
 var valueOfBedsNumberDropdawn = -1;
 var valueOfReservedDropdawn = -1;
+var numberOfFloors = 10;
+var numberOfRooms = 20;
+var minNumberOfBeds = 2;
+var maxNumberOfBeds = 4;
 
-generateDivHome('container');
+generateDivHome('container', numberOfFloors, numberOfRooms, minNumberOfBeds, maxNumberOfBeds);
 initilaizeDropdawn();
 
 window.onload = function () {
     hotel = new Hotel();
-    generateTableOfRooms('showInformation' , 10 , 20);
+    generateTableOfRooms('showInformation' , hotel.listOfRooms , valueOfReservedDropdawn , valueOfBedsNumberDropdawn , valueOfFloorNumberDropdawn , valueOfRoomNumberDropdawn);
 };
 
 function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
     const checkEquality = (firstValue, secondValue) => {
         return secondValue === -1 || firstValue === secondValue;
     }
-    
+
     var ans = true;
     ans &= checkEquality(room.numberOfBeds, numberOdBeds);
     ans &= checkEquality(room.isReserved, reserved);
-    ans &= checkEquality(room.floorNumber ,floorNumber);
+    ans &= checkEquality(room.floorNumber, floorNumber);
     ans &= checkEquality(room.roomNumber, roomNumber);
     return ans;
-}
-
-function initilaizeDropdawn(){
-    document.addEventListener("DOMContentLoaded", function() {
-        const dropdowns = document.querySelectorAll('.dropdown');
-        dropdowns.forEach(dropdown => {
-          dropdown.addEventListener('change', function() {
-            const selectedOption = this.options[this.selectedIndex].text;
-            alert(`Selected option: ${selectedOption}`);
-          });
-        });
-      });
-}
-
-function generateTableOfRooms(id) {
-    var table = '<table>';
-    for (let i = 0; i < hotel.listOfRooms.length - 8; i += 8) {
-        table += '<tr>';
-        for (let j = i; j < i + 8; j++) {
-            if (isDesiredRoom(hotel.listOfRooms[j], valueOfReservedDropdawn , valueOfBedsNumberDropdawn , valueOfFloorNumberDropdawn , valueOfRoomNumberDropdawn)) {
-                table += '<td>' + generateDiv(hotel.listOfRooms[j]) + '</td>';
-            }
-        }
-        table += '</tr>';
-    }
-
-    table += '</table>';
-    document.getElementById(id).innerHTML = table;
 }
 
 function generateDiv(room) {
@@ -210,11 +186,30 @@ function showMessage(message) {
 
 
 function goBacktoLastAction() {
-    generateDivHome('container' , 10 , 20);
+    generateDivHome('container', 10, 20);
     initilaizeDropdawn();
-    generateTableOfRooms('showInformation');
+    generateTableOfRooms('showInformation' , hotel.listOfRooms , valueOfReservedDropdawn , valueOfBedsNumberDropdawn , valueOfFloorNumberDropdawn , valueOfRoomNumberDropdawn);
 }
-  
+
+//initialize dropdawn
+function initilaizeDropdawn() {
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('change', function () {
+                const selectedOption = this.options[this.selectedIndex].text;
+                switch (this.id) {
+                    case 'dropdown1': valueOfFloorNumberDropdawn = getValueOfSelectionDropdown(selectedOption , true); break;
+                    case 'dropdown2': valueOfRoomNumberDropdawn = getValueOfSelectionDropdown(selectedOption , true); break;
+                    case 'dropdown3': valueOfBedsNumberDropdawn = getValueOfSelectionDropdown(selectedOption , true); break;
+                    case 'dropdown4': valueOfReservedDropdawn = getValueOfSelectionDropdown(selectedOption , false); break;
+                }
+
+                generateTableOfRooms('showInformation' , hotel.listOfRooms , valueOfReservedDropdawn , valueOfBedsNumberDropdawn , valueOfFloorNumberDropdawn , valueOfRoomNumberDropdawn);
+            });
+        });
+    });
+}
 /********************************************************/
 /********************************************************/
 
