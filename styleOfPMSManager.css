@@ -124,37 +124,18 @@ h2 {
 
 /*            dropdown style                */
 /* CSS for Dropdown */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 120px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    padding: 12px 0;
-    /* Adjust padding */
-    z-index: 1;
-    left: 0;
-    /* Align with the left side of the button */
-    top: 100%;
-    /* Align with the bottom of the button */
-}
-
-.dropdown-content a {
-    display: block;
-    /* Display options as block elements */
-    padding: 6px 16px;
-    /* Padding for each option */
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
+.dropdown-container {
+    display: flex;
+  }
+  
+  .dropdown-wrapper {
+    margin-right: 10px;
+  }
+  
+  .dropdown-button {
+    margin-top: 5px;
+  }
+  
 .pr{
     margin-right: 50px;
 }

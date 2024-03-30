@@ -1,19 +1,53 @@
 var hotel;
 var listOfActions = [];
+var valueOfFloorNumberDropdawn = -1;
+var valueOfRoomNumberDropdawn = -1;
+var valueOfBedsNumberDropdawn = -1;
+var valueOfReservedDropdawn = -1;
+
+generateDivHome('container');
+initilaizeDropdawn();
 
 window.onload = function () {
     hotel = new Hotel();
-        generateTableOfRooms('showInformation');
+    generateTableOfRooms('showInformation' , 10 , 20);
 };
 
+function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
+    const checkEquality = (firstValue, secondValue) => {
+        return secondValue === -1 || firstValue === secondValue;
+    }
+    
+    var ans = true;
+    ans &= checkEquality(room.numberOfBeds, numberOdBeds);
+    ans &= checkEquality(room.isReserved, reserved);
+    ans &= checkEquality(room.floorNumber ,floorNumber);
+    ans &= checkEquality(room.roomNumber, roomNumber);
+    return ans;
+}
+
+function initilaizeDropdawn(){
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+          dropdown.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex].text;
+            alert(`Selected option: ${selectedOption}`);
+          });
+        });
+      });
+}
+
 function generateTableOfRooms(id) {
-    var table = '<table>'
+    var table = '<table>';
     for (let i = 0; i < hotel.listOfRooms.length - 8; i += 8) {
-        table += '<tr>'
+        table += '<tr>';
         for (let j = i; j < i + 8; j++) {
-            table += '<td>' + generateDiv(hotel.listOfRooms[j]) + '</td>';
+            if (isDesiredRoom(hotel.listOfRooms[j], valueOfReservedDropdawn , valueOfBedsNumberDropdawn , valueOfFloorNumberDropdawn , valueOfRoomNumberDropdawn)) {
+                table += '<td>' + generateDiv(hotel.listOfRooms[j]) + '</td>';
+            }
         }
-        table += '</tr>'
+        table += '</tr>';
     }
 
     table += '</table>';
@@ -105,7 +139,7 @@ function showInformationOfSelectedRoom(room) {
 
 function saveRoomInformation(room) {
     console.log("Saving room information...");
-    
+
     // Log initial room object
     console.log("Initial room object:", room);
 
@@ -115,7 +149,7 @@ function saveRoomInformation(room) {
         var value = input.value;
 
         // Update room object based on label
-        switch(label) {
+        switch (label) {
             case 'Price:':
                 room.price = parseFloat(value);
                 break;
@@ -152,20 +186,20 @@ function saveRoomInformation(room) {
         }
     });
 
- // Log updated room object
- console.log("Updated room object:", room);
+    // Log updated room object
+    console.log("Updated room object:", room);
 
- // Find the index of the room in the hotel list
- const index = hotel.listOfRooms.findIndex(r => r.id === room.id);
- // Update the room object in the hotel list
- hotel.listOfRooms[index] = room;
+    // Find the index of the room in the hotel list
+    const index = hotel.listOfRooms.findIndex(r => r.id === room.id);
+    // Update the room object in the hotel list
+    hotel.listOfRooms[index] = room;
 
- // Log updated hotel list
- console.log("Updated hotel list:", hotel.listOfRooms);
+    // Log updated hotel list
+    console.log("Updated hotel list:", hotel.listOfRooms);
 
- // Now the room object has been updated with the new values in the hotel list
- console.log("Room information saved successfully.");
- showMessage("Room information saved successfully.");
+    // Now the room object has been updated with the new values in the hotel list
+    console.log("Room information saved successfully.");
+    showMessage("Room information saved successfully.");
 }
 
 
@@ -177,43 +211,11 @@ function showMessage(message) {
 
 
 function goBacktoLastAction() {
-   generateDivHome('container');
-   generateTableOfRooms('showInformation');
+    generateDivHome('container' , 10 , 20);
+    initilaizeDropdawn();
+    generateTableOfRooms('showInformation');
 }
-
-/*                                dropdown function                             */
-// JavaScript for Dropdown
-document.addEventListener("DOMContentLoaded", function () {
-    const dropdownBtn = document.querySelector(".dropdown-btn");
-    const dropdownContent = document.querySelector(".dropdown-content");
-    const dropdownOptions = document.querySelectorAll(".dropdown-content a");
-
-    dropdownBtn.addEventListener("click", function () {
-        dropdownContent.classList.toggle("show");
-    });
-    
-    // Event listener for each option
-    dropdownOptions.forEach(function (option) {
-        option.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent the default action of the link
-            const selectedOption = event.target.textContent;
-            dropdownBtn.textContent = selectedOption; // Set button text to selected option
-        });
-    });
-
-    // Close the dropdown menu if the user clicks outside of it
-    window.onclick = function (event) {
-        if (!event.target.matches(".dropdown-btn")) {
-            const dropdowns = document.querySelectorAll(".dropdown-content");
-            dropdowns.forEach(function (dropdown) {
-                if (dropdown.classList.contains("show")) {
-                    dropdown.classList.remove("show");
-                }
-            });
-        }
-    }
-});
-
+  
 /********************************************************/
 /********************************************************/
 
