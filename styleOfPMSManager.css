@@ -181,7 +181,7 @@ table {
     border-spacing: 20px 30px; /* Adjust the second value (10px) to increase or decrease the space between rows */
 }
 
-.dropdown-btn{
+/*.dropdown-btn{
    background: goldenrod;
    padding: 10px 40px;
    border: 1px solid #023047;
@@ -190,7 +190,31 @@ table {
    cursor: pointer;
     position: relative;
     overflow: hidden;
+}*/
+
+.dropdown-btn {
+    background: goldenrod; /* Initial background color */
+    padding: 10px 40px;
+    border: 1px solid #023047; /* Initial border color */
+    margin: 10px;
+    color: #fff;
+    transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s; /* Add border-color to transition */
+    position: relative;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
 }
+
+.dropdown-btn:hover {
+    border-color: #023047; /* Border color on hover */
+    transform: translateY(-5px); /* Move up slightly on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a slight shadow on hover */
+}
+
+
+
+
+
 
 
 
