@@ -12,9 +12,39 @@
     border-radius: 5px;
 }
 
-.status {
-     border: 1px solid black;
-    width: 100%;
+/*.status {
+    position: relative;
+    top: 20px;
+    border: 1px solid black;
+    border-top-left-radius: 0px ;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 80%;
     height: 20%;
-    background-color: red; 
+    background-color: rgb(25,25,25); 
+    color: yellow;
+    text-align: center;
+}*/
+.status {
+    position: relative;
+    top: 20px;
+    border: 1px solid black;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 80%;
+    height: 20%;
+    background-color: rgb(25,25,25);
+    color: yellow;
+    text-align: center;
+    transition: transform 0.5s, color 0.5s; /* Adding transition for smoother effect */
 }
+
+.status:hover {
+    transform: translateY(-5px) rotateX(5deg) scale(1.05); /* Applying 3D transformations */
+    color:yellow;
+}
+
+

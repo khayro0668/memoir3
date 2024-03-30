@@ -59,12 +59,11 @@ function generateDiv(room) {
     var isreserved = room.isReserved;
     return `
         <div class="box">
-            <div class = "status">
-            </div>
-            <div class='bottom'>
-                <p class="pr">${title}</p>
-                <button onclick="showInformationOfSelectedRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>
-            </div>
+            
+            <p class="status">Reserved</p>
+            <p class="pr">${title}</p>
+            <button onclick="showInformationOfSelectedRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>
+            
         </div>`;
 }
 
