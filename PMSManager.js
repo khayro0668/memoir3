@@ -26,7 +26,7 @@ function generateDiv(room) {
     return `
         <div class="box">
             
-            <p class="status">TAKEN</p>
+            <p class="status">Reserved</p>
             <p class="pr">${title}</p>
             <button onclick="showInformationOfSelectedRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>
             
