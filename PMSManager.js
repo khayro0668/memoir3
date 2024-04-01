@@ -32,11 +32,13 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
 
 function generateDiv(room) {
     var title = room.id;
-    var isreserved = room.isReserved;
+    var isreserved = room.isReserved ? 'Reserved' : 'Free';
+
     return `
         <div class="box">
             
-            <p class="status">Reserved</p>
+        <p class="status">${isreserved}</p>
+            
             <p class="pr">${title}</p>
             <button onclick="showInformationOfSelectedRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>
             
