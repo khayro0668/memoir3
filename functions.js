@@ -1,8 +1,54 @@
-function generateDivOfClock() {
+//view availabel rooms
+function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
+    var table = '<table>';
+    let i = 0;
+    while (i < listOfRooms.length) {
+        table += '<tr>';
+        let j = i;
+        let k = 0;
+        while (k < 10 && j < listOfRooms.length) {
+            if (isDesiredRoom(listOfRooms[j], valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn)) {
+                table += '<td>' + createCardOfRoom(listOfRooms[j]) + '</td>';
+                k++;
+            }
+            j++;
+        }
+        table += '</tr>';
+        i = j;
+    }
 
+    table += '</table>';
+
+    document.getElementById('view-rooms').innerHTML = '';
+    document.getElementById('view-rooms').innerHTML = table;
 }
 
-function generateDivHome(id, numberOfFloors, numberOfRooms, minNumberOfBeds, maxNumberOfBeds) {
+//a function to determine whether the room is user-defined or not
+function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
+    const checkEquality = (firstValue, secondValue) => {
+        return secondValue === -1 || firstValue === secondValue;
+    }
+
+    var ans = true;
+    ans &= checkEquality(room.numberOfBeds, numberOdBeds);
+    ans &= checkEquality(room.isReserved, reserved);
+    ans &= checkEquality(room.floorNumber, floorNumber);
+    ans &= checkEquality(room.roomNumber, roomNumber);
+    return ans;
+}
+
+//function to create needed dropdowns
+function createCardOfRoom(room) {
+    return `
+        <div class="box">
+            <p class="status">Reserved</p>
+            <p class="pr">${room.id}</p>
+            <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>  
+        </div>`;
+}
+
+//create needed dropdowns
+function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, minNumberOfBeds) {
     var divOfFloors = '<option value="0">All</option>';
     for (let i = 1; i <= numberOfFloors; i++) {
         divOfFloors += `<option value="${i}">${i}</option>`;
@@ -19,7 +65,6 @@ function generateDivHome(id, numberOfFloors, numberOfRooms, minNumberOfBeds, max
     }
 
     var UI = `
-    <div class="setParameters">
         <div class="dropdown-container">
             <div class="dropdown-wrapper">
                 <button class="dropdown-button" id="button1">Floor</button>
@@ -48,39 +93,49 @@ function generateDivHome(id, numberOfFloors, numberOfRooms, minNumberOfBeds, max
                 </select>
             </div>
         </div>
-    </div>
-    <div class="showInformation" id="showInformation">
-    </div>
   `;
-    document.getElementById(id).innerHTML = UI;
-}
 
-function getValueOfSelectionDropdown(value, flag) {
-    if (flag) {
-        return (value === "All" ? -1 : parseInt(value));
-    } else {
-        return (value === "All" ? -1 : value);
-    }
-}
+    document.getElementById('main-selection-bar').innerHTML = UI;
 
-function generateTableOfRooms(id , listOfRooms , valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
-    var table = '<table>';
-    let i = 0;
-    while(i < listOfRooms.length) {
-        table += '<tr>';
-        let j = i;
-        let k = 0;
-        while(k < 7 && j < listOfRooms.length) {
-            if (isDesiredRoom(listOfRooms[j], valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn)) {
-                table += '<td>' + generateDiv(listOfRooms[j]) + '</td>';
-                k++;
+    const initilaizeDropdawn = (ID) => {
+        document.getElementById(ID).addEventListener('change', function () {
+            const getValueOfSelectionDropdown = (value, flag) => {
+                if (flag) {
+                    return (value === "All" ? -1 : parseInt(value));
+                } else {
+                    return (value === "All" ? -1 : value);
+                }
             }
-            j++;
-        }
-        table += '</tr>';
-        i = j;
+            const selectedOption = this.options[this.selectedIndex].text;
+            switch (this.id) {
+                case 'dropdown1': valueOfFloorNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
+                case 'dropdown2': valueOfRoomNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
+                case 'dropdown3': valueOfBedsNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
+                case 'dropdown4': valueOfReservedDropdawn = getValueOfSelectionDropdown(selectedOption, false); break;
+            }
+
+            generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+        });
     }
 
-    table += '</table>';
-    document.getElementById(id).innerHTML = table;
+    initilaizeDropdawn('dropdown4');
+    initilaizeDropdawn('dropdown3');
+    initilaizeDropdawn('dropdown2');
+    initilaizeDropdawn('dropdown1');
+}
+
+//create bar of settings of selected room
+function createBarOfOptionsOfselectedRoom(){
+    var bar = `
+    <div class="buuton-of-room-selection-bar">
+     <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
+     <button onclick="backToHome()"><i class="fa-solid fa-circle-info"></i></button>
+    </div>
+    `;
+    document.getElementById('room-selection-bar').innerHTML = bar;
+}
+
+//get status of key
+function getStatusOfKey(room){
+    return (room.keyStatus === true ? "Active" : "Stopped");
 }

@@ -2,6 +2,7 @@ class Hotel {
     listOfRooms;
     constructor() {
         this.listOfRooms = [];
+        this.generateListOfRooms();
     }
 
     generateListOfRooms() {
@@ -21,6 +22,14 @@ class Room {
     id;
     resident;
     isReserved;
+    price;
+    durationOfreservation;
+    startDate;
+    endDate;
+    countdown;
+    keyStatus;
+    BookingLink;
+    numberOfBeds;
 
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
@@ -28,8 +37,53 @@ class Room {
         this.id = this.floorNumber.toString() + '-' + this.roomNumber.toString();
         this.resident = getRandomResident();
         this.isReserved = true;
+        this.price = 0;
+        this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
+        this.durationOfReservation = getRandomDuration();
+        this.startDate = getRandomStartDate();
+        this.endDate = getRandomEndDate();
+        this.countdown = getRandomCountdown();
+        this.keyStatus = getRandomKeyStatus();
+        this.bookingLink = getRandomBookingLink();
     }
 }
+
+function getRandomDuration() {
+    // Generate random duration between 1 and 10 days
+    return Math.floor(Math.random() * 10) + 1;
+}
+
+function getRandomStartDate() {
+    // Generate random start date (year-month-day)
+    const year = 2024;
+    const month = Math.floor(Math.random() * 12) + 1; // Random month between 1 and 12
+    const day = Math.floor(Math.random() * 28) + 1; // Random day between 1 and 28
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+}
+function getRandomEndDate() {
+    // Generate random end date (year-month-day)
+    const startDate = new Date(getRandomStartDate());
+    const endDate = new Date(startDate.getTime() + (Math.floor(Math.random() * 10) + 1) * 24 * 60 * 60 * 1000); // Add random duration in milliseconds
+    return endDate.toISOString().split('T')[0];
+}
+
+
+function getRandomCountdown() {
+    // Generate random countdown (days)
+    return Math.floor(Math.random() * 10) + 1;
+}
+
+function getRandomKeyStatus() {
+    // Generate random key status
+    const statuses = ['Available', 'Occupied', 'Out of Service'];
+    return statuses[Math.floor(Math.random() * statuses.length)];
+}
+
+function getRandomBookingLink() {
+    // Generate random booking link
+    return "https://example.com/booking"; // Replace with actual booking link generation logic
+}
+
 
 function getRandomResident() {
     const names = [
@@ -51,6 +105,3 @@ function getRandomResident() {
     ];
     return names[Math.floor(Math.random() * names.length)];
 }
-
-export { Hotel };
-export { Room };
