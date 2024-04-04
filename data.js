@@ -6,8 +6,8 @@ class Hotel {
     }
 
     generateListOfRooms() {
-        for (let i = 1; i <= 10; i++) {
-            for (let j = 1; j <= 20; j++) {
+        for (let i = 1; i <= 40; i++) {
+            for (let j = 1; j <= 100; j++) {
                 var room = new Room(i, j);
                 this.listOfRooms.push(room);
             }
@@ -36,16 +36,21 @@ class Room {
         this.roomNumber = roomNumber;
         this.id = this.floorNumber.toString() + '-' + this.roomNumber.toString();
         this.resident = getRandomResident();
-        this.isReserved = true;
+        this.isReserved = getStatusOfReserved();
         this.price = 0;
         this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
-        this.durationOfReservation = getRandomDuration();
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
+        this.durationOfReservation = calculateDaysBetweenDates(this.startDate , this.endDate);
         this.countdown = getRandomCountdown();
-        this.keyStatus = getRandomKeyStatus();
+        this.keyStatus = this.isReserved;
         this.bookingLink = getRandomBookingLink();
     }
+}
+
+function getStatusOfReserved() {
+    var val = ['Reserved', 'Unbooked'];
+    return val[Math.floor(Math.random() * 2)];
 }
 
 function getRandomDuration() {
@@ -67,16 +72,19 @@ function getRandomEndDate() {
     return endDate.toISOString().split('T')[0];
 }
 
+function calculateDaysBetweenDates(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    // عدد الثواني في يوم واحد
+    const oneDay = 24 * 60 * 60 * 1000;
+    // قم بحساب فارق الوقت بين التاريخين بالثواني
+    const diffDays = Math.round(Math.abs((start - end) / oneDay));
+    return diffDays;
+}
 
 function getRandomCountdown() {
     // Generate random countdown (days)
     return Math.floor(Math.random() * 10) + 1;
-}
-
-function getRandomKeyStatus() {
-    // Generate random key status
-    const statuses = ['Available', 'Occupied', 'Out of Service'];
-    return statuses[Math.floor(Math.random() * statuses.length)];
 }
 
 function getRandomBookingLink() {
