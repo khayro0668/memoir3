@@ -48,38 +48,33 @@ function showInformationOfSelectedRoom() {
         <input type="text" id="id" value="${selectedRoom.id}" readonly>
         
         <label for="resident">Resident:</label>
-        <input type="text" id="resident" value="${selectedRoom.resident}">
+        <input type="text" id="resident" value="${selectedRoom.resident}" readonly>
         
         <label for="isReserved">Reserved:</label>
-        <select id="isReserved" class="select-style">
-            <option value="Reserved" ${selectedRoom.isReserved === "Reserved" ? "selected" : ""}>Reserved</option>
-            <option value="Unbooked" ${selectedRoom.isReserved === "Unbooked" ? "selected" : ""}>Unbooked</option>
-      </select>
+        <input type="text" value="${selectedRoom.isReserved}" readonly>
 
         
         <label for="price">Price:</label>
-        <input type="text" id="price" value="${selectedRoom.price}">
+        <input type="text" id="price" value="${selectedRoom.price}" readonly>
         
         <label for="durationOfReservation">Duration of Reservation:</label>
-        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfreservation} nights">
+        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfreservation} nights" readonly>
         
         <label for="startDate">Start Date:</label>
-        <input type="text" id="startDate" value="${selectedRoom.startDate}">
+        <input type="text" id="startDate" value="${selectedRoom.startDate}" readonly>
         
         <label for="endDate">End Date:</label>
-        <input type="text" id="endDate" value="${selectedRoom.endDate}">
+        <input type="text" id="endDate" value="${selectedRoom.endDate}" readonly>
         
         <label for="countdown">Countdown:</label>
-        <input type="text" id="countdown" value="${selectedRoom.countdown} days left">
+        <input type="text" id="countdown" value="${selectedRoom.countdown} days left" readonly>
         
         <label for="keyStatus">Key Status:</label>
         <input type="text" id="keyStatus" value="${getKeyStatusBasedOnReservation(selectedRoom.isReserved)}" readonly>
         
         <label for="numberOfBeds">Number of Beds:</label>
-        <input type="text" id="numberOfBeds" value="${selectedRoom.numberOfBeds}">
+        <input type="text" id="numberOfBeds" value="${selectedRoom.numberOfBeds}" readonly>
         
-        <p><strong>Booking Link:</strong> <a href="#" id="bookingLink">Book Now</a></p>
-        <button id="saveRoomDetailsButton">Save Changes</button>
     </div>
     `;
     document.getElementById('view-room-information').innerHTML = pageOfInformation;

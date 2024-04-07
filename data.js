@@ -21,6 +21,7 @@ class Room {
     roomNumber;
     id;
     resident;
+    residentEmail;
     isReserved;
     price;
     durationOfreservation;
@@ -35,8 +36,8 @@ class Room {
         this.floorNumber = floorNumber;
         this.roomNumber = roomNumber;
         this.id = this.floorNumber.toString() + '-' + this.roomNumber.toString();
-        this.resident = getRandomResident();
         this.isReserved = getStatusOfReserved();
+        this.resident = getRandomResident(this.isReserved);
         this.price = 0;
         this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
         this.startDate = getRandomStartDate();
@@ -45,6 +46,7 @@ class Room {
         this.countdown = getCountdown();
         this.keyStatus = this.isReserved;
         this.bookingLink = getRandomBookingLink();
+        this.residentEmail = '';
     }
 }
 
@@ -52,8 +54,6 @@ function getStatusOfReserved() {
     var val = ['Reserved', 'Unbooked'];
     return val[Math.floor(Math.random() * 2)];
 }
-
-
 
 function getRandomDuration() {
     // Generate random duration between 1 and 10 days
@@ -98,7 +98,11 @@ function getKeyStatusBasedOnReservation(isReserved) {
 }
 
 
-function getRandomResident() {
+function getRandomResident(isReserved) {
+    if(isReserved === 'Unbooked'){
+       return "Not booked";
+    }
+
     const names = [
         "Alice",
         "Bob",
