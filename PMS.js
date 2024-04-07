@@ -98,12 +98,17 @@ function showInformationOfSelectedRoom() {
     </div>
     `;
     }
-    
+
     document.getElementById('view-room-information').innerHTML = pageOfInformation;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    // if (1) {
+    //     currentIdInDisplayInformation = '';
+    // } else {
+    //     currentIdInDisplayInformation = 'view-room-information';
+    // }
     currentIdInDisplayInformation = 'view-room-information';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
-    document.getElementById('saveRoomDetailsButton').addEventListener('click', saveRoomDetails);
+    // document.getElementById('saveRoomDetailsButton').addEventListener('click', saveRoomDetails);
 }
 //save the changes of the selected room 
 function saveRoomDetails() {
@@ -137,3 +142,13 @@ function backToHome() {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
 }
 
+//get information of payment
+function getInformationOfPament() {
+    // arwa7 hna zatchi
+}
+
+//////////////////////
+
+//page of edit some information
+function setInformation() {
+}

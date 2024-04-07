@@ -128,18 +128,20 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
 }
 
 //create bar of settings of selected room
-function createBarOfOptionsOfselectedRoom(){
+function createBarOfOptionsOfselectedRoom() {
     var bar = `
     <div class="buuton-of-room-selection-bar">
+    <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
      <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
-     <button onclick="backToHome()"><i class="fa-solid fa-circle-info"></i></button>
+     <button onclick="getInformationOfPament()"><i class="fa-solid fa-credit-card"></i></button>
+     <button onclick="setInformation()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
     </div>
     `;
     document.getElementById('room-selection-bar').innerHTML = bar;
 }
 
 //get status of key
-function getStatusOfKey(room){
+function getStatusOfKey(room) {
     return (room.keyStatus === true ? "Active" : "Stopped");
 }
 
@@ -151,7 +153,7 @@ function validateForm() {
     var bookingDate = document.getElementById("bookingDate").value;
     var bookingDuration = document.getElementById("bookingDuration").value;
     var displayInfoBtn = document.getElementById("displayInfoBtn");
-    
+
     if (name && email && bookingDate && bookingDuration) {
         displayInfoBtn.disabled = false; // تفعيل الزر
     } else {
@@ -164,10 +166,8 @@ function displayInfo() {
     var email = document.getElementById("email").value;
     var bookingDate = document.getElementById("bookingDate").value;
     var bookingDuration = document.getElementById("bookingDuration").value;
-    
+
     alert("الاسم: " + name + "<br>البريد الإلكتروني: " + email + "<br>تاريخ الحجز: " + bookingDate + "<br>مدة الحجز: " + bookingDuration);
 }
 
-// يتم تنفيذ هذه الوظيفة مع كل إدخال للتحقق من تفعيل أو تعطيل الزر
-validateForm();
 ///////////////////////////
