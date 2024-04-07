@@ -31,6 +31,7 @@ class Room {
     keyStatus;
     BookingLink;
     numberOfBeds;
+    wayOfReservation;
 
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
@@ -42,12 +43,19 @@ class Room {
         this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
-        this.durationOfReservation = calculateDaysBetweenDates(this.startDate , this.endDate);
+        this.durationOfReservation = calculateDaysBetweenDates(this.startDate, this.endDate);
         this.countdown = getCountdown();
         this.keyStatus = this.isReserved;
         this.bookingLink = getRandomBookingLink();
         this.residentEmail = '';
+        this.wayOfReservation = getwayOfResarvation(this);
     }
+}
+
+//get way of resarvation
+function getwayOfResarvation(room) {
+    var ways = ['card', 'visa', 'bereau', 'ccp'];
+    return ways[Math.floor(Math.random() * 4)];
 }
 
 function getStatusOfReserved() {
@@ -99,8 +107,8 @@ function getKeyStatusBasedOnReservation(isReserved) {
 
 
 function getRandomResident(isReserved) {
-    if(isReserved === 'Unbooked'){
-       return "Not booked";
+    if (isReserved === 'Unbooked') {
+        return "Not booked";
     }
 
     const names = [
