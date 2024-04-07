@@ -1,5 +1,6 @@
 //view availabel rooms
 function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
+    names = [];
     var table = '<table>';
     let i = 0;
     while (i < listOfRooms.length) {
@@ -9,6 +10,7 @@ function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsN
         while (k < 10 && j < listOfRooms.length) {
             if (isDesiredRoom(listOfRooms[j], valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn)) {
                 table += '<td>' + createCardOfRoom(listOfRooms[j]) + '</td>';
+                names.push(listOfRooms[j].resident);
                 k++;
             }
             j++;
@@ -40,7 +42,7 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
 //function to create needed dropdowns
 function createCardOfRoom(room) {
     return `
-        <div class="box">
+        <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
             <p class="status">Reserved</p>
             <p class="pr">${room.id}</p>
             <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>  
@@ -92,6 +94,8 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                     <option value="2">Unbooked</option>
                 </select>
             </div>
+            <input type="text" id="searchInput" oninput="searchNames()" placeholder="find someone...">
+            <ul id="nameList"></ul>
         </div>
   `;
 
@@ -138,3 +142,6 @@ function createBarOfOptionsOfselectedRoom(){
 function getStatusOfKey(room){
     return (room.keyStatus === true ? "Active" : "Stopped");
 }
+
+////////////////////////////
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Expert Chatbot</title>
+    <style>
+        /* Embedded CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+
+        #chat-container {
+            width: 350px;
+            height: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        #chat-box {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px; /* Allows for a little padding on the right for scrollbar */
+        }
+
+        #user-input, #send-btn {
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #user-input {
+            width: calc(100% - 75px);
+            margin-right: 10px;
+        }
+
+        #send-btn {
+            width: 60px;
+            background-color: #a777e3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #send-btn:hover {
+            background-color: #9656d6;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #6e8efb;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #f0f0f0;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <div style="display: flex;">
+            <input type="text" id="user-input" placeholder="أكتب رسالتك...">
+            <button id="send-btn">إرسال</button>
+        </div>
+    </div>
+
+    <script>
+        // Embedded JavaScript
+        document.getElementById('send-btn').addEventListener('click', function() {
+            var userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                displayMessage(userInput, 'user');
+
+                setTimeout(function() {
+                    var response = generateResponse(userInput);
+                    displayMessage(response, 'bot');
+                }, 1000); // Simulate a slight delay for bot response
+                
+                document.getElementById('user-input').value = ''; // Clear input field
+            }
+        });
+
+        function displayMessage(message, sender) {
+            var chatBox = document.getElementById('chat-box');
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            if (sender === 'user') {
+                messageElement.classList.add('user-message');
+            } else {
+                messageElement.classList.add('bot-message');
+            }
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+        }
+
+        function generateResponse(input) {
+
+            // Simple implementation of rule-based logic
+            var response = '';
+            if (/temperature.*high/i.test(input) || /really hot/i.test(input)) {
+                response = "هل الرياح قوية؟";
+            } else if (/wind.*strong/i.test(input)) {
+                response = "هناك فرصة لموجة حر.";
+            } else if (/sky.*cloudy/i.test(input) || /probably rain/i.test(input)) {
+                response = "هل الجو بارد أيضاً؟";
+            } else if (/temperature.*low/i.test(input) || /really cold/i.test(input)) {
+                response = "هل السماء ملبدة بالغيوم؟";
+            } else if (/chance of a storm/i.test(input)) {
+                response = "هناك خطر من الفيضانات.";
+            } else if (/cold.*cloudy/i.test(input)) {
+                response = "من المحتمل أن يتساقط الثلج.";
+            } else {
+                response = "أنا غير متأكد كيف أجيب على ذلك. هل يمكنك توضيح سؤالك؟";
+            }
+
+            return response;
+        }
+    </script>
+</body>
+</html>

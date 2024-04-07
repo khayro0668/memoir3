@@ -10,7 +10,15 @@ var minNumberOfBeds = 2;
 var maxNumberOfBeds = 4;
 var currentIdInDisplayInformation;
 var currentIdInModifysettings;
+
+
 var selectedRoom;
+
+
+
+
+
+var names = [];
 
 //onload function
 window.onload = function () {
@@ -68,3 +76,30 @@ function backToHome() {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
 }
 
+const options = {
+    includeScore: true,
+    keys: ['name']
+};
+
+const fuse = new Fuse(names.map(name => ({ name })), options);
+
+function searchNames() {
+    
+    const input = document.getElementById("searchInput").value;
+    const nameList = document.getElementById("nameList");
+    nameList.innerHTML = "";
+
+    const result = fuse.search(input);
+
+    result.forEach(item => {
+        const listItem = document.createElement("li");
+        listItem.textContent = item.item.name;
+        listItem.onclick = () => selectName(item.item.name);
+        nameList.appendChild(listItem);
+    });
+}
+
+function selectName(name) {
+    document.getElementById("searchInput").value = name;
+    document.getElementById("nameList").innerHTML = "";
+}

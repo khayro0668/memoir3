@@ -42,7 +42,7 @@ class Room {
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
         this.durationOfReservation = calculateDaysBetweenDates(this.startDate , this.endDate);
-        this.countdown = getRandomCountdown();
+        this.countdown = getCountdown();
         this.keyStatus = this.isReserved;
         this.bookingLink = getRandomBookingLink();
     }
@@ -82,7 +82,7 @@ function calculateDaysBetweenDates(startDate, endDate) {
     return diffDays;
 }
 
-function getRandomCountdown() {
+function getCountdown() {
     // Generate random countdown (days)
     return Math.floor(Math.random() * 10) + 1;
 }
