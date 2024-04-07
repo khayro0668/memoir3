@@ -1,8 +1,8 @@
 .selection-bar {
     width: 100%;
-    height: 10%;
+    min-height: 50px; /* Fixed or minimum height */
     border-bottom: solid 1px black;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Helvetica', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;

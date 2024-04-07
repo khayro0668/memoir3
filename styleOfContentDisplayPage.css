@@ -4,10 +4,32 @@ body {
 }
 
 #container {
-    width: 1300px;
-    height: 580px;
-    background-color: white;
-    margin-left: 10%;
-    border-radius: 20px;
-    justify-content: space-between;
+    max-width: 95%; /* Limits the maximum width to prevent overly wide layouts on large screens */
+    width: auto; /* Adjusts width based on the content, up to the max-width */
+    min-height: 100vh; /* Ensures the container at least covers the full viewport height */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 20px; /* Provides some internal spacing */
+    box-sizing: border-box; /* Ensures padding does not add to the width */
+    display: flex; /* Enables the use of Flexbox for layout */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: flex-start; /* Aligns children to the start of the flex-direction */
+    align-items: center; /* Centers children along the cross axis */
+    background-color: white; /* Optional: sets a background color */
+    border-radius: 20px; /* Optional: adds rounded corners */
+}
+
+/* For tablets and below */
+@media (max-width: 768px) {
+    #container {
+        padding: 10px; /* Reduces padding on smaller screens */
+        min-height: initial; /* Adjusts or removes the min-height */
+        flex-direction: column; /* Keeps the vertical layout */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    #container {
+        max-width: 100%; /* Allows the container to take the full screen width */
+    }
 }
