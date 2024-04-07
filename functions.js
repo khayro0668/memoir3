@@ -129,7 +129,7 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
 
 //create bar of settings of selected room
 function createBarOfOptionsOfselectedRoom() {
-    var bar = `
+    var barOfReservedRoom = `
     <div class="buuton-of-room-selection-bar">
     <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
      <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
@@ -137,7 +137,14 @@ function createBarOfOptionsOfselectedRoom() {
      <button onclick="setInformation()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
     </div>
     `;
-    document.getElementById('room-selection-bar').innerHTML = bar;
+    var barOfUnbookedRoom = `
+    <div class="buuton-of-room-selection-bar">
+    <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
+     <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
+    </div>
+    `;
+    document.getElementById('room-selection-bar').innerHTML = barOfReservedRoom;
+    document.getElementById('unbookedRoom-selection-bar').innerHTML = barOfUnbookedRoom;
 }
 
 //get status of key

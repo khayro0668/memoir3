@@ -29,15 +29,9 @@ function selectRoom(room) {
     selectedRoom = hotel.listOfRooms.find(r => r.id === room.id);
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
-    currentIdInModifysettings = 'room-selection-bar';
-    document.getElementById(currentIdInModifysettings).style.display = 'block';
-}
 
-//create a page to display the selected room information
-function showInformationOfSelectedRoom() {
-    var pageOfInformation;
     if (selectedRoom.isReserved === 'Unbooked') {
-        pageOfInformation = `
+        document.getElementById('reservation-of-room').innerHTML = `
         <form id="bookingForm">
         <label for="name">الاسم:</label>
         <input type="text" id="name" name="name" oninput="validateForm()"><br><br>
@@ -54,8 +48,20 @@ function showInformationOfSelectedRoom() {
         <button type="button" id="displayInfoBtn" onclick="displayInfo()" disabled>عرض المعلومات</button>
     </form>
         `;
+        currentIdInModifysettings = 'unbookedRoom-selection-bar';
+        document.getElementById(currentIdInModifysettings).style = 'block';
+        currentIdInDisplayInformation = 'reservation-of-room';
+        document.getElementById(currentIdInDisplayInformation).style = 'block';
     } else {
-        pageOfInformation = `
+        currentIdInModifysettings = 'room-selection-bar';
+        document.getElementById(currentIdInModifysettings).style.display = 'block';
+        showInformationOfSelectedRoom();
+    }
+}
+
+//create a page to display the selected room information
+function showInformationOfSelectedRoom() {
+    var pageOfInformation = `
     <div class="room-details">
         <h2>Room Details</h2>
         <label for="floorNumber">Floor Number:</label>
@@ -97,15 +103,9 @@ function showInformationOfSelectedRoom() {
         
     </div>
     `;
-    }
 
     document.getElementById('view-room-information').innerHTML = pageOfInformation;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
-    // if (1) {
-    //     currentIdInDisplayInformation = '';
-    // } else {
-    //     currentIdInDisplayInformation = 'view-room-information';
-    // }
     currentIdInDisplayInformation = 'view-room-information';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
     // document.getElementById('saveRoomDetailsButton').addEventListener('click', saveRoomDetails);
