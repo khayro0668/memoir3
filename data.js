@@ -53,6 +53,8 @@ function getStatusOfReserved() {
     return val[Math.floor(Math.random() * 2)];
 }
 
+
+
 function getRandomDuration() {
     // Generate random duration between 1 and 10 days
     return Math.floor(Math.random() * 10) + 1;
@@ -90,6 +92,9 @@ function getCountdown() {
 function getRandomBookingLink() {
     // Generate random booking link
     return "https://example.com/booking"; // Replace with actual booking link generation logic
+}
+function getKeyStatusBasedOnReservation(isReserved) {
+    return isReserved === "Reserved" ? "Active" : "Inactive";
 }
 
 
