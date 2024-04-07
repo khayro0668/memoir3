@@ -35,7 +35,27 @@ function selectRoom(room) {
 
 //create a page to display the selected room information
 function showInformationOfSelectedRoom() {
-    var pageOfInformation = `
+    var pageOfInformation;
+    if (selectedRoom.isReserved === 'Unbooked') {
+        pageOfInformation = `
+        <form id="bookingForm">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" oninput="validateForm()"><br><br>
+        
+        <label for="email">عنوان البريد الإلكتروني:</label>
+        <input type="email" id="email" name="email" oninput="validateForm()"><br><br>
+        
+        <label for="bookingDate">تاريخ الحجز:</label>
+        <input type="date" id="bookingDate" name="bookingDate" oninput="validateForm()"><br><br>
+        
+        <label for="bookingDuration">مدة الحجز (بالأيام):</label>
+        <input type="number" id="bookingDuration" name="bookingDuration" oninput="validateForm()"><br><br>
+        
+        <button type="button" id="displayInfoBtn" onclick="displayInfo()" disabled>عرض المعلومات</button>
+    </form>
+        `;
+    } else {
+        pageOfInformation = `
     <div class="room-details">
         <h2>Room Details</h2>
         <label for="floorNumber">Floor Number:</label>
@@ -77,6 +97,8 @@ function showInformationOfSelectedRoom() {
         
     </div>
     `;
+    }
+    
     document.getElementById('view-room-information').innerHTML = pageOfInformation;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'view-room-information';

@@ -158,3 +158,35 @@ h2 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Larger shadow on hover for depth */
 }
 
+
+/***********************************/
+/* style.css */
+#bookingForm {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type=text], input[type=email], input[type=number], input[type=date] {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+}
+
+input[type=submit] {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/***********************************/

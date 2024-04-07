@@ -43,7 +43,7 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
 function createCardOfRoom(room) {
     return `
         <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
-            <p class="status">Reserved</p>
+            <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'red' : 'green')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
             <p class="pr">${room.id}</p>
             <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>  
         </div>`;
@@ -144,4 +144,30 @@ function getStatusOfKey(room){
 }
 
 ////////////////////////////
+// script.js
+function validateForm() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var bookingDate = document.getElementById("bookingDate").value;
+    var bookingDuration = document.getElementById("bookingDuration").value;
+    var displayInfoBtn = document.getElementById("displayInfoBtn");
+    
+    if (name && email && bookingDate && bookingDuration) {
+        displayInfoBtn.disabled = false; // تفعيل الزر
+    } else {
+        displayInfoBtn.disabled = true; // تعطيل الزر
+    }
+}
 
+function displayInfo() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var bookingDate = document.getElementById("bookingDate").value;
+    var bookingDuration = document.getElementById("bookingDuration").value;
+    
+    alert("الاسم: " + name + "<br>البريد الإلكتروني: " + email + "<br>تاريخ الحجز: " + bookingDate + "<br>مدة الحجز: " + bookingDuration);
+}
+
+// يتم تنفيذ هذه الوظيفة مع كل إدخال للتحقق من تفعيل أو تعطيل الزر
+validateForm();
+///////////////////////////
