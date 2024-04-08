@@ -190,3 +190,14 @@ input[type=submit] {
 }
 
 /***********************************/
+#modify-room-information {
+    direction: rtl;
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF; /* خلفية بيضاء */
+    color: #005A9C; /* نص باللون الأزرق */
+}
+
+#modify-room-information button:hover {
+    background-color: #003D73; /* تغيير لون الخلفية عند تحويم الماوس */
+}
+/*******************************************************/

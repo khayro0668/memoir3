@@ -108,7 +108,6 @@ function showInformationOfSelectedRoom() {
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'view-room-information';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
-    // document.getElementById('saveRoomDetailsButton').addEventListener('click', saveRoomDetails);
 }
 //save the changes of the selected room 
 function saveRoomDetails() {
@@ -152,3 +151,50 @@ function getInformationOfPament() {
 //page of edit some information
 function setInformation() {
 }
+
+// create page to modify information of selected room
+function modifyInformationOfSelectedRoom(){
+    var pageOfModifyInformationOfSelectedRoom = `
+    <form id="reservationForm">
+    <label for="name" style="display:'block';margin:10px 0">الاسم:</label>
+    <input type="text" id="name" name="name" value="${selectedRoom.resident}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
+
+    <label for="email" style="display:'block';margin:10px 0">الإيميل:</label>
+    <input type="email" id="email" name="email" value="${selectedRoom.residentEmail}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
+
+    <label for="startDate" style="display:'block';margin:10px 0">تاريخ البداية:</label>
+    <input type="date" id="startDate" name="startDate" ${selectedRoom.startDate} style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
+
+    <label for="duration" style="display:'block';margin:10px 0">مدة الحجز (بالأيام):</label>
+    <input type="number" id="duration" name="duration" ${selectedRoom.durationOfreservation} style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
+
+    <label for="pillows" style="display:'block';margin:10px 0">عدد الوسائد:</label>
+    <input type="number" id="pillows" name="pillows" min="1" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
+
+    <button type="button" onclick="cancelReservation() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">إلغاء الحجز</button>
+    <button type="button" onclick="submitForm() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;"">عرض المعلومات</button>
+</form>
+`;
+
+document.getElementById('view-room-information').style.display = 'none';
+currentIdInDisplayInformation = 'modify-room-information';
+document.getElementById(currentIdInDisplayInformation).innerHTML = pageOfModifyInformationOfSelectedRoom;
+document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+}
+
+function submitForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const startDate = document.getElementById('startDate').value;
+    const duration = document.getElementById('duration').value;
+    const pillows = document.getElementById('pillows').value;
+  
+    alert(`الاسم: ${name}\nالإيميل: ${email}\nتاريخ البداية: ${startDate}\nمدة الحجز: ${duration} أيام\nعدد الوسائد: ${pillows}`);
+  }
+  
+  function cancelReservation() {
+    // هنا يمكنك إضافة الكود اللازم لإلغاء الحجز، مثل تنظيف النموذج أو تنفيذ طلب إلى الخادم
+    document.getElementById('reservationForm').reset();
+    alert('تم إلغاء الحجز بنجاح.');
+  }
+  

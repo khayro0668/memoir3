@@ -134,7 +134,7 @@ function createBarOfOptionsOfselectedRoom() {
     <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
      <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
      <button onclick="getInformationOfPament()"><i class="fa-solid fa-credit-card"></i></button>
-     <button onclick="setInformation()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+     <button onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
     </div>
     `;
     var barOfUnbookedRoom = `
