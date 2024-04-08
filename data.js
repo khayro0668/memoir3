@@ -1,15 +1,60 @@
 class Hotel {
     listOfRooms;
+    listOfAvailablePillows;
+    listOfAvailableMattresses;
+
     constructor() {
-        this.listOfRooms = [];
         this.generateListOfRooms();
+        this.generateListOfAvailableMattresses();
+        this.generateListOfAvailableMattresses();
     }
 
     generateListOfRooms() {
+        this.listOfRooms = [];
         for (let i = 1; i <= 40; i++) {
             for (let j = 1; j <= 100; j++) {
                 var room = new Room(i, j);
                 this.listOfRooms.push(room);
+            }
+        }
+    }
+
+    generateListOfAvailablePillows() {
+        this.listOfAvailablePillows = [];
+        this.listOfAvailablePillows.push({ type: 'vip', number: 2000, price: 0 });
+        this.listOfAvailablePillows.push({ type: 'normal', number: 2000, price: 0 });
+    }
+
+    generateListOfAvailableMattresses() {
+        this.listOfAvailableMattresses = [];
+        this.listOfAvailableMattresses.push({ type: 'vip', number: 2000, price: 0 });
+        this.listOfAvailableMattresses.push({ type: 'normal', number: 2000, price: 0 });
+    }
+
+    borrowingPillows(typeOfPillow, numberOfBorrowingPillows) {
+        for (let i = 0; i < this.listOfAvailablePillows.length; i++) {
+            if (this.listOfAvailablePillows[i].type === typeOfPillow) {
+                if (this.listOfAvailablePillows[i].number > 0) {
+                    if (this.listOfAvailablePillows[i].number >= numberOfBorrowingPillows) {
+                        this.listOfAvailablePillows[i].number -= numberOfBorrowingPillows;
+                        return { resulte: true, rest: 0 };
+                    } else {
+                        numberOfBorrowingPillows -= this.listOfAvailablePillows[i].number;
+                        this.listOfAvailablePillows[i].number = 0;
+                        return { resulte: true, rest: numberOfBorrowingPillows };
+                    }
+                } else {
+                    return { resulte: false, rest: 0 };
+                }
+            }
+        }
+    }
+
+    returnPillows(typeOfPillow, numberOfRecoveredPillows) {
+        for (let i = 0; i < this.listOfAvailablePillows.length; i++) {
+            if (this.listOfAvailablePillows[i].type === typeOfPillow) {
+                this.listOfAvailablePillows[i].number += numberOfRecoveredPillows;
+                break;
             }
         }
     }
@@ -32,6 +77,9 @@ class Room {
     BookingLink;
     numberOfBeds;
     wayOfReservation;
+    typeOfRoom;
+    listOfAvailablePillows;
+    listOfAvailableMattresses;
 
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
@@ -49,6 +97,9 @@ class Room {
         this.bookingLink = getRandomBookingLink();
         this.residentEmail = '';
         this.wayOfReservation = getwayOfResarvation(this);
+        this.typeOfRoom = 'normal';
+        this.listOfAvailableMattresses = [];
+        this.listOfAvailablePillows = [];
     }
 }
 
