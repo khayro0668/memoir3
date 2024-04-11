@@ -3,10 +3,20 @@ body {
     display: flex;
 }
 
+.menu-of-options{
+ align-items: center;
+ justify-content: center;
+}
+
+.menu-of-options button {
+    width: 100px;
+    height: 50px;
+}
+
 #container {
-    max-width: 95%; /* Limits the maximum width to prevent overly wide layouts on large screens */
+    width: 100%; /* Limits the maximum width to prevent overly wide layouts on large screens */
     width: auto; /* Adjusts width based on the content, up to the max-width */
-    min-height: 100vh; /* Ensures the container at least covers the full viewport height */
+    height: 600px; /* Ensures the container at least covers the full viewport height */
     margin: 0 auto; /* Centers the container horizontally */
     padding: 20px; /* Provides some internal spacing */
     box-sizing: border-box; /* Ensures padding does not add to the width */

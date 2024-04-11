@@ -101,6 +101,75 @@ class Room {
         this.listOfAvailableMattresses = [];
         this.listOfAvailablePillows = [];
     }
+
+    setIsReserved(value) {
+        this.isReserved = value;
+        this.keyStatus = value; // Assuming keyStatus should mirror isReserved
+    }
+
+    setResident(name) {
+        this.resident = name;
+    }
+
+    setResidentEmail(email) {
+        this.residentEmail = email;
+    }
+
+    setPrice(price) {
+        this.price = price;
+    }
+
+    setDurationOfReservation(duration) {
+        this.durationOfReservation = duration;
+    }
+
+    setStartDate(date) {
+        this.startDate = date;
+        // Optionally update durationOfReservation if endDate is set
+        if (this.endDate) {
+            this.durationOfReservation = calculateDaysBetweenDates(this.startDate, this.endDate);
+        }
+    }
+
+    setEndDate(date) {
+        this.endDate = date;
+        // Optionally update durationOfReservation if startDate is set
+        if (this.startDate) {
+            this.durationOfReservation = calculateDaysBetweenDates(this.startDate, this.endDate);
+        }
+    }
+
+    setCountdown(days) {
+        this.countdown = days;
+    }
+
+    setKeyStatus(status) {
+        this.keyStatus = status;
+    }
+
+    setBookingLink(link) {
+        this.bookingLink = link;
+    }
+
+    setNumberOfBeds(number) {
+        this.numberOfBeds = number;
+    }
+
+    setWayOfReservation(way) {
+        this.wayOfReservation = way;
+    }
+
+    setTypeOfRoom(type) {
+        this.typeOfRoom = type;
+    }
+
+    setListOfAvailablePillows(pillows) {
+        this.listOfAvailablePillows = pillows;
+    }
+
+    setListOfAvailableMattresses(mattresses) {
+        this.listOfAvailableMattresses = mattresses;
+    }
 }
 
 //get way of resarvation

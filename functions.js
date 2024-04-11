@@ -45,7 +45,7 @@ function createCardOfRoom(room) {
         <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
             <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'red' : 'green')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
             <p class="pr">${room.id}</p>
-            <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">visit</button>  
+            <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">${(room.isReserved === 'Unbooked' ? 'Boooked' : 'Visit')}</button>  
         </div>`;
 }
 
@@ -140,6 +140,7 @@ function createBarOfOptionsOfselectedRoom() {
     var barOfUnbookedRoom = `
     <div class="buuton-of-room-selection-bar">
     <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
+    <button onclick="reserveSelectedRoom()"><i class="fa-solid fa-user-plus"></i></button>
      <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
     </div>
     `;
@@ -178,3 +179,11 @@ function displayInfo() {
 }
 
 ///////////////////////////
+
+// generate bar of optons of settings
+function generateBarOfOptionsInSettings(){
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    currentIdInModifysettings = 'bar-of-options-in-settings';
+    document.getElementById(currentIdInModifysettings).style.display = 'block';
+}

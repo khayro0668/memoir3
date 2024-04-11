@@ -19,11 +19,22 @@
 </head>
 
 <body>
+    <div class="menu-of-options" id="menu-of-options">
+        <button id="home"><i class="fa-solid fa-house"></i></button>
+        <button id="rooms"><i class="fa-solid fa-door-closed"></i></button>
+        <button id="clock"><i class="fa-solid fa-calendar-days"></i></button>
+        <button id="settings" onclick="generateBarOfOptionsInSettings()"><i class="fa-solid fa-gear"></i></button>
+    </div>
     <div class="container" id="container">
         <div class="selection-bar" id="main-selection-bar" style="display: none;"></div>
         <div class="selection-bar" id="room-selection-bar" style="display: none;"></div>
         <div class="selection-bar" id="unbookedRoom-selection-bar" style="display: none;"></div>
-        
+        <div class="selection-bar" id="bar-of-options-in-settings" style="display: none;">
+            <button><i class="fa-solid fa-money-bill"></i></button>
+            <button><i class="fa-solid fa-person"></i></button>
+            <button><i class="fa-solid fa-droplet"></i></button>
+           </div>
+
         <div class="display-information" id="view-rooms" style="display: none;"></div>
         <div class="display-information" id="view-room-information" style="display: none;"></div>
         <div class="display-information" id="view-payment-information" style="display: none;"></div>

@@ -31,7 +31,17 @@ function selectRoom(room) {
     document.getElementById(currentIdInModifysettings).style.display = 'none';
 
     if (selectedRoom.isReserved === 'Unbooked') {
-        document.getElementById('reservation-of-room').innerHTML = `
+        reserveSelectedRoom();
+    } else {
+        currentIdInModifysettings = 'room-selection-bar';
+        document.getElementById(currentIdInModifysettings).style.display = 'block';
+        showInformationOfSelectedRoom();
+    }
+}
+
+//function to get a page to reserve room
+function reserveSelectedRoom() {
+    document.getElementById('reservation-of-room').innerHTML = `
         <form id="bookingForm">
         <label for="name">الاسم:</label>
         <input type="text" id="name" name="name" oninput="validateForm()"><br><br>
@@ -49,14 +59,10 @@ function selectRoom(room) {
     </form>
         `;
         currentIdInModifysettings = 'unbookedRoom-selection-bar';
-        document.getElementById(currentIdInModifysettings).style = 'block';
-        currentIdInDisplayInformation = 'reservation-of-room';
-        document.getElementById(currentIdInDisplayInformation).style = 'block';
-    } else {
-        currentIdInModifysettings = 'room-selection-bar';
         document.getElementById(currentIdInModifysettings).style.display = 'block';
-        showInformationOfSelectedRoom();
-    }
+        document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+        currentIdInDisplayInformation = 'reservation-of-room';
+        document.getElementById(currentIdInDisplayInformation).style.display = 'block';
 }
 
 //create a page to display the selected room information
@@ -153,13 +159,13 @@ function setInformation() {
 }
 
 // create page to modify information of selected room
-function modifyInformationOfSelectedRoom(){
+function modifyInformationOfSelectedRoom() {
     var pageOfModifyInformationOfSelectedRoom = `
     <form id="reservationForm">
-    <label for="name" style="display:'block';margin:10px 0">الاسم:</label>
+    <label for="name" style="display:'block';margin:10px 0">name:</label>
     <input type="text" id="name" name="name" value="${selectedRoom.resident}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
 
-    <label for="email" style="display:'block';margin:10px 0">الإيميل:</label>
+    <label for="email" style="display:'block';margin:10px 0">E-mail:</label>
     <input type="email" id="email" name="email" value="${selectedRoom.residentEmail}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
 
     <label for="startDate" style="display:'block';margin:10px 0">تاريخ البداية:</label>
@@ -176,10 +182,10 @@ function modifyInformationOfSelectedRoom(){
 </form>
 `;
 
-document.getElementById('view-room-information').style.display = 'none';
-currentIdInDisplayInformation = 'modify-room-information';
-document.getElementById(currentIdInDisplayInformation).innerHTML = pageOfModifyInformationOfSelectedRoom;
-document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+    document.getElementById('view-room-information').style.display = 'none';
+    currentIdInDisplayInformation = 'modify-room-information';
+    document.getElementById(currentIdInDisplayInformation).innerHTML = pageOfModifyInformationOfSelectedRoom;
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
 }
 
 function submitForm() {
@@ -188,13 +194,11 @@ function submitForm() {
     const startDate = document.getElementById('startDate').value;
     const duration = document.getElementById('duration').value;
     const pillows = document.getElementById('pillows').value;
-  
-    alert(`الاسم: ${name}\nالإيميل: ${email}\nتاريخ البداية: ${startDate}\nمدة الحجز: ${duration} أيام\nعدد الوسائد: ${pillows}`);
-  }
-  
-  function cancelReservation() {
+    selectedRoom.setResident(name);
+}
+
+function cancelReservation() {
     // هنا يمكنك إضافة الكود اللازم لإلغاء الحجز، مثل تنظيف النموذج أو تنفيذ طلب إلى الخادم
     document.getElementById('reservationForm').reset();
     alert('تم إلغاء الحجز بنجاح.');
-  }
-  
+}

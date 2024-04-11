@@ -28,3 +28,14 @@
   #nameList li:hover {
     background-color: lightgray;
   }
+
+
+
+  .bar-of-options-in-settings {
+    display: flex;
+  }
+
+  .bar-of-options-in-settings button {
+    height: 30px;
+    width: 50px;
+  }
