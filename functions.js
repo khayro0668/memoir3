@@ -180,6 +180,8 @@ function displayInfo() {
 
 /////////////      genearte page of settings      //////////////
 function generatePageOfSettings(){
-    
+   document.getElementById(currentPage).style.display = 'none';
+   currentPage = 'page-of-settings';
+   document.getElementById(currentPage).style.display = 'block';
 }
 

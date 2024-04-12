@@ -10,6 +10,7 @@ var minNumberOfBeds = 2;
 var maxNumberOfBeds = 4;
 var currentIdInDisplayInformation;
 var currentIdInModifysettings;
+var currentPage;
 var selectedRoom;
 var names = [];
 
@@ -19,6 +20,7 @@ window.onload = function () {
     createBarOfOptionsOfselectedRoom();
     currentIdInDisplayInformation = "view-rooms";
     currentIdInModifysettings = "main-selection-bar";
+    currentPage = 'container';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);

@@ -1,5 +1,6 @@
 body {
-    background-color: #00A3A2;
+    /* background-color: #00A3A2; */
+    background-color: #d3e8f1;
     display: flex;
 }
 
@@ -27,11 +28,12 @@ body {
     height: 100px;
     width: 100%;
     border-radius: 50px;
+    align-items: center;
+    justify-content: center;
 }
 
 .ptn :hover {
     background-color: white;
-    color: #a3e0ed;
 }
 
 #container {

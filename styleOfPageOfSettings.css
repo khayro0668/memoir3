@@ -1,5 +1,21 @@
-#page-of-settings {
-    border: 1px solid black;
-    background-color: brown;
+.page-of-settings {
+    border-radius: 20px;
+    background-color: white;
+    height: 570px;
+    width: 1200px;
     
+}
+
+.card-setting {
+    width: 200px;
+    height: 200px;
+    background-color: #00A3A2;
+    border-radius: 20px;
+    margin-left: 100px;
+    margin-top: 60px;
+}
+
+.card-setting:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transform: translate(0px, -8px);
 }
