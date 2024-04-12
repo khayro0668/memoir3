@@ -3,43 +3,56 @@ body {
     display: flex;
 }
 
-.menu-of-options{
- align-items: center;
- justify-content: center;
+.menu-of-options {
+    align-items: center;
+    justify-content: center;
+    height: 570px;
+    width: 100px;
 }
 
 .menu-of-options button {
     width: 100px;
     height: 50px;
+    background-color: transparent;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: none;
+}
+
+.menu-of-options button :hover {
+    color: #D8F3F9;
+}
+
+.logo {
+    height: 100px;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.ptn :hover {
+    background-color: white;
+    color: #a3e0ed;
 }
 
 #container {
-    width: 100%; /* Limits the maximum width to prevent overly wide layouts on large screens */
-    width: auto; /* Adjusts width based on the content, up to the max-width */
-    height: 600px; /* Ensures the container at least covers the full viewport height */
-    margin: 0 auto; /* Centers the container horizontally */
-    padding: 20px; /* Provides some internal spacing */
-    box-sizing: border-box; /* Ensures padding does not add to the width */
-    display: flex; /* Enables the use of Flexbox for layout */
-    flex-direction: column; /* Stacks children vertically */
-    justify-content: flex-start; /* Aligns children to the start of the flex-direction */
-    align-items: center; /* Centers children along the cross axis */
-    background-color: white; /* Optional: sets a background color */
-    border-radius: 20px; /* Optional: adds rounded corners */
-}
-
-/* For tablets and below */
-@media (max-width: 768px) {
-    #container {
-        padding: 10px; /* Reduces padding on smaller screens */
-        min-height: initial; /* Adjusts or removes the min-height */
-        flex-direction: column; /* Keeps the vertical layout */
-    }
-}
-
-/* For mobile phones */
-@media (max-width: 480px) {
-    #container {
-        max-width: 100%; /* Allows the container to take the full screen width */
-    }
+    width: 1200px;
+    /* Limits the maximum width to prevent overly wide layouts on large screens */
+    height: 570px;
+    /* Ensures the container at least covers the full viewport height */
+    padding: 20px;
+    /* Provides some internal spacing */
+    box-sizing: border-box;
+    /* Ensures padding does not add to the width */
+    display: flex;
+    /* Enables the use of Flexbox for layout */
+    flex-direction: column;
+    /* Stacks children vertically */
+    justify-content: flex-start;
+    /* Aligns children to the start of the flex-direction */
+    align-items: center;
+    /* Centers children along the cross axis */
+    background-color: white;
+    /* Optional: sets a background color */
+    border-radius: 20px;
+    /* Optional: adds rounded corners */
 }

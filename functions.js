@@ -178,12 +178,8 @@ function displayInfo() {
     alert("الاسم: " + name + "<br>البريد الإلكتروني: " + email + "<br>تاريخ الحجز: " + bookingDate + "<br>مدة الحجز: " + bookingDuration);
 }
 
-///////////////////////////
-
-// generate bar of optons of settings
-function generateBarOfOptionsInSettings(){
-    document.getElementById(currentIdInModifysettings).style.display = 'none';
-    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
-    currentIdInModifysettings = 'bar-of-options-in-settings';
-    document.getElementById(currentIdInModifysettings).style.display = 'block';
+/////////////      genearte page of settings      //////////////
+function generatePageOfSettings(){
+    
 }
+
