@@ -44,7 +44,7 @@ function createCardOfRoom(room) {
     return `
         <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
             <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'red' : 'green')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
-            <p class="pr">${room.id}</p>
+            <p class="pr">floor ${room.floorNumber}<br>room ${room.roomNumber}</p>
             <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">${(room.isReserved === 'Unbooked' ? 'Boooked' : 'Visit')}</button>  
         </div>`;
 }
