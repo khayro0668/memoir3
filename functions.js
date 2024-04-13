@@ -179,9 +179,24 @@ function displayInfo() {
 }
 
 /////////////      genearte page of settings      //////////////
-function generatePageOfSettings(){
-   document.getElementById(currentPage).style.display = 'none';
-   currentPage = 'page-of-settings';
-   document.getElementById(currentPage).style.display = 'block';
+function generatePageOfSettings() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-settings';
+    document.getElementById(currentPage).style.display = 'block';
 }
 
+//go to page of rooms
+function goToPageOfRooms() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentIdInDisplayInformation = "view-rooms";
+    currentIdInModifysettings = "main-selection-bar";
+    currentPage = 'container';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+    document.getElementById(currentIdInModifysettings).style.display = 'block';
+    document.getElementById(currentPage).style.display = 'block';
+    
+}
