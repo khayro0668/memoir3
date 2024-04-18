@@ -218,7 +218,9 @@ function createSettingPricePage(numberOfFloors, numberOfRooms){
     for (let i = 1; i <= numberOfRooms; i++) {
         divOfRooms += `<option value="${i}">${i}</option>`;
     }
-
+    
+    var divOfProducts = ``;
+    
     var UI = `
         <div class="dropdown-container">
             <div class="dropdown-wrapper">
@@ -234,7 +236,14 @@ function createSettingPricePage(numberOfFloors, numberOfRooms){
                 </select>
             </div>
         </div>
-        <input>
+        <div style="width: 100%;height: 70%;border: 1px solid black;">
+           <label>get the new price</label>
+           <input type="number" id="new-price-from-settings" step="0.01">
+           <div style="display: flex;width: 100%;height: 30%;border: 1px solid black;align-items: center;">
+             <button onclick="" style="margin: 10px;">save</button>
+             <button onclick="" style="margin: 10px;">ignore</button>
+           </div>
+       </div>
   `;
 
     document.getElementById('page-of-price-settings').innerHTML = UI;

@@ -2,11 +2,13 @@ class Hotel {
     listOfRooms;
     listOfAvailablePillows;
     listOfAvailableMattresses;
+    listOfAvailabelServices;
 
     constructor() {
         this.generateListOfRooms();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailableMattresses();
+        this.generateListOfAvailabelServices();
     }
 
     generateListOfRooms() {
@@ -29,6 +31,12 @@ class Hotel {
         this.listOfAvailableMattresses = [];
         this.listOfAvailableMattresses.push({ type: 'vip', number: 2000, price: 0 });
         this.listOfAvailableMattresses.push({ type: 'normal', number: 2000, price: 0 });
+    }
+
+    generateListOfAvailabelServices(){
+      this.listOfAvailabelServices = [];
+      this.listOfAvailabelServices.push({ type: 'vip-room', number: 2000, price: 0 });
+      this.listOfAvailabelServices.push({ type: 'normal-room', number: 2000, price: 0 });
     }
 
     borrowingPillows(typeOfPillow, numberOfBorrowingPillows) {
