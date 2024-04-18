@@ -1,7 +1,9 @@
 .display-information {
+    border: 1px solid black;
     width: 100%;
-    flex-grow: 1; /* Takes up remaining space */
-    overflow-y: auto; /* Only show vertical scroll when necessary */
+    flex-grow: 1;
+    height: 93%;
+    overflow-y: scroll;
 }
 
 .box {

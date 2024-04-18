@@ -4,6 +4,8 @@ var valueOfFloorNumberDropdawn = -1;
 var valueOfRoomNumberDropdawn = -1;
 var valueOfBedsNumberDropdawn = -1;
 var valueOfReservedDropdawn = -1;
+var valueOfFloorNumberDropdawnInSettings = -1;
+var valueOfRoomNumberDropdawnInSettings = -1;
 var numberOfFloors = 40;
 var numberOfRooms = 100;
 var minNumberOfBeds = 2;
@@ -25,6 +27,7 @@ window.onload = function () {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
     createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, minNumberOfBeds);
+    createSettingPricePage(numberOfFloors , numberOfRooms);
 }
 
 function selectRoom(room) {
@@ -150,7 +153,7 @@ function backToHome() {
 }
 
 //get information of payment
-function getInformationOfPament() {
+function getInformationOfPayment() {
     // arwa7 hna zatchi
 }
 

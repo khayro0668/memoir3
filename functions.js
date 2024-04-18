@@ -194,9 +194,68 @@ function goToPageOfRooms() {
     document.getElementById(currentPage).style.display = 'none';
     currentIdInDisplayInformation = "view-rooms";
     currentIdInModifysettings = "main-selection-bar";
-    currentPage = 'container';
+     currentPage = 'container';
+     document.getElementById(currentPage).style.display = 'block';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
     document.getElementById(currentIdInModifysettings).style.display = 'block';
+}
+
+//get page of settings price
+function getPageOfPriceSettings(){
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-price-settings';
     document.getElementById(currentPage).style.display = 'block';
-    
+}
+
+// get needed dropdowns in page setting price
+function createSettingPricePage(numberOfFloors, numberOfRooms){
+    var divOfFloors = '<option value="0">All</option>';
+    for (let i = 1; i <= numberOfFloors; i++) {
+        divOfFloors += `<option value="${i}">${i}</option>`;
+    }
+
+    var divOfRooms = '<option value="0">All</option>';
+    for (let i = 1; i <= numberOfRooms; i++) {
+        divOfRooms += `<option value="${i}">${i}</option>`;
+    }
+
+    var UI = `
+        <div class="dropdown-container">
+            <div class="dropdown-wrapper">
+                <button class="dropdown-button" id="button1">Floor</button>
+                <select class="dropdown" id="dropdown-of-floor">
+                   ${divOfFloors}
+                </select>
+            </div>
+            <div class="dropdown-wrapper">
+                <button class="dropdown-button" id="button2">Room</button>
+                <select class="dropdown" id="dropdown-of-room">
+                   ${divOfRooms}
+                </select>
+            </div>
+        </div>
+        <input>
+  `;
+
+    document.getElementById('page-of-price-settings').innerHTML = UI;
+
+    const initilaizeDropdawn = (ID) => {
+        document.getElementById(ID).addEventListener('change', function () {
+            const getValueOfSelectionDropdown = (value, flag) => {
+                if (flag) {
+                    return (value === "All" ? -1 : parseInt(value));
+                } else {
+                    return (value === "All" ? -1 : value);
+                }
+            }
+            const selectedOption = this.options[this.selectedIndex].text;
+            switch (this.id) {
+                case 'dropdown-of-floor': valueOfFloorNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
+                case 'dropdown-of-room': valueOfRoomNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
+            }
+        });
+    }
+
+    initilaizeDropdawn('dropdown-of-floor');
+    initilaizeDropdawn('dropdown-of-room'); 
 }

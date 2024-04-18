@@ -28,7 +28,7 @@
         <div class="ptn"><button id="settings" onclick="generatePageOfSettings()"><i class="fa-solid fa-gear"></i>Settings</button></div>
         <div class="ptn"><button id="historique" onclick=""><i class="fa-solid fa-box-archive"></i>Archive</button></div>
         <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button></div>
-        <div class="ptn"><button id="user" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log out</button></div>
+        <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log out</button></div>
     </div>
     <div class="container" id="container">
         <div class="selection-bar" id="main-selection-bar" style="display: none;"></div>
@@ -43,8 +43,11 @@
         <div class="display-information" id="reservation-of-room" style="display: none;"></div>
     </div>
     <div class="page-of-settings" id="page-of-settings" style="display: none;">
-        <div class="card-setting" id="set-price" style="background-image: url('438137619_3808940162764568_6981665829789075154_n.jpg');background-size: cover;"></div>
+        <div class="card-setting" id="set-price" style="background-image: url('438137619_3808940162764568_6981665829789075154_n.jpg');background-size: cover;" onclick="getPageOfPriceSettings()"></div>
         <div class="card-setting" id="set-quantite"></div>
+    </div>
+    <div class="page-of-price-settings" id="page-of-price-settings" style="display: none;">
+        
     </div>
 </body>
 

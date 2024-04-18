@@ -1,6 +1,6 @@
 .selection-bar {
     width: 100%;
-    min-height: 50px; /* Fixed or minimum height */
+    height: 7%;
     border-bottom: solid 1px black;
     font-family: 'Helvetica', sans-serif;
     display: flex;
