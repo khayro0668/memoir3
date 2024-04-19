@@ -194,21 +194,28 @@ function goToPageOfRooms() {
     document.getElementById(currentPage).style.display = 'none';
     currentIdInDisplayInformation = "view-rooms";
     currentIdInModifysettings = "main-selection-bar";
-     currentPage = 'container';
-     document.getElementById(currentPage).style.display = 'block';
+    currentPage = 'container';
+    document.getElementById(currentPage).style.display = 'block';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
     document.getElementById(currentIdInModifysettings).style.display = 'block';
 }
 
 //get page of settings price
-function getPageOfPriceSettings(){
+function getPageOfPriceSettings() {
     document.getElementById(currentPage).style.display = 'none';
     currentPage = 'page-of-price-settings';
     document.getElementById(currentPage).style.display = 'block';
 }
 
+// get page of price rooms settings
+function getPageOfPriceRoomsSettings() {
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-price-of-rooms-settings';
+    document.getElementById(currentPage).style.display = 'block';
+}
+
 // get needed dropdowns in page setting price
-function createSettingPricePage(numberOfFloors, numberOfRooms){
+function createSettingPricePage(numberOfFloors, numberOfRooms) {
     var divOfFloors = '<option value="0">All</option>';
     for (let i = 1; i <= numberOfFloors; i++) {
         divOfFloors += `<option value="${i}">${i}</option>`;
@@ -218,10 +225,11 @@ function createSettingPricePage(numberOfFloors, numberOfRooms){
     for (let i = 1; i <= numberOfRooms; i++) {
         divOfRooms += `<option value="${i}">${i}</option>`;
     }
-    
+
     var divOfProducts = ``;
-    
+
     var UI = `
+    <button onclick="getPageOfPriceSettings()">Back</button>
         <div class="dropdown-container">
             <div class="dropdown-wrapper">
                 <button class="dropdown-button" id="button1">Floor</button>
@@ -240,13 +248,13 @@ function createSettingPricePage(numberOfFloors, numberOfRooms){
            <label>get the new price</label>
            <input type="number" id="new-price-from-settings" step="0.01">
            <div style="display: flex;width: 100%;height: 30%;border: 1px solid black;align-items: center;">
-             <button onclick="" style="margin: 10px;">save</button>
+             <button onclick="setPriceOfRooms()" style="margin: 10px;">save</button>
              <button onclick="" style="margin: 10px;">ignore</button>
            </div>
        </div>
   `;
 
-    document.getElementById('page-of-price-settings').innerHTML = UI;
+    document.getElementById('page-of-price-of-rooms-settings').innerHTML = UI;
 
     const initilaizeDropdawn = (ID) => {
         document.getElementById(ID).addEventListener('change', function () {
@@ -259,12 +267,36 @@ function createSettingPricePage(numberOfFloors, numberOfRooms){
             }
             const selectedOption = this.options[this.selectedIndex].text;
             switch (this.id) {
-                case 'dropdown-of-floor': valueOfFloorNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
-                case 'dropdown-of-room': valueOfRoomNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
+                case 'dropdown-of-floor': valueOfFloorNumberDropdawnInSettings = getValueOfSelectionDropdown(selectedOption, true); break;
+                case 'dropdown-of-room': valueOfRoomNumberDropdawnInSettings = getValueOfSelectionDropdown(selectedOption, true); break;
             }
         });
     }
 
     initilaizeDropdawn('dropdown-of-floor');
-    initilaizeDropdawn('dropdown-of-room'); 
+    initilaizeDropdawn('dropdown-of-room');
+}
+
+
+//function to set price of selected rooms from settings
+function setPriceOfRooms() {
+    const isDesiredRoomInSettings = (room , floorNumber, roomNumber) => {
+    
+        const checkEquality = (firstValue, secondValue) => {
+            return secondValue === -1 || firstValue === secondValue;
+        }
+
+        var ans = true;
+        ans &= checkEquality(room.floorNumber, floorNumber);
+        ans &= checkEquality(room.roomNumber, roomNumber);
+
+        return ans;
+    }
+   
+    for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
+        if(isDesiredRoomInSettings(hotel.listOfRooms[i] , valueOfFloorNumberDropdawnInSettings , valueOfRoomNumberDropdawnInSettings)){
+            hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
+        }
+    }
+    generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
