@@ -1,35 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styleOfPageOfSettings.css">
+<meta charset="UTF-8">
+<title>Cards with Buttons</title>
+<style>
+    body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        background: #f0f0f0;
+    }
+    .card {
+        width: 260px; /* Adjusted for margins and padding */
+        height: 350px; /* Increased height of the cards */
+        background: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Keeps content organized */
+        border: black 1px solid;
+    }
+   
+    .card button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .card button:hover {
+        background-color: #0056b3;
+    }
+
+    .card-of-acc {
+        border: 1px solid black;
+        height: 70%;
+        width: 100%;
+        background-image: url('skrt.png');
+        background-size: cover;
+    }
+</style>
 </head>
-<body style="height: 1200px;width: 100%;border: 1px solid black;">
-    <div class="page-of-set-price-of-others" id="page-of-set-price-of-others">
-        <div class="item" id="normal-pillows">
-
-        </div>
-        <div class="item" id="vip-pillows">
-           <h1>Vip pillows</h1>
-           <input type="number"  id="new-price-of-vip-pillows">
-           <button onclick="">Save</button>
-        </div>
-        <div class="item" id="normal-">
-           <h1>Normal pillows</h1>
-           <input type="number"  id="new-price-of-normal-pillows">
-           <button onclick="">Save</button>
-        </div>
-        <div class="item" id="vip-">
-
-        </div>
-        <div class="item" id="normal-">
-
-        </div>
-        <div class="item" id="vip-">
-
-        </div>
+<body>
+    <div class="card" id="user-01">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
     </div>
+    <div class="card" id="user-02">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card" >
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <div class="card">
+        <div class="card-of-acc"></div>
+        <p>Card 1 Content</p>
+        <button>Click Me</button>
+    </div>
+    <!-- Repeat for each card as needed -->
 </body>
 </html>
