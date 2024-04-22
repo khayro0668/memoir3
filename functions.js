@@ -22,7 +22,7 @@ function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsN
     table += '</table>';
 
     document.getElementById('view-rooms').innerHTML = '';
-    document.getElementById('view-rooms').innerHTML = table;  
+    document.getElementById('view-rooms').innerHTML = table;
 }
 
 //a function to determine whether the room is user-defined or not
@@ -134,6 +134,7 @@ function createBarOfOptionsOfselectedRoom() {
     <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
      <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
      <button onclick="getInformationOfPament()"><i class="fa-solid fa-credit-card"></i></button>
+     <button onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
      <button onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
     </div>
     `;
@@ -162,10 +163,15 @@ function validateForm() {
     var bookingDuration = document.getElementById("bookingDuration").value;
     var displayInfoBtn = document.getElementById("displayInfoBtn");
 
-    if (name && email && bookingDate && bookingDuration) {
-        displayInfoBtn.disabled = false; // تفعيل الزر
+    const isValidEmail = (email) => {
+        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return regex.test(email);
+    }
+
+    if (name && isValidEmail(email) && bookingDate && bookingDuration) {
+        displayInfoBtn.disabled = false;
     } else {
-        displayInfoBtn.disabled = true; // تعطيل الزر
+        displayInfoBtn.disabled = true;
     }
 }
 
@@ -175,7 +181,14 @@ function displayInfo() {
     var bookingDate = document.getElementById("bookingDate").value;
     var bookingDuration = document.getElementById("bookingDuration").value;
 
-    alert("الاسم: " + name + "<br>البريد الإلكتروني: " + email + "<br>تاريخ الحجز: " + bookingDate + "<br>مدة الحجز: " + bookingDuration);
+    selectedRoom.setResident(name);
+    selectedRoom.setResidentEmail(email);
+    selectedRoom.setDurationOfReservation(bookingDuration);
+    selectedRoom.setStartDate(bookingDate);
+    selectedRoom.setIsReserved('Reserved');
+    selectedRoom.setDurationOfReservation(bookingDuration);
+        
+    generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
 
 /////////////      genearte page of settings      //////////////
@@ -280,8 +293,8 @@ function createSettingPricePage(numberOfFloors, numberOfRooms) {
 
 //function to set price of selected rooms from settings
 function setPriceOfRooms() {
-    const isDesiredRoomInSettings = (room , floorNumber, roomNumber) => {
-    
+    const isDesiredRoomInSettings = (room, floorNumber, roomNumber) => {
+
         const checkEquality = (firstValue, secondValue) => {
             return secondValue === -1 || firstValue === secondValue;
         }
@@ -292,11 +305,24 @@ function setPriceOfRooms() {
 
         return ans;
     }
-   
-    for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
-        if(isDesiredRoomInSettings(hotel.listOfRooms[i] , valueOfFloorNumberDropdawnInSettings , valueOfRoomNumberDropdawnInSettings)){
+
+    for (let i = 0; i < hotel.listOfRooms.length; i++) {
+        if (isDesiredRoomInSettings(hotel.listOfRooms[i], valueOfFloorNumberDropdawnInSettings, valueOfRoomNumberDropdawnInSettings)) {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
+
+
+//convert string to pdf
+function textIntoPDF(text) {
+
+}
+
+//send email
+function sendEmail(file , dest) {
+
+}
+
+
