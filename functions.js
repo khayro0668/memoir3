@@ -22,7 +22,7 @@ function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsN
     table += '</table>';
 
     document.getElementById('view-rooms').innerHTML = '';
-    document.getElementById('view-rooms').innerHTML = table;
+    document.getElementById('view-rooms').innerHTML = table;  
 }
 
 //a function to determine whether the room is user-defined or not
