@@ -14,6 +14,7 @@ var currentIdInDisplayInformation;
 var currentIdInModifysettings;
 var currentPage;
 var selectedRoom;
+var currentUser;
 var names = [];
 
 //onload function
@@ -27,7 +28,7 @@ window.onload = function () {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
     createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, minNumberOfBeds);
-    createSettingPricePage(numberOfFloors , numberOfRooms);
+    createSettingPricePage(numberOfFloors, numberOfRooms);
 }
 
 function selectRoom(room) {
@@ -48,26 +49,54 @@ function selectRoom(room) {
 function reserveSelectedRoom() {
     document.getElementById('reservation-of-room').innerHTML = `
         <form id="bookingForm">
-        <label for="name">الاسم:</label>
+        <label for="name">name:</label>
         <input type="text" id="name" name="name" oninput="validateForm()"><br><br>
         
-        <label for="email">عنوان البريد الإلكتروني:</label>
+        <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" oninput="validateForm()"><br><br>
         
-        <label for="bookingDate">تاريخ الحجز:</label>
+        <label for="bookingDate">start date :</label>
         <input type="date" id="bookingDate" name="bookingDate" oninput="validateForm()"><br><br>
         
-        <label for="bookingDuration">مدة الحجز (بالأيام):</label>
+        <label for="bookingDuration"> duration :</label>
         <input type="number" id="bookingDuration" name="bookingDuration" oninput="validateForm()"><br><br>
         
-        <button type="button" id="displayInfoBtn" onclick="displayInfo()" disabled>عرض المعلومات</button>
+        <button type="button" id="displayInfoBtn" onclick="displayInfo()" disabled> Boocked </button>
     </form>
         `;
-        currentIdInModifysettings = 'unbookedRoom-selection-bar';
-        document.getElementById(currentIdInModifysettings).style.display = 'block';
-        document.getElementById(currentIdInDisplayInformation).style.display = 'none';
-        currentIdInDisplayInformation = 'reservation-of-room';
-        document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+    currentIdInModifysettings = 'unbookedRoom-selection-bar';
+    document.getElementById(currentIdInModifysettings).style.display = 'block';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    currentIdInDisplayInformation = 'reservation-of-room';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+}
+
+//create a page to display the resident information of selected room
+function showInformationOfResidentInSelectedRoom() {
+    var pageOfInformation = `
+    <div class="room-details">
+        <h2>Resident Details</h2>
+        
+        <label for="resident">Resident:</label>
+        <input type="text" id="resident" value="${selectedRoom.resident}" readonly>
+        
+        <label for="floorNumber">E-mail:</label>
+        <input type="text" id="floorNumber" value="${selectedRoom.residentEmail}" readonly>
+        <label for="startDate">Start Date:</label>
+        <input type="text" id="startDate" value="${selectedRoom.startDate}" readonly>
+        
+        <label for="endDate">End Date:</label>
+        <input type="text" id="endDate" value="${selectedRoom.endDate}" readonly>
+        
+        <label for="durationOfReservation">Duration of Reservation:</label>
+        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfreservation} nights" readonly>
+    </div>
+    `;
+
+    document.getElementById('view-resident-information').innerHTML = pageOfInformation;
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    currentIdInDisplayInformation = 'view-resident-information';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
 }
 
 //create a page to display the selected room information
@@ -80,31 +109,14 @@ function showInformationOfSelectedRoom() {
         
         <label for="roomNumber">Room Number:</label>
         <input type="text" id="roomNumber" value="${selectedRoom.roomNumber}" readonly>
-        
-        <label for="id">ID:</label>
-        <input type="text" id="id" value="${selectedRoom.id}" readonly>
-        
-        <label for="resident">Resident:</label>
-        <input type="text" id="resident" value="${selectedRoom.resident}" readonly>
-        
+
         <label for="isReserved">Reserved:</label>
         <input type="text" value="${selectedRoom.isReserved}" readonly>
 
         
         <label for="price">Price:</label>
         <input type="text" id="price" value="${selectedRoom.price}" readonly>
-        
-        <label for="durationOfReservation">Duration of Reservation:</label>
-        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfreservation} nights" readonly>
-        
-        <label for="startDate">Start Date:</label>
-        <input type="text" id="startDate" value="${selectedRoom.startDate}" readonly>
-        
-        <label for="endDate">End Date:</label>
-        <input type="text" id="endDate" value="${selectedRoom.endDate}" readonly>
-        
-        <label for="countdown">Countdown:</label>
-        <input type="text" id="countdown" value="${selectedRoom.countdown} days left" readonly>
+
         
         <label for="keyStatus">Key Status:</label>
         <input type="text" id="keyStatus" value="${getKeyStatusBasedOnReservation(selectedRoom.isReserved)}" readonly>

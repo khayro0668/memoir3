@@ -211,13 +211,15 @@ function getRandomEndDate() {
 }
 
 function calculateDaysBetweenDates(startDate, endDate) {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    // عدد الثواني في يوم واحد
-    const oneDay = 24 * 60 * 60 * 1000;
-    // قم بحساب فارق الوقت بين التاريخين بالثواني
-    const diffDays = Math.round(Math.abs((start - end) / oneDay));
-    return diffDays;
+        // Calculate the difference in milliseconds
+        const diffInMs = endDate - startDate;
+    
+        // Convert milliseconds to days
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    
+        // Return the absolute value of days to avoid negative values
+        return diffInMs;
+        return Math.abs(Math.round(diffInDays));    
 }
 
 function getCountdown() {
@@ -257,4 +259,16 @@ function getRandomResident(isReserved) {
         "Olivia"
     ];
     return names[Math.floor(Math.random() * names.length)];
+}
+
+//calculateEndDate
+function calculateEndDate(startDate, period) {
+    // Create a new Date object from the startDate
+    let endDate = new Date(startDate);
+
+    // Add the period (in days) to the startDate
+    endDate.setDate(endDate.getDate() + parseInt(period));
+    
+    // Return the new endDate
+    return endDate;
 }
