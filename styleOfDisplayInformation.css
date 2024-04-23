@@ -143,6 +143,7 @@ h2 {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1); /* Adds a blue glow to indicate focus */
 }
 
+
 #saveRoomDetailsButton {
     background-color: #00A3A2; /* Teal color; adjust to match your 'Book Now' link */
     color: white; /* Text color */
