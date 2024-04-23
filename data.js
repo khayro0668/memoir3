@@ -33,10 +33,10 @@ class Hotel {
         this.listOfAvailableMattresses.push({ type: 'normal', number: 2000, price: 0 });
     }
 
-    generateListOfAvailabelServices(){
-      this.listOfAvailabelServices = [];
-      this.listOfAvailabelServices.push({ type: 'vip-room', number: 2000, price: 0 });
-      this.listOfAvailabelServices.push({ type: 'normal-room', number: 2000, price: 0 });
+    generateListOfAvailabelServices() {
+        this.listOfAvailabelServices = [];
+        this.listOfAvailabelServices.push({ type: 'vip-room', number: 2000, price: 0 });
+        this.listOfAvailabelServices.push({ type: 'normal-room', number: 2000, price: 0 });
     }
 
     borrowingPillows(typeOfPillow, numberOfBorrowingPillows) {
@@ -112,7 +112,7 @@ class Room {
 
     setIsReserved(value) {
         this.isReserved = value;
-        this.keyStatus = value; // Assuming keyStatus should mirror isReserved
+        this.keyStatus = value;
     }
 
     setResident(name) {
@@ -128,12 +128,11 @@ class Room {
     }
 
     setDurationOfReservation(duration) {
-        this.durationOfReservation = duration;
+        this.durationOfReservation = 90;
     }
 
     setStartDate(date) {
         this.startDate = date;
-        // Optionally update durationOfReservation if endDate is set
         if (this.endDate) {
             this.durationOfReservation = calculateDaysBetweenDates(this.startDate, this.endDate);
         }
@@ -211,15 +210,15 @@ function getRandomEndDate() {
 }
 
 function calculateDaysBetweenDates(startDate, endDate) {
-        // Calculate the difference in milliseconds
-        const diffInMs = endDate - startDate;
-    
-        // Convert milliseconds to days
-        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-    
-        // Return the absolute value of days to avoid negative values
-        return diffInMs;
-        return Math.abs(Math.round(diffInDays));    
+    // Calculate the difference in milliseconds
+    const diffInMs = endDate - startDate;
+
+    // Convert milliseconds to days
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+    // Return the absolute value of days to avoid negative values
+    return diffInMs;
+    return Math.abs(Math.round(diffInDays));
 }
 
 function getCountdown() {
@@ -268,7 +267,7 @@ function calculateEndDate(startDate, period) {
 
     // Add the period (in days) to the startDate
     endDate.setDate(endDate.getDate() + parseInt(period));
-    
+
     // Return the new endDate
     return endDate;
 }
