@@ -173,8 +173,16 @@ h2 {
     border-radius: 5px;
 }
 
-label {
-    margin-right: 10px;
+.page-of-modify-information-of-selected-room{
+       
+    margin-right: 40%;
+    margin-top: 20%;
+
+}
+#reservationForm label {
+    margin-right: 200px;
+
+    
 }
 
 input[type=text], input[type=email], input[type=number], input[type=date] {
