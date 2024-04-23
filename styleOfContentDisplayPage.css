@@ -2,12 +2,14 @@ body {
     /* background-color: #00A3A2; */
     background-color: #d3e8f1;
     display: flex;
-    border: 1px solid black;
-    height: 100%;
-    width: 100%;
+    /* border: 1px solid black; */
+    height: 100vh;
+    width: 100vw;
 }
 
-.ptn {}
+.ptn {
+
+}
 
 .menu-of-options {
     align-items: center;

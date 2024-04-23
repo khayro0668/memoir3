@@ -21,17 +21,22 @@ var names = [];
 window.onload = function () {
     hotel = new Hotel();
     createBarOfOptionsOfselectedRoom();
-    currentIdInDisplayInformation = "view-rooms";
-    currentIdInModifysettings = "main-selection-bar";
-    currentPage = 'container';
-    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
-    document.getElementById(currentIdInModifysettings).style.display = 'block';
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
     createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, minNumberOfBeds);
     createSettingPricePage(numberOfFloors, numberOfRooms);
     generatePageOfArchives();
 }
 
+// go to PMS
+function goToPMS() {
+    currentIdInDisplayInformation = "view-rooms";
+    currentIdInModifysettings = "main-selection-bar";
+    currentPage = 'container';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+    document.getElementById(currentIdInModifysettings).style.display = 'block';
+    document.getElementById('menu-of-options').style.display = 'block';
+}
+/////////////////////
 function selectRoom(room) {
     selectedRoom = hotel.listOfRooms.find(r => r.id === room.id);
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';

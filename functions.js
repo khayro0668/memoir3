@@ -188,8 +188,8 @@ function displayInfo() {
     selectedRoom.setIsReserved('Reserved');
     selectedRoom.setDurationOfReservation(bookingDuration);
     
-    hotel.addEventInArchives(currentUser , '');
-    
+    hotel.addEventInArchives(currentUser , 'iuiyyu');
+
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
 
@@ -344,5 +344,14 @@ function getPageOfArchives() {
     document.getElementById(currentPage).style.display = 'none';
     currentPage = 'page-of-archives';
     document.getElementById(currentPage).style.display = 'block';
+}
+
+
+//generate page of accounte
+function generatePageOfAccount() {
+    var page = `
+    `;
+    
+    document.getElementById('account-of-employes').innerHTML = page;
 }
 
