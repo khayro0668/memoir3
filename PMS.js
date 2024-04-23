@@ -16,19 +16,23 @@ var currentPage;
 var selectedRoom;
 var currentUser;
 var names = [];
+var numberOfAccount = 10;
 
 //onload function
 window.onload = function () {
     hotel = new Hotel();
+    currentPage = 'login-page';
     createBarOfOptionsOfselectedRoom();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
     createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, minNumberOfBeds);
     createSettingPricePage(numberOfFloors, numberOfRooms);
     generatePageOfArchives();
+    generatePageOfAccount();
 }
 
 // go to PMS
 function goToPMS() {
+    document.getElementById(currentPage).style.display = 'none';
     currentIdInDisplayInformation = "view-rooms";
     currentIdInModifysettings = "main-selection-bar";
     currentPage = 'container';
