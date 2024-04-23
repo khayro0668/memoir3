@@ -20,6 +20,11 @@
 </head>
 
 <body>
+
+    <div class="login-page" id="login-page" style="display: none;">
+
+    </div>
+
     <div class="menu-of-options" id="menu-of-options">
         <div class="logo"
             style="background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');background-size: cover;">
@@ -30,7 +35,7 @@
         <div class="ptn"><button id="clock"><i class="fa-solid fa-calendar-days"></i>Clock</button></div>
         <div class="ptn"><button id="settings" onclick="generatePageOfSettings()"><i
                     class="fa-solid fa-gear"></i>Settings</button></div>
-        <div class="ptn"><button id="historique" onclick=""><i class="fa-solid fa-box-archive"></i>Archive</button>
+        <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i class="fa-solid fa-box-archive"></i>Archive</button>
         </div>
         <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button></div>
         <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log out</button>
@@ -38,9 +43,6 @@
     </div>
 
 
-
-
-    
     <div class="container" id="container">
         <div class="selection-bar" id="main-selection-bar" style="display: none;"></div>
         <div class="selection-bar" id="room-selection-bar" style="display: none;"></div>
@@ -82,6 +84,9 @@
     </div>
     <div class="page-of-price-settings" id="page-of-price-of-rooms-settings" style="display: none;">
         
+    </div>
+    <div class="page-of-archives" id="page-of-archives" style="display: none;">
+        <!-- page of archives -->
     </div>
 </body>
 

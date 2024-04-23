@@ -3,12 +3,13 @@ class Hotel {
     listOfAvailablePillows;
     listOfAvailableMattresses;
     listOfAvailabelServices;
-
+    archives;
     constructor() {
         this.generateListOfRooms();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailabelServices();
+        this.generateArchive();
     }
 
     generateListOfRooms() {
@@ -19,6 +20,15 @@ class Hotel {
                 this.listOfRooms.push(room);
             }
         }
+    }
+
+    generateArchive() {
+        this.archives = [];
+    }
+
+    addEventInArchives(employe, event) {
+        var newEvent = new Event(employe, event);
+        this.archives.push(newEvent);
     }
 
     generateListOfAvailablePillows() {
@@ -66,6 +76,7 @@ class Hotel {
             }
         }
     }
+
 }
 
 class Room {
@@ -270,4 +281,14 @@ function calculateEndDate(startDate, period) {
 
     // Return the new endDate
     return endDate;
+}
+
+class Event {
+    employe;
+    event;
+
+    constructor(employe, event) {
+        this.employe = employe;
+        this.event = event;
+    }
 }

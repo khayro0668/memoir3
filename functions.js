@@ -187,7 +187,9 @@ function displayInfo() {
     selectedRoom.setStartDate(bookingDate);
     selectedRoom.setIsReserved('Reserved');
     selectedRoom.setDurationOfReservation(bookingDuration);
-        
+    
+    hotel.addEventInArchives(currentUser , '');
+    
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
 
@@ -321,8 +323,26 @@ function textIntoPDF(text) {
 }
 
 //send email
-function sendEmail(file , dest) {
+function sendEmail(file, dest) {
 
 }
 
+//generate page of archive
+function generatePageOfArchives() {
+    var page = ``;
+    for (let i = 0; i < hotel.archives.length; i++) {
+        page += `<div class = "event-in-archive"><h1>${hotel.archives[i].employe}</h1><h1>${hotel.archives[i].event}</h1></div>`;
+    }
+
+    document.getElementById('page-of-archives').innerHTML = page;
+}
+
+//show page of archives
+function getPageOfArchives() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-archives';
+    document.getElementById(currentPage).style.display = 'block';
+}
 

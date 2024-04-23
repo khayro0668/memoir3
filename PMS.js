@@ -29,6 +29,7 @@ window.onload = function () {
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
     createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, minNumberOfBeds);
     createSettingPricePage(numberOfFloors, numberOfRooms);
+    generatePageOfArchives();
 }
 
 function selectRoom(room) {
