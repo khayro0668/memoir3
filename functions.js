@@ -187,8 +187,8 @@ function displayInfo() {
     selectedRoom.setStartDate(bookingDate);
     selectedRoom.setIsReserved('Reserved');
     selectedRoom.setDurationOfReservation(bookingDuration);
-    
-    hotel.addEventInArchives(currentUser , 'iuiyyu');
+
+    hotel.addEventInArchives(currentUser, 'iuiyyu');
 
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
@@ -348,12 +348,19 @@ function getPageOfArchives() {
 
 //generate page of accounte
 function generatePageOfAccount() {
-    var page = `
-    `;
-    
+    var page = '';
+    for (let i = 1; i <= numberOfAccount; i++) {
+        page += `<div class="card-acc">
+      <div class="card-of-acc"style="background-image: url('f${i}.png');"></div>
+      <p>user 10</p>
+     <div class="submit" onclick="goToPMS()"><button>Enter</button></div>
+     </div>`
+    }
+
     document.getElementById('account-of-employes').innerHTML = page;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -448,4 +455,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+=======
+//show page of acc
+function getPageOfAccount() {
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'account-of-employes';
+    document.getElementById(currentPage).style.display = 'block';
+}
+>>>>>>> 9db732f856413b0de1a46f8fc6f64bcb4101d88e
 
