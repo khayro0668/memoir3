@@ -1,56 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>logIn</title>
-<style>
-    body {
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background-color: #f4f4f4;
-    }
-    .card-of-login-type {
-        background-color: #fff;
-        border-radius: 25px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin: 50px;
-        padding: 20px;
-        text-align: center;
-        font-family: 'Arial', sans-serif;
-        width: 300px;
-        height: 350px;
-        transition: transform 0.3s ease; /* Transition effect for transform property */
-    }
-    .card-of-login-type:hover {
-        transform: scale(1.05); /* Scales up the card to 105% of its original size */
-    }
-    .card-of-login-type .emoji {
-        font-size: 230px;
-        margin-bottom: 20px;
-    }
-    .card-of-login-type .label {
-        display: block;
-        font-weight: bold;
-        font-size: 18px;
-        margin-top: 8px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <title>logIn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .card-of-login-type {
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+         
+            padding: 20px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            width: 300px;
+            height: 350px;
+            transition: transform 0.3s ease;
+            /* Transition effect for transform property */
+        }
+
+        .card-of-login-type:hover {
+            transform: scale(1.05);
+            /* Scales up the card to 105% of its original size */
+        }
+
+        .card-of-login-type .emoji1 {
+            font-size: 230px;
+            margin-bottom: 20px;
+        }
+
+        .card-of-login-type .emoji2 {
+            margin-top: 30%;
+            font-size: 90px;
+            margin-bottom: 20px;
+        }
+
+        .card-of-login-type .label {
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        .card-of-price-settings1 {
+
+            border: 1px black solid;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 950px;
+            height: 570px;
+        }
+
+        .container-of-card-of-settings2 {
+            display: flex;
+            width: 700px;
+            height: 360px;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="card-of-login-type">
-    <div class="emoji">👨‍💼</div> <!-- You may change the emoji if needed -->
-    <span class="label">Admin</span>
-</div>
+    <div class="card-of-price-settings1">
+        <div class="container-of-card-of-settings2">
+            <div class="card-of-login-type">
+                <div class="emoji1">🚪</div> <!-- You may change the emoji if needed -->
+                <span class="label">room</span>
+            </div>
 
-<div class="card-of-login-type" onclick="getPageOfAccount()">
-    <div class="emoji">👨‍🔧</div> <!-- You may change the emoji if needed -->
-    <span class="label">Employee</span>
-</div>
+            <div class="emoji2-ctrl" style="margin-left: 50px;">
+                <div class="card-of-login-type" onclick="getPageOfAccount()">
+                    <div class="emoji2">・・・</div> <!-- You may change the emoji if needed -->
+                    <span class="label">others</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 </body>
+
 </html>

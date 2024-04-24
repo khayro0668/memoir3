@@ -2,104 +2,78 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<title>Cards with Buttons</title>
-<style>
-    body {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 20px;
-        background: #f0f0f0;
-    }
-    .card-acc {
-        width: 260px; /* Adjusted for margins and padding */
-        height: 350px; /* Increased height of the cards */
-        background: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Keeps content organized */
-        border-radius: 30px;
-    }
-   
-    .card-acc button {
-        width: 100%;
-        padding: 10px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .card-acc button:hover {
-        background-color: #0056b3;
-    }
+    <meta charset="UTF-8">
+    <title>logIn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
 
-    .card-of-acc {
-        height: 70%;
-        width: 100%;
-        /* background-image: url('f6.png'); */
-        background-size: cover;
-        border-radius: 110px;
-    }
-</style>
+        .card-of-login-type {
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 50px;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            width: 300px;
+            height: 350px;
+            transition: transform 0.3s ease;
+            /* Transition effect for transform property */
+        }
+
+        .card-of-login-type:hover {
+            transform: scale(1.05);
+            /* Scales up the card to 105% of its original size */
+        }
+
+        .card-of-login-type .emoji {
+            font-size: 230px;
+            margin-bottom: 20px;
+        }
+
+        .card-of-login-type .label {
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        .container-of-card-of-settings {
+
+            border: 1px black solid;
+            display: flex;
+            width: 950px;
+            height: 570px;
+            border-radius: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="card-acc">
-        <div class="card-of-acc" style="background-image: url('f1.png');"></div>
-        <p>user 1</p>
-        <button>Enter</button>
+    <div class="container-of-card-of-settings">
+
+        <div class="card-of-login-type">
+            <div class="emoji">💲</div> <!-- You may change the emoji if needed -->
+            <span class="label">price</span>
+        </div>
+
+        <div class="card-of-login-type" onclick="getPageOfAccount()">
+            <div class="emoji">🔢</div> <!-- You may change the emoji if needed -->
+            <span class="label">quantity</span>
+        </div>
+
+
     </div>
-    <div class="card-acc">
-        <div class="card-of-acc" style="background-image: url('f2.png');"></div>
-        <p>user 2</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc" >
-        <div class="card-of-acc"style="background-image: url('f3.png');"></div>
-        <p>user 3</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f4.png');"></div>
-        <p>user 4</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f5.png');"></div>
-        <p>user 5</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f6.png');"></div>
-        <p>user 6</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f7.png');"></div>
-        <p>user 7</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f8.png');"></div>
-        <p>user 8</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f9.png');"></div>
-        <p>user 9</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f10.png');"></div>
-        <p>user 10</p>
-       <div class="submit"><button>Enter</button></div>
-    </div>
-    <!-- Repeat for each card as needed -->
+
+
 </body>
 
 </html>

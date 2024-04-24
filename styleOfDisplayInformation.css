@@ -178,10 +178,12 @@ h2 {
        
     margin-right: 45%;
     margin-top: 5%;
+    background-color: yellowgreen;
+    width:20% ;
 
 }
 #reservationForm label {
-    margin-right: 200px;
+    margin-right: 400px;
 
     
 }

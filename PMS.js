@@ -186,7 +186,7 @@ function setInformation() {
 }
 
 // create page to modify information of selected room
-function modifyInformationOfSelectedRoom() {
+ function modifyInformationOfSelectedRoom() {
     var pageOfModifyInformationOfSelectedRoom = `
    <div class="page-of-modify-information-of-selected-room"> <form id="reservationForm">
     <label for="name" style="display:'block';margin:10px 0">name:</label>
@@ -195,18 +195,20 @@ function modifyInformationOfSelectedRoom() {
     <label for="email" style="display:'block';margin:10px 0">E-mail:</label>
     <input type="email" id="email" name="email" value="${selectedRoom.residentEmail}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
 
-    <label for="startDate" style="display:'block';margin:10px 0">تاريخ البداية:</label>
+    <label for="startDate" style="display:'block';margin:10px 0">start date:</label>
     <input type="date" id="startDate" name="startDate" ${selectedRoom.startDate} style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
 
-    <label for="duration" style="display:'block';margin:10px 0">مدة الحجز (بالأيام):</label>
+    <label for="duration" style="display:'block';margin:10px 0">reservation period(in days):</label>
     <input type="number" id="duration" name="duration" ${selectedRoom.durationOfreservation} style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
 
-    <label for="pillows" style="display:'block';margin:10px 0">عدد الوسائد:</label>
+    <label for="pillows" style="display:'block';margin:10px 0">pillows number:</label>
     <input type="number" id="pillows" name="pillows" min="1" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
 
-    <button type="button" onclick="cancelReservation() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">إلغاء الحجز</button>
-    <button type="button" onclick="submitForm() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;"">عرض المعلومات</button>
+    <button type="button" onclick="cancelReservation() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">cancel resrvation</button>
+    <button type="button" onclick="submitForm() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;"">show infos</button>
 </form></div>
+
+
 `;
 
     document.getElementById('view-room-information').style.display = 'none';
