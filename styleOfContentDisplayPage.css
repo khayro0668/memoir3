@@ -42,10 +42,12 @@ body {
 
 .logo {
     height: 100px;
-    width: 100%;
+    width: 100px;
     border-radius: 50px;
+    border: 1px solid black;
     align-items: center;
     justify-content: center;
+    margin-left: 75px;
 }
 
 .ptn :hover {
