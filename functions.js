@@ -199,7 +199,7 @@ function generatePageOfSettings() {
     document.getElementById(currentIdInModifysettings).style.display = 'none';
     document.getElementById(currentPage).style.display = 'none';
     currentPage = 'page-of-settings';
-    document.getElementById(currentPage).style.display = 'block';
+    document.getElementById(currentPage).style.display = 'flex';
 }
 
 //go to page of rooms

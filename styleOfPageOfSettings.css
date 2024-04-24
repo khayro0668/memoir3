@@ -39,3 +39,44 @@
 input {
     align-self: center;
 }
+
+/* ********************************************* */
+.card-of-setting-type {
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 50px;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    width: 300px;
+    height: 350px;
+    transition: transform 0.3s ease;
+    /* Transition effect for transform property */
+}
+
+.card-of-setting-type:hover {
+    transform: scale(1.05);
+    /* Scales up the card to 105% of its original size */
+}
+
+.card-of-setting-type .emoji {
+    font-size: 230px;
+    margin-bottom: 20px;
+}
+
+.card-of-setting-type .label {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.container-of-card-of-settings {
+
+    display: flex;
+    width: 950px;
+    height: 570px;
+    border-radius: 20px;
+}
+/* ********************************************************** */
