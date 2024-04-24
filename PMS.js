@@ -32,6 +32,7 @@ window.onload = function () {
 
 // go to PMS
 function goToPMS() {
+    document.getElementById('pms-app').style.display = 'flex';
     document.getElementById(currentPage).style.display = 'none';
     currentIdInDisplayInformation = "view-rooms";
     currentIdInModifysettings = "main-selection-bar";

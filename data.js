@@ -4,12 +4,25 @@ class Hotel {
     listOfAvailableMattresses;
     listOfAvailabelServices;
     archives;
+    listOfAccount;
+
     constructor() {
         this.generateListOfRooms();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailabelServices();
         this.generateArchive();
+        this.generateListOfAccount();
+
+    }
+
+    generateListOfAccount() {
+        this.listOfAccount = [];
+        this.addAccount('mostafa' , '1');
+        this.addAccount('mohamed' , '1');
+        this.addAccount('wassim' , '1');
+        this.addAccount('younes' , '1');
+        this.addAccount('khayro' , '1');
     }
 
     generateListOfRooms() {
@@ -29,6 +42,11 @@ class Hotel {
     addEventInArchives(employe, event) {
         var newEvent = new Event(employe, event);
         this.archives.push(newEvent);
+    }
+
+    addAccount(userName, password) {
+        var newAccount = new Account(userName, password);
+        this.listOfAccount.push(newAccount);
     }
 
     generateListOfAvailablePillows() {
@@ -290,5 +308,16 @@ class Event {
     constructor(employe, event) {
         this.employe = employe;
         this.event = event;
+    }
+}
+
+
+class Account {
+    userName;
+    password;
+
+    constructor(userName, password) {
+        this.userName = userName;
+        this.password = password;
     }
 }

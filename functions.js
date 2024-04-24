@@ -348,14 +348,25 @@ function getPageOfArchives() {
 
 //generate page of accounte
 function generatePageOfAccount() {
-    var page = '';
-    for (let i = 1; i <= numberOfAccount; i++) {
-        page += `<div class="card-acc">
-      <div class="card-of-acc"style="background-image: url('f${i}.png');"></div>
-      <p>user 10</p>
-     <div class="submit" onclick="goToPMS()"><button>Enter</button></div>
-     </div>`
+    var page = '<table>';
+    for (let i = 1; i <= numberOfAccount; i += 4) {
+        page += '<tr>';
+        let k = 1;
+        for (let j = i; j < i + 4 && j <= numberOfAccount; j++) {
+            let valueOfMargin = (k === 1 ? 0 : 47);
+            page += '<td>'
+            page += `<div class="card-acc" style="margin-left: ${valueOfMargin}px;">
+                      <div class="card-of-acc"style="background-image: url('f${j}.png');"></div>
+                      <p>user ${j}</p>
+                      <div class="submit" onclick="goToPMS()"><button>Enter</button></div>
+                    </div>`;
+            page += '</td>';
+            k++;
+        }
+        page += '<tr>';
     }
+
+    page += '</table>';
 
     document.getElementById('account-of-employes').innerHTML = page;
 }
@@ -366,10 +377,6 @@ function getPageOfAccount() {
     currentPage = 'account-of-employes';
     document.getElementById(currentPage).style.display = 'block';
 }
-
-
-
-
 
 
 const http = {
@@ -385,9 +392,9 @@ const http = {
         };
 
         const res = {
-            writeHead: () => {},
-            write: () => {},
-            end: () => {}
+            writeHead: () => { },
+            write: () => { },
+            end: () => { }
         };
 
         handler(req, res);
@@ -413,7 +420,7 @@ const server = http.createServer((req, res) => {
         res.end();
     } else {
         // Handle other routes
-        res.writeHead(404, {'Content-Type': 'text/plain'});
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Not found');
     }
 });
@@ -423,27 +430,27 @@ server.listen(port, () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const generatePdfButton = document.getElementById('generate-pdf-button');
     if (generatePdfButton) {
-        generatePdfButton.addEventListener('click', function() {
+        generatePdfButton.addEventListener('click', function () {
             fetch('http://localhost:3000/generate-pdf')
-            .then(response => {
-                if (response.ok) return response.blob();
-                throw new Error('Network response was not ok.');
-            })
-            .then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = 'output.pdf';
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                alert('PDF downloaded successfully!');
-            })
-            .catch(error => console.error('Error downloading the PDF:', error));
+                .then(response => {
+                    if (response.ok) return response.blob();
+                    throw new Error('Network response was not ok.');
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'output.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    alert('PDF downloaded successfully!');
+                })
+                .catch(error => console.error('Error downloading the PDF:', error));
         });
     }
 });

@@ -2,104 +2,129 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<title>Cards with Buttons</title>
-<style>
-    body {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        padding: 20px;
-        background: #f0f0f0;
-    }
-    .card-acc {
-        width: 260px; /* Adjusted for margins and padding */
-        height: 350px; /* Increased height of the cards */
-        background: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Keeps content organized */
-        border-radius: 30px;
-    }
-   
-    .card-acc button {
-        width: 100%;
-        padding: 10px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .card-acc button:hover {
-        background-color: #0056b3;
-    }
+    <meta charset="UTF-8">
+    <title>Cards with Buttons</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            background: #f0f0f0;
+        }
 
-    .card-of-acc {
-        height: 70%;
-        width: 100%;
-        /* background-image: url('f6.png'); */
-        background-size: cover;
-        border-radius: 110px;
-    }
-</style>
+        .card-acc {
+            width: 260px;
+            /* Adjusted for margins and padding */
+            height: 350px;
+            /* Increased height of the cards */
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Keeps content organized */
+            border-radius: 30px;
+        }
+
+        .card-acc button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card-acc button:hover {
+            background-color: #0056b3;
+        }
+
+        .card-of-acc {
+            height: 70%;
+            width: 100%;
+            /* background-image: url('f6.png'); */
+            background-size: cover;
+            border-radius: 110px;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="card-acc">
-        <div class="card-of-acc" style="background-image: url('f1.png');"></div>
-        <p>user 1</p>
-        <button>Enter</button>
+    
+    <div class="menu-of-options" id="menu-of-options" style="display: none;">
+        <div class="logo"
+            style="background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');background-size: cover;">
+        </div>
+        <div class="ptn"><button id="home"><i class="fa-solid fa-house"></i>Home</button></div>
+        <div class="ptn"><button id="rooms" onclick="goToPageOfRooms()"><i
+                    class="fa-solid fa-door-closed"></i>Rooms</button></div>
+        <div class="ptn"><button id="clock"><i class="fa-solid fa-calendar-days"></i>Clock</button></div>
+        <div class="ptn"><button id="settings" onclick="generatePageOfSettings()"><i
+                    class="fa-solid fa-gear"></i>Settings</button></div>
+        <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i
+                    class="fa-solid fa-box-archive"></i>Archive</button>
+        </div>
+        <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button>
+        </div>
+        <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
+                out</button>
+            <!-- Include this in your HTML file -->
+            <button id="generate-pdf-button">Generate PDF</button>
+        </div>
     </div>
-    <div class="card-acc">
-        <div class="card-of-acc" style="background-image: url('f2.png');"></div>
-        <p>user 2</p>
-        <button>Enter</button>
+
+
+    <div class="container" id="container" style="display: none;">
+        <div class="selection-bar" id="main-selection-bar" style="display: none;"></div>
+        <div class="selection-bar" id="room-selection-bar" style="display: none;"></div>
+        <div class="selection-bar" id="unbookedRoom-selection-bar" style="display: none;"></div>
+
+        <div class="display-information" id="view-rooms" style="display: none;"></div>
+        <div class="display-information" id="view-room-information" style="display: none;"></div>
+        <div class="display-information" id="view-resident-information" style="display: none;"></div>
+        <div class="display-information" id="view-payment-information" style="display: none;"></div>
+        <div class="display-information" id="view-booking-information" style="display: none;"></div>
+        <div class="display-information" id="modify-room-information" style="display: none;"></div>
+        <div class="display-information" id="reservation-of-room" style="display: none;"></div>
     </div>
-    <div class="card-acc" >
-        <div class="card-of-acc"style="background-image: url('f3.png');"></div>
-        <p>user 3</p>
-        <button>Enter</button>
+
+    <div class="page-of-settings" id="page-of-settings" style="display: none;">
+        <div class="all-page" style="display: flex;height: 100%;width: 100%;">
+            <div class="half-of-page" style="height: 100%; width: 50%;">
+                <div class="card-setting" id="set-price"
+                    style="background-image: url('438137619_3808940162764568_6981665829789075154_n.jpg');background-size: cover;"
+                    onclick="getPageOfPriceSettings()"></div>
+            </div>
+            <div class="half-of-page" style="height: 100%; width: 50%;">
+                <div class="card-setting" id="set-quantite"></div>
+            </div>
+        </div>
     </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f4.png');"></div>
-        <p>user 4</p>
-        <button>Enter</button>
     </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f5.png');"></div>
-        <p>user 5</p>
-        <button>Enter</button>
+
+    <div class="page-of-price-settings" id="page-of-price-settings" style="display: none;">
+        <div class="all-page" style="display: flex;height: 100%;width: 100%;">
+            <button onclick="generatePageOfSettings()">Back</button>
+            <div class="half-of-page" style="height: 100%; width: 50%;">
+                <div class="card-setting" id="set-price-rooms" onclick="getPageOfPriceRoomsSettings()">rooms</div>
+            </div>
+            <div class="half-of-page" style="height: 100%; width: 50%;">
+                <div class="card-setting" id="set-price-of-others">others</div>
+            </div>
+        </div>
     </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f6.png');"></div>
-        <p>user 6</p>
-        <button>Enter</button>
+    <div class="page-of-price-settings" id="page-of-price-of-rooms-settings" style="display: none;">
+
     </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f7.png');"></div>
-        <p>user 7</p>
-        <button>Enter</button>
+    <div class="page-of-archives" id="page-of-archives" style="display: none;">
+        <!-- page of archives -->
     </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f8.png');"></div>
-        <p>user 8</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f9.png');"></div>
-        <p>user 9</p>
-        <button>Enter</button>
-    </div>
-    <div class="card-acc">
-        <div class="card-of-acc"style="background-image: url('f10.png');"></div>
-        <p>user 10</p>
-       <div class="submit"><button>Enter</button></div>
-    </div>
-    <!-- Repeat for each card as needed -->
+
 </body>
 
 </html>
