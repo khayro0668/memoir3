@@ -219,7 +219,7 @@ function goToPageOfRooms() {
 function getPageOfPriceSettings() {
     document.getElementById(currentPage).style.display = 'none';
     currentPage = 'page-of-price-settings';
-    document.getElementById(currentPage).style.display = 'block';
+    document.getElementById(currentPage).style.display = 'flex';
 }
 
 // get page of price rooms settings

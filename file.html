@@ -94,14 +94,18 @@
         </div>
 
         <!-- dispaly information -->
-        <div class="page-of-price-settings" id="page-of-price-settings" style="display: none;">
-            <div class="all-page" style="display: flex;height: 100%;width: 100%;">
-                <button onclick="generatePageOfSettings()">Back</button>
-                <div class="half-of-page" style="height: 100%; width: 50%;">
-                    <div class="card-setting" id="set-price-rooms" onclick="getPageOfPriceRoomsSettings()">rooms</div>
+        <div class="card-of-price-settings1" id="page-of-price-settings" style="display: none;">
+            <button class="go-back-button" >⇐</button>
+            <div class="container-of-card-of-settings2">
+                <div class="card-of-setting1-type">
+                    <div class="emoji1">🚪</div>
+                    <span class="label">Room</span>
                 </div>
-                <div class="half-of-page" style="height: 100%; width: 50%;">
-                    <div class="card-setting" id="set-price-of-others">others</div>
+                <div style="margin-left: 50px;">
+                    <div class="card-of-setting1-type" onclick="getPageOfAccount()">
+                        <div class="emoji2">・・・</div>
+                        <span class="label">Others</span>
+                    </div>
                 </div>
             </div>
         </div>
