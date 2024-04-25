@@ -7,7 +7,7 @@ function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsN
         table += '<tr>';
         let j = i;
         let k = 0;
-        while (k < 10 && j < listOfRooms.length) {
+        while (k < 9 && j < listOfRooms.length) {
             if (isDesiredRoom(listOfRooms[j], valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn)) {
                 table += '<td>' + createCardOfRoom(listOfRooms[j]) + '</td>';
                 names.push(listOfRooms[j].resident);
