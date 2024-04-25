@@ -76,3 +76,22 @@ body {
     border-radius: 20px;
     /* Optional: adds rounded corners */
 }
+
+/* **************************************************** */
+.current-user {
+    border: 1px solid black;
+    height: 50px;
+    width: 100%;
+    display: flex;
+  }
+  .image-of-current-user {
+      background-size: cover;
+      border: 1px solid black;
+      width: 30%;
+      height: 50px;
+  }
+  .image-of-current-user img {
+      height: 50px;
+      width: 100%;
+  }
+/* **************************************************** */

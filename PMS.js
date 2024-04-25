@@ -16,8 +16,12 @@ var currentPage;
 var selectedRoom;
 var currentUser;
 var names = [];
-var numberOfAccount = 10;
-
+var accounts = [
+    { id: 1, name: "wassim", password: "1" },
+    { id: 2, name: "mostafa", password: "1" },
+    { id: 3, name: "khayrou", password: "1" },
+    { id: 4, name: "younes", password: "1" }
+  ];
 //onload function
 window.onload = function () {
     hotel = new Hotel();

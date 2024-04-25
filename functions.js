@@ -349,16 +349,16 @@ function getPageOfArchives() {
 //generate page of accounte
 function generatePageOfAccount() {
     var page = '<table>';
-    for (let i = 1; i <= numberOfAccount; i += 4) {
+    for (let i = 0; i < accounts.length; i += 4) {
         page += '<tr>';
         let k = 1;
-        for (let j = i; j < i + 4 && j <= numberOfAccount; j++) {
+        for (let j = i; j < i + 4 && j < accounts.length; j++) {
             let valueOfMargin = (k === 1 ? 0 : 47);
             page += '<td>'
             page += `<div class="card-acc" style="margin-left: ${valueOfMargin}px;">
-                      <div class="card-of-acc"style="background-image: url('f${j}.png');"></div>
-                      <p>user ${j}</p>
-                      <div class="submit" onclick="goToPMS()"><button>Enter</button></div>
+                      <div class="card-of-acc"style="background-image: url('f${j + 1}.png');"></div>
+                      <p>${accounts[j].name}</p>
+                      <div class="submit" onclick="showPopup(${JSON.stringify(accounts[j]).replace(/"/g, '&quot;')})"><button>Enter</button></div>
                     </div>`;
             page += '</td>';
             k++;
@@ -370,6 +370,40 @@ function generatePageOfAccount() {
 
     document.getElementById('account-of-employes').innerHTML = page;
 }
+//////////////////////////////////
+function showPopup(account) {
+    const overlay = document.querySelector('.overlay');
+    const popup = document.querySelector('.popup');
+    overlay.style.display = 'block';
+    popup.style.display = 'block';
+    window.currentAccount = account;
+}
+function closePopup() {
+    const overlay = document.querySelector('.overlay');
+    const popup = document.querySelector('.popup');
+    overlay.style.display = 'none';
+    popup.style.display = 'none';
+    document.getElementById("result").textContent = '';
+}
+
+function checkPassword() {
+    const inputPassword = document.getElementById("passwordInput").value;
+    const resultDiv = document.getElementById("result");
+    if (inputPassword === window.currentAccount.password) {
+        currentUser = window.currentAccount.name;
+        const popup = document.querySelector('.popup');
+        popup.style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('accounts').style.display = 'none';
+        document.getElementById('passwordInput').style.display = 'none';
+        document.getElementById('result').style.display = 'none';
+        showCurrentUser();
+        goToPMS();
+    } else {
+        resultDiv.textContent = "wrong password";
+    }
+}
+/////////////////////////////////
 
 //show page of acc
 function getPageOfAccount() {
@@ -455,5 +489,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+//show current user
+function showCurrentUser() {
+  var ui = `
+        <div class="image-of-current-user">
+            <img src="f1.png">
+        </div>
+        <h1 style="width: 70%;">name</h1>
+  `;
 
-
+//   document.getElementById('current-user').innerHTML = ui;
+}
