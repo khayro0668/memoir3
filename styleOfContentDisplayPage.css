@@ -12,8 +12,7 @@ body {
     background-color: white;
     border-radius: 20px;
 }
-.ptn {
-
+.ptn button{
 }
 
 .menu-of-options {
@@ -29,7 +28,7 @@ body {
 .menu-of-options button {
     width: 99%;
     height: 50px;
-    margin-left: 10px;
+    margin-left: 3px;
     background-color: transparent;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
