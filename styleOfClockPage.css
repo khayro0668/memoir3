@@ -1,0 +1,15 @@
+#type-of-search {
+height: 50px;
+width: 950px;
+border: 1px solid black;
+border-radius: 20px;
+}
+
+#show-current-residents {
+    scrollbar-width: none;
+    overflow: scroll;
+    height: 520px;
+    width: 950px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
