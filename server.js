@@ -3,6 +3,14 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const app = express();
 const port = 3000;
+const cors = require('cors');
+
+const corsOptions = {
+    origin: '*', // or use the specific client origin e.g., 'http://localhost:3001'
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 app.get('/generate-pdf', (req, res) => {
     const doc = new PDFDocument();

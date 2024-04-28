@@ -1,3 +1,5 @@
 pip install fpdf
 npm install pdfkit
 npm init -y
+npm install cors
+npm install express
