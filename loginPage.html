@@ -48,10 +48,15 @@
             border: none;
             border-radius: 4px; /* Rounded corners */
             cursor: pointer;
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Initial subtle shadow */
         }
 
         .btn-of-set:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: ;#007BFF /* Darker blue on hover */
+            color:black; /* Change text color to gold on hover */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4); /* Enhanced shadow on hover */
+            transform: scale(1.05); /* Slightly increase the size */
         }
     </style>
 </head>
@@ -70,7 +75,7 @@
             <input class="input-of-set" type="number" id="pillows" name="pillows">
         </form>
         <div class="button-container">
-            <button class="btn-of-set" type="button" onclick="submitForm()">show infos</button>
+            <button class="btn-of-set" type="button" onclick="submitForm()">Show Infos</button>
             <button class="btn-of-set" type="button" onclick="cancelForm()">Cancel Reservation</button>
         </div>
     </div>
