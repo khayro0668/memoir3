@@ -23,6 +23,7 @@ var accounts = [
     { id: 3, name: "khayrou", password: "1" },
     { id: 4, name: "younes", password: "1" }
   ];
+
 var statusOfLogIn;
 
 //onload function
