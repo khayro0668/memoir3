@@ -400,6 +400,7 @@ function checkPassword() {
         document.getElementById('passwordInput').style.display = 'none';
         document.getElementById('result').style.display = 'none';
         showCurrentUser();
+        generateMenuOfButtons();
         goToPMS();
     } else {
         resultDiv.textContent = "wrong password";
@@ -541,4 +542,43 @@ function getPageOfClock() {
     document.getElementById(currentPage).style.display = 'none';
     currentPage = 'page-of-clock';
     document.getElementById(currentPage).style.display = 'block';
+}
+
+//generate menu of buttons
+function generateMenuOfButtons() {
+    var menu = `
+    <div style="justify-content: center;align-items: center;margin-top: 3px;">
+                <div class="logo"
+                    style="background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');background-size: cover;">
+                </div>
+            </div>
+            <div class="ptn"><button id="home"><i class="fa-solid fa-house"></i> home</button></div>
+            <div class="ptn"><button id="rooms" onclick="goToPageOfRooms()"><i
+                        class="fa-solid fa-door-closed"></i>Rooms</button></div>
+            <div class="ptn"><button id="clock" onclick="getPageOfClock()"><i class="fa-solid fa-calendar-days"></i>Clock</button></div>
+            <div class="ptn"><button id="settings" onclick="generatePageOfSettings()"><i
+                        class="fa-solid fa-gear"></i>Settings</button></div>
+            `;
+
+            if(currentUser === 'admin'){
+                menu += `
+                <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i
+                        class="fa-solid fa-box-archive"></i>Archive</button>
+            </div>`;
+            }
+
+            menu += `
+            <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button>
+            </div>
+            <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
+                    out</button>
+                <!-- Include this in your HTML file -->
+                <button id="generate-pdf-button">Generate PDF</button>
+            </div>
+            <div class="cuurent-user" id="cuurent-user">
+         
+            </div>
+    `;
+
+    document.getElementById('menu-of-options').innerHTML = menu;
 }
