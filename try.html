@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrollable Cards with Inputs and Labels</title>
+    <title>Scrollable Cards with Divided Sections</title>
     <style>
         body {
             margin: 0;
@@ -41,30 +41,37 @@
             padding: 0 20px; /* Padding inside each card */
             border-radius: 20px;
         }
+        .card > .label, .card > input, .card > button {
+            flex: 1; /* Each child takes equal space */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the items horizontally */
+        }
         input[type="text"] {
             padding: 8px;
             font-size: 16px;
             border: 2px solid #ccc;
             border-radius: 4px;
-            margin-left: 10px; /* Spacing between the label and input field */
+            width: 90%; /* Limit width to not exceed its section */
         }
         button {
-            padding: 10px 20px;
+            width: 60%; /* Smaller width */
+            padding: 10px 15px; /* Adjusted padding */
             font-size: 16px;
             color: white;
             background-color: #007BFF;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-left: 10px; /* Spacing between the input field and button */
         }
         button:hover {
             background-color: #0056b3;
         }
         .label {
-            font-size: 16px; /* Matches the font size of the input and button */
+            font-size: 25px; /* Matches the font size of the input and button */
             color: #333; /* Dark color for readability */
-            white-space: nowrap; /* Prevents the label from wrapping */
+            font-family: fantasy;
+            justify-content: flex-start; /* Align label to the start */
         }
     </style>
 </head>
@@ -73,54 +80,40 @@
         <div class="container">
             <div class="card">
                 <div class="label">vip pillow</div>
-                <input type="text" ">
+                <input type="text" placeholder="Enter text">
                 <button>ok</button>
             </div>
             <div class="card">
                 <div class="label">vip bed</div>
-                <input type="text" >
+                <input type="text" placeholder="Enter text">
                 <button>ok</button>
             </div>
             <div class="card">
                 <div class="label">vip spa</div>
-                <input type="text" >
+                <input type="text" placeholder="Enter text">
                 <button>ok</button>
             </div>
             <div class="card">
                 <div class="label">vip pool</div>
-                <input type="text" >
+                <input type="text" placeholder="Enter text">
                 <button>ok</button>
             </div>
             <div class="card">
                 <div class="label">vip lounge access</div>
-                <input type="text" >
+                <input type="text" placeholder="Enter text">
                 <button>ok</button>
             </div>
             <div class="card">
-                <div class="label"> vip yacht Charters</div>
-                <input type="text" >
-                <button>ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip fitness trainer</div>
-                <input type="text" >
+                <div class="label">vip yacht Charters</div>
+                <input type="text" placeholder="Enter text">
                 <button>ok</button>
             </div>
             <div class="card">
                 <div class="label">vip gym</div>
-                <input type="text" >
+                <input type="text" placeholder="Enter text">
                 <button>ok</button>
             </div>
-            <div class="card">
-                <div class="label">vip food</div>
-                <input type="text" >
-                <button>ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip internet</div>
-                <input type="text" >
-                <button>ok</button>
-            </div>
+            <!-- Repeat for each card -->
         </div>
     </div>
 </body>
