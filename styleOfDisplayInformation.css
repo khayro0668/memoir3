@@ -217,15 +217,14 @@ input[type=submit] {
 }
 
 #modify-room-information button:hover {
-    background-color: #003D73; /* تغيير لون الخلفية عند تحويم الماوس */
+    background-color: #003D73;
 }
-
 
 
 .price-settings-container {
     font-family: Arial, sans-serif;
     width: 950px;
-    height: 550px;
+    height: 530px;
     margin: auto;
     background-color: #f4f4f4;
     border-radius: 8px;
