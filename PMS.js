@@ -199,7 +199,8 @@ function setInformation() {
 // create page to modify information of selected room
  function modifyInformationOfSelectedRoom() {
     var pageOfModifyInformationOfSelectedRoom = `
-   <div class="page-of-modify-information-of-selected-room"> <form id="reservationForm">
+   <div class="page-of-modify-information-of-selected-room"> 
+<form id="reservationForm">
     <label for="name" style="display:'block';margin:10px 0">name:</label>
     <input type="text" id="name" name="name" value="${selectedRoom.resident}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
 
@@ -217,7 +218,8 @@ function setInformation() {
 
     <button type="button" onclick="cancelReservation() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">cancel resrvation</button>
     <button type="button" onclick="submitForm() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;"">show infos</button>
-</form></div>
+</form>
+</div>
 
 
 `;
