@@ -313,6 +313,9 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
+
+    hotel.addEventInArchives(currentUser, 'set price');
+    // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
 
@@ -339,6 +342,7 @@ function generatePageOfArchives() {
 
 //show page of archives
 function getPageOfArchives() {
+    generatePageOfArchives();
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
     document.getElementById(currentPage).style.display = 'none';
@@ -581,3 +585,5 @@ function generateMenuOfButtons() {
 
     document.getElementById('menu-of-options').innerHTML = menu;
 }
+
+
