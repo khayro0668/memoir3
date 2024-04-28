@@ -241,55 +241,49 @@ function createSettingPricePage(numberOfFloors, numberOfRooms) {
         divOfRooms += `<option value="${i}">${i}</option>`;
     }
 
-    var divOfProducts = ``;
-
     var UI = `
-    <button onclick="getPageOfPriceSettings()">Back</button>
-        <div class="dropdown-container">
-            <div class="dropdown-wrapper">
-                <button class="dropdown-button" id="button1">Floor</button>
-                <select class="dropdown" id="dropdown-of-floor">
-                   ${divOfFloors}
-                </select>
-            </div>
-            <div class="dropdown-wrapper">
-                <button class="dropdown-button" id="button2">Room</button>
-                <select class="dropdown" id="dropdown-of-room">
-                   ${divOfRooms}
-                </select>
-            </div>
+    <div class="price-settings-container">
+    <h2>Room Price Settings</h2>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <div class="price-dropdown-wrapper">
+            <button class="action-button" id="button1">Floor</button>
+            <select class="price-dropdown" id="dropdown-of-floor">
+                ${divOfFloors}
+            </select>
+            <button class="action-button" id="button2">Room</button>
+            <select class="price-dropdown" id="dropdown-of-room">
+                ${divOfRooms}
+            </select>
         </div>
-        <div style="width: 100%;height: 70%;border: 1px solid black;">
-           <label>get the new price</label>
-           <input type="number" id="new-price-from-settings" step="0.01">
-           <div style="display: flex;width: 100%;height: 30%;border: 1px solid black;align-items: center;">
-             <button onclick="setPriceOfRooms()" style="margin: 10px;">save</button>
-             <button onclick="getPageOfPriceSettings()" style="margin: 10px;">ignore</button>
-           </div>
-       </div>
-  `;
+    </div>
+    <div>
+        <label for="new-price-from-settings">New Price:</label>
+        <input type="number" id="new-price-from-settings" step="1">
+    </div>
+    <div class="button-container">
+        <button onclick="setPriceOfRooms()" class="action-button">Save</button>
+        <button onclick="getPageOfPriceSettings()" class="action-button">Ignore</button>
+    </div>
+</div>
+
+
+    `;
 
     document.getElementById('page-of-price-of-rooms-settings').innerHTML = UI;
 
-    const initilaizeDropdawn = (ID) => {
+    function initializeDropdown(ID) {
         document.getElementById(ID).addEventListener('change', function () {
-            const getValueOfSelectionDropdown = (value, flag) => {
-                if (flag) {
-                    return (value === "All" ? -1 : parseInt(value));
-                } else {
-                    return (value === "All" ? -1 : value);
-                }
-            }
-            const selectedOption = this.options[this.selectedIndex].text;
+            const getValueOfSelectionDropdown = (value) => parseInt(value) || -1;
+            const selectedValue = this.value;
             switch (this.id) {
-                case 'dropdown-of-floor': valueOfFloorNumberDropdawnInSettings = getValueOfSelectionDropdown(selectedOption, true); break;
-                case 'dropdown-of-room': valueOfRoomNumberDropdawnInSettings = getValueOfSelectionDropdown(selectedOption, true); break;
+                case 'dropdown-of-floor': valueOfFloorNumberDropdownInSettings = getValueOfSelectionDropdown(selectedValue); break;
+                case 'dropdown-of-room': valueOfRoomNumberDropdownInSettings = getValueOfSelectionDropdown(selectedValue); break;
             }
         });
     }
 
-    initilaizeDropdawn('dropdown-of-floor');
-    initilaizeDropdawn('dropdown-of-room');
+    initializeDropdown('dropdown-of-floor');
+    initializeDropdown('dropdown-of-room');
 }
 
 
@@ -313,6 +307,9 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
+
+    hotel.addEventInArchives(currentUser, 'set price');
+    // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
 
@@ -339,6 +336,7 @@ function generatePageOfArchives() {
 
 //show page of archives
 function getPageOfArchives() {
+    generatePageOfArchives();
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
     document.getElementById(currentPage).style.display = 'none';
@@ -378,7 +376,6 @@ function showPopup(account) {
     popup.style.display = 'block';
     window.currentAccount = account;
 }
-
 function closePopup() {
     const overlay = document.querySelector('.overlay');
     const popup = document.querySelector('.popup');
@@ -493,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //show current user
 function showCurrentUser() {
-    var ui = `
+  var ui = `
         <div class="image-of-current-user">
             <img src="f1.png">
         </div>
@@ -529,7 +526,7 @@ function generateClock() {
 function getInfoOfSelectedResident(id) {
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].id === id) {
-
+            
             break;
         }
     }
@@ -559,14 +556,14 @@ function generateMenuOfButtons() {
                         class="fa-solid fa-gear"></i>Settings</button></div>
             `;
 
-    if (currentUser === 'admin') {
-        menu += `
+            if(currentUser === 'admin'){
+                menu += `
                 <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i
                         class="fa-solid fa-box-archive"></i>Archive</button>
             </div>`;
-    }
+            }
 
-    menu += `
+            menu += `
             <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button>
             </div>
             <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
@@ -581,3 +578,5 @@ function generateMenuOfButtons() {
 
     document.getElementById('menu-of-options').innerHTML = menu;
 }
+
+
