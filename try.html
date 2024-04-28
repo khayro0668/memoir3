@@ -1,36 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>logIn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Cards with Inputs and Labels</title>
     <style>
-        .current-user {
-          border: 1px solid black;
-          height: 50px;
-          width: 100%;
-          display: flex;
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centers the main container vertically and horizontally */
+            min-height: 100vh;
+            overflow: hidden; /* Ensures no scrollbar on the body */
         }
-        .image-of-current-user {
-            background-size: cover;
-            border: 1px solid black;
-            width: 30%;
-            height: 50px;
+        .scroll-container {
+            width: 1200px; /* Fixed width of the outer container */
+            height: 570px; /* Fixed height of the outer container */
+            overflow-y: auto; /* Enables vertical scrolling */
+            background-color: #e8e8e8; /* Light gray background for the scroll container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+            border: 1px solid #ccc; /* Optional: adds a border for better visibility */
+            padding: 10px 0; /* Padding to prevent content from touching the edges */
         }
-        .image-of-current-user img {
-            height: 50px;
-            width: 100%;
+        .container {
+            width: 100%; /* Adjusts width to fit inside the scroll-container without causing horizontal overflow */
+        }
+        .card {
+            background-color: #fff;
+            width: 1000px; /* Width of each card */
+            height: 200px; /* Height of each card */
+            margin: 10px auto; /* Centers cards horizontally and adds vertical space */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+            padding: 0 20px; /* Padding inside each card */
+            border-radius: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-left: 10px; /* Spacing between the label and input field */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px; /* Spacing between the input field and button */
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .label {
+            font-size: 16px; /* Matches the font size of the input and button */
+            color: #333; /* Dark color for readability */
+            white-space: nowrap; /* Prevents the label from wrapping */
         }
     </style>
 </head>
-
 <body>
-    <div class="current-user" id="current-user">
-        <div class="image-of-current-user">
-            <img src="f1.png">
+    <div class="scroll-container">
+        <div class="container">
+            <div class="card">
+                <div class="label">vip pillow</div>
+                <input type="text" ">
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip bed</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip spa</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip pool</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip lounge access</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label"> vip yacht Charters</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip fitness trainer</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip gym</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip food</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip internet</div>
+                <input type="text" >
+                <button>ok</button>
+            </div>
         </div>
-        <h1 style="width: 70%;">name</h1>
     </div>
 </body>
-
 </html>
