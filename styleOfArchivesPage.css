@@ -1,6 +1,14 @@
 .page-of-archives {
-    border: 1px black solid;
-    height: 30px;
-    width: 100%;
+    height: 570px;
+    width: 950px;
     border-radius: 20px;
+    scrollbar-width: none;
+    overflow: scroll;
+}
+
+.event-in-archive {
+    margin: 5px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    display: flex;
 }

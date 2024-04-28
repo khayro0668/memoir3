@@ -123,6 +123,7 @@ h2 {
 .room-details a:hover {
     background-color: #008c8d;
 }
+
 .select-style {
     width: 100%; /* Ensures the select box spans the width of its container */
     padding: 8px; /* Adds some padding inside the select box for better readability */

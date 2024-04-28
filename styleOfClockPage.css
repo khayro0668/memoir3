@@ -1,0 +1,29 @@
+#page-of-clock {
+    height: 570px;
+    width: 950px;
+    border-radius: 20px;
+}
+
+#type-of-search {
+    border: 1px solid black;
+    height: 70px;
+    width: 950px;
+    border-radius: 20px;
+}
+
+#show-current-residents {
+    border: 1px solid black;
+    height: 500px;
+    width: 950px;
+    border-radius: 20px;
+    scrollbar-width: none;
+    overflow: scroll;
+}
+
+.current-resident {
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 50px;
+    width: 900px;
+}

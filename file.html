@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="styleOfLoginPage.css">
     <link rel="stylesheet" href="styleOfPageOfSettings.css">
     <link rel="stylesheet" href="popUpLogInStyle.css">
+    <link rel="stylesheet" href="styleOfArchivesPage.css">
+    <link rel="stylesheet" href="styleOfClockPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -65,7 +67,7 @@
             <div class="ptn"><button id="home"><i class="fa-solid fa-house"></i> home</button></div>
             <div class="ptn"><button id="rooms" onclick="goToPageOfRooms()"><i
                         class="fa-solid fa-door-closed"></i>Rooms</button></div>
-            <div class="ptn"><button id="clock"><i class="fa-solid fa-calendar-days"></i>Clock</button></div>
+            <div class="ptn"><button id="clock" onclick="getPageOfClock()"><i class="fa-solid fa-calendar-days"></i>Clock</button></div>
             <div class="ptn"><button id="settings" onclick="generatePageOfSettings()"><i
                         class="fa-solid fa-gear"></i>Settings</button></div>
             <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i
@@ -73,6 +75,10 @@
             </div>
             <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button>
             </div>
+            <!-- <div class="ptn">
+                <div class="part-of-emoji"><i class="fa-solid fa-cart-shopping"></i></div>
+                <div class="part-of-text">Payment</div>
+            </div> -->
             <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
                     out</button>
                 <!-- Include this in your HTML file -->
@@ -104,7 +110,7 @@
                 <span class="label">price</span>
             </div>
 
-            <div class="card-of-setting-type">
+            <div class="card-of-setting-type" onclick="getPageOfQuantiteSettings()">
                 <div class="emoji">🔢</div> <!-- You may change the emoji if needed -->
                 <span class="label">quantity</span>
             </div>
@@ -128,6 +134,23 @@
         </div>
 
         <!-- display information -->
+        <div class="card-of-price-settings1" id="page-of-quantite-settings" style="display: none;">
+            <button class="go-back-button" onclick="generatePageOfSettings()">⇐</button>
+            <div class="container-of-card-of-settings2">
+                <div class="card-of-setting1-type" onclick="">
+                    <div class="emoji1">🚪</div>
+                    <span class="label">Room</span>
+                </div>
+                <div style="margin-left: 50px;">
+                    <div class="card-of-setting1-type" onclick="">
+                        <div class="emoji2">・・・</div>
+                        <span class="label">Others</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- display information -->
         <div class="page-of-price-settings" id="page-of-price-of-rooms-settings" style="display: none;">
             <!--  -->
         </div>
@@ -135,6 +158,16 @@
         <!-- display information -->
         <div class="page-of-archives" id="page-of-archives" style="display: none;">
             <!-- page of archives -->
+        </div>
+
+        <!-- display information -->
+        <div id="page-of-clock" style="display: none;">
+            <div id="type-of-search">
+              
+            </div>
+            <div id="show-current-residents">
+    
+            </div>
         </div>
     </div>
 

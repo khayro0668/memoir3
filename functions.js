@@ -313,6 +313,8 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
+    hotel.addEventInArchives(currentUser , 'set price');
+    generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
 
@@ -499,4 +501,35 @@ function showCurrentUser() {
   `;
 
 //   document.getElementById('current-user').innerHTML = ui;
+}
+
+//generate page of quantite setting
+function getPageOfQuantiteSettings() {
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-quantite-settings';
+    document.getElementById(currentPage).style.display = 'flex';
+}
+
+//generate clock
+function generateClock(){
+    var page = ``;
+    for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
+        if(hotel.listOfRooms[i].isReserved === 'Reserved'){
+            page += `
+            <div class="current-resident">
+              ${hotel.listOfRooms[i].resident}
+            </div>`
+        }
+    }
+
+    document.getElementById('show-current-residents').innerHTML = page;
+}
+
+//get page of clock
+function getPageOfClock() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-clock';
+    document.getElementById(currentPage).style.display = 'block';
 }

@@ -32,6 +32,7 @@ window.onload = function () {
     createSettingPricePage(numberOfFloors, numberOfRooms);
     generatePageOfArchives();
     generatePageOfAccount();
+    generateClock();
 }
 
 // go to PMS

@@ -13,7 +13,6 @@ class Hotel {
         this.generateListOfAvailabelServices();
         this.generateArchive();
         this.generateListOfAccount();
-
     }
 
     generateListOfAccount() {
@@ -40,8 +39,7 @@ class Hotel {
     }
 
     addEventInArchives(employe, event) {
-        var newEvent = new Event(employe, event);
-        this.archives.push(newEvent);
+        this.archives.push({employe : employe , event : event});
     }
 
     addAccount(userName, password) {
@@ -304,7 +302,7 @@ function calculateEndDate(startDate, period) {
 class Event {
     employe;
     event;
-
+    
     constructor(employe, event) {
         this.employe = employe;
         this.event = event;
