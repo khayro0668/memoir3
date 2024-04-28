@@ -3,45 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Scrollable Cards with Divided Sections</title>
     <style>
         body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
             justify-content: center;
+            align-items: center; /* Centers the main container vertically and horizontally */
+            min-height: 100vh;
+            overflow: hidden; /* Ensures no scrollbar on the body */
+        }
+        .scroll-container {
+            width: 1200px; /* Fixed width of the outer container */
+            height: 570px; /* Fixed height of the outer container */
+            overflow-y: auto; /* Enables vertical scrolling */
+            background-color: #e8e8e8; /* Light gray background for the scroll container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+            border: 1px solid #ccc; /* Optional: adds a border for better visibility */
+            padding: 10px 0; /* Padding to prevent content from touching the edges */
+        }
+        .container {
+            width: 100%; /* Adjusts width to fit inside the scroll-container without causing horizontal overflow */
+        }
+        .card {
+            background-color: #fff;
+            width: 1000px; /* Width of each card */
+            height: 200px; /* Height of each card */
+            margin: 10px auto; /* Centers cards horizontally and adds vertical space */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
             align-items: center;
-        }
-
-        #clock {
-            height: 570px;
-            width: 950px;
-            border-radius: 20px;
-            border: 1px solid black;
-        }
-
-        #type-of-search {
-            border: 1px solid black;
-            height: 70px;
-            width: 950px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+            padding: 0 20px; /* Padding inside each card */
             border-radius: 20px;
         }
-
-        #show-current-residents {
-            border: 1px solid black;
-            height: 500px;
-            width: 950px;
-            border-radius: 20px;
-            scrollbar-width: none;
-            overflow: scroll;
+        .card > .label, .card > input, .card > button {
+            flex: 1; /* Each child takes equal space */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the items horizontally */
+        }
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            width: 90%; /* Limit width to not exceed its section */
+        }
+        button {
+            width: 60%; /* Smaller width */
+            padding: 10px 15px; /* Adjusted padding */
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .label {
+            font-size: 25px; /* Matches the font size of the input and button */
+            color: #333; /* Dark color for readability */
+            font-family: fantasy;
+            justify-content: flex-start; /* Align label to the start */
         }
     </style>
 </head>
 <body>
-    <div id="clock">
-        <div id="type-of-search">
-          
-        </div>
-        <div id="show-current-residents">
-
+    <div class="scroll-container">
+        <div class="container">
+            <div class="card">
+                <div class="label">vip pillow</div>
+                <input type="text" placeholder="Enter text">
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip bed</div>
+                <input type="text" placeholder="Enter text">
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip spa</div>
+                <input type="text" placeholder="Enter text">
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip pool</div>
+                <input type="text" placeholder="Enter text">
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip lounge access</div>
+                <input type="text" placeholder="Enter text">
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip yacht Charters</div>
+                <input type="text" placeholder="Enter text">
+                <button>ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip gym</div>
+                <input type="text" placeholder="Enter text">
+                <button>ok</button>
+            </div>
+            <!-- Repeat for each card -->
         </div>
     </div>
 </body>

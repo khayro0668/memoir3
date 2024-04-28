@@ -13,7 +13,7 @@ body {
     border-radius: 20px;
 }
 .ptn {
-    
+
 }
 
 .menu-of-options {
@@ -29,11 +29,15 @@ body {
 .menu-of-options button {
     width: 99%;
     height: 50px;
-    margin-left: 3px;
+    margin-left: 10px;
     background-color: transparent;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border: none;
+}
+
+.menu-of-options button :hover {
+    color: #D8F3F9;
 }
 
 .logo {
@@ -91,28 +95,3 @@ body {
       width: 100%;
   }
 /* **************************************************** */
-
-
-/* ********************************************** */
-.part-of-emoji {
-    height: 50px;
-    width: 30%;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-}
-
-.part-of-text {
-    border: 1px solid black;
-    height: 50px;
-    width: 70%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.ptn i {
-    padding: 16.5px 28px;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-}
-/* ********************************************** */

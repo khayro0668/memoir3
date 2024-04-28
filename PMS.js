@@ -16,18 +16,14 @@ var currentPage;
 var selectedRoom;
 var currentUser;
 var names = [];
-var admin = {id : 0 , name : "admin" , password : "12"};
 var accounts = [
     { id: 1, name: "wassim", password: "1" },
     { id: 2, name: "mostafa", password: "1" },
     { id: 3, name: "khayrou", password: "1" },
     { id: 4, name: "younes", password: "1" }
   ];
-var statusOfLogIn;
-
 //onload function
 window.onload = function () {
-    generateFirstPage();
     hotel = new Hotel();
     currentPage = 'login-page';
     createBarOfOptionsOfselectedRoom();
@@ -36,7 +32,6 @@ window.onload = function () {
     createSettingPricePage(numberOfFloors, numberOfRooms);
     generatePageOfArchives();
     generatePageOfAccount();
-    generateClock();
 }
 
 // go to PMS
@@ -240,20 +235,4 @@ function cancelReservation() {
     // هنا يمكنك إضافة الكود اللازم لإلغاء الحجز، مثل تنظيف النموذج أو تنفيذ طلب إلى الخادم
     document.getElementById('reservationForm').reset();
     alert('تم إلغاء الحجز بنجاح.');
-}
-
-//generate account of admin
-function generateFirstPage() {
-    document.getElementById('container-of-cards-of-login-page').innerHTML = `
-    <div class="card-of-login-type" onclick="showPopup(${JSON.stringify(admin).replace(/"/g, '&quot;')})">
-                <div class="emoji">👨‍💼</div>
-                <span class="label">Admin</span>
-            </div>
-
-            <div class="card-of-login-type" onclick="getPageOfAccount()" style="margin-left: 50px;">
-                <div class="emoji">👨‍🔧</div>
-                <span class="label">Employee</span>
-            </div>
-    `;
-
 }

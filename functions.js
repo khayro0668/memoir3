@@ -313,8 +313,6 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
-    hotel.addEventInArchives(currentUser, 'set price');
-    generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
 
@@ -494,13 +492,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //show current user
 function showCurrentUser() {
-    var ui = `
+  var ui = `
         <div class="image-of-current-user">
             <img src="f1.png">
         </div>
         <h1 style="width: 70%;">name</h1>
   `;
 
+<<<<<<< HEAD
     //   document.getElementById('current-user').innerHTML = ui;
 }
 
@@ -582,3 +581,7 @@ function generateMenuOfButtons() {
 
     document.getElementById('menu-of-options').innerHTML = menu;
 }
+=======
+//   document.getElementById('current-user').innerHTML = ui;
+}
+>>>>>>> 3b1f2ee2c5e927161eabf4a39cea055c92903e7b
