@@ -313,7 +313,7 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
-    hotel.addEventInArchives(currentUser , 'set price');
+    hotel.addEventInArchives(currentUser, 'set price');
     generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
@@ -493,14 +493,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //show current user
 function showCurrentUser() {
-  var ui = `
+    var ui = `
         <div class="image-of-current-user">
             <img src="f1.png">
         </div>
         <h1 style="width: 70%;">name</h1>
   `;
 
-//   document.getElementById('current-user').innerHTML = ui;
+    //   document.getElementById('current-user').innerHTML = ui;
 }
 
 //generate page of quantite setting
@@ -511,12 +511,12 @@ function getPageOfQuantiteSettings() {
 }
 
 //generate clock
-function generateClock(){
+function generateClock() {
     var page = ``;
-    for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
-        if(hotel.listOfRooms[i].isReserved === 'Reserved'){
+    for (let i = 0; i < hotel.listOfRooms.length; i++) {
+        if (hotel.listOfRooms[i].isReserved === 'Reserved') {
             page += `
-            <div class="current-resident">
+            <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(hotel.listOfRooms[i].id).replace(/"/g, '&quot;')})">
               ${hotel.listOfRooms[i].resident}
             </div>`
         }
@@ -525,6 +525,15 @@ function generateClock(){
     document.getElementById('show-current-residents').innerHTML = page;
 }
 
+//get info of selected resident
+function getInfoOfSelectedResident(id) {
+    for (let i = 0; i < hotel.listOfRooms.length; i++) {
+        if (hotel.listOfRooms[i].id === id) {
+            
+            break;
+        }
+    }
+}
 //get page of clock
 function getPageOfClock() {
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
