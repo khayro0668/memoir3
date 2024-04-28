@@ -378,6 +378,7 @@ function showPopup(account) {
     popup.style.display = 'block';
     window.currentAccount = account;
 }
+
 function closePopup() {
     const overlay = document.querySelector('.overlay');
     const popup = document.querySelector('.popup');
@@ -492,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //show current user
 function showCurrentUser() {
-  var ui = `
+    var ui = `
         <div class="image-of-current-user">
             <img src="f1.png">
         </div>
@@ -528,7 +529,7 @@ function generateClock() {
 function getInfoOfSelectedResident(id) {
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].id === id) {
-            
+
             break;
         }
     }
@@ -558,14 +559,14 @@ function generateMenuOfButtons() {
                         class="fa-solid fa-gear"></i>Settings</button></div>
             `;
 
-            if(currentUser === 'admin'){
-                menu += `
+    if (currentUser === 'admin') {
+        menu += `
                 <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i
                         class="fa-solid fa-box-archive"></i>Archive</button>
             </div>`;
-            }
+    }
 
-            menu += `
+    menu += `
             <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button>
             </div>
             <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
