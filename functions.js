@@ -499,7 +499,6 @@ function showCurrentUser() {
         <h1 style="width: 70%;">name</h1>
   `;
 
-<<<<<<< HEAD
     //   document.getElementById('current-user').innerHTML = ui;
 }
 
@@ -581,7 +580,3 @@ function generateMenuOfButtons() {
 
     document.getElementById('menu-of-options').innerHTML = menu;
 }
-=======
-//   document.getElementById('current-user').innerHTML = ui;
-}
->>>>>>> 3b1f2ee2c5e927161eabf4a39cea055c92903e7b
