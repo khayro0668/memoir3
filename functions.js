@@ -68,34 +68,33 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
 
     var UI = `
         <div class="dropdown-container">
-            <div class="dropdown-wrapper">
-                <button class="dropdown-button" id="button1">Floor</button>
+            <div class="dropdown-wrapper1">
+
                 <select class="dropdown" id="dropdown1">
                    ${divOfFloors}
                 </select>
             </div>
-            <div class="dropdown-wrapper">
-                <button class="dropdown-button" id="button2">Room</button>
+            <div class="dropdown-wrapper2">
+            
                 <select class="dropdown" id="dropdown2">
                    ${divOfRooms}
                 </select>
             </div>
-            <div class="dropdown-wrapper">
-                <button class="dropdown-button" id="button3">Beds</button>
+            <div class="dropdown-wrapper3">
+           
                 <select class="dropdown" id="dropdown3">
                     ${divOfBads}
                 </select>
             </div>
-            <div class="dropdown-wrapper">
-                <button class="dropdown-button" id="button4">Reserved</button>
+            <div class="dropdown-wrapper4">
+           
                 <select class="dropdown" id="dropdown4">
                     <option value="0">All</option>
                     <option value="1">Reserved</option>
                     <option value="2">Unbooked</option>
                 </select>
             </div>
-            <input type="text" id="searchInput" oninput="searchNames()" placeholder="find someone...">
-            <ul id="nameList"></ul>
+            
         </div>
   `;
 

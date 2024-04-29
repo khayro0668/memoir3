@@ -56,14 +56,62 @@ h2 {
 
 .dropdown-container {
     display: flex;
+    margin-left: 3px;
+    margin-top: 5px;
+    margin-right: 5px;
+    
+
 }
 
-.dropdown-wrapper {
-    margin-right: 10px;
+.dropdown-wrapper1 {
+    margin-right: 160px;
+    margin-left: 80px;
+
 }
+.dropdown-wrapper2 {
+    margin-right: 160px;
+}
+.dropdown-wrapper3 {
+    margin-right: 160px;
+}
+.dropdown-wrapper4 {
+    
+    
+}
+
+
 
 .dropdown-button {
     margin-top: 5px;
+}
+
+.dropdown{
+    background-image: linear-gradient(45deg, transparent 50%, rgb(32, 162, 160) 50%),
+    linear-gradient(135deg, rgb(32, 162, 160) 50%, transparent 50%);
+background-position: right 10px center, right 15px center; /* Adjusted position of arrows */
+background-size: 5px 5px, 5px 5px; /* Size of the arrows */
+background-repeat: no-repeat;
+}
+.dropdown::-ms-expand {
+    display: none; /* Hide the default arrow in IE/Edge */
+}
+.dropdown:hover {
+    background-color: rgb(230, 245, 245); /* Lighter tint for hover */
+}
+.dropdown {
+    margin: 0 10px; /* Adds horizontal spacing between selects */
+    padding: 8px 30px 8px 10px; /* Increased right padding for separation */
+    border: 2px solid rgb(32, 162, 160); /* Stylish border color */
+    background-color: #fff; /* White background for contrast */
+    color: rgb(32, 162, 160); /* Text color to match the theme */
+    font-size: 16px; /* Larger font for better readability */
+    cursor: pointer; /* Cursor indicates it's selectable */
+    border-radius: 5px; /* Rounded corners */
+    -webkit-appearance: none; /* Removes default styling by the browser */
+    -moz-appearance: none;
+    appearance: none;
+    outline: none; /* Removes the outline to keep styling neat */
+    position: relative; /* For absolute positioning of the arrow */
 }
 
 /* ...................................................... */
