@@ -46,6 +46,11 @@ body {
     background-color: white;
     color: black;
 }
+.menu-item.active {
+    background-color: white; /* Example active color: light grey */
+    color: #000000; /* Text color for active item */
+}
+
 
 .menu-of-options button {
     width: 99%;
