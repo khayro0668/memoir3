@@ -41,7 +41,6 @@ body {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-    border: 1px solid black;
     align-items: center;
     justify-content: center;
     margin-left: 75px;
@@ -98,3 +97,79 @@ body {
     width: 250px;
     background-color: aqua;
 }
+
+
+/* ******************************************* */
+.scroll-container {
+    width: 950px; /* Fixed width of the outer container */
+    height: 570px; /* Fixed height of the outer container */
+    overflow: scroll;
+    scrollbar-width: none;
+    background-color: #e8e8e8; /* Light gray background for the scroll container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+    border: 1px solid #ccc; /* Optional: adds a border for better visibility */
+}
+.container {
+    width: 100%;
+    
+}
+.card {
+    background-color: #fff;
+    width: 560px; /* Width of each card */
+    height: 200px; /* Height of each card */
+    margin: 10px auto; /* Centers cards horizontally and adds vertical space */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 0 20px; /* Padding inside each card */
+    border-radius: 20px;
+}
+.card > .label, .card > input, .card > button {
+    flex: 1; /* Each child takes equal space */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the items horizontally */
+   
+}
+input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 90%; /* Limit width to not exceed its section */
+}
+
+.btn-of-others {
+   
+    padding: 10px 15px; 
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-left: 10%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.label {
+    font-size: 25px; /* Matches the font size of the input and button */
+    color: #333; /* Dark color for readability */
+    font-family: fantasy;
+    justify-content: flex-start; /* Align label to the start */
+}
+
+#page-of-price-of-others-settings {
+border: 1px solid black;
+height: 570px;
+width: 950px;
+background-color: red;
+}
+/* ****************************************** */
