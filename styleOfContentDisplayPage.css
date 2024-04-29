@@ -14,13 +14,42 @@ body {
 }
 
 .menu-of-options {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 570px;
     width: 250px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    background-color: rgb(32 , 162 , 160);
+    background-color: rgb(32, 162, 160);
+}
+
+.menu-item {
+    width: 240px;
+    height: 50px;
+    /* margin-bottom: 5px; */
+    background-color: transparent;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    color: white;
+    
+}
+
+.menu-item i {
+    margin-right: 30px; /* Space between icon and text */
+}
+
+.menu-item:hover {
+    background-color: white;
+    /* color: rgb(32, 162, 160); */
+    color: black;
+}
+.menu-item i:hover {
+    background-color: white;
+    color: rgb(32, 162, 160);
 }
 
 .menu-of-options button {
@@ -41,9 +70,37 @@ body {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-    align-items: center;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-left: 70px;
+}
+
+.icon-of-button {
+    height: 50px;
+    width: 80px;
+    text-align: center;
     justify-content: center;
-    margin-left: 75px;
+    padding-top: 35px;
+    margin-left: 20px;
+}
+
+.text-of-button {
+    height: 50px;
+    width: 120px;
+    padding-top: 35px;
+}
+.menu-item i{
+   
+    color:  rgb(251, 225,117);
+}
+.hr-of-menu{
+    width: 80%;
+    color: rgb(216,243 ,249 );
+
 }
 
 .ptn :hover {
@@ -74,7 +131,7 @@ body {
 }
 
 /* **************************************************** */
-.current-user {
+/* .current-user {
     border: 1px solid black;
     height: 50px;
     width: 100%;
@@ -89,14 +146,14 @@ body {
   .image-of-current-user img {
       height: 50px;
       width: 100%;
-  }
+  } */
 /* **************************************************** */
-#div-of-acc {
+/* #div-of-acc {
     border: 1px solid black;
     height: 70px;
     width: 250px;
     background-color: aqua;
-}
+} */
 
 
 /* ******************************************* */

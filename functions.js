@@ -558,41 +558,30 @@ function getPageOfClock() {
 //generate menu of buttons
 function generateMenuOfButtons() {
     var menu = `
-    <div style="justify-content: center;align-items: center;margin-top: 3px;">
-                <div class="logo"
-                    style="background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');background-size: cover;">
-                </div>
-            </div>
-            <div class="ptn"><button id="home"><i class="fa-solid fa-house"></i> home</button></div>
-            <div class="ptn"><button id="rooms" onclick="goToPageOfRooms()"><i
-                        class="fa-solid fa-door-closed"></i>Rooms</button></div>
-            <div class="ptn"><button id="clock" onclick="getPageOfClock()"><i class="fa-solid fa-calendar-days"></i>Clock</button></div>
-            <div class="ptn"><button id="settings" onclick="generatePageOfSettings()"><i
-                        class="fa-solid fa-gear"></i>Settings</button></div>
+    <div class="logo"></div>
+        <hr class="hr-of-menu">
+        <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-closed"></i></div><div class="text-of-button">Rooms</div></div>
+        <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-calendar-days"></i></div><div class="text-of-button">Clock</div></div>
+        <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
             `;
 
     if (currentUser === 'admin') {
         menu += `
-                <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i
-                        class="fa-solid fa-box-archive"></i>Archive</button>
-            </div>`;
+        <div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-box-archive"></i></div><div class="text-of-button">Archive</div></div>`;
     }
 
     menu += `
-            <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button>
-            </div>
-            <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
-                    out</button>
-                <!-- Include this in your HTML file -->
-                <!-- <button id="generate-pdf-button">Generate PDF</button> -->
-            </div>
-            <div id="div-of-acc">
-             <div class="cuurent-user" id="cuurent-user">
-            </div>  
-            </div>
+    <div class="menu-item" id="payment" onclick=""><div class="icon-of-button"><i class="fa-solid fa-cart-shopping"></i></div><div class="text-of-button">Payment</div></div>
+    <hr class="hr-of-menu">
+    <div class="menu-item" id="log-out" onclick=""><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
+    <div id="div-of-acc">
+        <div class="current-user" id="current-user"></div>
+    </div>
     `;
 
     document.getElementById('menu-of-options').innerHTML = menu;
+    
+    
 }
 
 //get page of others price

@@ -3,86 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>بحث في القائمة الديناميكية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Example</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .search-container {
-            width: 300px;
-            margin: 50px auto;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            padding: 8px;
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            margin-top: -1px;
-            /* Remove space between */
+        .a .b,
+        .a .c {
+            transition: color 0.3s;
+            /* تأثير انتقالي للون */
         }
     </style>
 </head>
 
 <body>
-    <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="filterItems()" placeholder="ابحث عن الاسم...">
-        <ul id="itemsList"></ul>
+
+    <div class="a" style="border: 1px solid black;">
+        <div class="b">نص B</div>
+        <div class="c">نص C</div>
     </div>
+
     <script>
-        // تعريف البيانات ديناميكيا
-        const items = [
-            { name: "أحمد", number: "1234" },
-            { name: "محمد", number: "5678" },
-            { name: "سارة", number: "91011" },
-            { name: "ليلى", number: "121314" }
-        ];
+        // اختيار العنصر بالكلاس a
+        var elementA = document.querySelector('.a');
 
-        function populateList() {
-            const ul = document.getElementById('itemsList');
-            items.forEach(item => {
-                let li = document.createElement('li');
-                li.textContent = `${item.name} - ${item.number}`;
-                ul.appendChild(li);
-            });
-        }
+        // إضافة حدث الـ hover باستخدام JavaScript
+        elementA.addEventListener('mouseover', function () {
+            // تغيير لون النص للعنصر b
+            this.querySelector('.b').style.color = 'red';
+            // تغيير لون النص للعنصر c
+            this.querySelector('.c').style.color = 'blue';
+        });
 
-        function filterItems() {
-            var input = document.getElementById("searchInput");
-            var filter = input.value.toUpperCase();
-            var ul = document.getElementById("itemsList");
-            var li = ul.getElementsByTagName("li");
-
-            for (var i = 0; i < li.length; i++) {
-                var txtValue = li[i].textContent || li[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    li[i].style.display = "";
-                } else {
-                    li[i].style.display = "none";
-                }
-            }
-        }
-
-        // دالة لتهيئة القائمة عند تحميل الصفحة
-        window.onload = function () {
-            populateList();
-        };
+        elementA.addEventListener('mouseout', function () {
+            // إعادة اللون الافتراضي للنصوص
+            this.querySelector('.b').style.color = '';
+            this.querySelector('.c').style.color = '';
+        });
     </script>
+
 </body>
 
 </html>
