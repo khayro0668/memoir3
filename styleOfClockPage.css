@@ -13,3 +13,42 @@ border-radius: 20px;
     border: 1px solid black;
     border-radius: 20px;
 }
+
+.current-resident {
+    border: 1px solid black;
+    width: 940px;
+    height: 55px;
+    border-radius: 35px;
+    margin: 10px;
+    display: flex;
+}
+
+.part-of-name-resident h2 {
+    text-align: center;
+    color: black;
+}
+
+.part-of-name-resident {
+    height: 55px;
+    width: 140px;
+}
+
+.part-of-room {
+    height: 55px;
+    width: 400px;
+}
+
+.part-of-room h2{
+    text-align: center;
+    color: black;
+}
+
+.part-of-contdown {
+    height: 55px;
+    width: 400px;
+}
+
+.part-of-contdown h2 {
+    text-align: center;
+    color: black;
+}

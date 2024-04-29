@@ -38,6 +38,7 @@ window.onload = function () {
     generatePageOfAccount();
     generateClock();
     generateFirstPage();
+    generatePageOfOthersPrice();
 }
 
 // go to PMS
@@ -220,8 +221,6 @@ function setInformation() {
     <button type="button" onclick="submitForm() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;"">show infos</button>
 </form>
 </div>
-
-
 `;
 
     document.getElementById('view-room-information').style.display = 'none';

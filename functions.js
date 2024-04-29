@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //show current user
 function showCurrentUser() {
-  var ui = `
+    var ui = `
         <div class="image-of-current-user">
             <img src="f1.png">
         </div>
@@ -509,12 +509,27 @@ function getPageOfQuantiteSettings() {
 
 //generate clock
 function generateClock() {
+    var serchTy
     var page = ``;
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].isReserved === 'Reserved') {
             page += `
             <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(hotel.listOfRooms[i].id).replace(/"/g, '&quot;')})">
-              ${hotel.listOfRooms[i].resident}
+               <div class="part-of-name-resident">
+                 <h2>
+                 ${hotel.listOfRooms[i].resident}
+                 </h2>
+               </div>
+               <div class="part-of-room">
+                   <h2>
+                     floor : ${hotel.listOfRooms[i].floorNumber} , room : ${hotel.listOfRooms[i].roomNumber}
+                   </h2>
+               </div>
+               <div class="part-of-contdown">
+                  <h2>
+                   ${getRemaningDays(hotel.listOfRooms[i].endDate)} Days left
+                  </h2>
+               </div>
             </div>`
         }
     }
@@ -526,7 +541,7 @@ function generateClock() {
 function getInfoOfSelectedResident(id) {
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].id === id) {
-            
+            alert(hotel.listOfRooms[i].endDate);
             break;
         }
     }
@@ -556,14 +571,14 @@ function generateMenuOfButtons() {
                         class="fa-solid fa-gear"></i>Settings</button></div>
             `;
 
-            if(currentUser === 'admin'){
-                menu += `
+    if (currentUser === 'admin') {
+        menu += `
                 <div class="ptn"><button id="historique" onclick="getPageOfArchives()"><i
                         class="fa-solid fa-box-archive"></i>Archive</button>
             </div>`;
-            }
+    }
 
-            menu += `
+    menu += `
             <div class="ptn"><button id="payment" onclick=""><i class="fa-solid fa-cart-shopping"></i>Payment</button>
             </div>
             <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
@@ -580,4 +595,78 @@ function generateMenuOfButtons() {
     document.getElementById('menu-of-options').innerHTML = menu;
 }
 
+//get page of others price
+function generatePageOfOthersPrice() {
+    var page =
+        `
+    <div class="scroll-container">
+        <div class="container">
+            <div class="card">
+                <div class="label">vip pillow</div>
+                <input type="number" placeholder="get new price">
+                <button class="btn-of-others">ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip bed</div>
+                <input type="number" placeholder="get new price" >
+                <button class="btn-of-others">ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip spa</div>
+                <input type="number" placeholder="get new price">
+                <button class="btn-of-others">ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip pool</div>
+                <input type="number" placeholder="get new price">
+                <button class="btn-of-others">ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip lounge access</div>
+                <input type="number" placeholder="get new price">
+                <button class="btn-of-others">ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip yacht Charters</div>
+                <input type="number" placeholder="get new price">
+                <button class="btn-of-others">ok</button>
+            </div>
+            <div class="card">
+                <div class="label">vip gym</div>
+                <input type="number" placeholder="get new price">
+                <button class="btn-of-others">ok</button>
+            </div>
+           
+        </div>
+    </div>
+    `;
+    document.getElementById('page-of-price-of-others-settings').innerHTML = page;
+}
 
+// get page of others setting
+function getPageOfOthers() {
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-price-of-others-settings';
+    document.getElementById(currentPage).style.display = 'block';
+}
+
+//calculate remaning days
+function getRemaningDays(endDate) {
+    var dateInput = endDate; // الحصول على القيمة من الحقل
+    var today = new Date();
+    var targetDate = new Date(dateInput);
+
+
+    var timeDiff = targetDate - today;
+    var daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+    if (daysDiff >= 0)
+        return daysDiff;
+
+}
+
+
+// search bar
+function searchBar() {
+
+}
