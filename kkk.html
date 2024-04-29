@@ -1,102 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        .menu-of-options {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 570px;
-            width: 250px;
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            background-color: rgb(32, 162, 160);
-        }
+<meta charset="UTF-8">
+<title>Dropdown of Countries</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
 
-        .menu-item {
-            width: 240px;
-            height: 50px;
-            /* margin-bottom: 5px; */
-            background-color: transparent;
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            display: flex;
-            align-items: center;
-            margin-left: 10px;
-            color: white;
-            
-        }
+select {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-        .menu-item i {
-            margin-right: 30px; /* Space between icon and text */
-        }
-
-        .menu-item:hover {
-            background-color: white;
-            color: rgb(32, 162, 160);
-        }
-        .menu-item i:hover {
-            background-color: white;
-            color: rgb(32, 162, 160);
-        }
-
-        .logo {
-            height: 100px;
-            width: 100px;
-            border-radius: 50px;
-            border: 1px solid black;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .icon-of-button {
-            height: 50px;
-            width: 80px;
-            text-align: center;
-            justify-content: center;
-            padding-top: 35px;
-            margin-left: 20px;
-        }
-
-        .text-of-button {
-            height: 50px;
-            width: 120px;
-            padding-top: 35px;
-        }
-        .menu-item i{
-           
-            color:  rgb(251, 225,117);
-        }
-        .hr-of-menu{
-            width: 80%;
-            color: rgb(216,243 ,249 );
-
-        }
-    </style>
+</style>
 </head>
 <body>
-    <div class="menu-of-options" id="menu-of-options">
-        <div class="logo"></div>
-        <hr class="hr-of-menu">
-        <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-closed"></i></div><div class="text-of-button">Rooms</div></div>
-        <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-calendar-days"></i></div><div class="text-of-button">Clock</div></div>
-        <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
-        <div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-box-archive"></i></div><div class="text-of-button">Archive</div></div>
-        <div class="menu-item" id="payment" onclick=""><div class="icon-of-button"><i class="fa-solid fa-cart-shopping"></i></div><div class="text-of-button">Payment</div></div>
-        <hr class="hr-of-menu">
-        <div class="menu-item" id="log-out" onclick=""><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
-        <div id="div-of-acc">
-            <div class="current-user" id="current-user"></div>
-        </div>
-    </div>
+<select id="countryDropdown" onchange="showSelectedCountry()">
+    <option value="">Select a country</option>
+    <!-- الخيارات ستضاف هنا بواسطة JavaScript -->
+</select>
+
+<script>
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const countries = [
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
+        "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
+        "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
+        "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
+        "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei",
+        "Bulgaria", "Burkina Faso", "Burundi", "Côte d'Ivoire", "Cabo Verde",
+        "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad",
+        "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)",
+        "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)",
+        "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica",
+        "Dominican Republic", "Ecuador", "Egypt", "El Salvador",
+        "Equatorial Guinea", "Eritrea", "Estonia", "Swaziland",
+        "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia",
+        "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+        "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary",
+        "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel",
+        "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya",
+        "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon",
+        "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+        "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta",
+        "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
+        "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro",
+        "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia",
+        "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
+        "Niger", "Nigeria", "North Korea", "North Macedonia",
+        "Norway", "Oman", "Pakistan", "Palau", "Palestine State",
+        "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
+        "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda",
+        "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
+        "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+        "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore",
+        "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa",
+        "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan",
+        "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan",
+        "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga",
+        "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+        "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom",
+        "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
+        "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    ];
+
+    const dropdown = document.getElementById('countryDropdown');
+    countries.forEach(country => {
+        let option = document.createElement('option');
+        option.textContent = country;
+        option.value = country;
+        dropdown.appendChild(option);
+    });
+});
+
+function showSelectedCountry() {
+    const selectedCountry = document.getElementById('countryDropdown').value;
+    if (selectedCountry) {
+        alert('Selected country: ' + selectedCountry);
+    }
+}
+</script>
 </body>
 </html>
