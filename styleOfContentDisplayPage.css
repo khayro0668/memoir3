@@ -44,12 +44,7 @@ body {
 
 .menu-item:hover {
     background-color: white;
-    /* color: rgb(32, 162, 160); */
     color: black;
-}
-.menu-item i:hover {
-    background-color: white;
-    color: rgb(32, 162, 160);
 }
 
 .menu-of-options button {
@@ -70,7 +65,6 @@ body {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-    border: 1px solid black;
     margin-top: 10px;
     margin-bottom: 15px;
     background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');

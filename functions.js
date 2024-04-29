@@ -580,8 +580,7 @@ function generateMenuOfButtons() {
     `;
 
     document.getElementById('menu-of-options').innerHTML = menu;
-    
-    
+
 }
 
 //get page of others price
@@ -658,4 +657,13 @@ function getRemaningDays(endDate) {
 // search bar
 function searchBar() {
 
+}
+
+//set status of button after clicked
+function setStatus(id) {
+   var listOfID = [
+    '',
+    '',
+    '',
+   ];
 }

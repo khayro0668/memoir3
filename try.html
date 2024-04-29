@@ -1,45 +1,22 @@
 <!DOCTYPE html>
-<html lang="ar">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hover Example</title>
-    <style>
-        .a .b,
-        .a .c {
-            transition: color 0.3s;
-            /* تأثير انتقالي للون */
-        }
-    </style>
+    <title>Convert Text to PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
-
 <body>
-
-    <div class="a" style="border: 1px solid black;">
-        <div class="b">نص B</div>
-        <div class="c">نص C</div>
-    </div>
+    <button onclick="convertTextToPdf('lkjjfdiewjdoidj')">Convert Text to PDF</button>
 
     <script>
-        // اختيار العنصر بالكلاس a
-        var elementA = document.querySelector('.a');
+        function convertTextToPdf(text) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
 
-        // إضافة حدث الـ hover باستخدام JavaScript
-        elementA.addEventListener('mouseover', function () {
-            // تغيير لون النص للعنصر b
-            this.querySelector('.b').style.color = 'red';
-            // تغيير لون النص للعنصر c
-            this.querySelector('.c').style.color = 'blue';
-        });
-
-        elementA.addEventListener('mouseout', function () {
-            // إعادة اللون الافتراضي للنصوص
-            this.querySelector('.b').style.color = '';
-            this.querySelector('.c').style.color = '';
-        });
+            doc.text(text, 10, 10);
+            doc.save('example.pdf');
+        }
     </script>
-
 </body>
-
 </html>
