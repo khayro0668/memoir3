@@ -569,10 +569,11 @@ function generateMenuOfButtons() {
             <div class="ptn"><button id="log-out" onclick=""><i class="fa-solid fa-right-from-bracket"></i>Log
                     out</button>
                 <!-- Include this in your HTML file -->
-                <button id="generate-pdf-button">Generate PDF</button>
+                <!-- <button id="generate-pdf-button">Generate PDF</button> -->
             </div>
-            <div class="cuurent-user" id="cuurent-user">
-         
+            <div id="div-of-acc">
+             <div class="cuurent-user" id="cuurent-user">
+            </div>  
             </div>
     `;
 
