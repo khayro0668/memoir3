@@ -563,7 +563,8 @@ function generateMenuOfButtons() {
         <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-closed"></i></div><div class="text-of-button">Rooms</div></div>
         <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-calendar-days"></i></div><div class="text-of-button">Clock</div></div>
         <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
-            `;
+           
+        `;
 
     if (currentUser === 'admin') {
         menu += `
@@ -581,6 +582,53 @@ function generateMenuOfButtons() {
 
     document.getElementById('menu-of-options').innerHTML = menu;
 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Attach a single event listener to the parent container
+    const menu = document.getElementById('menu-of-options');
+    menu.addEventListener('click', function(event) {
+        const target = event.target.closest('.menu-item');
+        if (target) {
+            makeActive(target);
+            handleMenuAction(target.id);  // Handle actions based on the item id
+        }
+    });
+
+    generateMenuOfButtons();  // Generate menu on load
+});
+
+function makeActive(element) {
+    const currentlyActive = document.querySelector('.menu-item.active');
+    if (currentlyActive) {
+        currentlyActive.classList.remove('active');
+    }
+    element.classList.add('active');
+}
+
+function handleMenuAction(id) {
+    switch(id) {
+        case 'rooms':
+            goToPageOfRooms();
+            break;
+        case 'clock':
+            getPageOfClock();
+            break;
+        case 'settings':
+            generatePageOfSettings();
+            break;
+        case 'historique':
+            getPageOfArchives();
+            break;
+        case 'payment':
+            getPaymentPage();
+            break;
+        case 'log-out':
+            logOut();
+            break;
+        default:
+            console.log('No action defined for:', id);
+    }
 }
 
 //get page of others price
