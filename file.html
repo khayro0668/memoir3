@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +53,7 @@
     <div class="pms-app" id="pms-app" style="display: none;">
         <!-- menu of buttons -->
         <div class="menu-of-options" id="menu-of-options" style="display: none;">
-            
+
         </div>
 
         <!-- display information -->
@@ -81,7 +82,7 @@
                 <span class="label">quantity</span>
             </div>
         </div>
-        
+
         <!-- dispaly information -->
         <div class="card-of-price-settings1" id="page-of-price-settings" style="display: none;">
             <button class="go-back-button" onclick="generatePageOfSettings()">⇐</button>
@@ -134,10 +135,33 @@
         <!-- display information -->
         <div id="page-of-clock" style="display: none;">
             <div id="type-of-search">
-              
+                <div class="part-of-priod">
+                    first date
+                    <input type="date" id="first-date">
+                    seconde date
+                    <input type="date" id="second-date">
+                </div>
+                <div class="part-of-country" id="part-of-country">
+                    <select id="countryDropdown" onchange="showSelectedCountry()">
+                        <option value="">All country</option>
+                    </select>
+                </div>
+                <div class="part-of-gender">
+                    <select id="genderDropdown" onchange="displaySelectedGender()">
+                        <option value="">All Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="type-of-sort">
+                    <select id="sortDropdown" onchange="displaySelectedSort()">
+                        <option value="">Random sort</option>
+                        <option value="sort-by-date-of-arrival">sort by date of arrival</option>
+                    </select>
+                </div>
             </div>
             <div id="show-current-residents">
-    
+
             </div>
         </div>
     </div>
