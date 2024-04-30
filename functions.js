@@ -981,11 +981,22 @@ function generateCalendar() {
     page = '<table>';
     for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
         if(hotel.listOfRooms[i].isReserved === 'Reserved'){
-          
+          page += '<tr>';
+          page += '<td>';
+          page += `jhkjhh`;
+          page += '</td>'
+
+          for(let j = 1 ; j <= 28 ; j++){
+            page += '<td></td>';
+          }
+          page += '</tr>';
         }
     }
 
     page += '</table>';
+    
+
+    document.getElementById('boocked-in-days').innerHTML = page;
 }
 
 //get calendar page
