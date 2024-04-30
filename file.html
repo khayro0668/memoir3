@@ -157,11 +157,20 @@
                     <select id="sortDropdown" onchange="displaySelectedSort()">
                         <option value="">Random sort</option>
                         <option value="sort-by-date-of-arrival">sort by date of arrival</option>
+                        <option value="sort-by-ascending-order-booking-period">sort by duration A</option>
+                        <option value="sort-by-descending-order-booking-period">sort by duration D</option>
+                        <option value="sort-by-ascending-order-start-date">sort by start date A</option>
+                        <option value="sort-by-descending-order-start-date">sort by start date D</option>
                     </select>
                 </div>
+                <div class="part-of-date">
+                    date
+                    <input type="date" id="input-date">
+                </div>
+                <button onclick="generateClock()"></button>
             </div>
             <div id="show-current-residents">
-
+                <!--  -->
             </div>
         </div>
     </div>

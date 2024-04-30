@@ -14,7 +14,7 @@ border-bottom: 1px solid black;
 }
 
 .current-resident {
-    border: 1px solid black;
+
     width: 940px;
     height: 55px;
     border-radius: 35px;
@@ -28,13 +28,17 @@ border-bottom: 1px solid black;
 }
 
 .part-of-name-resident {
+    border: 1px black solid;
     height: 55px;
     width: 140px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
 }
 
 .part-of-room {
+    border: 1px black solid;
     height: 55px;
-    width: 400px;
+    width: 200px;
 }
 
 .part-of-room h2{
@@ -43,8 +47,9 @@ border-bottom: 1px solid black;
 }
 
 .part-of-contdown {
+    border: 1px black solid;
     height: 55px;
-    width: 400px;
+    width: 200px;
 }
 
 .part-of-contdown h2 {
@@ -56,9 +61,37 @@ border-bottom: 1px solid black;
    width: 100px;
 }
 
+.part-of-date input {
+    width: 100px;
+ }
+
 .part-of-country select {
     width: 100px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.part-of-gender-in-clock {
+    border: 1px black solid;
+    height: 55px;
+    width: 200px;
+}
+
+.part-of-gender-in-clock h2{
+    text-align: center;
+    color: black;
+}
+
+.part-of-country-in-clock {
+    border: 1px black solid;
+    height: 55px;
+    width: 200px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.part-of-country-in-clock h2{
+    text-align: center;
+    color: black;
 }
