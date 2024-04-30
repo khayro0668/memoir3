@@ -346,6 +346,7 @@ function getPageOfArchives() {
 //generate page of accounte
 function generatePageOfAccount() {
     var page = '<table>';
+    page += '<tr><button class="go-back-button" onclick="backToFirstPage()">⇐</button><tr>'
     for (let i = 0; i < accounts.length; i += 4) {
         page += '<tr>';
         let k = 1;
@@ -366,6 +367,35 @@ function generatePageOfAccount() {
     page += '</table>';
 
     document.getElementById('account-of-employes').innerHTML = page;
+}
+
+//go back to first page
+function backToFirstPage() {
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'login-page';
+    document.getElementById(currentPage).style.display = 'flex';
+}
+
+//log out
+function logOut() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById('menu-of-options').style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    document.getElementById('pms-app').style.display = 'none';
+    currentPage = 'login-page';
+    document.getElementById(currentPage).style.display = 'flex';
+    hotel = new Hotel();
+    currentPage = 'login-page';
+    createBarOfOptionsOfselectedRoom();
+    generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+    createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, minNumberOfBeds);
+    createSettingPricePage(numberOfFloors, numberOfRooms);
+    generatePageOfArchives();
+    generatePageOfAccount();
+    generateClock();
+    generateFirstPage();
+    generatePageOfOthersPrice();
 }
 //////////////////////////////////
 function showPopup(account) {
@@ -508,25 +538,59 @@ function getPageOfQuantiteSettings() {
 
 //generate clock
 function generateClock() {
-    var serchTy
-    var page = ``;
+    var targetResidents = [];
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
-        if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+        if (isDesiredResident(hotel.listOfRooms[i])) {
+            targetResidents.push(hotel.listOfRooms[i]);
+        }
+    }
+
+    if (typeOfSort !== -1) {
+        switch (typeOfSort) {
+            case 'sort-by-descending-order-start-date':
+                sortListByStartDate(targetResidents, 'D');
+                break;
+
+            case 'sort-by-ascending-order-start-date':
+                sortListByStartDate(targetResidents, 'A');
+                break;
+
+            case 'sort-by-ascending-order-booking-period':
+                sortListByDurationOfReservation(targetResidents, 'A');
+                break;
+            case 'sort-by-descending-order-booking-period':
+                sortListByDurationOfReservation(targetResidents, 'D');
+                break;
+        }
+    }
+    var page = ``;
+    for (let i = 0; i < targetResidents.length; i++) {
+        if (targetResidents[i].isReserved === 'Reserved') {
             page += `
-            <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(hotel.listOfRooms[i].id).replace(/"/g, '&quot;')})">
+            <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
                <div class="part-of-name-resident">
                  <h2>
-                 ${hotel.listOfRooms[i].resident}
+                 ${targetResidents[i].resident}
                  </h2>
                </div>
                <div class="part-of-room">
                    <h2>
-                     floor : ${hotel.listOfRooms[i].floorNumber} , room : ${hotel.listOfRooms[i].roomNumber}
+                     floor : ${targetResidents[i].floorNumber} , room : ${targetResidents[i].roomNumber}
                    </h2>
                </div>
                <div class="part-of-contdown">
                   <h2>
-                   ${getRemaningDays(hotel.listOfRooms[i].endDate)} Days left
+                   ${getRemaningDays(targetResidents[i].endDate)} Days left
+                  </h2>
+               </div>
+               <div class="part-of-gender-in-clock">
+                  <h2>
+                   ${targetResidents[i].genderOfResident}
+                  </h2>
+               </div>
+               <div class="part-of-country-in-clock">
+                  <h2>
+                   ${targetResidents[i].countryOfResident}
                   </h2>
                </div>
             </div>`
@@ -540,7 +604,7 @@ function generateClock() {
 function getInfoOfSelectedResident(id) {
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].id === id) {
-            alert(hotel.listOfRooms[i].endDate);
+            alert(hotel.listOfRooms[i].durationOfReservation);
             break;
         }
     }
@@ -559,21 +623,21 @@ function generateMenuOfButtons() {
     var menu = `
     <div class="logo"></div>
         <hr class="hr-of-menu">
-        <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-closed"></i></div><div class="text-of-button">Rooms</div></div>
-        <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-calendar-days"></i></div><div class="text-of-button">Clock</div></div>
+        <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div>
+        <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div>
         <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
-           
+        <div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div> 
         `;
 
     if (currentUser === 'admin') {
         menu += `
-        <div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-box-archive"></i></div><div class="text-of-button">Archive</div></div>`;
+        <div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-store"></i></div><div class="text-of-button">Archive</div></div>`;
     }
 
     menu += `
-    <div class="menu-item" id="payment" onclick=""><div class="icon-of-button"><i class="fa-solid fa-cart-shopping"></i></div><div class="text-of-button">Payment</div></div>
+    <div class="menu-item" id="payment" onclick=""><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div>
     <hr class="hr-of-menu">
-    <div class="menu-item" id="log-out" onclick=""><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
+    <div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
     <div id="div-of-acc">
         <div class="current-user" id="current-user"></div>
     </div>
@@ -583,10 +647,10 @@ function generateMenuOfButtons() {
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Attach a single event listener to the parent container
     const menu = document.getElementById('menu-of-options');
-    menu.addEventListener('click', function(event) {
+    menu.addEventListener('click', function (event) {
         const target = event.target.closest('.menu-item');
         if (target) {
             makeActive(target);
@@ -598,15 +662,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function makeActive(element) {
+    // Remove 'active' class from previously active menu item and its icon
     const currentlyActive = document.querySelector('.menu-item.active');
     if (currentlyActive) {
         currentlyActive.classList.remove('active');
+        const activeIcon = currentlyActive.querySelector('.icon-of-button i');
+        if (activeIcon) {
+            activeIcon.classList.remove('active-icon');  // assuming 'active-icon' is the class for active state icons
+        }
     }
+
+    // Add 'active' class to the current element and its icon
     element.classList.add('active');
+    const icon = element.querySelector('.icon-of-button i');
+    if (icon) {
+        icon.classList.add('active-icon');  // add this class to the icon as well
+    }
 }
 
+
 function handleMenuAction(id) {
-    switch(id) {
+    switch (id) {
         case 'rooms':
             goToPageOfRooms();
             break;
@@ -624,6 +700,9 @@ function handleMenuAction(id) {
             break;
         case 'log-out':
             logOut();
+            break;
+        case 'calendar':
+            getCalendarPage();
             break;
         default:
             console.log('No action defined for:', id);
@@ -706,17 +785,8 @@ function searchBar() {
 
 }
 
-//set status of button after clicked
-function setStatus(id) {
-   var listOfID = [
-    '',
-    '',
-    '',
-   ];
-}
-
 //select country?????????????????????????????????????????????/??
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const countries = [
         "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
         "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
@@ -769,30 +839,160 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function showSelectedCountry() {
-    const selectedCountry = document.getElementById('countryDropdown').value;
-    if (selectedCountry) {
-        alert('Selected country: ' + selectedCountry);
-    }
+    const country = document.getElementById('countryDropdown').value;
+    selectedCountry = (country ? country : -1);
 }
 
 // script.js
 function displaySelectedGender() {
     var gender = document.getElementById('genderDropdown').value;
-    if (gender) {
-        alert('Selected Gender: ' + (gender === "Male" ? "ذكر" : "أنثى"));
-    }
+    selectedGender = (gender ? gender : -1);
 }
- 
+
 function displaySelectedSort() {
     var sort = document.getElementById('sortDropdown').value;
-    if (sort) {
-        alert('Selected Gender: ' + sort);
-    }
+    typeOfSort = (sort ? sort : -1);
+    alert(typeOfSort);
 }
 
 //get date in input
 function getDate(id) {
     var date = document.getElementById(id).value;
-    alert(date);
+    return (date ? date : -1);
 }
 // ?????????????????????????????????????????????????????????????
+
+//clock functions
+function isDesiredResident(room) {
+
+    const checkEquality = (firstValue, secondValue) => {
+        return secondValue === -1 || firstValue === secondValue;
+    }
+
+    valueOfFirstDateInPeriode = getDate('first-date');
+    valueOfSecondeDateInPeriode = getDate('second-date');
+    valueOfDate = getDate('input-date');
+
+    ans = true;
+    if (valueOfFirstDateInPeriode !== -1 && valueOfSecondeDateInPeriode !== -1) {
+        ans &= isAnyDateInRangeWithinAnother(room.startDate, room.endDate, valueOfFirstDateInPeriode, valueOfSecondeDateInPeriode);
+    }
+
+    if (valueOfDate !== -1) {
+        ans &= isDateWithinRange(room.startDate, room.endDate, valueOfDate);
+    }
+
+    ans &= checkEquality(room.countryOfResident, selectedCountry);
+    ans &= checkEquality(room.genderOfResident, selectedGender);
+
+    return ans;
+}
+
+function isDateWithinRange(startDate, endDate, testDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const test = new Date(testDate);
+    return test >= start && test <= end;
+}
+
+function isAnyDateInRangeWithinAnother(firstStartDate, firstEndDate, secondStartDate, secondEndDate) {
+    const firstStart = new Date(firstStartDate);
+    const firstEnd = new Date(firstEndDate);
+    const secondStart = new Date(secondStartDate);
+    const secondEnd = new Date(secondEndDate);
+    return (firstStart >= secondStart && firstStart <= secondEnd) ||
+        (firstEnd >= secondStart && firstEnd <= secondEnd) ||
+        (firstStart <= secondStart && firstEnd >= secondEnd);
+}
+
+function isDate1GreaterThanDate2(date1, date2) {
+    var d1 = new Date(date1);
+    var d2 = new Date(date2);
+    return d1 > d2;
+}
+
+//sort list by start date
+function sortListByStartDate(list, typeSort) {
+    for (let i = 0; i < list.length - 1; i++) {
+        for (let j = i + 1; j < list.length; j++) {
+            if (typeSort === 'A') {
+                if (isDate1GreaterThanDate2(list[i].startDate, list[j].startDate) === true) {
+                    var temp = list[j];
+                    list[j] = list[i];
+                    list[i] = temp;
+                }
+            } else if (typeSort === 'D') {
+                if (isDate1GreaterThanDate2(list[i].startDate, list[j].startDate) === false) {
+                    var temp = list[j];
+                    list[j] = list[i];
+                    list[i] = temp;
+                }
+            }
+        }
+    }
+}
+
+//sort list by duration of reservation
+function sortListByDurationOfReservation(list, typeSort) {
+    for (let i = 0; i < list.length - 1; i++) {
+        for (let j = i + 1; j < list.length; j++) {
+            if (typeSort === 'A') {
+                if (list[i].durationOfReservation > list[j].durationOfReservation) {
+                    var temp = list[j];
+                    list[j] = list[i];
+                    list[i] = temp;
+                }
+            } else if (typeSort === 'D') {
+                if (list[i].durationOfReservation < list[j].durationOfReservation) {
+                    var temp = list[j];
+                    list[j] = list[i];
+                    list[i] = temp;
+                }
+            }
+        }
+    }
+}
+
+//////////////////////////////////////////////
+function addDaysToDate(initialDate, days) {
+    const result = new Date(initialDate);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+function formatDate(date) {
+    const options = { weekday: 'short', day: 'numeric' , month: 'short'};
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    return formattedDate.replace(/,/g, ''); // تزيل الفواصل
+}
+
+
+//generate calendar
+function generateCalendar() {
+    const startDate = new Date();
+    var page = ``;
+    for (let i = 1; i <= 28; i++) {
+        const currentDate = addDaysToDate(startDate, i);
+        page += `<div class="box-of-day">${formatDate(currentDate)}</div>`;
+    }
+
+    document.getElementById('days-in-calendar').innerHTML = page;
+
+    page = '<table>';
+    for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
+        if(hotel.listOfRooms[i].isReserved === 'Reserved'){
+          
+        }
+    }
+
+    page += '</table>';
+}
+
+//get calendar page
+function getCalendarPage() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-calendar';
+    document.getElementById(currentPage).style.display = 'block';
+}

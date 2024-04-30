@@ -16,15 +16,21 @@ var currentPage;
 var selectedRoom;
 var currentUser;
 var names = [];
-var admin = {id : 0 , name : "admin" , password : "12"};
+var admin = { id: 0, name: "admin", password: "12" };
 var accounts = [
     { id: 1, name: "wassim", password: "1" },
     { id: 2, name: "mostafa", password: "1" },
     { id: 3, name: "khayrou", password: "1" },
     { id: 4, name: "younes", password: "1" }
-  ];
+];
 
 var statusOfLogIn;
+var valueOfFirstDateInPeriode = -1;
+var valueOfSecondeDateInPeriode = -1;
+var valueOfDate = -1;
+var selectedCountry = -1;
+var selectedGender = -1;
+var typeOfSort = -1;
 
 //onload function
 window.onload = function () {
@@ -36,9 +42,9 @@ window.onload = function () {
     createSettingPricePage(numberOfFloors, numberOfRooms);
     generatePageOfArchives();
     generatePageOfAccount();
-    generateClock();
     generateFirstPage();
     generatePageOfOthersPrice();
+    generateCalendar();
 }
 
 // go to PMS
@@ -111,10 +117,10 @@ function showInformationOfResidentInSelectedRoom() {
         <input type="text" id="endDate" value="${selectedRoom.endDate}" readonly>
         
         <label for="durationOfReservation">Duration of Reservation:</label>
-        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfreservation} nights" readonly>
+        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfReservation} nights" readonly>
     </div>
     `;
-
+   
     document.getElementById('view-resident-information').innerHTML = pageOfInformation;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'view-resident-information';
@@ -198,7 +204,7 @@ function setInformation() {
 }
 
 // create page to modify information of selected room
- function modifyInformationOfSelectedRoom() {
+function modifyInformationOfSelectedRoom() {
     var pageOfModifyInformationOfSelectedRoom = `
    <div class="page-of-modify-information-of-selected-room"> 
 <form id="reservationForm">

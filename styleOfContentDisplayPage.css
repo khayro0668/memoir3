@@ -44,7 +44,12 @@ body {
 
 .menu-item:hover {
     background-color: white;
-    color: black;
+    color: rgb(0, 0, 0);
+}
+.menu-item:hover .icon-of-button i {
+    color: #3178C6; /* Change the color of the icon on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon to highlight it */
+    transition: all 0.3s ease; /* Smooth transition for the hover effect */
 }
 .menu-item.active {
     background-color: white; /* Example active color: light grey */
@@ -85,6 +90,17 @@ body {
     justify-content: center;
     padding-top: 35px;
     margin-left: 20px;
+}
+.icon-of-button i.active-icon {
+    color: #26abed; /* Green color for active icon */
+    text-shadow: 0 0 5px #23dca1; /* Optional: add a shadow for emphasis */
+}
+
+.icon-of-button i:hover {
+    color: #3178C6; /* Blue color on hover */
+    cursor: pointer; /* Cursor indicates clickable item */
+    transform: scale(1.1); /* Enlarge icon on hover */
+    transition: all 0.3s ease; /* Smooth transition for the hover effects */
 }
 
 .text-of-button {
