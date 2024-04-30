@@ -92,6 +92,7 @@ function reserveSelectedRoom() {
         <button type="button" id="displayInfoBtn" onclick="displayInfo()" disabled> Boocked </button>
     </form>
         `;
+        
     currentIdInModifysettings = 'unbookedRoom-selection-bar';
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';

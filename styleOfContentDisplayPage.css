@@ -35,25 +35,33 @@ body {
     align-items: center;
     margin-left: 10px;
     color: white;
-    
+
 }
 
 .menu-item i {
-    margin-right: 30px; /* Space between icon and text */
+    margin-right: 30px;
+    /* Space between icon and text */
 }
 
 .menu-item:hover {
     background-color: white;
     color: rgb(0, 0, 0);
 }
+
 .menu-item:hover .icon-of-button i {
-    color: #3178C6; /* Change the color of the icon on hover */
-    transform: scale(1.1); /* Slightly enlarge the icon to highlight it */
-    transition: all 0.3s ease; /* Smooth transition for the hover effect */
+    color: rgb(32, 162, 160);
+    /* Change the color of the icon on hover */
+    transform: scale(1.1);
+    /* Slightly enlarge the icon to highlight it */
+    transition: all 0.3s ease;
+    /* Smooth transition for the hover effect */
 }
+
 .menu-item.active {
-    background-color: white; /* Example active color: light grey */
-    color: #000000; /* Text color for active item */
+    background-color: white;
+    /* Example active color: light grey */
+    color: #000000;
+    /* Text color for active item */
 }
 
 
@@ -91,16 +99,23 @@ body {
     padding-top: 35px;
     margin-left: 20px;
 }
+
 .icon-of-button i.active-icon {
-    color: #26abed; /* Green color for active icon */
-    text-shadow: 0 0 5px #23dca1; /* Optional: add a shadow for emphasis */
+    color: rgb(32, 162, 160);
+    /* Green color for active icon */
+    text-shadow: 0 0 5px #23dca1;
+    /* Optional: add a shadow for emphasis */
 }
 
 .icon-of-button i:hover {
-    color: #3178C6; /* Blue color on hover */
-    cursor: pointer; /* Cursor indicates clickable item */
-    transform: scale(1.1); /* Enlarge icon on hover */
-    transition: all 0.3s ease; /* Smooth transition for the hover effects */
+    color: rgb(32, 162, 160);
+    /* Blue color on hover */
+    cursor: pointer;
+    /* Cursor indicates clickable item */
+    transform: scale(1.1);
+    /* Enlarge icon on hover */
+    transition: all 0.3s ease;
+    /* Smooth transition for the hover effects */
 }
 
 .text-of-button {
@@ -108,13 +123,15 @@ body {
     width: 120px;
     padding-top: 35px;
 }
-.menu-item i{
-   
-    color:  rgb(251, 225,117);
+
+.menu-item i {
+
+    color: rgb(251, 225, 117);
 }
-.hr-of-menu{
+
+.hr-of-menu {
     width: 80%;
-    color: rgb(216,243 ,249 );
+    color: rgb(216, 243, 249);
 
 }
 
@@ -173,50 +190,68 @@ body {
 
 /* ******************************************* */
 .scroll-container {
-    width: 950px; /* Fixed width of the outer container */
-    height: 570px; /* Fixed height of the outer container */
+    width: 950px;
+    /* Fixed width of the outer container */
+    height: 570px;
+    /* Fixed height of the outer container */
     overflow: scroll;
     scrollbar-width: none;
-    background-color: #e8e8e8; /* Light gray background for the scroll container */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
-    border: 1px solid #ccc; /* Optional: adds a border for better visibility */
+    background-color: #e8e8e8;
+    /* Light gray background for the scroll container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Adds shadow for depth */
+    border: 1px solid #ccc;
+    /* Optional: adds a border for better visibility */
 }
+
 .container {
     width: 100%;
-    
+
 }
+
 .card {
     background-color: #fff;
-    width: 560px; /* Width of each card */
-    height: 200px; /* Height of each card */
-    margin: 10px auto; /* Centers cards horizontally and adds vertical space */
+    width: 560px;
+    /* Width of each card */
+    height: 200px;
+    /* Height of each card */
+    margin: 10px auto;
+    /* Centers cards horizontally and adds vertical space */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: #333;
-    padding: 0 20px; /* Padding inside each card */
+    padding: 0 20px;
+    /* Padding inside each card */
     border-radius: 20px;
 }
-.card > .label, .card > input, .card > button {
-    flex: 1; /* Each child takes equal space */
+
+.card>.label,
+.card>input,
+.card>button {
+    flex: 1;
+    /* Each child takes equal space */
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the items horizontally */
-   
+    justify-content: center;
+    /* Center the items horizontally */
+
 }
+
 input[type="number"] {
     padding: 8px;
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 4px;
-    width: 90%; /* Limit width to not exceed its section */
+    width: 90%;
+    /* Limit width to not exceed its section */
 }
 
 .btn-of-others {
-   
-    padding: 10px 15px; 
+
+    padding: 10px 15px;
     font-size: 16px;
     color: white;
     background-color: #007BFF;
@@ -232,16 +267,20 @@ button:hover {
 }
 
 .label {
-    font-size: 25px; /* Matches the font size of the input and button */
-    color: #333; /* Dark color for readability */
+    font-size: 25px;
+    /* Matches the font size of the input and button */
+    color: #333;
+    /* Dark color for readability */
     font-family: fantasy;
-    justify-content: flex-start; /* Align label to the start */
+    justify-content: flex-start;
+    /* Align label to the start */
 }
 
 #page-of-price-of-others-settings {
-border: 1px solid black;
-height: 570px;
-width: 950px;
-background-color: red;
+    border: 1px solid black;
+    height: 570px;
+    width: 950px;
+    background-color: red;
 }
+
 /* ****************************************** */
