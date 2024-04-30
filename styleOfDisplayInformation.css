@@ -65,6 +65,7 @@ h2 {
 
 .dropdown-wrapper1 {
     margin-right: 160px;
+    display: flex;
     margin-left: 80px;
 
 }
@@ -77,6 +78,10 @@ h2 {
 .dropdown-wrapper4 {
     
     
+}
+.text-of-select{
+    border: 1px black solid;
+   
 }
 
 
