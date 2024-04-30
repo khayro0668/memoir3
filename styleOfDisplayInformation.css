@@ -341,12 +341,9 @@ input[type=submit] {
 /*******************************************************/
 .container11 {
     width: 950px;
-    height: 570px; /* Adjusted for content */
+    height: 500px; /* Adjusted for content */
     border: 1px solid #ccc;
-    margin: 100px auto;
-    margin-bottom: 50px;
-    /* padding: 20px; */
-    background-color: #fff;
+    background-color: #f4f4f4;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
 }
@@ -356,7 +353,6 @@ input[type=submit] {
     align-items: center;
     width: 500px;
     margin: 0 auto;
-    margin-top: 100px;
     padding: 20px 0;
 }
 .column-container {
