@@ -564,6 +564,7 @@ function generateClock() {
                 break;
         }
     }
+    
     var page = ``;
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {

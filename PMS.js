@@ -31,6 +31,7 @@ var valueOfDate = -1;
 var selectedCountry = -1;
 var selectedGender = -1;
 var typeOfSort = -1;
+var listOfNames = [];
 
 //onload function
 window.onload = function () {
@@ -45,7 +46,16 @@ window.onload = function () {
     generateFirstPage();
     generatePageOfOthersPrice();
     generateCalendar();
-    populateCountries();
+    // populateCountries();
+    initilaizeNames();
+}
+
+function initilaizeNames() {
+    for (let i = 0; i < hotel.listOfRooms.length; i++) {
+        if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+            listOfNames.push(hotel.listOfRooms[i].resident);
+        }
+    }
 }
 
 // go to PMS
@@ -137,7 +147,7 @@ function showInformationOfResidentInSelectedRoom() {
         <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfReservation} nights" readonly>
     </div>
     `;
-   
+
     document.getElementById('view-resident-information').innerHTML = pageOfInformation;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'view-resident-information';
