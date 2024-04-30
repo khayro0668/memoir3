@@ -1,170 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Styled Select Dropdowns with Labels</title>
+    <title>Day and Month Display</title>
     <style>
-        .select-container {
-            display: flex; /* Aligns the select elements in a row */
-            justify-content: center; /* Center aligns the select elements */
-            padding: 20px; /* Adds some spacing around the selects */
-            flex-wrap: wrap; /* Allows wrapping if screen is small */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
         }
-        .select-group {
-            display: flex;
-            align-items: center;
-            margin: 5px 10px; /* Space between groups */
-        }
-        select {
-            margin-left: 10px; /* Space after the label */
-            padding: 8px 30px 8px 10px; /* Padding for separation and to accommodate arrow */
-            border: 2px solid rgb(32, 162, 160); /* Border color */
-            background-color: #fff; /* Background color */
-            color: rgb(32, 162, 160); /* Text color */
-            font-size: 16px; /* Font size */
-            cursor: pointer; /* Cursor type */
-            border-radius: 5px; /* Border radius */
-            -webkit-appearance: none; /* Removes default styling by the browser */
-            -moz-appearance: none;
-            appearance: none;
-        }
-        select:hover {
-            background-color: rgb(230, 245, 245); /* Lighter tint for hover */
-        }
-        .label {
-            font-size: 16px; /* Matching font size for labels */
-            color: rgb(32, 162, 160); /* Label color to match select */
+
+        .day {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 5px;
+            width: 200px;
         }
     </style>
 </head>
+
 <body>
-    <div class="select-container">
-        <div class="select-group">
-           
-            <select>
-                <option value="">Select Option 1</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
-        </div>
-        <div class="select-group">
-           
-            <select>
-                <option value="">Select Option 2</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
-        </div>
-        <div class="select-group">
-           
-            <select>
-                <option value="">Select Option 3</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
-        </div>
-        <div class="select-group">
-            
-            <select>
-                <option value="">Select Option 4</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
-        </div>
-    </div>
-=======
-<meta charset="UTF-8">
-<title>Dropdown of Countries</title>
-<link rel="stylesheet" href="styles.css">
-<style>
-    /* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-}
+    <div id="days-container"></div>
 
-select {
-    width: 300px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+    <script>
+        function addDaysToDate(initialDate, days) {
+            const result = new Date(initialDate);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
 
-</style>
-</head>
-<body>
-<select id="countryDropdown" onchange="showSelectedCountry()">
-    <option value="">Select a country</option>
-    <!-- الخيارات ستضاف هنا بواسطة JavaScript -->
-</select>
+        function formatDate(date) {
+            return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+        }
 
-<script>
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
-    const countries = [
-        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
-        "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
-        "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
-        "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
-        "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei",
-        "Bulgaria", "Burkina Faso", "Burundi", "Côte d'Ivoire", "Cabo Verde",
-        "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad",
-        "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)",
-        "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)",
-        "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica",
-        "Dominican Republic", "Ecuador", "Egypt", "El Salvador",
-        "Equatorial Guinea", "Eritrea", "Estonia", "Swaziland",
-        "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia",
-        "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
-        "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary",
-        "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel",
-        "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya",
-        "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon",
-        "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
-        "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta",
-        "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
-        "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro",
-        "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia",
-        "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
-        "Niger", "Nigeria", "North Korea", "North Macedonia",
-        "Norway", "Oman", "Pakistan", "Palau", "Palestine State",
-        "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
-        "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda",
-        "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
-        "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
-        "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore",
-        "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa",
-        "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan",
-        "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan",
-        "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga",
-        "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
-        "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom",
-        "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
-        "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
-    ];
+        function displayDays() {
+            const daysContainer = document.getElementById("days-container");
+            const startDate = new Date();
+            for (let i = 0; i <= 30; i++) {
+                const currentDate = addDaysToDate(startDate, i);
+                const dayElement = document.createElement("div");
+                dayElement.className = "day";
+                dayElement.textContent = formatDate(currentDate);
+                daysContainer.appendChild(dayElement);
+            }
+        }
 
-    const dropdown = document.getElementById('countryDropdown');
-    countries.forEach(country => {
-        let option = document.createElement('option');
-        option.textContent = country;
-        option.value = country;
-        dropdown.appendChild(option);
-    });
-});
-
-function showSelectedCountry() {
-    const selectedCountry = document.getElementById('countryDropdown').value;
-    if (selectedCountry) {
-        alert('Selected country: ' + selectedCountry);
-    }
-}
-</script>
->>>>>>> 59cf6bc8f3fdd689bb028e62843b0ab8dc09e191
+        window.onload = function () {
+            displayDays();
+        };
+    </script>
 </body>
+
 </html>

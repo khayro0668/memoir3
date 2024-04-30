@@ -44,6 +44,7 @@ window.onload = function () {
     generatePageOfAccount();
     generateFirstPage();
     generatePageOfOthersPrice();
+    generateCalendar();
 }
 
 // go to PMS

@@ -87,7 +87,6 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                 </select>
             </div>
             <div class="dropdown-wrapper4">
-           
                 <select class="dropdown" id="dropdown4">
                     <option value="0">All</option>
                     <option value="1">Reserved</option>
@@ -545,22 +544,22 @@ function generateClock() {
         }
     }
 
-    if(typeOfSort !== -1){
+    if (typeOfSort !== -1) {
         switch (typeOfSort) {
             case 'sort-by-descending-order-start-date':
-                sortListByStartDate(targetResidents , 'D');
+                sortListByStartDate(targetResidents, 'D');
                 break;
-        
+
             case 'sort-by-ascending-order-start-date':
-                sortListByStartDate(targetResidents , 'A');
+                sortListByStartDate(targetResidents, 'A');
                 break;
-            
-            case 'sort-by-ascending-order-booking-period' :
-                sortListByDurationOfReservation(targetResidents , 'A');
+
+            case 'sort-by-ascending-order-booking-period':
+                sortListByDurationOfReservation(targetResidents, 'A');
                 break;
-            case 'sort-by-descending-order-booking-period' : 
-            sortListByDurationOfReservation(targetResidents , 'D');
-            break;
+            case 'sort-by-descending-order-booking-period':
+                sortListByDurationOfReservation(targetResidents, 'D');
+                break;
         }
     }
     var page = ``;
@@ -626,7 +625,7 @@ function generateMenuOfButtons() {
         <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-closed"></i></div><div class="text-of-button">Rooms</div></div>
         <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-calendar-days"></i></div><div class="text-of-button">Clock</div></div>
         <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
-           
+        <div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div> 
         `;
 
     if (currentUser === 'admin') {
@@ -688,6 +687,9 @@ function handleMenuAction(id) {
             break;
         case 'log-out':
             logOut();
+            break;
+        case 'calendar':
+            getCalendarPage();
             break;
         default:
             console.log('No action defined for:', id);
@@ -901,13 +903,13 @@ function sortListByStartDate(list, typeSort) {
     for (let i = 0; i < list.length - 1; i++) {
         for (let j = i + 1; j < list.length; j++) {
             if (typeSort === 'A') {
-                if (isDate1GreaterThanDate2(list[i].startDate , list[j].startDate) === true) {
+                if (isDate1GreaterThanDate2(list[i].startDate, list[j].startDate) === true) {
                     var temp = list[j];
                     list[j] = list[i];
                     list[i] = temp;
                 }
             } else if (typeSort === 'D') {
-                if (isDate1GreaterThanDate2(list[i].startDate , list[j].startDate) === false) {
+                if (isDate1GreaterThanDate2(list[i].startDate, list[j].startDate) === false) {
                     var temp = list[j];
                     list[j] = list[i];
                     list[i] = temp;
@@ -936,4 +938,48 @@ function sortListByDurationOfReservation(list, typeSort) {
             }
         }
     }
+}
+
+//////////////////////////////////////////////
+function addDaysToDate(initialDate, days) {
+    const result = new Date(initialDate);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+function formatDate(date) {
+    const options = { weekday: 'short', day: 'numeric' , month: 'short'};
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    return formattedDate.replace(/,/g, ''); // تزيل الفواصل
+}
+
+
+//generate calendar
+function generateCalendar() {
+    const startDate = new Date();
+    var page = ``;
+    for (let i = 1; i <= 28; i++) {
+        const currentDate = addDaysToDate(startDate, i);
+        page += `<div class="box-of-day">${formatDate(currentDate)}</div>`;
+    }
+
+    document.getElementById('days-in-calendar').innerHTML = page;
+
+    page = '<table>';
+    for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
+        if(hotel.listOfRooms[i].isReserved === 'Reserved'){
+          
+        }
+    }
+
+    page += '</table>';
+}
+
+//get calendar page
+function getCalendarPage() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-calendar';
+    document.getElementById(currentPage).style.display = 'block';
 }
