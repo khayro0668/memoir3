@@ -1,6 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Select Dropdowns with Labels</title>
+    <style>
+        .select-container {
+            display: flex; /* Aligns the select elements in a row */
+            justify-content: center; /* Center aligns the select elements */
+            padding: 20px; /* Adds some spacing around the selects */
+            flex-wrap: wrap; /* Allows wrapping if screen is small */
+        }
+        .select-group {
+            display: flex;
+            align-items: center;
+            margin: 5px 10px; /* Space between groups */
+        }
+        select {
+            margin-left: 10px; /* Space after the label */
+            padding: 8px 30px 8px 10px; /* Padding for separation and to accommodate arrow */
+            border: 2px solid rgb(32, 162, 160); /* Border color */
+            background-color: #fff; /* Background color */
+            color: rgb(32, 162, 160); /* Text color */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Cursor type */
+            border-radius: 5px; /* Border radius */
+            -webkit-appearance: none; /* Removes default styling by the browser */
+            -moz-appearance: none;
+            appearance: none;
+        }
+        select:hover {
+            background-color: rgb(230, 245, 245); /* Lighter tint for hover */
+        }
+        .label {
+            font-size: 16px; /* Matching font size for labels */
+            color: rgb(32, 162, 160); /* Label color to match select */
+        }
+    </style>
+</head>
+<body>
+    <div class="select-container">
+        <div class="select-group">
+           
+            <select>
+                <option value="">Select Option 1</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+        <div class="select-group">
+           
+            <select>
+                <option value="">Select Option 2</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+        <div class="select-group">
+           
+            <select>
+                <option value="">Select Option 3</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+        <div class="select-group">
+            
+            <select>
+                <option value="">Select Option 4</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+    </div>
+=======
 <meta charset="UTF-8">
 <title>Dropdown of Countries</title>
 <link rel="stylesheet" href="styles.css">
@@ -87,5 +165,6 @@ function showSelectedCountry() {
     }
 }
 </script>
+>>>>>>> 59cf6bc8f3fdd689bb028e62843b0ab8dc09e191
 </body>
 </html>
