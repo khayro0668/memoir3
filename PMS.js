@@ -45,6 +45,7 @@ window.onload = function () {
     generateFirstPage();
     generatePageOfOthersPrice();
     generateCalendar();
+    populateCountries();
 }
 
 // go to PMS
@@ -76,23 +77,38 @@ function selectRoom(room) {
 //function to get a page to reserve room
 function reserveSelectedRoom() {
     document.getElementById('reservation-of-room').innerHTML = `
-        <form id="bookingForm">
-        <label for="name">name:</label>
-        <input type="text" id="name" name="name" oninput="validateForm()"><br><br>
-        
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" oninput="validateForm()"><br><br>
-        
-        <label for="bookingDate">start date :</label>
-        <input type="date" id="bookingDate" name="bookingDate" oninput="validateForm()"><br><br>
-        
-        <label for="bookingDuration"> duration :</label>
-        <input type="number" id="bookingDuration" name="bookingDuration" oninput="validateForm()"><br><br>
-        
-        <button type="button" id="displayInfoBtn" onclick="displayInfo()" disabled> Boocked </button>
-    </form>
+    <div class="container11">
+    <div class="container22">
+        <div class="column-container">
+            <div class="column">
+                <label class="label-of-reserve" for="input1">First name</label>
+                <input class="input-of-reserve" type="text" id="input1">
+                <label class="label-of-reserve" for="input2">Last name</label>
+                <input class="input-of-reserve" type="text" id="input2">
+                <label class="label-of-reserve" for="input3">Duration (in days)</label>
+                <input class="input-of-reserve" type="number" id="input3">
+                <label class="label-of-reserve" for="input4">Start date</label>
+                <input class="input-of-reserve" type="date" id="input4">
+            </div>
+            <div class="column">
+                <label class="label-of-reserve" for="input5">Email</label>
+                <input class="input-of-reserve" type="email" id="input5">
+                <label class="label-of-reserve" for="input6">Arrival time</label>
+                <input class="input-of-reserve" type="time" id="input6">
+                <label class="label-of-reserve" for="input7">Credit card number</label>
+                <input class="input-of-reserve" type="text" id="input7">
+                <label class="label-of-reserve" for="input8">Country</label>
+                <select class="select-of-reserve" id="input8"></select>
+            </div>
+        </div>
+        <div class="button-container1">
+            <button class="btn-of-reserve" type="button" id="reserveButton" disabled>Reserve</button>
+            <button class="btn-of-reserve" type="button">Cancel</button>
+        </div>
+    </div>
+</div>
         `;
-        
+
     currentIdInModifysettings = 'unbookedRoom-selection-bar';
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
