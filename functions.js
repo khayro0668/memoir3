@@ -1178,3 +1178,10 @@ function getPageOfPayment() {
     currentPage = 'page-of-payment';
     document.getElementById(currentPage).style.display = 'block';
 }
+/*********************************************************/
+//generate page of bill
+function generatePageOfBill(){
+    var page = ``;
+
+
+}
