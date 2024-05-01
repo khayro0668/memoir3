@@ -1,4 +1,5 @@
 class Hotel {
+    nameOfHotel;
     listOfRooms;
     listOfAvailablePillows;
     listOfAvailableMattresses;
@@ -9,6 +10,7 @@ class Hotel {
     numberOfRooms;
 
     constructor() {
+        this.nameOfHotel = "wassim hotel";
         this.generateListOfRooms();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailableMattresses();
@@ -111,6 +113,9 @@ class Room {
     residentEmail;
     isReserved;
     price;
+    totalPayment;
+    remaningPayment;
+    paidPayment;
     durationOfreservation;
     startDate;
     endDate;
@@ -139,7 +144,7 @@ class Room {
             this.startDate = this.endDate;
             this.endDate = temp;
         }
-
+        
         this.durationOfReservation = calculateDaysBetweenDates(this.startDate, this.endDate);
         this.countdown = getCountdown();
         this.keyStatus = this.isReserved;
@@ -151,6 +156,9 @@ class Room {
         this.listOfAvailablePillows = [];
         this.countryOfResident = getRandomCountry();
         this.genderOfResident = getRandomGender();
+        this.totalPayment = 100 + Math.floor(Math.random() * 900);
+        this.remaningPayment = Math.floor(Math.random() * this.totalPayment);
+        this.paidPayment = this.totalPayment - this.remaningPayment;
     }
 
     setIsReserved(value) {
