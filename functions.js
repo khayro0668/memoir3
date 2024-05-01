@@ -564,7 +564,7 @@ function generateClock() {
                 break;
         }
     }
-    
+
     var page = ``;
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
@@ -831,7 +831,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
         "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
     ];
-    
+
     countries.forEach(country => {
         let option = document.createElement('option');
         option.textContent = country;
@@ -963,7 +963,7 @@ function addDaysToDate(initialDate, days) {
 }
 
 function formatDate(date) {
-    const options = { weekday: 'short', day: 'numeric' , month: 'short'};
+    const options = { weekday: 'short', day: 'numeric', month: 'short' };
     const formattedDate = date.toLocaleDateString('en-US', options);
     return formattedDate.replace(/,/g, ''); // تزيل الفواصل
 }
@@ -971,32 +971,84 @@ function formatDate(date) {
 
 //generate calendar
 function generateCalendar() {
-    const startDate = new Date();
+    var startDate = new Date();
     var page = ``;
-    for (let i = 1; i <= 28; i++) {
-        const currentDate = addDaysToDate(startDate, i);
+    for (let i = 0; i < 28; i++) {
+        var currentDate = addDaysToDate(startDate, i);
         page += `<div class="box-of-day">${formatDate(currentDate)}</div>`;
     }
 
     document.getElementById('days-in-calendar').innerHTML = page;
 
     page = '<table>';
-    for(let i = 0 ; i < hotel.listOfRooms.length ; i++){
-        if(hotel.listOfRooms[i].isReserved === 'Reserved'){
-          page += '<tr>';
-          page += '<td>';
-          page += `jhkjhh`;
-          page += '</td>'
+    for (let i = 0; i < hotel.listOfRooms.length; i++) {
+        if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+            page += '<tr>';
+            page += '<td>';
+            page += '<div style="display:flex;background-color: red;">'
+            page += `
+           <div class="box-of-room-in-calendar">
+           floor ${hotel.listOfRooms[i].floorNumber}
+           room ${hotel.listOfRooms[i].roomNumber}
+           </div>
+          `;
+            startDate = new Date();
+            //   for(let j = 0 ; j < 28 ; j++){
+            //     var currentDate = addDaysToDate(startDate, j);
+            //     var color;
+            //     if(isDateWithinRange(hotel.listOfRooms[i].startDate , hotel.listOfRooms[i].endDate , currentDate) === true){
+            //       color = 'green';
+            //     }else{
+            //         color = 'red';
+            //     }
 
-          for(let j = 1 ; j <= 28 ; j++){
-            page += '<td></td>';
-          }
-          page += '</tr>';
+            //     page += `
+            //      <div class="box-of-day-in-calendar" style="background-color: ${color};border: 1px solid ${color};">
+            //      </div>`;
+            //   }
+            let j = 0;
+            var currentDate = addDaysToDate(startDate, j);
+            while (isDateWithinRange(hotel.listOfRooms[i].startDate, hotel.listOfRooms[i].endDate, currentDate) === false && j < 28) {
+                page += `
+             <div class="box-of-day-in-calendar" style="background-color: red;border: 1px solid red;">
+             </div>`;
+                j++;
+                currentDate = addDaysToDate(startDate, j);
+            }
+            var k = 0;
+            var val;
+            var cur;
+            while (isDateWithinRange(hotel.listOfRooms[i].startDate, hotel.listOfRooms[i].endDate, currentDate) === true && j < 28) {
+                val = (k === 0 ? 20 : 0);
+                j++;
+                k = 1;
+                currentDate = addDaysToDate(startDate, j);
+                if (isDateWithinRange(hotel.listOfRooms[i].startDate, hotel.listOfRooms[i].endDate, currentDate) === false || j === 28) {
+                    cur = 20;
+                } else {
+                    cur = 0;
+                }
+                page += `
+             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;">
+             </div>`;
+            }
+
+            while (isDateWithinRange(hotel.listOfRooms[i].startDate, hotel.listOfRooms[i].endDate, currentDate) === false && j < 28) {
+                page += `
+             <div class="box-of-day-in-calendar" style="background-color: red;border: 1px solid red;">
+             </div>`;
+                j++;
+                currentDate = addDaysToDate(startDate, j);
+            }
+
+            page += '</div>'
+            page += '</td>'
+            page += '</tr>';
         }
     }
 
     page += '</table>';
-    
+
 
     document.getElementById('boocked-in-days').innerHTML = page;
 }
@@ -1054,6 +1106,7 @@ function populateCountries() {
         "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
         "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
     ];
+
     countries.forEach(country => {
         const option = document.createElement('option');
         option.textContent = country;
@@ -1061,7 +1114,7 @@ function populateCountries() {
         select.appendChild(option);
     });
 }
- // Ensures that populateCountries is called when the page is loaded
+// Ensures that populateCountries is called when the page is loaded
 
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1069,7 +1122,7 @@ function validateEmail(email) {
 }
 
 function checkForm() {
-    const inputs = document.querySelectorAll('input[type=text], input[type=number], input[type=date], input[type=email], input[type=time], select');
+    const inputs = document.getElementById('reservation-of-room').querySelectorAll('input[type=text], input[type=number], input[type=date], input[type=email], input[type=time], select');
     const reserveButton = document.getElementById('reserveButton');
     let isFormValid = Array.from(inputs).every(input => {
         if (input.type === "number") {
@@ -1082,8 +1135,4 @@ function checkForm() {
 
     reserveButton.disabled = !isFormValid;
 }
-
-document.querySelectorAll('input, select').forEach(input => {
-    input.addEventListener('input', checkForm);
-});
 //************************************************ */

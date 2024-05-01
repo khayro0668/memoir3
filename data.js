@@ -5,6 +5,8 @@ class Hotel {
     listOfAvailabelServices;
     archives;
     listOfAccount;
+    numberOfFloors;
+    numberOfRooms;
 
     constructor() {
         this.generateListOfRooms();
@@ -13,7 +15,8 @@ class Hotel {
         this.generateListOfAvailabelServices();
         this.generateArchive();
         this.generateListOfAccount();
-
+        this.numberOfFloors = 10;
+        this.numberOfRooms = 30;
     }
 
     generateListOfAccount() {
@@ -27,8 +30,8 @@ class Hotel {
 
     generateListOfRooms() {
         this.listOfRooms = [];
-        for (let i = 1; i <= 40; i++) {
-            for (let j = 1; j <= 100; j++) {
+        for (let i = 1; i <= 10; i++) {
+            for (let j = 1; j <= 30; j++) {
                 var room = new Room(i, j);
                 this.listOfRooms.push(room);
             }
