@@ -46,7 +46,6 @@ window.onload = function () {
     generateFirstPage();
     generatePageOfOthersPrice();
     generateCalendar();
-    // populateCountries();
     initilaizeNames();
 }
 
@@ -104,10 +103,10 @@ function reserveSelectedRoom() {
                 <label class="label-of-reserve" for="input5">Email</label>
                 <input class="input-of-reserve" type="email" id="input5">
                 <label class="label-of-reserve" for="input6">Arrival time</label>
-                <input class="input-of-reserve" type="time" id="input6">
-                <label class="label-of-reserve" for="input7">Credit card number</label>
+                <input class="input-of-reserve" type="time" id="input6" style="width:200px;">
+                <label class="label-of-reserve" for="input7" style="padding:8px;margin-top:10px;">Credit card number</label>
                 <input class="input-of-reserve" type="text" id="input7">
-                <label class="label-of-reserve" for="input8">Country</label>
+                <label class="label-of-reserve" for="input8" >Country</label>
                 <select class="select-of-reserve" id="input8"></select>
             </div>
         </div>
@@ -123,6 +122,11 @@ function reserveSelectedRoom() {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'reservation-of-room';
+    populateCountries();
+    document.getElementById('reservation-of-room').querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', checkForm);
+    });
+    
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
 }
 

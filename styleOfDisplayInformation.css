@@ -336,16 +336,11 @@ input[type=submit] {
 }
 
 
-
-
 /*******************************************************/
 .container11 {
     width: 950px;
     height: 500px; /* Adjusted for content */
-    border: 1px solid #ccc;
-    background-color: #f4f4f4;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    background-color:white;
 }
 .container22 {
     display: flex;
@@ -369,12 +364,20 @@ input[type=submit] {
     font-size: 16px;
     font-family: 'Lato', sans-serif;
 }
-.input-of-reserve, .select-of-reserve {
+.input-of-reserve {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s;
 }
+
+.select-of-reserve {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
 .input-of-reserve:focus, .select-of-reserve:focus {
     border-color: #0056b3;
     outline: none;

@@ -1013,6 +1013,9 @@ function getCalendarPage() {
 // ***************************************************
 function populateCountries() {
     const select = document.getElementById('input8');
+    if(!select) {
+        alert(';;;');
+    }
     const countries = [
         "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
         "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
@@ -1054,6 +1057,7 @@ function populateCountries() {
         "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
         "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
     ];
+
     countries.forEach(country => {
         const option = document.createElement('option');
         option.textContent = country;
@@ -1069,7 +1073,7 @@ function validateEmail(email) {
 }
 
 function checkForm() {
-    const inputs = document.querySelectorAll('input[type=text], input[type=number], input[type=date], input[type=email], input[type=time], select');
+    const inputs = document.getElementById('reservation-of-room').querySelectorAll('input[type=text], input[type=number], input[type=date], input[type=email], input[type=time], select');
     const reserveButton = document.getElementById('reserveButton');
     let isFormValid = Array.from(inputs).every(input => {
         if (input.type === "number") {
@@ -1082,8 +1086,4 @@ function checkForm() {
 
     reserveButton.disabled = !isFormValid;
 }
-
-document.querySelectorAll('input, select').forEach(input => {
-    input.addEventListener('input', checkForm);
-});
 //************************************************ */
