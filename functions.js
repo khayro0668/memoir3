@@ -587,15 +587,36 @@ function sortListByName(targetResidents, order) {
         }
     });
 }
+function showSuggestions() {
+    var input, filter, ul, li, i;
+    input = document.getElementById('searchName');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById('suggestions');
+    ul.innerHTML = '';
+
+    if (filter) {
+        for (i = 0; i < listOfNames.length; i++) {
+            if (listOfNames[i].toUpperCase().includes(filter)) {
+                li = document.createElement('li');
+                li.textContent = listOfNames[i];
+                ul.appendChild(li);
+            }
+        }
+    } else {
+        ul.innerHTML = ''; // Clear suggestions if input is empty
+    }
+}
+
+
 
 
 //generate clock
 function generateClock() {
     var targetResidents = [];
-    var searchName = document.getElementById('searchName').value; // Assuming 'searchInput' is the ID of your search input element
+    var searchName = document.getElementById('searchName').value.trim().toUpperCase(); // Assuming 'searchName' is the ID of your search input element
 
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
-        if (isDesiredResident(hotel.listOfRooms[i]) && hotel.listOfRooms[i].resident === searchName) {
+        if (isDesiredResident(hotel.listOfRooms[i]) && hotel.listOfRooms[i].resident.toUpperCase().includes(searchName)) {
             targetResidents.push(hotel.listOfRooms[i]);
         }
     }
