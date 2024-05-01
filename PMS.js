@@ -49,6 +49,7 @@ window.onload = function () {
     generatePageOfOthersPrice();
     generateCalendar();
     initilaizeNames();
+    goToPMS();
 }
 
 function initilaizeNames() {
@@ -128,7 +129,7 @@ function reserveSelectedRoom() {
     document.getElementById('reservation-of-room').querySelectorAll('input, select').forEach(input => {
         input.addEventListener('input', checkForm);
     });
-    
+
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
 }
 
