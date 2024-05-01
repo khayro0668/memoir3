@@ -678,7 +678,7 @@ function generateMenuOfButtons() {
     }
 
     menu += `
-    <div class="menu-item" id="payment" onclick=""><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div>
+    <div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div>
     <hr class="hr-of-menu">
     <div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
     <div id="div-of-acc">
@@ -1095,3 +1095,51 @@ function checkForm() {
     reserveButton.disabled = !isFormValid;
 }
 //************************************************ */
+
+//generate page of payment
+function generatePageOfPayment() {
+    var page = ``;
+    for (let i = 0; i < hotel.listOfRooms.length; i++) {
+        if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+            page += `
+            <div class="current-resident">
+               <div class="part-of-name-resident">
+                 <h2>
+                 ${hotel.listOfRooms[i].resident}
+                 </h2>
+               </div>
+               <div class="part-of-room">
+                   <h2>
+                     floor : ${hotel.listOfRooms[i].floorNumber} , room : ${hotel.listOfRooms[i].roomNumber}
+                   </h2>
+               </div>
+               <div class="part-of-contdown">
+                  <h2>
+                   remaning payment : ${hotel.listOfRooms[i].remaningPayment}
+                  </h2>
+               </div>
+               <div class="part-of-gender-in-clock">
+                  <h2>
+                   paid payment : ${hotel.listOfRooms[i].paidPayment}
+                  </h2>
+               </div>
+               <div class="part-of-country-in-clock">
+                  <h2>
+                   total payment : ${hotel.listOfRooms[i].totalPayment}
+                  </h2>
+               </div>
+            </div>`
+        }
+    }
+
+    document.getElementById('page-of-payment').innerHTML = page;
+}
+
+//get page of payment
+function getPageOfPayment() {
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-payment';
+    document.getElementById(currentPage).style.display = 'block';
+}

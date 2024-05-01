@@ -50,6 +50,7 @@ window.onload = function () {
     generateCalendar();
     initilaizeNames();
     goToPMS();
+    generatePageOfPayment();
 }
 
 function initilaizeNames() {
