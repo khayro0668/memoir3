@@ -6,8 +6,8 @@ var valueOfBedsNumberDropdawn = -1;
 var valueOfReservedDropdawn = -1;
 var valueOfFloorNumberDropdawnInSettings = -1;
 var valueOfRoomNumberDropdawnInSettings = -1;
-var numberOfFloors = 40;
-var numberOfRooms = 100;
+var numberOfFloors;
+var numberOfRooms;
 var minNumberOfBeds = 2;
 var maxNumberOfBeds = 4;
 var currentIdInDisplayInformation;
@@ -36,6 +36,8 @@ var listOfNames = [];
 //onload function
 window.onload = function () {
     hotel = new Hotel();
+    numberOfFloors = hotel.numberOfFloors;
+    numberOfRooms = hotel.numberOfRooms;
     currentPage = 'login-page';
     createBarOfOptionsOfselectedRoom();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);

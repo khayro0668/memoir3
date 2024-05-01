@@ -23,3 +23,15 @@
     scrollbar-width: none;
     overflow: scroll;
 }
+
+.box-of-room-in-calendar {
+    border: 1px solid black;
+    height: 50px;
+    width: 55px;
+    background-color: white;
+}
+
+.box-of-day-in-calendar {
+    height: 50px;
+    width: 30px;
+}

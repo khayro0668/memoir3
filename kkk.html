@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylish Centered Input Form with Advanced Hover</title>
+    <title>Enhanced Stylish Form Layout</title>
     <style>
         body {
-<<<<<<< HEAD
             /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f9;
             color: #333; */
@@ -20,48 +20,24 @@
         }
 
         .container22 {
-=======
->>>>>>> 2610de8c358db59fcc2d5041083085d10c03e1f6
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-<<<<<<< HEAD
             width: 500px;
             margin: 0 auto;
             padding: 20px 0;
         }
 
         .column-container {
-=======
-            height: 100vh; /* Use full viewport height */
-            margin: 0;
-            background-color: #f0f0f0; /* Light grey background */
-            font-family: 'Arial', sans-serif; /* Modern font for better readability */
-        }
-        .container111 {
-            display: flex;
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            height: 500px;
-            width: 950px;
-           border-radius: 20px;
-            padding: 20px;
-            background-color:#f4f4f4; /* White background */
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
-        }
-        .container222 {
->>>>>>> 2610de8c358db59fcc2d5041083085d10c03e1f6
             display: flex;
             justify-content: space-between;
-            width: 100%; /* Use available space */
+            width: 100%;
         }
 
         .column {
             display: flex;
             flex-direction: column;
-            width: 48%; /* Slightly less than half to account for any spacing or borders */
         }
-<<<<<<< HEAD
 
         .label-of-reserve {
             margin: 8px 0;
@@ -70,20 +46,11 @@
         }
 
         .input-of-reserve {
-=======
-        .label-of-modifying {
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333; /* Dark grey for text */
-        }
-        .input-of-modifying, .btn11, .btn22 {
-            margin-bottom: 20px;
->>>>>>> 2610de8c358db59fcc2d5041083085d10c03e1f6
             padding: 8px;
-            border-radius: 4px; /* Rounded corners */
-            border: 1px solid #ccc; /* Subtle border styling */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
         }
-<<<<<<< HEAD
 
         .select-of-reserve {
             padding: 8px;
@@ -111,24 +78,9 @@
             color: white;
             border: none;
             border-radius: 5px;
-=======
-        .input-of-modifying {
-            background-color: #fafafa; /* Light grey background for inputs */
-        }
-        .btn11, .btn22 {
-            width: 70%; /* Maintaining button width */
-            height: 40px; /* Specified height for buttons */
-            background-color: rgb(32,162,160); /* Blue background for buttons */
-            color: white; /* Text color */
-            font-weight: bold;
->>>>>>> 2610de8c358db59fcc2d5041083085d10c03e1f6
             cursor: pointer;
-            margin-left: 75px;
-            margin-top: 20px;
-            border: none; /* No border for buttons */
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Smooth transition for multiple effects */
+            transition: background-color 0.3s, transform 0.3s;
         }
-<<<<<<< HEAD
 
         .btn-of-reserve:hover {
             background-color: rgb(28, 146, 144);
@@ -138,43 +90,41 @@
         .btn-of-reserve:disabled {
             background-color: #ccc;
             cursor: not-allowed;
-=======
-        .btn11:hover, .btn22:hover {
-            background-color:#0056b3 rgb(32,162,160); /* Unique hover color */
-            transform: scale(1.05); /* Slightly enlarges the button */
-            box-shadow: 0 5px 15px#0056b3; /* Adds a colored shadow that matches the hover color */
->>>>>>> 2610de8c358db59fcc2d5041083085d10c03e1f6
         }
     </style>
 </head>
+
 <body>
-    <div class="container111">
-        <div class="container222">
-            <div class="column">
-                <label class="label-of-modifying" for="input1">Name</label>
-                <input class="input-of-modifying" type="text" id="input1" name="input1">
-                <label class="label-of-modifying" for="input2">Email</label>
-                <input class="input-of-modifying" type="email" id="input2" name="input2">
-                <label class="label-of-modifying" for="input3">Duration(in days)</label>
-                <input class="input-of-modifying" type="number" id="input3" name="input3">
-                <label class="label-of-modifying" for="input4">Vip pillows number</label>
-                <input class="input-of-modifying" type="number" id="input4" name="input4">
-                <button type="button" class="btn11">Submit</button>
+    <div class="container11">
+        <div class="container22">
+            <div class="column-container">
+                <div class="column">
+                    <label class="label-of-reserve" for="input1">First name</label>
+                    <input class="input-of-reserve" type="text" id="input1">
+                    <label class="label-of-reserve" for="input2">Last name</label>
+                    <input class="input-of-reserve" type="text" id="input2">
+                    <label class="label-of-reserve" for="input3">Duration (in days)</label>
+                    <input class="input-of-reserve" type="number" id="input3">
+                    <label class="label-of-reserve" for="input4">Start date</label>
+                    <input class="input-of-reserve" type="date" id="input4">
+                </div>
+                <div class="column">
+                    <label class="label-of-reserve" for="input5">Email</label>
+                    <input class="input-of-reserve" type="email" id="input5">
+                    <label class="label-of-reserve" for="input6">Arrival time</label>
+                    <input class="input-of-reserve" type="time" id="input6">
+                    <label class="label-of-reserve" for="input7">Credit card number</label>
+                    <input class="input-of-reserve" type="text" id="input7">
+                    <label class="label-of-reserve" for="input8">Country</label>
+                    <select class="select-of-reserve" id="input8"></select>
+                </div>
             </div>
-            <div class="column">
-                <label class="label-of-modifying" for="input5">TV number</label>
-                <input class="input-of-modifying" type="number" id="input5" name="input5">
-                <label class="label-of-modifying" for="input6">Chairs number</label>
-                <input class="input-of-modifying" type="number" id="input6" name="input6">
-                <label class="label-of-modifying" for="input7">Snacks number</label>
-                <input class="input-of-modifying" type="number" id="input7" name="input7">
-                <label class="label-of-modifying" for="input8">Beds number</label>
-                <input class="input-of-modifying" type="number" id="input8" name="input8">
-                <button type="button" class="btn22">Cancel</button>
+            <div class="button-container1">
+                <button class="btn-of-reserve" type="button" id="reserveButton" disabled>Reserve</button>
+                <button class="btn-of-reserve" type="button">Cancel</button>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 
     <script>
         const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
@@ -217,7 +167,6 @@
         });
 
     </script>
-=======
->>>>>>> 2610de8c358db59fcc2d5041083085d10c03e1f6
 </body>
+
 </html>
