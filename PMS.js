@@ -239,26 +239,31 @@ function setInformation() {
 // create page to modify information of selected room
 function modifyInformationOfSelectedRoom() {
     var pageOfModifyInformationOfSelectedRoom = `
-   <div class="page-of-modify-information-of-selected-room"> 
-<form id="reservationForm">
-    <label for="name" style="display:'block';margin:10px 0">name:</label>
-    <input type="text" id="name" name="name" value="${selectedRoom.resident}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
-
-    <label for="email" style="display:'block';margin:10px 0">E-mail:</label>
-    <input type="email" id="email" name="email" value="${selectedRoom.residentEmail}" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
-
-    <label for="startDate" style="display:'block';margin:10px 0">start date:</label>
-    <input type="date" id="startDate" name="startDate" ${selectedRoom.startDate} style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
-
-    <label for="duration" style="display:'block';margin:10px 0">reservation period(in days):</label>
-    <input type="number" id="duration" name="duration" ${selectedRoom.durationOfreservation} style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
-
-    <label for="pillows" style="display:'block';margin:10px 0">pillows number:</label>
-    <input type="number" id="pillows" name="pillows" min="1" style="margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">
-
-    <button type="button" onclick="cancelReservation() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;">cancel resrvation</button>
-    <button type="button" onclick="submitForm() style="cursor:pointer;margin:5px 0;display:block;padding:10px;border: 1px solid #005A9C;border-radius:5px;"">show infos</button>
-</form>
+    <div class="container111">
+    <div class="container222">
+        <div class="column1">
+            <label class="label-of-modify" for="input1">Name</label>
+            <input class="lnput-of-modify" type="text" id="input1" name="input1">
+            <label class="label-of-modify" for="input2">Email</label>
+            <input class="lnput-of-modify" type="email" id="input2" name="input2">
+            <label class="label-of-modify" for="input3">Duration(in days)</label>
+            <input class="lnput-of-modify" type="number" id="input3" name="input3">
+            <label class="label-of-modify" for="input4">Vip pillows number</label>
+            <input class="lnput-of-modify" type="number" id="input4" name="input4">
+            <button type="button" class="btn1">Update</button>
+        </div>
+        <div class="column1">
+            <label class="label-of-modify" for="input5">TV number</label>
+            <input class="lnput-of-modify" type="number" id="input5" name="input5">
+            <label class="label-of-modify" for="input6">Chairs number</label>
+            <input class="lnput-of-modify" type="number" id="input6" name="input6">
+            <label class="label-of-modify" for="input7">Snacks number</label>
+            <input class="lnput-of-modify" type="number" id="input7" name="input7">
+            <label class="label-of-modify" for="input8">Beds number</label>
+            <input class="lnput-of-modify" type="number" id="input8" name="input8">
+            <button type="button" class="btn2">Cancel reservation</button>
+        </div>
+    </div>
 </div>
 `;
 
