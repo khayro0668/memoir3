@@ -24,7 +24,7 @@ var accounts = [
     { id: 4, name: "younes", password: "1" }
 ];
 
-var statusOfLogIn;
+var statusOfLogIn = 'admin';
 var valueOfFirstDateInPeriode = -1;
 var valueOfSecondeDateInPeriode = -1;
 var valueOfDate = -1;
@@ -49,8 +49,9 @@ window.onload = function () {
     generatePageOfOthersPrice();
     generateCalendar();
     initilaizeNames();
-    goToPMS();
     generatePageOfPayment();
+    rempleID();
+    goToPMS();
 }
 
 function initilaizeNames() {

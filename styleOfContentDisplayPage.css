@@ -5,12 +5,52 @@ body {
     justify-content: center;
 }
 
+#in-logo {
+    border: 7px solid rgb(32, 162, 160);
+}
+
+#seconde-hr {
+    background-color: rgb(251, 225, 117);
+    width: 80%;
+    height: 1px;
+    margin-left: 30px;
+}
+
+.remaning-div {
+    background-color: rgb(32, 162, 160);
+    height: 138px;
+    width: 248.5px;
+    border-bottom-left-radius: 20px;
+}
+
+.container-of-part-in-options-logo {
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    height: 120px;
+    width: 248.5px;
+    background-color: rgb(32, 162, 160);
+}
+
+#first-hr {
+    background-color: rgb(251, 225, 117);
+    width: 80%;
+    margin-left: 30px;
+    height: 1px;
+}
+
 .pms-app {
     display: flex;
     width: 1200px;
     height: 570px;
     background-color: white;
     border-radius: 20px;
+}
+
+.container-of-part-in-options {
+    height: max-content;
+    width: 248.5px;
+    background-color: rgb(32, 162, 160);
 }
 
 .menu-of-options {
@@ -21,7 +61,7 @@ body {
     width: 250px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    background-color: rgb(32, 162, 160);
+    /* background-color: rgb(32, 162, 160); */
 }
 
 .menu-item {
