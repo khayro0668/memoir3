@@ -40,6 +40,43 @@ const countries = [
     "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
 ];
 
+var idOfButtons;
+var idOfContainerOfButtons;
+
+function rempleID() {
+
+    idOfButtons = [];
+
+    idOfButtons.push('in-logo');
+    idOfButtons.push('first-hr');
+    idOfButtons.push('rooms');
+    idOfButtons.push('clock');
+    idOfButtons.push('settings');
+    idOfButtons.push('calendar');
+    if (currentUser === 'admin') {
+        idOfButtons.push('historique');
+    }
+    idOfButtons.push('payment');
+    idOfButtons.push('seconde-hr');
+    idOfButtons.push('log-out');
+
+    idOfContainerOfButtons = [];
+
+    idOfContainerOfButtons.push('logo');
+    idOfContainerOfButtons.push('container-of-part-in-options-01');
+    idOfContainerOfButtons.push('container-of-part-in-options-02');
+    idOfContainerOfButtons.push('container-of-part-in-options-03');
+    idOfContainerOfButtons.push('container-of-part-in-options-04');
+    idOfContainerOfButtons.push('container-of-part-in-options-05');
+    if (currentUser === 'admin') {
+        idOfContainerOfButtons.push('container-of-part-in-options-06');
+    }
+
+    idOfContainerOfButtons.push('container-of-part-in-options-07');
+    idOfContainerOfButtons.push('container-of-part-in-options-08');
+    idOfContainerOfButtons.push('container-of-part-in-options-09');
+
+}
 //view availabel rooms
 function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
     names = [];
@@ -661,29 +698,82 @@ function getPageOfClock() {
     document.getElementById(currentPage).style.display = 'block';
 }
 
+//find
+function searchForID(id) {
+    for (let i = 0; i < idOfButtons.length; i++) {
+        if (idOfButtons[i] === id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+//initilaize some style
+function someStyle(buttonID) {
+    for (let i = 0; i < idOfButtons.length; i++) {
+
+        if (searchForID(idOfButtons[i]) === false || idOfButtons[i] === 'in-logo') {
+            continue;
+        }
+
+        if (idOfButtons[i] !== 'seconde-hr' && idOfButtons[i] !== 'first-hr') {
+            document.getElementById(idOfButtons[i]).style.borderBottomRightRadius = '0px';
+            document.getElementById(idOfButtons[i]).style.borderTopRightRadius = '0px';
+            document.getElementById(idOfButtons[i]).style.backgroundColor = 'transparent';
+        }
+
+        document.getElementById(idOfContainerOfButtons[i]).style.borderBottomRightRadius = '0px';
+        document.getElementById(idOfContainerOfButtons[i]).style.borderTopRightRadius = '0px';
+        document.getElementById(idOfContainerOfButtons[i]).style.backgroundColor = 'rgb(32, 162, 160)';
+    }
+
+    document.getElementById(buttonID).style.backgroundColor = 'white';
+
+    for (let i = 0; i < idOfButtons.length; i++) {
+        if (buttonID === idOfButtons[i]) {
+            
+            if (i === 0) {
+                document.getElementById(idOfButtons[i + 1]).style.borderTopRightRadius = '20px';
+                document.getElementById(idOfContainerOfButtons[i + 1]).style.borderTopRightRadius = '20px';
+            } else {
+                if (i === idOfButtons.length - 1) {
+                    document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '20px';
+                    document.getElementById(idOfContainerOfButtons[i - 1]).style.borderBottomRightRadius = '20px';
+                } else {
+                    document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
+                    document.getElementById(idOfButtons[i + 1]).style.borderTopRightRadius = '40px';
+                    document.getElementById(idOfContainerOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
+                    document.getElementById(idOfContainerOfButtons[i + 1]).style.borderTopRightRadius = '40px';
+                }
+            }
+
+            break;
+        }
+    }
+
+}
+
 //generate menu of buttons
 function generateMenuOfButtons() {
     var menu = `
-    <div class="logo"></div>
-        <hr class="hr-of-menu">
-        <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div>
-        <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div>
-        <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
-        <div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div> 
+    <div class = "container-of-part-in-options-logo"><div class="logo" id="in-logo"></div></div>
+    <div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-02"><div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div></div>
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-04"><div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div></div>
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-05"><div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div></div>
         `;
 
     if (currentUser === 'admin') {
         menu += `
-        <div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-store"></i></div><div class="text-of-button">Archive</div></div>`;
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-06"><div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-store"></i></div><div class="text-of-button">Archive</div></div></div>`;
     }
 
     menu += `
-    <div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div>
-    <hr class="hr-of-menu">
-    <div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
-    <div id="div-of-acc">
-        <div class="current-user" id="current-user"></div>
-    </div>
+    <div class = "container-of-part-in-options" id="container-of-part-in-options-07"><div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div></div>
+    <div class = "container-of-part-in-options" id="container-of-part-in-options-08"><div class="hr-of-menu" id="seconde-hr"></div></div>
+    <div class = "container-of-part-in-options" id="container-of-part-in-options-09"><div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div></div>
+    <div class = "remaning-div"></div>
     `;
 
     document.getElementById('menu-of-options').innerHTML = menu;
@@ -697,6 +787,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const target = event.target.closest('.menu-item');
         if (target) {
             makeActive(target);
+            someStyle(target.id);
             handleMenuAction(target.id);  // Handle actions based on the item id
         }
     });
@@ -725,6 +816,7 @@ function makeActive(element) {
 
 
 function handleMenuAction(id) {
+
     switch (id) {
         case 'rooms':
             goToPageOfRooms();
@@ -738,14 +830,14 @@ function handleMenuAction(id) {
         case 'historique':
             getPageOfArchives();
             break;
-        case 'payment':
-            getPaymentPage();
-            break;
         case 'log-out':
             logOut();
             break;
         case 'calendar':
             getCalendarPage();
+            break;
+        case 'payment':
+            getPageOfPayment();
             break;
         default:
             console.log('No action defined for:', id);
@@ -831,7 +923,7 @@ function searchBar() {
 //select country?????????????????????????????????????????????/??
 document.addEventListener('DOMContentLoaded', function () {
     const dropdown = document.getElementById('countryDropdown');
-    
+
     countries.forEach(country => {
         let option = document.createElement('option');
         option.textContent = country;
@@ -993,19 +1085,6 @@ function generateCalendar() {
            </div>
           `;
             startDate = new Date();
-            //   for(let j = 0 ; j < 28 ; j++){
-            //     var currentDate = addDaysToDate(startDate, j);
-            //     var color;
-            //     if(isDateWithinRange(hotel.listOfRooms[i].startDate , hotel.listOfRooms[i].endDate , currentDate) === true){
-            //       color = 'green';
-            //     }else{
-            //         color = 'red';
-            //     }
-
-            //     page += `
-            //      <div class="box-of-day-in-calendar" style="background-color: ${color};border: 1px solid ${color};">
-            //      </div>`;
-            //   }
             let j = 0;
             var currentDate = addDaysToDate(startDate, j);
             while (isDateWithinRange(hotel.listOfRooms[i].startDate, hotel.listOfRooms[i].endDate, currentDate) === false && j < 28) {

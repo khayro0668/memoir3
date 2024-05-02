@@ -396,3 +396,90 @@ class Account {
         this.password = password;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function generateMenuOfButtons() {
+    var menu = `
+    <div class="logo"></div>
+        <hr class="hr-of-menu">
+        <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div>
+        <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div>
+        <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
+        <div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div> 
+        `;
+
+    if (currentUser === 'admin') {
+        menu += `
+        <div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-store"></i></div><div class="text-of-button">Archive</div></div>`;
+    }
+
+    menu += `
+    <div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div>
+    <hr class="hr-of-menu">
+    <div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
+    <div id="div-of-acc">
+        <div class="current-user" id="current-user"></div>
+    </div>
+    `;
+
+    document.getElementById('menu-of-options').innerHTML = menu;
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Attach a single event listener to the parent container
+    const menu = document.getElementById('menu-of-options');
+    menu.addEventListener('click', function (event) {
+        const target = event.target.closest('.menu-item');
+        if (target) {
+            makeActive(target);
+            handleMenuAction(target.id);  // Handle actions based on the item id
+        }
+    });
+
+    generateMenuOfButtons();  // Generate menu on load
+});
