@@ -615,33 +615,68 @@ function getPageOfQuantiteSettings() {
     document.getElementById(currentPage).style.display = 'flex';
 }
 
+function sortListByName(targetResidents, order) {
+    targetResidents.sort((a, b) => {
+        if (order === 'A') {
+            return a.resident.localeCompare(b.resident);
+        } else if (order === 'D') {
+            return b.resident.localeCompare(a.resident);
+        }
+    });
+}
+function showSuggestions() {
+    var input, filter, ul, li, i;
+    input = document.getElementById('searchName');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById('suggestions');
+    ul.innerHTML = '';
+
+    if (filter) {
+        for (i = 0; i < listOfNames.length; i++) {
+            if (listOfNames[i].toUpperCase().includes(filter)) {
+                li = document.createElement('li');
+                li.textContent = listOfNames[i];
+                ul.appendChild(li);
+            }
+        }
+    } else {
+        ul.innerHTML = ''; // Clear suggestions if input is empty
+    }
+}
+
+
+
+
 //generate clock
 function generateClock() {
     var targetResidents = [];
+    var searchName = document.getElementById('searchName').value.trim().toUpperCase(); // Assuming 'searchName' is the ID of your search input element
+
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
-        if (isDesiredResident(hotel.listOfRooms[i])) {
+        if (isDesiredResident(hotel.listOfRooms[i]) && hotel.listOfRooms[i].resident.toUpperCase().includes(searchName)) {
             targetResidents.push(hotel.listOfRooms[i]);
         }
     }
-
     if (typeOfSort !== -1) {
         switch (typeOfSort) {
             case 'sort-by-descending-order-start-date':
                 sortListByStartDate(targetResidents, 'D');
                 break;
-
             case 'sort-by-ascending-order-start-date':
                 sortListByStartDate(targetResidents, 'A');
                 break;
-
             case 'sort-by-ascending-order-booking-period':
                 sortListByDurationOfReservation(targetResidents, 'A');
                 break;
             case 'sort-by-descending-order-booking-period':
                 sortListByDurationOfReservation(targetResidents, 'D');
                 break;
+           
         }
     }
+    sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
+
+
 
     var page = ``;
     for (let i = 0; i < targetResidents.length; i++) {
@@ -1221,4 +1256,11 @@ function getPageOfPayment() {
     document.getElementById(currentPage).style.display = 'none';
     currentPage = 'page-of-payment';
     document.getElementById(currentPage).style.display = 'block';
+}
+/*********************************************************/
+//generate page of bill
+function generatePageOfBill(){
+    var page = ``;
+
+
 }

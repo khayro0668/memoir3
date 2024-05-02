@@ -1,168 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Stylish Form Layout</title>
+    <title>Hotel Bill</title>
     <style>
         body {
-            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333; */
+            font-family: Arial, sans-serif; /* Sets the font for readability */
+            background: #f4f4f4; /* Light grey background */
+            padding: 20px; /* Adds padding around the content */
+        }
+        table {
+            width: 100%; /* Full width of its container */
+            max-width: 600px; /* Maximum width of the table */
+            margin: 0 auto; /* Centers the table horizontally */
+            background: white; /* White background for the table */
+            border-collapse: collapse; /* Collapses border so they become one */
+        }
+        th, td {
+            padding: 10px; /* Padding inside each cell */
+            border: 1px solid #ddd; /* Light grey border around cells */
+            text-align: left; /* Aligns text to the left */
+        }
+        th {
+            background-color: #f2f2f2; /* Lighter grey background for header cells */
+        }
+        .total {
+            font-weight: bold; /* Makes the total row bold */
+            color: #333; /* Dark grey color for the text */
+        }
+        .name-of-hotel{
+            margin-left: 250px;
+        }
+        .container6{
+          border: #333 1px solid;
+          height: 499px;
+          width: 749px;
         }
 
-        .container11 {
-            width: 950px;
-            height: 500px;
-            /* Adjusted for content */
-            background-color: white;
-        }
-
-        .container22 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 500px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-
-        .column-container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .column {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .label-of-reserve {
-            margin: 8px 0;
-            font-size: 16px;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .input-of-reserve {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-        }
-
-        .select-of-reserve {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            transition: border-color 0.3s;
-        }
-
-        .input-of-reserve:focus,
-        .select-of-reserve:focus {
-            border-color: #0056b3;
-            outline: none;
-        }
-
-        .button-container1 {
-            margin-top: 30px;
-            text-align: center;
-            margin-right: 70px;
-        }
-
-        .btn-of-reserve {
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: rgb(32, 162, 160);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .btn11:hover, .btn22:hover {
-            /*  */
-            background-color:#0056b3 rgb(32,162,160); /* Unique hover color */
-            transform: scale(1.05); /* Slightly enlarges the button */
-            box-shadow: 0 5px 15px#0056b3; /* Adds a colored shadow that matches the hover color */
-        }
     </style>
 </head>
-
 <body>
-    <div class="container11">
-        <div class="container22">
-            <div class="column-container">
-                <div class="column">
-                    <label class="label-of-reserve" for="input1">First name</label>
-                    <input class="input-of-reserve" type="text" id="input1">
-                    <label class="label-of-reserve" for="input2">Last name</label>
-                    <input class="input-of-reserve" type="text" id="input2">
-                    <label class="label-of-reserve" for="input3">Duration (in days)</label>
-                    <input class="input-of-reserve" type="number" id="input3">
-                    <label class="label-of-reserve" for="input4">Start date</label>
-                    <input class="input-of-reserve" type="date" id="input4">
-                </div>
-                <div class="column">
-                    <label class="label-of-reserve" for="input5">Email</label>
-                    <input class="input-of-reserve" type="email" id="input5">
-                    <label class="label-of-reserve" for="input6">Arrival time</label>
-                    <input class="input-of-reserve" type="time" id="input6">
-                    <label class="label-of-reserve" for="input7">Credit card number</label>
-                    <input class="input-of-reserve" type="text" id="input7">
-                    <label class="label-of-reserve" for="input8">Country</label>
-                    <select class="select-of-reserve" id="input8"></select>
-                </div>
-            </div>
-            <div class="button-container1">
-                <button class="btn-of-reserve" type="button" id="reserveButton" disabled>Reserve</button>
-                <button class="btn-of-reserve" type="button">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
-
-        // Populate the select element with countries
-        function populateCountries() {
-            const select = document.getElementById('input8');
-            countries.forEach(country => {
-                const option = document.createElement('option');
-                option.textContent = country;
-                option.value = country;
-                select.appendChild(option);
-            });
-        }
-
-        window.onload = populateCountries; // Ensures that populateCountries is called when the page is loaded
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        function checkForm() {
-            const inputs = document.querySelectorAll('input[type=text], input[type=number], input[type=date], input[type=email], input[type=time], select');
-            const reserveButton = document.getElementById('reserveButton');
-            let isFormValid = Array.from(inputs).every(input => {
-                if (input.type === "number") {
-                    return input.value !== '' && parseInt(input.value, 10) >= 0;
-                } else if (input.type === "email") {
-                    return validateEmail(input.value);
-                }
-                return input.value !== '';
-            });
-
-            reserveButton.disabled = !isFormValid;
-        }
-
-        document.querySelectorAll('input, select').forEach(input => {
-            input.addEventListener('input', checkForm);
-        });
-
-    </script>
+    <div class="container6">
+    <h2 class="name-of-hotel">Hotel Bill Summary</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Guest name</td>
+                <td>$300.00</td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>$50.00</td>
+            </tr>
+            <tr>
+                <td>Start date</td>
+                <td>$100.00</td>
+            </tr>
+            <tr>
+                <td>End date</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Vip Tax</td>
+                <td>$30.00</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>$30.00</td>
+            </tr>
+            <tr class="total">
+                <td>Total Due</td>
+                <td>$480.00</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
-
 </html>

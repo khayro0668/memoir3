@@ -54,7 +54,8 @@
 .container222 {
   display: flex; 
   justify-content: space-between;
-  width: 700px;
+  width: 100%;
+  
 }
 
 .column {
