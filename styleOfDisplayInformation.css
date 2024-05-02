@@ -406,3 +406,41 @@ input[type=submit] {
     cursor: not-allowed;
 }
 /*******************************************************/
+/*style of bill*/
+.container6 {
+    
+    padding: 20px;
+    background: white; /* White background for the content area */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 550px; /* Reduced width */
+    margin-left: 190px;
+}
+.h2-of-bill {
+    text-align: center;
+    color: #37474f; /* Dark grey color for the title */
+    margin-bottom: 20px; /* Adds space below the title */
+}
+.table-of-bill {
+    width: 90%; /* Full width of its container */
+    border-collapse: collapse; /* Collapses border so they become one */
+    margin: auto;
+}
+.th-of-bill, .td-of-bill {
+    padding: 12px; /* Increased padding for better cell spacing */
+    border-bottom: 1px solid #ccc; /* Light grey border for a subtle look */
+    text-align: left; /* Aligns text to the left */
+}
+.th-of-bill {
+    background-color: #cfd8dc; /* Light blue-grey for header cells */
+}
+.td-of-bill {
+    background-color: #fafafa; /* Slightly off-white for a soft contrast */
+    color: #455a64; /* Dark blue-grey text for readability */
+}
+.total12 {
+    font-weight: bold; /* Keeps the total row bold */
+    background-color: #b0bec5; /* Medium blue-grey background for the total row */
+    color: #263238; /* Nearly black for high contrast text */
+}
+
+/******************************************************/

@@ -211,7 +211,7 @@ function createBarOfOptionsOfselectedRoom() {
     <div class="buuton-of-room-selection-bar">
     <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
      <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
-     <button onclick="getInformationOfPament()"><i class="fa-solid fa-credit-card"></i></button>
+     <button onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
      <button onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
      <button onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
     </div>
@@ -671,7 +671,7 @@ function generateClock() {
             case 'sort-by-descending-order-booking-period':
                 sortListByDurationOfReservation(targetResidents, 'D');
                 break;
-           
+
         }
     }
     sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
@@ -1259,8 +1259,63 @@ function getPageOfPayment() {
 }
 /*********************************************************/
 //generate page of bill
-function generatePageOfBill(){
-    var page = ``;
+function getInformationOfPayment() {
 
+    var page = `
+    <div class="container6">
+        <h2 class="h2-of-bill">Hotel Bill Summary</h2>
+        <table class="table-of-bill">
+            <thead>
+                <tr>
+                    <th class="th-of-bill">Description</th>
+                    <th class="th-of-bill">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td-of-bill">Guest Name</td>
+                    <td class="td-of-bill"> ${selectedRoom.resident}</td>
+                </tr>
+                <tr>
+                    <td class="td-of-bill">Duration</td>
+                    <td class="td-of-bill">${selectedRoom.durationOfReservation}</td>
+                </tr>
+                <tr>
+                    <td class="td-of-bill">Start Date</td>
+                    <td class="td-of-bill">${selectedRoom.startDate}</td>
+                </tr>
+                <tr>
+                    <td class="td-of-bill">End Date</td>
+                    <td class="td-of-bill">${selectedRoom.endDate}</td>
+                </tr>
+                <tr>
+                    <td class="td-of-bill">VIP Tax</td>
+                    <td class="td-of-bill">${selectedRoom.VipTax}</td>
+                </tr>
+                <tr>
+                    <td class="td-of-bill">Corrections</td>
+                    <td class="td-of-bill">${selectedRoom.Corrections}</td>
+                </tr>
+                <tr>
+                    <td class="td-of-bill">Room Number</td>
+                    <td class="td-of-bill">${selectedRoom.roomNumber}</td>
+                </tr>
+                <tr>
+                    <td class="td-of-bill">Floor Number</td>
+                    <td class="td-of-bill">${selectedRoom.floorNumber}</td>
+                </tr>
+                <tr class="total12">
+                    <td class="td-of-bill">Total Due</td>
+                    <td class="td-of-bill">${selectedRoom.totalPayment}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    `;
 
+    document.getElementById("view-payment-information").innerHTML = page;
+
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    currentIdInDisplayInformation = 'view-payment-information';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
 }
