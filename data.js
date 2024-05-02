@@ -107,6 +107,7 @@ class Room {
     floorNumber;
     roomNumber;
     id;
+    Corrections;
     resident;
     countryOfResident;
     genderOfResident;
@@ -130,6 +131,7 @@ class Room {
 
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
+        this.Corrections = Math.floor(Math.random()*100);
         this.roomNumber = roomNumber;
         this.id = this.floorNumber.toString() + '-' + this.roomNumber.toString();
         this.isReserved = getStatusOfReserved();
