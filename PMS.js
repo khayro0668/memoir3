@@ -16,7 +16,7 @@ var currentPage;
 //
 var selectedRoom;
 //
-var currentUser;
+var currentUser = 'admin';
 var names = [];
 var admin = { id: 0, name: "admin", password: "12" };
 var accounts = [

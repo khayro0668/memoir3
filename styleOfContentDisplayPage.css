@@ -18,7 +18,7 @@ body {
 
 .remaning-div {
     background-color: rgb(32, 162, 160);
-    height: 138px;
+    height: 148px;
     width: 248.5px;
     border-bottom-left-radius: 20px;
 }
@@ -29,6 +29,7 @@ body {
     border-top-left-radius: 20px;
     height: 120px;
     width: 248.5px;
+    
     background-color: rgb(32, 162, 160);
 }
 
@@ -123,7 +124,6 @@ body {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-    margin-top: 10px;
     margin-bottom: 15px;
     background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');
     background-size: cover;

@@ -681,8 +681,6 @@ function generateClock() {
     
     sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
 
-
-
     var page = ``;
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
@@ -750,24 +748,22 @@ function searchForID(id) {
 
 //initilaize some style
 function someStyle(buttonID) {
+   
     for (let i = 0; i < idOfButtons.length; i++) {
 
         if (searchForID(idOfButtons[i]) === false || idOfButtons[i] === 'in-logo') {
             continue;
         }
 
-        if (idOfButtons[i] !== 'seconde-hr' && idOfButtons[i] !== 'first-hr') {
-            document.getElementById(idOfButtons[i]).style.borderBottomRightRadius = '0px';
-            document.getElementById(idOfButtons[i]).style.borderTopRightRadius = '0px';
-            document.getElementById(idOfButtons[i]).style.backgroundColor = 'transparent';
-        }
-
+        document.getElementById(idOfButtons[i]).style.borderBottomRightRadius = '0px';
+        document.getElementById(idOfButtons[i]).style.borderTopRightRadius = '0px';
+        document.getElementById(idOfButtons[i]).style.backgroundColor = 'transparent';
         document.getElementById(idOfContainerOfButtons[i]).style.borderBottomRightRadius = '0px';
         document.getElementById(idOfContainerOfButtons[i]).style.borderTopRightRadius = '0px';
         document.getElementById(idOfContainerOfButtons[i]).style.backgroundColor = 'rgb(32, 162, 160)';
     }
 
-    document.getElementById(buttonID).style.backgroundColor = 'white';
+     document.getElementById(buttonID).style.backgroundColor = 'white';
 
     for (let i = 0; i < idOfButtons.length; i++) {
         if (buttonID === idOfButtons[i]) {
@@ -1250,7 +1246,7 @@ function generatePageOfPayment() {
             </div>`
         }
     }
-
+    
     document.getElementById('page-of-payment').innerHTML = page;
 }
 
