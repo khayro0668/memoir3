@@ -678,6 +678,7 @@ function generateClock() {
 
         }
     }
+    
     sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
 
 

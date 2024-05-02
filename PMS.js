@@ -13,7 +13,9 @@ var maxNumberOfBeds = 4;
 var currentIdInDisplayInformation;
 var currentIdInModifysettings;
 var currentPage;
+//
 var selectedRoom;
+//
 var currentUser;
 var names = [];
 var admin = { id: 0, name: "admin", password: "12" };

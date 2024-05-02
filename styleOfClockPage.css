@@ -96,14 +96,17 @@
 #type-of-search button:hover {
     background-color: #0056b3;
 }
+
 #searchContainer {
     position: relative;
     display: inline-block;
-    width: 200px; /* Set the width of the container as needed */
+    border: 1px solid black;
+    width: 200px;
+    height: max-content;
 }
 
 #suggestions {
-    display: block; /* Change this to block to make suggestions visible */
+    display: block;
     position: absolute;
     top: 100%;
     left: 0;
