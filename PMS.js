@@ -195,7 +195,7 @@ function showInformationOfSelectedRoom() {
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'view-room-information';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
-} 
+}
 //save the changes of the selected room 
 function saveRoomDetails() {
     // Logic to update the selectedRoom object with new values from the form
