@@ -107,6 +107,7 @@ class Room {
     floorNumber;
     roomNumber;
     id;
+    VipTax;
     Corrections;
     resident;
     countryOfResident;
@@ -131,6 +132,7 @@ class Room {
 
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
+        this.VipTax = Math.floor(Math.random()*100);
         this.Corrections = Math.floor(Math.random()*100);
         this.roomNumber = roomNumber;
         this.id = this.floorNumber.toString() + '-' + this.roomNumber.toString();

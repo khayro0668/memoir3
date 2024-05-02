@@ -227,11 +227,6 @@ function backToHome() {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
 }
 
-//get information of payment
-function getInformationOfPayment() {
-    // arwa7 hna zatchi
-}
-
 //////////////////////
 
 //page of edit some information
@@ -283,6 +278,7 @@ function submitForm() {
     const pillows = document.getElementById('pillows').value;
     selectedRoom.setResident(name);
 }
+
 
 function cancelReservation() {
     // هنا يمكنك إضافة الكود اللازم لإلغاء الحجز، مثل تنظيف النموذج أو تنفيذ طلب إلى الخادم
