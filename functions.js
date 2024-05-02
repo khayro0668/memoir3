@@ -636,6 +636,10 @@ function showSuggestions() {
             if (listOfNames[i].toUpperCase().includes(filter)) {
                 li = document.createElement('li');
                 li.textContent = listOfNames[i];
+                li.addEventListener('click', function() {
+                    input.value = this.textContent;
+                    ul.innerHTML = '';
+                });
                 ul.appendChild(li);
             }
         }
