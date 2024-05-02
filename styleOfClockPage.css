@@ -84,15 +84,41 @@
 
 #type-of-search button {
     height: 100%;
+
     padding: 0 20px;
-    background-color: #007bff;
+    background-color: rgb(32, 162, 160);;
     color: white;
     border: none;
     cursor: pointer;
-    width: calc(20% - 2px); /* Adjusted width to fit within the container */
+    width: calc(10% - 10px); /* Adjusted width to fit within the container */
 }
 
 #type-of-search button:hover {
     background-color: #0056b3;
 }
+#searchContainer {
+    position: relative;
+    display: inline-block;
+    width: 200px; /* Set the width of the container as needed */
+}
+
+#suggestions {
+    display: block; /* Change this to block to make suggestions visible */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    z-index: 1;
+}
+
+
 

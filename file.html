@@ -174,8 +174,10 @@
                     <input type="date" id="input-date">
                 </div>
                 
-                <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search" onkeydown="if (event.keyCode == 13) { generateClock(); return false;  }"> 
-                <ul id="suggestions"></ul>
+                <div id="searchContainer">
+                    <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search" onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
+                    <ul id="suggestions"></ul>
+                </div>
                 <button onclick="generateClock()">Generate Clock</button>
                 
             </div>
