@@ -1,4 +1,6 @@
 //view availabel rooms
+
+
 function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
     names = [];
     var table = '<table>';
@@ -42,6 +44,7 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
 //function to create needed dropdowns
 function createCardOfRoom(room) {
     return `
+    
         <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
             <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'red' : 'green')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
             <p class="pr">floor ${room.floorNumber}<br>room ${room.roomNumber}</p>
@@ -307,8 +310,9 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
-
+    
     hotel.addEventInArchives(currentUser, 'set price');
+    
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
@@ -578,5 +582,6 @@ function generateMenuOfButtons() {
 
     document.getElementById('menu-of-options').innerHTML = menu;
 }
+
 
 
