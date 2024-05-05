@@ -74,6 +74,10 @@ function goToPMS() {
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     document.getElementById('menu-of-options').style.display = 'block';
+
+    if(currentUser === 'admin'){
+        document.getElementById('remaning-div').style.height = '98px';
+    }
 }
 /////////////////////
 function selectRoom(room) {
@@ -118,7 +122,7 @@ function reserveSelectedRoom() {
             </div>
         </div>
         <div class="button-container1">
-            <button class="btn-of-reserve" type="button" id="reserveButton" disabled>Reserve</button>
+            <button class="btn-of-reserve" type="button" id="reserveButton" disabled onclick="reserveRoom()">Reserve</button>
             <button class="btn-of-reserve" type="button">Cancel</button>
         </div>
     </div>
@@ -267,7 +271,7 @@ function modifyInformationOfSelectedRoom() {
 </div>
 `;
 
-    document.getElementById('view-room-information').style.display = 'none';
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'modify-room-information';
     document.getElementById(currentIdInDisplayInformation).innerHTML = pageOfModifyInformationOfSelectedRoom;
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';

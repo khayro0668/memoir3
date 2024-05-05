@@ -104,6 +104,10 @@ class Hotel {
 
 class Room {
 
+    firstName;
+    lastName;
+    arrivalTime;
+    creditCardNumber;
     floorNumber;
     roomNumber;
     id;
@@ -163,6 +167,26 @@ class Room {
         this.totalPayment = 100 + Math.floor(Math.random() * 900);
         this.remaningPayment = Math.floor(Math.random() * this.totalPayment);
         this.paidPayment = this.totalPayment - this.remaningPayment;
+    }
+
+    setCreditCardNumber(value) {
+     this.creditCardNumber = value;
+    }
+
+    setArrivalTime(value){
+      this.arrivalTime = value;
+    }
+
+    setCountryOfResident(value){
+     this.countryOfResident = value;
+    }
+
+    setFirstName(value) {
+        this.firstName = value;
+    }
+
+    setLastName(value) {
+        this.lastName = value;
     }
 
     setIsReserved(value) {

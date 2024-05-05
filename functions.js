@@ -62,7 +62,7 @@ function rempleID() {
 
     idOfContainerOfButtons = [];
 
-    idOfContainerOfButtons.push('logo');
+    idOfContainerOfButtons.push('first-item');
     idOfContainerOfButtons.push('container-of-part-in-options-01');
     idOfContainerOfButtons.push('container-of-part-in-options-02');
     idOfContainerOfButtons.push('container-of-part-in-options-03');
@@ -154,19 +154,19 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                 </select>
             </div>
             <div class="dropdown-wrapper2" display: flex;>
-           
+            <button class="text-of-select">Room</button>
                 <select class="dropdown" id="dropdown2">
                    ${divOfRooms}
                 </select>
             </div>
             <div class="dropdown-wrapper3" display: flex;>
-            
+            <button class="text-of-select">Beds</button>
                 <select class="dropdown" id="dropdown3">
                     ${divOfBads}
                 </select>
             </div>
             <div class="dropdown-wrapper4" display: flex;>
-            
+            <button class="text-of-select">Status</button>
                 <select class="dropdown" id="dropdown4">
                     <option value="0">All</option>
                     <option value="1">Reserved</option>
@@ -636,7 +636,7 @@ function showSuggestions() {
             if (listOfNames[i].toUpperCase().includes(filter)) {
                 li = document.createElement('li');
                 li.textContent = listOfNames[i];
-                li.addEventListener('click', function() {
+                li.addEventListener('click', function () {
                     input.value = this.textContent;
                     ul.innerHTML = '';
                 });
@@ -678,7 +678,7 @@ function generateClock() {
 
         }
     }
-    
+
     sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
 
     var page = ``;
@@ -748,7 +748,7 @@ function searchForID(id) {
 
 //initilaize some style
 function someStyle(buttonID) {
-   
+
     for (let i = 0; i < idOfButtons.length; i++) {
 
         if (searchForID(idOfButtons[i]) === false || idOfButtons[i] === 'in-logo') {
@@ -763,11 +763,11 @@ function someStyle(buttonID) {
         document.getElementById(idOfContainerOfButtons[i]).style.backgroundColor = 'rgb(32, 162, 160)';
     }
 
-     document.getElementById(buttonID).style.backgroundColor = 'white';
+    document.getElementById(buttonID).style.backgroundColor = 'white';
 
     for (let i = 0; i < idOfButtons.length; i++) {
         if (buttonID === idOfButtons[i]) {
-            
+
             if (i === 0) {
                 document.getElementById(idOfButtons[i + 1]).style.borderTopRightRadius = '20px';
                 document.getElementById(idOfContainerOfButtons[i + 1]).style.borderTopRightRadius = '20px';
@@ -792,7 +792,7 @@ function someStyle(buttonID) {
 //generate menu of buttons
 function generateMenuOfButtons() {
     var menu = `
-    <div class = "container-of-part-in-options-logo"><div class="logo" id="in-logo"></div></div>
+    <div class = "container-of-part-in-options-logo" id="first-item"><div class="logo" id="in-logo"></div></div>
     <div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-02"><div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
@@ -809,7 +809,7 @@ function generateMenuOfButtons() {
     <div class = "container-of-part-in-options" id="container-of-part-in-options-07"><div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div></div>
     <div class = "container-of-part-in-options" id="container-of-part-in-options-08"><div class="hr-of-menu" id="seconde-hr"></div></div>
     <div class = "container-of-part-in-options" id="container-of-part-in-options-09"><div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div></div>
-    <div class = "remaning-div"></div>
+    <div class = "remaning-div" id="remaning-div"></div>
     `;
 
     document.getElementById('menu-of-options').innerHTML = menu;
@@ -1246,7 +1246,7 @@ function generatePageOfPayment() {
             </div>`
         }
     }
-    
+
     document.getElementById('page-of-payment').innerHTML = page;
 }
 
@@ -1315,8 +1315,32 @@ function getInformationOfPayment() {
     `;
 
     document.getElementById("view-payment-information").innerHTML = page;
-
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'view-payment-information';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+}
+
+//reserve room
+function reserveRoom() {
+    var firstName = document.getElementById('input1').value;
+    var lastName = document.getElementById('input2').value;
+    var duration = document.getElementById('input3').value;
+    var startDate = document.getElementById('input4').value;
+    var email = document.getElementById('input5').value;
+    var arrivalTime = document.getElementById('input6').value;
+    var creditCardNumber = document.getElementById('input7').value;
+    var country = document.getElementById('input8').value;
+
+
+    selectedRoom.setResidentEmail(email);
+    selectedRoom.setDurationOfReservation(duration);
+    selectedRoom.setStartDate(startDate);
+    selectedRoom.setIsReserved('Reserved');
+    selectedRoom.setFirstName(firstName);
+    selectedRoom.setLastName(lastName);
+    selectedRoom.setCountryOfResident(country);
+    selectedRoom.setArrivalTime(arrivalTime);
+    selectedRoom.setCreditCardNumber(creditCardNumber);
+
+    generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }

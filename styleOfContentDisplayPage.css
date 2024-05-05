@@ -116,9 +116,9 @@ body {
     border: none;
 }
 
-.menu-of-options button :hover {
+/* .menu-of-options button :hover {
     color: #D8F3F9;
-}
+} */
 
 .logo {
     height: 100px;
@@ -175,9 +175,9 @@ body {
 
 }
 
-.ptn :hover {
+/* .ptn :hover {
     background-color: white;
-}
+} */
 
 #container {
     width: 950px;
