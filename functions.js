@@ -1344,3 +1344,9 @@ function reserveRoom() {
 
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
+
+
+//younes
+function generatePageOfAccountEmployesSettings(listOfAccount) {
+ 
+}
