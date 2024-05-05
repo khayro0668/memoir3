@@ -56,14 +56,65 @@ h2 {
 
 .dropdown-container {
     display: flex;
+    margin-left: 3px;
+    margin-top: 5px;
+    margin-right: 35px;
+    /* border: 3px solid black; */
 }
 
-.dropdown-wrapper {
-    margin-right: 10px;
+.dropdown-wrapper1 {
+    margin-right: 160px;
+    display: flex;
+    margin-left: 80px;
+    /* border: 1px solid black; */
 }
+.dropdown-wrapper2 {
+    /* margin-right: 160px; */
+}
+.dropdown-wrapper3 {
+    /* margin-right: 160px; */
+}
+.dropdown-wrapper4 {
+   /* margin-right: 20px; */
+}
+.text-of-select{
+    border: 1px black solid;
+    
+}
+
+
 
 .dropdown-button {
     margin-top: 5px;
+}
+
+.dropdown{
+    background-image: linear-gradient(45deg, transparent 50%, rgb(32, 162, 160) 50%),
+    linear-gradient(135deg, rgb(32, 162, 160) 50%, transparent 50%);
+background-position: right 10px center, right 15px center; /* Adjusted position of arrows */
+background-size: 5px 5px, 5px 5px; /* Size of the arrows */
+background-repeat: no-repeat;
+}
+.dropdown::-ms-expand {
+    display: none; /* Hide the default arrow in IE/Edge */
+}
+.dropdown:hover {
+    background-color: rgb(230, 245, 245); /* Lighter tint for hover */
+}
+.dropdown {
+    margin: 0 10px; /* Adds horizontal spacing between selects */
+    padding: 8px 30px 8px 10px; /* Increased right padding for separation */
+    border: 2px solid rgb(32, 162, 160); /* Stylish border color */
+    background-color: #fff; /* White background for contrast */
+    color: rgb(32, 162, 160); /* Text color to match the theme */
+    font-size: 16px; /* Larger font for better readability */
+    cursor: pointer; /* Cursor indicates it's selectable */
+    border-radius: 5px; /* Rounded corners */
+    -webkit-appearance: none; /* Removes default styling by the browser */
+    -moz-appearance: none;
+    appearance: none;
+    outline: none; /* Removes the outline to keep styling neat */
+    position: relative; /* For absolute positioning of the arrow */
 }
 
 /* ...................................................... */
@@ -182,7 +233,8 @@ h2 {
     margin-right: 45%;
     margin-top: 5%;
     background-color: yellowgreen;
-    width:20% ;
+    width:100% ;
+    
 
 }
 #reservationForm label {
@@ -217,15 +269,13 @@ input[type=submit] {
 }
 
 #modify-room-information button:hover {
-    background-color: #003D73; /* تغيير لون الخلفية عند تحويم الماوس */
+    background-color: #003D73;
 }
-
-
 
 .price-settings-container {
     font-family: Arial, sans-serif;
     width: 950px;
-    height: 550px;
+    height: 530px;
     margin: auto;
     background-color: #f4f4f4;
     border-radius: 8px;
@@ -284,7 +334,111 @@ input[type=submit] {
 }
 
 
-
-
 /*******************************************************/
+.container11 {
+    width: 950px;
+    height: 500px; /* Adjusted for content */
+    background-color:white;
+}
+.container22 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.column-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.label-of-reserve {
+    margin: 8px 0;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+.input-of-reserve {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.select-of-reserve {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.input-of-reserve:focus, .select-of-reserve:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+.button-container1 {
+    margin-top: 30px;
+    text-align: center;
+    margin-right: 70px;
+}
+.btn-of-reserve {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: rgb(32,162,160);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.btn-of-reserve:hover {
+    background-color: rgb(28,146,144);
+    transform: scale(1.05);
+}
+.btn-of-reserve:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 /*******************************************************/
+/*style of bill*/
+.container6 {
+    
+    padding: 20px;
+    background: white; /* White background for the content area */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 550px; /* Reduced width */
+    margin-left: 190px;
+}
+.h2-of-bill {
+    text-align: center;
+    color: #37474f; /* Dark grey color for the title */
+    margin-bottom: 20px; /* Adds space below the title */
+}
+.table-of-bill {
+    width: 90%; /* Full width of its container */
+    border-collapse: collapse; /* Collapses border so they become one */
+    margin: auto;
+}
+.th-of-bill, .td-of-bill {
+    padding: 12px; /* Increased padding for better cell spacing */
+    border-bottom: 1px solid #ccc; /* Light grey border for a subtle look */
+    text-align: left; /* Aligns text to the left */
+}
+.th-of-bill {
+    background-color: #cfd8dc; /* Light blue-grey for header cells */
+}
+.td-of-bill {
+    background-color: #fafafa; /* Slightly off-white for a soft contrast */
+    color: #455a64; /* Dark blue-grey text for readability */
+}
+.total12 {
+    font-weight: bold; /* Keeps the total row bold */
+    background-color: #b0bec5; /* Medium blue-grey background for the total row */
+    color: #263238; /* Nearly black for high contrast text */
+}
+
+/******************************************************/

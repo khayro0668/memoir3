@@ -1,19 +1,24 @@
 class Hotel {
+    nameOfHotel;
     listOfRooms;
     listOfAvailablePillows;
     listOfAvailableMattresses;
     listOfAvailabelServices;
     archives;
     listOfAccount;
+    numberOfFloors;
+    numberOfRooms;
 
     constructor() {
+        this.nameOfHotel = "wassim hotel";
         this.generateListOfRooms();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailableMattresses();
         this.generateListOfAvailabelServices();
         this.generateArchive();
         this.generateListOfAccount();
-
+        this.numberOfFloors = 10;
+        this.numberOfRooms = 30;
     }
 
     generateListOfAccount() {
@@ -27,8 +32,8 @@ class Hotel {
 
     generateListOfRooms() {
         this.listOfRooms = [];
-        for (let i = 1; i <= 40; i++) {
-            for (let j = 1; j <= 100; j++) {
+        for (let i = 1; i <= 10; i++) {
+            for (let j = 1; j <= 30; j++) {
                 var room = new Room(i, j);
                 this.listOfRooms.push(room);
             }
@@ -99,13 +104,24 @@ class Hotel {
 
 class Room {
 
+    firstName;
+    lastName;
+    arrivalTime;
+    creditCardNumber;
     floorNumber;
     roomNumber;
     id;
+    VipTax;
+    Corrections;
     resident;
+    countryOfResident;
+    genderOfResident;
     residentEmail;
     isReserved;
     price;
+    totalPayment;
+    remaningPayment;
+    paidPayment;
     durationOfreservation;
     startDate;
     endDate;
@@ -120,6 +136,8 @@ class Room {
 
     constructor(floorNumber, roomNumber) {
         this.floorNumber = floorNumber;
+        this.VipTax = Math.floor(Math.random()*100);
+        this.Corrections = Math.floor(Math.random()*100);
         this.roomNumber = roomNumber;
         this.id = this.floorNumber.toString() + '-' + this.roomNumber.toString();
         this.isReserved = getStatusOfReserved();
@@ -128,6 +146,13 @@ class Room {
         this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
+
+        if(isDate1GreaterThanDate2(this.startDate , this.endDate)){
+            var temp = this.startDate;
+            this.startDate = this.endDate;
+            this.endDate = temp;
+        }
+        
         this.durationOfReservation = calculateDaysBetweenDates(this.startDate, this.endDate);
         this.countdown = getCountdown();
         this.keyStatus = this.isReserved;
@@ -137,6 +162,31 @@ class Room {
         this.typeOfRoom = 'normal';
         this.listOfAvailableMattresses = [];
         this.listOfAvailablePillows = [];
+        this.countryOfResident = getRandomCountry();
+        this.genderOfResident = getRandomGender();
+        this.totalPayment = 100 + Math.floor(Math.random() * 900);
+        this.remaningPayment = Math.floor(Math.random() * this.totalPayment);
+        this.paidPayment = this.totalPayment - this.remaningPayment;
+    }
+
+    setCreditCardNumber(value) {
+     this.creditCardNumber = value;
+    }
+
+    setArrivalTime(value){
+      this.arrivalTime = value;
+    }
+
+    setCountryOfResident(value){
+     this.countryOfResident = value;
+    }
+
+    setFirstName(value) {
+        this.firstName = value;
+    }
+
+    setLastName(value) {
+        this.lastName = value;
     }
 
     setIsReserved(value) {
@@ -239,15 +289,18 @@ function getRandomEndDate() {
 }
 
 function calculateDaysBetweenDates(startDate, endDate) {
-    // Calculate the difference in milliseconds
-    const diffInMs = endDate - startDate;
-
-    // Convert milliseconds to days
-    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-    // Return the absolute value of days to avoid negative values
-    return diffInMs;
-    return Math.abs(Math.round(diffInDays));
+      var start = new Date(startDate);
+      var end = new Date(endDate);
+  
+      // حساب الفرق بالملي ثانية
+      var difference = end - start;
+  
+      // تحويل الفرق من الملي ثانية إلى أيام
+      var days = difference / (1000 * 3600 * 24);
+  
+      // إرجاع عدد الأيام المحصورة
+      return Math.round(days);  // استخدم Math.round للحصول على قيمة صحيحة
+  
 }
 
 function getCountdown() {
@@ -301,6 +354,56 @@ function calculateEndDate(startDate, period) {
     return endDate;
 }
 
+function getRandomCountry() {
+    const countries = [
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
+        "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
+        "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
+        "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
+        "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei",
+        "Bulgaria", "Burkina Faso", "Burundi", "Côte d'Ivoire", "Cabo Verde",
+        "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad",
+        "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)",
+        "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)",
+        "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica",
+        "Dominican Republic", "Ecuador", "Egypt", "El Salvador",
+        "Equatorial Guinea", "Eritrea", "Estonia", "Swaziland",
+        "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia",
+        "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+        "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary",
+        "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel",
+        "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya",
+        "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon",
+        "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+        "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta",
+        "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
+        "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro",
+        "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia",
+        "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
+        "Niger", "Nigeria", "North Korea", "North Macedonia",
+        "Norway", "Oman", "Pakistan", "Palau", "Palestine State",
+        "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
+        "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda",
+        "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines",
+        "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+        "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore",
+        "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa",
+        "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan",
+        "Suriname", "Sweden", "Switzerland", "Syria", "Tajikistan",
+        "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga",
+        "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+        "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom",
+        "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
+        "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    ];
+
+    return countries[(Math.floor(Math.random() * countries.length))];
+}
+
+function getRandomGender() {
+    const Gender = ['Female' , 'Male'];
+    return Gender[Math.floor(Math.random() * Gender.length)];
+}
 class Event {
     employe;
     event;
@@ -321,3 +424,90 @@ class Account {
         this.password = password;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function generateMenuOfButtons() {
+    var menu = `
+    <div class="logo"></div>
+        <hr class="hr-of-menu">
+        <div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div>
+        <div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div>
+        <div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div>
+        <div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div> 
+        `;
+
+    if (currentUser === 'admin') {
+        menu += `
+        <div class="menu-item" id="historique" onclick="getPageOfArchives()"><div class="icon-of-button"><i class="fa-solid fa-store"></i></div><div class="text-of-button">Archive</div></div>`;
+    }
+
+    menu += `
+    <div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div>
+    <hr class="hr-of-menu">
+    <div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div>
+    <div id="div-of-acc">
+        <div class="current-user" id="current-user"></div>
+    </div>
+    `;
+
+    document.getElementById('menu-of-options').innerHTML = menu;
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Attach a single event listener to the parent container
+    const menu = document.getElementById('menu-of-options');
+    menu.addEventListener('click', function (event) {
+        const target = event.target.closest('.menu-item');
+        if (target) {
+            makeActive(target);
+            handleMenuAction(target.id);  // Handle actions based on the item id
+        }
+    });
+
+    generateMenuOfButtons();  // Generate menu on load
+});

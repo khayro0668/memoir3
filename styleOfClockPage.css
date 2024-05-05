@@ -1,15 +1,126 @@
 #type-of-search {
-height: 50px;
-width: 950px;
-border: 1px solid black;
-border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    width: 950px;
+    border-bottom: 1px solid black;
+    overflow: hidden; /* Prevents elements from overflowing */
+}
+.part-of-period {
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+.part-of-period p {
+    margin: 0;
+    padding-right: 10px;
+}
+.part-of-period input[type="date"] {
+    width: 40%;
 }
 
 #show-current-residents {
     scrollbar-width: none;
     overflow: scroll;
-    height: 520px;
+    height: 490px;
     width: 950px;
-    border: 1px solid black;
     border-radius: 20px;
 }
+
+.current-resident {
+    width: 100%;
+    height: 55px;
+    border-radius: 35px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.part-of-name-resident h2 {
+    text-align: center;
+    color: black;
+}
+
+.part-of-name-resident {
+    border: 1px black solid;
+    height: 55px;
+    width: 140px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.part-of-room,
+.part-of-contdown,
+.part-of-gender-in-clock,
+.part-of-country-in-clock {
+    border: 1px black solid;
+    height: 55px;
+    width: calc(20% - 2px); /* Adjusted width to fit within the container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.part-of-room h2,
+.part-of-contdown h2,
+.part-of-gender-in-clock h2,
+.part-of-country-in-clock h2 {
+    text-align: center;
+    color: black;
+    margin: 0;
+}
+
+.part-of-date input,
+.part-of-country select {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#type-of-search button {
+    height: 100%;
+
+    padding: 0 20px;
+    background-color: rgb(32, 162, 160);;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: calc(10% - 10px); /* Adjusted width to fit within the container */
+}
+
+#type-of-search button:hover {
+    background-color: #0056b3;
+}
+
+#searchContainer {
+    position: relative;
+    display: inline-block;
+    border: 1px solid black;
+    width: 200px;
+    height: max-content;
+}
+
+#suggestions {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+
+

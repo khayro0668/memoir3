@@ -5,6 +5,41 @@ body {
     justify-content: center;
 }
 
+#in-logo {
+    border: 7px solid rgb(32, 162, 160);
+}
+
+#seconde-hr {
+    background-color: rgb(251, 225, 117);
+    width: 80%;
+    height: 1px;
+    margin-left: 30px;
+}
+
+.remaning-div {
+    background-color: rgb(32, 162, 160);
+    height: 148px;
+    width: 248.5px;
+    border-bottom-left-radius: 20px;
+}
+
+.container-of-part-in-options-logo {
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    height: 120px;
+    width: 248.5px;
+    
+    background-color: rgb(32, 162, 160);
+}
+
+#first-hr {
+    background-color: rgb(251, 225, 117);
+    width: 80%;
+    margin-left: 30px;
+    height: 1px;
+}
+
 .pms-app {
     display: flex;
     width: 1200px;
@@ -13,15 +48,63 @@ body {
     border-radius: 20px;
 }
 
+.container-of-part-in-options {
+    height: max-content;
+    width: 248.5px;
+    background-color: rgb(32, 162, 160);
+}
+
 .menu-of-options {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 570px;
     width: 250px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    background-color: rgb(32 , 162 , 160);
+    /* background-color: rgb(32, 162, 160); */
 }
+
+.menu-item {
+    width: 240px;
+    height: 50px;
+    /* margin-bottom: 5px; */
+    background-color: transparent;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    color: white;
+
+}
+
+.menu-item i {
+    margin-right: 30px;
+    /* Space between icon and text */
+}
+
+.menu-item:hover {
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+
+.menu-item:hover .icon-of-button i {
+    color: rgb(32, 162, 160);
+    /* Change the color of the icon on hover */
+    transform: scale(1.1);
+    /* Slightly enlarge the icon to highlight it */
+    transition: all 0.3s ease;
+    /* Smooth transition for the hover effect */
+}
+
+.menu-item.active {
+    background-color: white;
+    /* Example active color: light grey */
+    color: #000000;
+    /* Text color for active item */
+}
+
 
 .menu-of-options button {
     width: 99%;
@@ -33,23 +116,68 @@ body {
     border: none;
 }
 
-.menu-of-options button :hover {
+/* .menu-of-options button :hover {
     color: #D8F3F9;
-}
+} */
 
 .logo {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-    border: 1px solid black;
-    align-items: center;
-    justify-content: center;
-    margin-left: 75px;
+    margin-bottom: 15px;
+    background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-left: 70px;
 }
 
-.ptn :hover {
-    background-color: white;
+.icon-of-button {
+    height: 50px;
+    width: 80px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 35px;
+    margin-left: 20px;
 }
+
+.icon-of-button i.active-icon {
+    color: rgb(32, 162, 160);
+    /* Green color for active icon */
+    text-shadow: 0 0 5px #23dca1;
+    /* Optional: add a shadow for emphasis */
+}
+
+.icon-of-button i:hover {
+    color: rgb(32, 162, 160);
+    /* Blue color on hover */
+    cursor: pointer;
+    /* Cursor indicates clickable item */
+    transform: scale(1.1);
+    /* Enlarge icon on hover */
+    transition: all 0.3s ease;
+    /* Smooth transition for the hover effects */
+}
+
+.text-of-button {
+    height: 50px;
+    width: 120px;
+    padding-top: 35px;
+}
+
+.menu-item i {
+
+    color: rgb(251, 225, 117);
+}
+
+.hr-of-menu {
+    width: 80%;
+    color: rgb(216, 243, 249);
+
+}
+
+/* .ptn :hover {
+    background-color: white;
+} */
 
 #container {
     width: 950px;
@@ -75,7 +203,7 @@ body {
 }
 
 /* **************************************************** */
-.current-user {
+/* .current-user {
     border: 1px solid black;
     height: 50px;
     width: 100%;
@@ -90,5 +218,109 @@ body {
   .image-of-current-user img {
       height: 50px;
       width: 100%;
-  }
+  } */
 /* **************************************************** */
+/* #div-of-acc {
+    border: 1px solid black;
+    height: 70px;
+    width: 250px;
+    background-color: aqua;
+} */
+
+
+/* ******************************************* */
+.scroll-container {
+    width: 950px;
+    /* Fixed width of the outer container */
+    height: 570px;
+    /* Fixed height of the outer container */
+    overflow: scroll;
+    scrollbar-width: none;
+    background-color: #e8e8e8;
+    /* Light gray background for the scroll container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Adds shadow for depth */
+    border: 1px solid #ccc;
+    /* Optional: adds a border for better visibility */
+}
+
+.container {
+    width: 100%;
+
+}
+
+.card {
+    background-color: #fff;
+    width: 560px;
+    /* Width of each card */
+    height: 200px;
+    /* Height of each card */
+    margin: 10px auto;
+    /* Centers cards horizontally and adds vertical space */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 0 20px;
+    /* Padding inside each card */
+    border-radius: 20px;
+}
+
+.card>.label,
+.card>input,
+.card>button {
+    flex: 1;
+    /* Each child takes equal space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center the items horizontally */
+
+}
+
+input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 90%;
+    /* Limit width to not exceed its section */
+}
+
+.btn-of-others {
+
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-left: 10%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.label {
+    font-size: 25px;
+    /* Matches the font size of the input and button */
+    color: #333;
+    /* Dark color for readability */
+    font-family: fantasy;
+    justify-content: flex-start;
+    /* Align label to the start */
+}
+
+#page-of-price-of-others-settings {
+    border: 1px solid black;
+    height: 570px;
+    width: 950px;
+    background-color: red;
+}
+
+/* ****************************************** */

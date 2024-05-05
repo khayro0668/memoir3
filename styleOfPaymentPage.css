@@ -1,0 +1,6 @@
+#page-of-payment {
+    scrollbar-width: none;
+    overflow: scroll;
+    width: 950px;
+    height: 570px;
+}

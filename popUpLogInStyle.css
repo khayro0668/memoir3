@@ -49,7 +49,7 @@
 .popup button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color:  rgb(32 , 162 , 160);
     /* A nice shade of blue */
     color: white;
     border: none;

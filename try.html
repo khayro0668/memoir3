@@ -3,122 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrollable Cards with Divided Sections</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center; /* Centers the main container vertically and horizontally */
-            min-height: 100vh;
-            overflow: hidden; /* Ensures no scrollbar on the body */
-        }
-        .scroll-container {
-            width: 1200px; /* Fixed width of the outer container */
-            height: 570px; /* Fixed height of the outer container */
-            overflow-y: auto; /* Enables vertical scrolling */
-            background-color: #e8e8e8; /* Light gray background for the scroll container */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
-            border: 1px solid #ccc; /* Optional: adds a border for better visibility */
-            padding: 10px 0; /* Padding to prevent content from touching the edges */
-        }
-        .container {
-            width: 100%;
-            
-        }
-        .card {
-            background-color: #fff;
-            width: 1000px; /* Width of each card */
-            height: 200px; /* Height of each card */
-            margin: 10px auto; /* Centers cards horizontally and adds vertical space */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            color: #333;
-            padding: 0 20px; /* Padding inside each card */
-            border-radius: 20px;
-        }
-        .card > .label, .card > input, .card > button {
-            flex: 1; /* Each child takes equal space */
-            display: flex;
-            align-items: center;
-            justify-content: center; /* Center the items horizontally */
-           
-        }
-        input[type="number"] {
-            padding: 8px;
-            font-size: 16px;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            width: 90%; /* Limit width to not exceed its section */
-        }
-        .btn-of-others {
-           
-            padding: 10px 15px; 
-            font-size: 16px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            border: 1px solid black;
-            margin-left: 10%;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .label {
-            font-size: 25px; /* Matches the font size of the input and button */
-            color: #333; /* Dark color for readability */
-            font-family: fantasy;
-            justify-content: flex-start; /* Align label to the start */
-        }
-    </style>
+    <title>Convert Text to PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="scroll-container">
-        <div class="container">
-            <div class="card">
-                <div class="label">vip pillow</div>
-                <input type="number" placeholder="get new price">
-                <button class="btn-of-others">ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip bed</div>
-                <input type="number" placeholder="get new price" >
-                <button class="btn-of-others">ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip spa</div>
-                <input type="number" placeholder="get new price">
-                <button class="btn-of-others">ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip pool</div>
-                <input type="number" placeholder="get new price">
-                <button class="btn-of-others">ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip lounge access</div>
-                <input type="number" placeholder="get new price">
-                <button class="btn-of-others">ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip yacht Charters</div>
-                <input type="number" placeholder="get new price">
-                <button class="btn-of-others">ok</button>
-            </div>
-            <div class="card">
-                <div class="label">vip gym</div>
-                <input type="number" placeholder="get new price">
-                <button class="btn-of-others">ok</button>
-            </div>
-           
-        </div>
-    </div>
+    <button onclick="convertTextToPdf('')">Convert Text to PDF</button>
+
+    <script>
+        function convertTextToPdf(text) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.text(text, 10, 10);
+            doc.save('example.pdf');
+        }
+    </script>
 </body>
 </html>

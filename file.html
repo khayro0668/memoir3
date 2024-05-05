@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,8 @@
     <link rel="stylesheet" href="popUpLogInStyle.css">
     <link rel="stylesheet" href="styleOfArchivesPage.css">
     <link rel="stylesheet" href="styleOfClockPage.css">
+    <link rel="stylesheet" href="styleOfPaymentPage.css">
+    <link rel="stylesheet" href="stylePageOfCalendar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -52,7 +55,7 @@
     <div class="pms-app" id="pms-app" style="display: none;">
         <!-- menu of buttons -->
         <div class="menu-of-options" id="menu-of-options" style="display: none;">
-            
+            <!--  -->
         </div>
 
         <!-- display information -->
@@ -91,7 +94,7 @@
                     <span class="label">Room</span>
                 </div>
                 <div style="margin-left: 50px;">
-                    <div class="card-of-setting1-type" onclick="">
+                    <div class="card-of-setting1-type" onclick="getPageOfOthers()">
                         <div class="emoji2">・・・</div>
                         <span class="label">Others</span>
                     </div>
@@ -108,7 +111,7 @@
                     <span class="label">Room</span>
                 </div>
                 <div style="margin-left: 50px;">
-                    <div class="card-of-setting1-type" onclick="">
+                    <div class="card-of-setting1-type" onclick="getPageOfOthers()">
                         <div class="emoji2">・・・</div>
                         <span class="label">Others</span>
                     </div>
@@ -116,8 +119,19 @@
             </div>
         </div>
 
+
         <!-- display information -->
         <div class="page-of-price-settings" id="page-of-price-of-rooms-settings" style="display: none;">
+            <!--  -->
+        </div>
+
+         <!-- display information -->
+         <div id="page-of-payment" style="display: none;">
+            <!--  -->
+        </div>
+
+        <!-- display information -->
+        <div class="page-of-price-settings" id="page-of-price-of-others-settings" style="display: none;">
             <!--  -->
         </div>
 
@@ -129,10 +143,67 @@
         <!-- display information -->
         <div id="page-of-clock" style="display: none;">
             <div id="type-of-search">
-              
+                <div class="part-of-period">
+                    <p>First date</p>
+                    <p>Second date</p>
+                    <input type="date" id="first-date">
+                    <input type="date" id="second-date">
+                </div>
+            
+                <div class="part-of-country" id="part-of-country">
+                    <select id="countryDropdown" onchange="showSelectedCountry()">
+                        <option value="">All country</option>
+                    </select>
+                </div>
+                
+                <div class="part-of-gender">
+                    <select id="genderDropdown" onchange="displaySelectedGender()">
+                        <option value="">All Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                
+                <div class="type-of-sort">
+                    <select id="sortDropdown" onchange="displaySelectedSort()" style="width: 100px;">
+                        <option value="">Random sort</option>
+                        <option value="sort-by-date-of-arrival">sort by date of arrival</option>
+                        <option value="sort-by-ascending-order-booking-period">sort by duration A</option>
+                        <option value="sort-by-descending-order-booking-period">sort by duration D</option>
+                        <option value="sort-by-ascending-order-start-date">sort by start date A</option>
+                        <option value="sort-by-descending-order-start-date">sort by start date D</option>
+                    </select>
+                </div>
+                
+                <div class="part-of-date">
+                    date
+                    <input type="date" id="input-date">
+                </div>
+                
+                <div id="searchContainer">
+                    <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search" onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
+                    <ul id="suggestions"></ul>
+                </div>
+                <button onclick="generateClock()">Generate Clock</button>
+                
             </div>
+            
             <div id="show-current-residents">
-    
+                <!--  -->
+            </div>
+        </div>
+        
+        
+
+        <!-- display information -->
+        <div id="page-of-calendar" style="display: none;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 870px;margin-left: 63px;">
+                <div id="days-in-calendar">
+                    <!--  -->
+                </div>
+            </div>
+            <div id="boocked-in-days">
+                <!--  -->
             </div>
         </div>
     </div>

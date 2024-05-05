@@ -1,0 +1,37 @@
+.box-of-day {
+    border: 1px solid black;
+    height: 50px;
+    width: 30px;
+    background-color: aquamarine;
+}
+
+#page-of-calendar {
+    display: flex;
+    height: 570px;
+    width: 950px;
+}
+
+#days-in-calendar {
+    display: flex;
+    height: 50px;
+    width: 950px;
+}
+
+#boocked-in-days {
+    height: 510px;
+    width: 950px; 
+    scrollbar-width: none;
+    overflow: scroll;
+}
+
+.box-of-room-in-calendar {
+    border: 1px solid black;
+    height: 50px;
+    width: 55px;
+    background-color: white;
+}
+
+.box-of-day-in-calendar {
+    height: 50px;
+    width: 30px;
+}
