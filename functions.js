@@ -388,9 +388,9 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
-    
+
     hotel.addEventInArchives(currentUser, 'set price');
-    
+
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
@@ -398,7 +398,14 @@ function setPriceOfRooms() {
 
 //convert string to pdf
 function textIntoPDF(text) {
+    function convertTextToPdf(text) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
+        doc.text(text, 10, 10);
+
+        doc.save('example.pdf');
+    }
 }
 
 //send email
@@ -1129,7 +1136,7 @@ function generateCalendar() {
             var currentDate = addDaysToDate(startDate, j);
             while (isDateWithinRange(hotel.listOfRooms[i].startDate, hotel.listOfRooms[i].endDate, currentDate) === false && j < 28) {
                 page += `
-             <div class="box-of-day-in-calendar" style="background-color: red;border: 1px solid red;">
+             <div class="box-of-day-in-calendar" style="background-color: red;border: 1px solid red;" onmouseover="showToolTip(${JSON.stringify(currentDate).replace(/"/g, '&quot;')})" onmouseout="hideToolTip()">
              </div>`;
                 j++;
                 currentDate = addDaysToDate(startDate, j);
@@ -1148,7 +1155,7 @@ function generateCalendar() {
                     cur = 0;
                 }
                 page += `
-             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;">
+             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;" onmouseover="showToolTip(${JSON.stringify(currentDate).replace(/"/g, '&quot;')})" onmouseout="hideToolTip()">
              </div>`;
             }
 
@@ -1352,5 +1359,31 @@ function reserveRoom() {
 
 //younes
 function generatePageOfAccountEmployesSettings(listOfAccount) {
- 
+
 }
+
+//show toolitp
+function showToolTip(date) {
+    var tooltip = document.getElementById("tooltip");
+    var d = getDate(date);
+    tooltip.innerHTML = d;
+    tooltip.style.display = "block";
+}
+
+function hideToolTip() {
+    var tooltip = document.getElementById("tooltip");
+    tooltip.style.display = "none";
+}
+
+function getDate(date) {
+    // Create a new Date object
+
+     var day = currentDate.getDate(); // Get the day (1-31)
+    // var month = currentDate.getMonth() + 1; // Get the month (0-11), add 1 to match the human-readable format
+    // var year = currentDate.getFullYear(); // Get the full year (e.g., 2024)
+
+    // // Create a formatted string for the current date
+    // var formattedDate = day + '/' + month + '/' + year;
+    // return formattedDate;
+}
+
