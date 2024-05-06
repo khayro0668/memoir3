@@ -247,25 +247,25 @@ function modifyInformationOfSelectedRoom() {
     <div class="container111">
     <div class="container222">
         <div class="column1">
-            <label class="label-of-modify" for="input1">Name</label>
-            <input class="lnput-of-modify" type="text" id="input1" name="input1">
-            <label class="label-of-modify" for="input2">Email</label>
-            <input class="lnput-of-modify" type="email" id="input2" name="input2">
-            <label class="label-of-modify" for="input3">Duration(in days)</label>
-            <input class="lnput-of-modify" type="number" id="input3" name="input3">
-            <label class="label-of-modify" for="input4">Vip pillows number</label>
-            <input class="lnput-of-modify" type="number" id="input4" name="input4">
-            <button type="button" class="btn1">Update</button>
+            <label class="label-of-modify" for="last-name-modification">Last Name</label>
+            <input class="lnput-of-modify" type="text" id="last-name-modification" name="input1">
+            <label class="label-of-modify" for="email-modification">Email</label>
+            <input class="lnput-of-modify" type="email" id="email-modification" name="input2">
+            <label class="label-of-modify" for="duration-modification">Duration(in days)</label>
+            <input class="lnput-of-modify" type="number" id="duration-modification" name="input3">
+            <label class="label-of-modify" for="pillow-modification">Vip pillows number</label>
+            <input class="lnput-of-modify" type="number" id="pillow-modification" name="input4">
+            <button type="button" class="btn1" onclick="updateInformationOfResedent()">Update</button>
         </div>
         <div class="column1">
-            <label class="label-of-modify" for="input5">TV number</label>
-            <input class="lnput-of-modify" type="number" id="input5" name="input5">
-            <label class="label-of-modify" for="input6">Chairs number</label>
-            <input class="lnput-of-modify" type="number" id="input6" name="input6">
-            <label class="label-of-modify" for="input7">Snacks number</label>
-            <input class="lnput-of-modify" type="number" id="input7" name="input7">
-            <label class="label-of-modify" for="input8">Beds number</label>
-            <input class="lnput-of-modify" type="number" id="input8" name="input8">
+            <label class="label-of-modify" for="first-name-modification">First Name</label>
+            <input class="lnput-of-modify" type="text" id="first-name-modification" name="input5">
+            <label class="label-of-modify" for="chair-modification">Chairs number</label>
+            <input class="lnput-of-modify" type="number" id="chair-modification" name="input6">
+            <label class="label-of-modify" for="snack-modification">Snacks number</label>
+            <input class="lnput-of-modify" type="number" id="snack-modification" name="input7">
+            <label class="label-of-modify" for="beds-modification">Beds number</label>
+            <input class="lnput-of-modify" type="number" id="beds-modification" name="input8">
             <button type="button" class="btn2">Cancel reservation</button>
         </div>
     </div>

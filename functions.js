@@ -861,7 +861,6 @@ function makeActive(element) {
     }
 }
 
-
 function handleMenuAction(id) {
 
     switch (id) {
@@ -1136,7 +1135,7 @@ function generateCalendar() {
             var currentDate = addDaysToDate(startDate, j);
             while (isDateWithinRange(hotel.listOfRooms[i].startDate, hotel.listOfRooms[i].endDate, currentDate) === false && j < 28) {
                 page += `
-             <div class="box-of-day-in-calendar" style="background-color: red;border: 1px solid red;" onmouseover="showToolTip(${JSON.stringify(currentDate).replace(/"/g, '&quot;')})" onmouseout="hideToolTip()">
+             <div class="box-of-day-in-calendar" style="background-color: red;border: 1px solid red;">
              </div>`;
                 j++;
                 currentDate = addDaysToDate(startDate, j);
@@ -1155,7 +1154,7 @@ function generateCalendar() {
                     cur = 0;
                 }
                 page += `
-             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;" onmouseover="showToolTip(${JSON.stringify(currentDate).replace(/"/g, '&quot;')})" onmouseout="hideToolTip()">
+             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;">
              </div>`;
             }
 
@@ -1362,6 +1361,35 @@ function generatePageOfAccountEmployesSettings(listOfAccount) {
 
 }
 
+<<<<<<< HEAD
+
+
+//khayro trolling trying to creat a function of update room
+  
+function updateInformationOfResedent(){
+var lastName = document.getElementById("last-name-modification").value;
+var email =  document.getElementById("email-modification").value;
+var duration = document.getElementById("duration-modification").value;
+var pillow = document.getElementById("pillow-modification").value;
+var firstName = document.getElementById("first-name-modification").value;
+var chair = document.getElementById("chair-modification").value;
+var snack = document.getElementById("snack-modification").value;
+var beds = document.getElementById("beds-modification").value;
+
+selectedRoom.setLastName(lastName);
+selectedRoom.setResidentEmail(email);
+selectedRoom.setDurationOfReservation(duration);
+selectedRoom.setFirstName(firstName);
+selectedRoom.listOfAvailablePillows.push(pillow);
+selectedRoom.setNumberOfBeds(beds);
+selectedRoom.setChairs(chair);
+selectedRoom.setSnacks(snack);
+selectedRoom.setResident(firstName);
+var endDate = calculateEndDate(selectedRoom.startDate,duration)
+selectedRoom.setEndDate(endDate);
+generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+}
+=======
 //show toolitp
 function showToolTip(date) {
     var tooltip = document.getElementById("tooltip");
@@ -1379,3 +1407,4 @@ function getDate(date) {
     return date;
 }
 
+>>>>>>> acac15198a16175c8b949c8432b9dae6e02eb339

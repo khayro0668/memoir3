@@ -129,6 +129,8 @@ class Room {
     keyStatus;
     BookingLink;
     numberOfBeds;
+    snacks;
+    chairs;
     wayOfReservation;
     typeOfRoom;
     listOfAvailablePillows;
@@ -176,6 +178,16 @@ class Room {
     setArrivalTime(value){
       this.arrivalTime = value;
     }
+    setSnacks(value){
+        this.snacks = value;
+    }
+
+    setChairs(value){
+        this.chairs = value;
+    }
+    setNumberOfBeds(value){
+        this.numberOfBeds = value;
+      }
 
     setCountryOfResident(value){
      this.countryOfResident = value;
@@ -207,7 +219,7 @@ class Room {
     }
 
     setDurationOfReservation(duration) {
-        this.durationOfReservation = 90;
+        this.durationOfReservation = duration;
     }
 
     setStartDate(date) {
@@ -302,6 +314,11 @@ function calculateDaysBetweenDates(startDate, endDate) {
       return Math.round(days);  // استخدم Math.round للحصول على قيمة صحيحة
   
 }
+function calculateEndDate(startDate, duration) {
+    var start = new Date(startDate);
+    var end = new Date(start.getTime() + (duration ) * 24 * 60 * 60 * 1000);
+    return end.toISOString().split('T')[0];
+}
 
 function getCountdown() {
     // Generate random countdown (days)
@@ -343,16 +360,6 @@ function getRandomResident(isReserved) {
 }
 
 //calculateEndDate
-function calculateEndDate(startDate, period) {
-    // Create a new Date object from the startDate
-    let endDate = new Date(startDate);
-
-    // Add the period (in days) to the startDate
-    endDate.setDate(endDate.getDate() + parseInt(period));
-
-    // Return the new endDate
-    return endDate;
-}
 
 function getRandomCountry() {
     const countries = [
