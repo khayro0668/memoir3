@@ -1361,7 +1361,6 @@ function generatePageOfAccountEmployesSettings(listOfAccount) {
 
 }
 
-<<<<<<< HEAD
 
 
 //khayro trolling trying to creat a function of update room
@@ -1389,22 +1388,3 @@ var endDate = calculateEndDate(selectedRoom.startDate,duration)
 selectedRoom.setEndDate(endDate);
 generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
-=======
-//show toolitp
-function showToolTip(date) {
-    var tooltip = document.getElementById("tooltip");
-    var d = getDate(date);
-    tooltip.innerHTML = d;
-    tooltip.style.display = "block";
-}
-
-function hideToolTip() {
-    var tooltip = document.getElementById("tooltip");
-    tooltip.style.display = "none";
-}
-
-function getDate(date) {
-    return date;
-}
-
->>>>>>> acac15198a16175c8b949c8432b9dae6e02eb339
