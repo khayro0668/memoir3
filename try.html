@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <button onclick="convertTextToPdf('')">Convert Text to PDF</button>
+    <button onclick="convertTextToPdf('oussama soufi khalas drahmek')">Convert Text to PDF</button>
 
     <script>
         function convertTextToPdf(text) {
@@ -15,6 +15,7 @@
             const doc = new jsPDF();
 
             doc.text(text, 10, 10);
+            
             doc.save('example.pdf');
         }
     </script>

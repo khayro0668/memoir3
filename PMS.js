@@ -79,6 +79,7 @@ function goToPMS() {
         document.getElementById('remaning-div').style.height = '98px';
     }
 }
+
 /////////////////////
 function selectRoom(room) {
     selectedRoom = hotel.listOfRooms.find(r => r.id === room.id);

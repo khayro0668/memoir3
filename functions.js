@@ -855,9 +855,6 @@ function makeActive(element) {
 }
 
 
-<<<<<<< HEAD
-
-=======
 function handleMenuAction(id) {
 
     switch (id) {
@@ -1357,4 +1354,3 @@ function reserveRoom() {
 function generatePageOfAccountEmployesSettings(listOfAccount) {
  
 }
->>>>>>> 0685c01c6d69e6e926b1834eedc620fae44cbe1c
