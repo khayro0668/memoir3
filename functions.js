@@ -388,9 +388,9 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
-    
+
     hotel.addEventInArchives(currentUser, 'set price');
-    
+
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
@@ -398,7 +398,14 @@ function setPriceOfRooms() {
 
 //convert string to pdf
 function textIntoPDF(text) {
+    function convertTextToPdf(text) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
+        doc.text(text, 10, 10);
+
+        doc.save('example.pdf');
+    }
 }
 
 //send email
@@ -1351,9 +1358,10 @@ function reserveRoom() {
 
 //younes
 function generatePageOfAccountEmployesSettings(listOfAccount) {
- 
+
 }
 
+<<<<<<< HEAD
 
 
 //khayro trolling trying to creat a function of update room
@@ -1381,3 +1389,30 @@ var endDate = calculateEndDate(selectedRoom.startDate,duration)
 selectedRoom.setEndDate(endDate);
 generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
+=======
+//show toolitp
+function showToolTip(date) {
+    var tooltip = document.getElementById("tooltip");
+    var d = getDate(date);
+    tooltip.innerHTML = d;
+    tooltip.style.display = "block";
+}
+
+function hideToolTip() {
+    var tooltip = document.getElementById("tooltip");
+    tooltip.style.display = "none";
+}
+
+function getDate(date) {
+    // Create a new Date object
+
+     var day = currentDate.getDate(); // Get the day (1-31)
+    // var month = currentDate.getMonth() + 1; // Get the month (0-11), add 1 to match the human-readable format
+    // var year = currentDate.getFullYear(); // Get the full year (e.g., 2024)
+
+    // // Create a formatted string for the current date
+    // var formattedDate = day + '/' + month + '/' + year;
+    // return formattedDate;
+}
+
+>>>>>>> acac15198a16175c8b949c8432b9dae6e02eb339
