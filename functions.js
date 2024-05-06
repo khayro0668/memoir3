@@ -1376,14 +1376,6 @@ function hideToolTip() {
 }
 
 function getDate(date) {
-    // Create a new Date object
-
-     var day = currentDate.getDate(); // Get the day (1-31)
-    // var month = currentDate.getMonth() + 1; // Get the month (0-11), add 1 to match the human-readable format
-    // var year = currentDate.getFullYear(); // Get the full year (e.g., 2024)
-
-    // // Create a formatted string for the current date
-    // var formattedDate = day + '/' + month + '/' + year;
-    // return formattedDate;
+    return date;
 }
 
