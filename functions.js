@@ -854,10 +854,6 @@ function makeActive(element) {
     }
 }
 
-
-<<<<<<< HEAD
-
-=======
 function handleMenuAction(id) {
 
     switch (id) {
@@ -1357,4 +1353,31 @@ function reserveRoom() {
 function generatePageOfAccountEmployesSettings(listOfAccount) {
  
 }
->>>>>>> 0685c01c6d69e6e926b1834eedc620fae44cbe1c
+
+
+
+//khayro trolling trying to creat a function of update room
+  
+function updateInformationOfResedent(){
+var lastName = document.getElementById("last-name-modification").value;
+var email =  document.getElementById("email-modification").value;
+var duration = document.getElementById("duration-modification").value;
+var pillow = document.getElementById("pillow-modification").value;
+var firstName = document.getElementById("first-name-modification").value;
+var chair = document.getElementById("chair-modification").value;
+var snack = document.getElementById("snack-modification").value;
+var beds = document.getElementById("beds-modification").value;
+
+selectedRoom.setLastName(lastName);
+selectedRoom.setResidentEmail(email);
+selectedRoom.setDurationOfReservation(duration);
+selectedRoom.setFirstName(firstName);
+selectedRoom.listOfAvailablePillows.push(pillow);
+selectedRoom.setNumberOfBeds(beds);
+selectedRoom.setChairs(chair);
+selectedRoom.setSnacks(snack);
+selectedRoom.setResident(firstName);
+var endDate = calculateEndDate(selectedRoom.startDate,duration)
+selectedRoom.setEndDate(endDate);
+generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+}
