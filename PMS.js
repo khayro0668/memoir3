@@ -289,9 +289,7 @@ function submitForm() {
 
 
 function cancelReservation() {
-    // هنا يمكنك إضافة الكود اللازم لإلغاء الحجز، مثل تنظيف النموذج أو تنفيذ طلب إلى الخادم
-    document.getElementById('reservationForm').reset();
-    alert('تم إلغاء الحجز بنجاح.');
+   
 }
 
 //generate account of admin
