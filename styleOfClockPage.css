@@ -96,14 +96,29 @@
 #type-of-search button:hover {
     background-color: #0056b3;
 }
+
 #searchContainer {
     position: relative;
     display: inline-block;
-    width: 200px; /* Set the width of the container as needed */
+    border: 1px solid black;
+    width: 200px;
+    height: max-content;
+}
+
+.tooltip {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
 }
 
 #suggestions {
-    display: block; /* Change this to block to make suggestions visible */
+    display: block;
     position: absolute;
     top: 100%;
     left: 0;

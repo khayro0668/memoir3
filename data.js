@@ -102,8 +102,17 @@ class Hotel {
 
 }
 
+
 class Room {
 
+    NumberOfFemaleBeds;
+    NumberOfMaleBeds;
+    statusOfMixed;
+
+    firstName;
+    lastName;
+    arrivalTime;
+    creditCardNumber;
     floorNumber;
     roomNumber;
     id;
@@ -125,12 +134,16 @@ class Room {
     keyStatus;
     BookingLink;
     numberOfBeds;
+    snacks;
+    chairs;
     wayOfReservation;
     typeOfRoom;
     listOfAvailablePillows;
     listOfAvailableMattresses;
 
     constructor(floorNumber, roomNumber) {
+        this.statusOfMixed = this.getRandomStatus();
+        this.NumberOfFemaleBeds = Math.floor(Math.random * 9);
         this.floorNumber = floorNumber;
         this.VipTax = Math.floor(Math.random()*100);
         this.Corrections = Math.floor(Math.random()*100);
@@ -139,7 +152,8 @@ class Room {
         this.isReserved = getStatusOfReserved();
         this.resident = getRandomResident(this.isReserved);
         this.price = 0;
-        this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
+        this.numberOfBeds = 2 + Math.floor(Math.random() * 7);
+        this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
 
@@ -165,6 +179,41 @@ class Room {
         this.paidPayment = this.totalPayment - this.remaningPayment;
     }
 
+     getRandomStatus () {
+        var ans = [true , false];
+        return ans[Math.floor(Math.random() * ans.length)];
+    }
+
+    setCreditCardNumber(value) {
+     this.creditCardNumber = value;
+    }
+
+    setArrivalTime(value){
+      this.arrivalTime = value;
+    }
+    setSnacks(value){
+        this.snacks = value;
+    }
+
+    setChairs(value){
+        this.chairs = value;
+    }
+    setNumberOfBeds(value){
+        this.numberOfBeds = value;
+      }
+
+    setCountryOfResident(value){
+     this.countryOfResident = value;
+    }
+
+    setFirstName(value) {
+        this.firstName = value;
+    }
+
+    setLastName(value) {
+        this.lastName = value;
+    }
+
     setIsReserved(value) {
         this.isReserved = value;
         this.keyStatus = value;
@@ -183,7 +232,7 @@ class Room {
     }
 
     setDurationOfReservation(duration) {
-        this.durationOfReservation = 90;
+        this.durationOfReservation = duration;
     }
 
     setStartDate(date) {
@@ -278,6 +327,11 @@ function calculateDaysBetweenDates(startDate, endDate) {
       return Math.round(days);  // استخدم Math.round للحصول على قيمة صحيحة
   
 }
+function calculateEndDate(startDate, duration) {
+    var start = new Date(startDate);
+    var end = new Date(start.getTime() + (duration ) * 24 * 60 * 60 * 1000);
+    return end.toISOString().split('T')[0];
+}
 
 function getCountdown() {
     // Generate random countdown (days)
@@ -319,16 +373,6 @@ function getRandomResident(isReserved) {
 }
 
 //calculateEndDate
-function calculateEndDate(startDate, period) {
-    // Create a new Date object from the startDate
-    let endDate = new Date(startDate);
-
-    // Add the period (in days) to the startDate
-    endDate.setDate(endDate.getDate() + parseInt(period));
-
-    // Return the new endDate
-    return endDate;
-}
 
 function getRandomCountry() {
     const countries = [

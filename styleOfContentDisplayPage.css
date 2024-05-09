@@ -18,7 +18,7 @@ body {
 
 .remaning-div {
     background-color: rgb(32, 162, 160);
-    height: 138px;
+    height: 148px;
     width: 248.5px;
     border-bottom-left-radius: 20px;
 }
@@ -29,6 +29,7 @@ body {
     border-top-left-radius: 20px;
     height: 120px;
     width: 248.5px;
+    
     background-color: rgb(32, 162, 160);
 }
 
@@ -115,15 +116,14 @@ body {
     border: none;
 }
 
-.menu-of-options button :hover {
+/* .menu-of-options button :hover {
     color: #D8F3F9;
-}
+} */
 
 .logo {
     height: 100px;
     width: 100px;
     border-radius: 50px;
-    margin-top: 10px;
     margin-bottom: 15px;
     background-image: url('434741953_908476244407691_3458671040561510092_n.jpg');
     background-size: cover;
@@ -175,9 +175,9 @@ body {
 
 }
 
-.ptn :hover {
+/* .ptn :hover {
     background-color: white;
-}
+} */
 
 #container {
     width: 950px;

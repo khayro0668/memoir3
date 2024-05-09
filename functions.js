@@ -62,7 +62,7 @@ function rempleID() {
 
     idOfContainerOfButtons = [];
 
-    idOfContainerOfButtons.push('logo');
+    idOfContainerOfButtons.push('first-item');
     idOfContainerOfButtons.push('container-of-part-in-options-01');
     idOfContainerOfButtons.push('container-of-part-in-options-02');
     idOfContainerOfButtons.push('container-of-part-in-options-03');
@@ -78,6 +78,8 @@ function rempleID() {
 
 }
 //view availabel rooms
+
+
 function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
     names = [];
     var table = '<table>';
@@ -121,6 +123,7 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
 //function to create needed dropdowns
 function createCardOfRoom(room) {
     return `
+    
         <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
             <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'red' : 'green')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
             <p class="pr">floor ${room.floorNumber}<br>room ${room.roomNumber}</p>
@@ -144,33 +147,49 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
     for (let i = minNumberOfBeds; i <= maxNumberOfBeds; i++) {
         divOfBads += `<option value="${i}">${i}</option>`;
     }
-
+    
+    var divOfTypes = ``;
+    for(let i = 0 ; i < arrayOfRoomTypes.length ; i++){
+        divOfTypes += `<option value="${i}">${arrayOfRoomTypes[i].type}</option>`
+    }
     var UI = `
         <div class="dropdown-container">
-            <div class="dropdown-wrapper1" display: flex;>
+            <div class="dropdown-wrapper2" display: flex;>
              <button class="text-of-select">floor</button>
                 <select class="dropdown" id="dropdown1">
                    ${divOfFloors}
                 </select>
             </div>
             <div class="dropdown-wrapper2" display: flex;>
-           
+            <button class="text-of-select">Room</button>
                 <select class="dropdown" id="dropdown2">
                    ${divOfRooms}
                 </select>
             </div>
-            <div class="dropdown-wrapper3" display: flex;>
-            
+            <div class="dropdown-wrapper2" display: flex;>
+            <button class="text-of-select">Beds</button>
                 <select class="dropdown" id="dropdown3">
                     ${divOfBads}
                 </select>
             </div>
-            <div class="dropdown-wrapper4" display: flex;>
-            
+            <div class="dropdown-wrapper2" display: flex;>
+            <button class="text-of-select">Status</button>
                 <select class="dropdown" id="dropdown4">
                     <option value="0">All</option>
                     <option value="1">Reserved</option>
                     <option value="2">Unbooked</option>
+                </select>
+            </div>
+            <div class="dropdown-wrapper2" display: flex;>
+             <button class="text-of-select">mixed:</button>
+                <select class="dropdown" id="dropdown1">
+                   ${divOfFloors}
+                </select>
+            </div>
+            <div class="dropdown-wrapper2" display: flex;>
+             <button class="text-of-select">types:</button>
+                <select class="dropdown" id="dropdown1">
+                   ${divOfTypes}
                 </select>
             </div>
             
@@ -387,6 +406,7 @@ function setPriceOfRooms() {
     }
 
     hotel.addEventInArchives(currentUser, 'set price');
+
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
@@ -394,7 +414,14 @@ function setPriceOfRooms() {
 
 //convert string to pdf
 function textIntoPDF(text) {
+    function convertTextToPdf(text) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
+        doc.text(text, 10, 10);
+
+        doc.save('example.pdf');
+    }
 }
 
 //send email
@@ -636,7 +663,7 @@ function showSuggestions() {
             if (listOfNames[i].toUpperCase().includes(filter)) {
                 li = document.createElement('li');
                 li.textContent = listOfNames[i];
-                li.addEventListener('click', function() {
+                li.addEventListener('click', function () {
                     input.value = this.textContent;
                     ul.innerHTML = '';
                 });
@@ -678,9 +705,8 @@ function generateClock() {
 
         }
     }
+
     sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
-
-
 
     var page = ``;
     for (let i = 0; i < targetResidents.length; i++) {
@@ -749,18 +775,16 @@ function searchForID(id) {
 
 //initilaize some style
 function someStyle(buttonID) {
+
     for (let i = 0; i < idOfButtons.length; i++) {
 
         if (searchForID(idOfButtons[i]) === false || idOfButtons[i] === 'in-logo') {
             continue;
         }
 
-        if (idOfButtons[i] !== 'seconde-hr' && idOfButtons[i] !== 'first-hr') {
-            document.getElementById(idOfButtons[i]).style.borderBottomRightRadius = '0px';
-            document.getElementById(idOfButtons[i]).style.borderTopRightRadius = '0px';
-            document.getElementById(idOfButtons[i]).style.backgroundColor = 'transparent';
-        }
-
+        document.getElementById(idOfButtons[i]).style.borderBottomRightRadius = '0px';
+        document.getElementById(idOfButtons[i]).style.borderTopRightRadius = '0px';
+        document.getElementById(idOfButtons[i]).style.backgroundColor = 'transparent';
         document.getElementById(idOfContainerOfButtons[i]).style.borderBottomRightRadius = '0px';
         document.getElementById(idOfContainerOfButtons[i]).style.borderTopRightRadius = '0px';
         document.getElementById(idOfContainerOfButtons[i]).style.backgroundColor = 'rgb(32, 162, 160)';
@@ -770,7 +794,7 @@ function someStyle(buttonID) {
 
     for (let i = 0; i < idOfButtons.length; i++) {
         if (buttonID === idOfButtons[i]) {
-            
+
             if (i === 0) {
                 document.getElementById(idOfButtons[i + 1]).style.borderTopRightRadius = '20px';
                 document.getElementById(idOfContainerOfButtons[i + 1]).style.borderTopRightRadius = '20px';
@@ -795,7 +819,7 @@ function someStyle(buttonID) {
 //generate menu of buttons
 function generateMenuOfButtons() {
     var menu = `
-    <div class = "container-of-part-in-options-logo"><div class="logo" id="in-logo"></div></div>
+    <div class = "container-of-part-in-options-logo" id="first-item"><div class="logo" id="in-logo"></div></div>
     <div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-02"><div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
@@ -812,7 +836,7 @@ function generateMenuOfButtons() {
     <div class = "container-of-part-in-options" id="container-of-part-in-options-07"><div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div></div>
     <div class = "container-of-part-in-options" id="container-of-part-in-options-08"><div class="hr-of-menu" id="seconde-hr"></div></div>
     <div class = "container-of-part-in-options" id="container-of-part-in-options-09"><div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div></div>
-    <div class = "remaning-div"></div>
+    <div class = "remaning-div" id="remaning-div"></div>
     `;
 
     document.getElementById('menu-of-options').innerHTML = menu;
@@ -852,7 +876,6 @@ function makeActive(element) {
         icon.classList.add('active-icon');  // add this class to the icon as well
     }
 }
-
 
 function handleMenuAction(id) {
 
@@ -1318,8 +1341,66 @@ function getInformationOfPayment() {
     `;
 
     document.getElementById("view-payment-information").innerHTML = page;
-
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     currentIdInDisplayInformation = 'view-payment-information';
     document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+}
+
+//reserve room
+function reserveRoom() {
+    var firstName = document.getElementById('input1').value;
+    var lastName = document.getElementById('input2').value;
+    var duration = document.getElementById('input3').value;
+    var startDate = document.getElementById('input4').value;
+    var email = document.getElementById('input5').value;
+    var arrivalTime = document.getElementById('input6').value;
+    var creditCardNumber = document.getElementById('input7').value;
+    var country = document.getElementById('input8').value;
+
+
+    selectedRoom.setResidentEmail(email);
+    selectedRoom.setDurationOfReservation(duration);
+    selectedRoom.setStartDate(startDate);
+    selectedRoom.setIsReserved('Reserved');
+    selectedRoom.setFirstName(firstName);
+    selectedRoom.setLastName(lastName);
+    selectedRoom.setCountryOfResident(country);
+    selectedRoom.setArrivalTime(arrivalTime);
+    selectedRoom.setCreditCardNumber(creditCardNumber);
+
+    generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+}
+
+
+//younes
+function generatePageOfAccountEmployesSettings(listOfAccount) {
+
+}
+
+
+
+//khayro trolling trying to creat a function of update room
+  
+function updateInformationOfResedent(){
+var lastName = document.getElementById("last-name-modification").value;
+var email =  document.getElementById("email-modification").value;
+var duration = document.getElementById("duration-modification").value;
+var pillow = document.getElementById("pillow-modification").value;
+var firstName = document.getElementById("first-name-modification").value;
+var chair = document.getElementById("chair-modification").value;
+var snack = document.getElementById("snack-modification").value;
+var beds = document.getElementById("beds-modification").value;
+
+selectedRoom.setLastName(lastName);
+selectedRoom.setResidentEmail(email);
+selectedRoom.setDurationOfReservation(duration);
+selectedRoom.setFirstName(firstName);
+selectedRoom.listOfAvailablePillows.push(pillow);
+selectedRoom.setNumberOfBeds(beds);
+selectedRoom.setChairs(chair);
+selectedRoom.setSnacks(snack);
+selectedRoom.setResident(firstName);
+var endDate = calculateEndDate(selectedRoom.startDate,duration)
+selectedRoom.setEndDate(endDate);
+generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
