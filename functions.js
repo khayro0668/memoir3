@@ -152,7 +152,7 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
     
     var UI = `
         <div class="dropdown-container">
-            <div class="dropdown-wrapper1" display: flex;>
+            <div class="dropdown-wrapper2" display: flex;>
              <button class="text-of-select">floor</button>
                 <select class="dropdown" id="dropdown1">
                    ${divOfFloors}
@@ -176,6 +176,18 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                     <option value="0">All</option>
                     <option value="1">Reserved</option>
                     <option value="2">Unbooked</option>
+                </select>
+            </div>
+            <div class="dropdown-wrapper2" display: flex;>
+             <button class="text-of-select">mixed:</button>
+                <select class="dropdown" id="dropdown1">
+                   ${divOfFloors}
+                </select>
+            </div>
+            <div class="dropdown-wrapper2" display: flex;>
+             <button class="text-of-select">types:</button>
+                <select class="dropdown" id="dropdown1">
+                   ${divOfFloors}
                 </select>
             </div>
             

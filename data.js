@@ -102,6 +102,7 @@ class Hotel {
 
 }
 
+
 class Room {
 
     NumberOfFemaleBeds;
