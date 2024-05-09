@@ -149,7 +149,9 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
     }
     
     var divOfTypes = ``;
-    
+    for(let i = 0 ; i < arrayOfRoomTypes.length ; i++){
+        divOfTypes += `<option value="${i}">${arrayOfRoomTypes[i].type}</option>`
+    }
     var UI = `
         <div class="dropdown-container">
             <div class="dropdown-wrapper2" display: flex;>
@@ -187,7 +189,7 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
             <div class="dropdown-wrapper2" display: flex;>
              <button class="text-of-select">types:</button>
                 <select class="dropdown" id="dropdown1">
-                   ${divOfFloors}
+                   ${divOfTypes}
                 </select>
             </div>
             
