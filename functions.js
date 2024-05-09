@@ -147,7 +147,9 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
     for (let i = minNumberOfBeds; i <= maxNumberOfBeds; i++) {
         divOfBads += `<option value="${i}">${i}</option>`;
     }
-
+    
+    var divOfTypes = ``;
+    
     var UI = `
         <div class="dropdown-container">
             <div class="dropdown-wrapper1" display: flex;>
