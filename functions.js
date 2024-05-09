@@ -164,13 +164,13 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                    ${divOfRooms}
                 </select>
             </div>
-            <div class="dropdown-wrapper3" display: flex;>
+            <div class="dropdown-wrapper2" display: flex;>
             <button class="text-of-select">Beds</button>
                 <select class="dropdown" id="dropdown3">
                     ${divOfBads}
                 </select>
             </div>
-            <div class="dropdown-wrapper4" display: flex;>
+            <div class="dropdown-wrapper2" display: flex;>
             <button class="text-of-select">Status</button>
                 <select class="dropdown" id="dropdown4">
                     <option value="0">All</option>
