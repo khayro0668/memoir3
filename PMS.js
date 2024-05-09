@@ -172,6 +172,8 @@ function showInformationOfResidentInSelectedRoom() {
 
 //create a page to display the selected room information
 function showInformationOfSelectedRoom() {
+    var roomType;
+    if(selectedRoom.)
     var pageOfInformation = `
     <div class="room-details">
         <h2>Room Details</h2>
@@ -189,8 +191,8 @@ function showInformationOfSelectedRoom() {
         <input type="text" id="price" value="${selectedRoom.price}" readonly>
 
         
-        <label for="keyStatus">Key Status:</label>
-        <input type="text" id="keyStatus" value="${getKeyStatusBasedOnReservation(selectedRoom.isReserved)}" readonly>
+        <label for="keyStatus">Room Type:</label>
+        <input type="text" id="keyStatus" value="${}" readonly>
         
         <label for="numberOfBeds">Number of Beds:</label>
         <input type="text" id="numberOfBeds" value="${selectedRoom.numberOfBeds}" readonly>
