@@ -708,7 +708,19 @@ function generateClock() {
 
     sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
 
-    var page = ``;
+    var page = `
+    <div class="current-resident-container">
+    <div class="current-resident">
+        <div class="part-of-name-resident"><h2>Name</h2></div>
+        <div class="part-of-room"><h2>Floor</h2></div>
+        <div class="part-of-room"><h2>Room</h2></div>
+        <div class="part-of-room"><h2>Days Left</h2></div>
+        <div class="part-of-room"><h2>Gender</h2></div>
+        <div class="part-of-room"><h2>Country</h2></div>
+    </div>
+    <div class="scrollable-content">
+`;
+    
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
             page += `
@@ -720,12 +732,17 @@ function generateClock() {
                </div>
                <div class="part-of-room">
                    <h2>
-                     floor : ${targetResidents[i].floorNumber} , room : ${targetResidents[i].roomNumber}
+                     ${targetResidents[i].floorNumber} 
+                   </h2>
+               </div>
+               <div class="part-of-room">
+                   <h2>
+                   ${targetResidents[i].roomNumber}
                    </h2>
                </div>
                <div class="part-of-contdown">
                   <h2>
-                   ${getRemaningDays(targetResidents[i].endDate)} Days left
+                   ${getRemaningDays(targetResidents[i].endDate)}
                   </h2>
                </div>
                <div class="part-of-gender-in-clock">
@@ -738,11 +755,49 @@ function generateClock() {
                    ${targetResidents[i].countryOfResident}
                   </h2>
                </div>
-            </div>`
+            </div>`;
         }
     }
-
+      for (let i = 0; i < targetResidents.length; i++) {
+        if (targetResidents[i].isReserved === 'Reserved') {
+            page += `
+            <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
+               <div class="part-of-name-resident">
+                 <h2>
+                 ${targetResidents[i].resident}
+                 </h2>
+               </div>
+               <div class="part-of-room">
+                   <h2>
+                     ${targetResidents[i].floorNumber} 
+                   </h2>
+               </div>
+               <div class="part-of-room">
+                   <h2>
+                   ${targetResidents[i].roomNumber}
+                   </h2>
+               </div>
+               <div class="part-of-contdown">
+                  <h2>
+                   ${getRemaningDays(targetResidents[i].endDate)}
+                  </h2>
+               </div>
+               <div class="part-of-gender-in-clock">
+                  <h2>
+                   ${targetResidents[i].genderOfResident}
+                  </h2>
+               </div>
+               <div class="part-of-country-in-clock">
+                  <h2>
+                   ${targetResidents[i].countryOfResident}
+                  </h2>
+               </div>
+            </div>`;
+        }
+    }
+    
     document.getElementById('show-current-residents').innerHTML = page;
+    
 }
 
 //get info of selected resident
@@ -1239,7 +1294,17 @@ function checkForm() {
 
 //generate page of payment
 function generatePageOfPayment() {
-    var page = ``;
+    var page = ` <div class="current-resident-container">
+    <div class="current-resident">
+        <div class="part-of-name-resident"><h2>Name</h2></div>
+        <div class="part-of-room"><h2>Floor</h2></div>
+        <div class="part-of-room"><h2>Room</h2></div>
+        <div class="part-of-contdown"><h2>remaning payment</h2></div>
+        <div class="part-of-gender-in-clock"><h2> Paid </h2></div>
+        <div class="part-of-country-in-clock"><h2> total </h2></div>
+    </div>
+    <div class="scrollable-content">
+`;
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].isReserved === 'Reserved') {
             page += `
@@ -1251,22 +1316,27 @@ function generatePageOfPayment() {
                </div>
                <div class="part-of-room">
                    <h2>
-                     floor : ${hotel.listOfRooms[i].floorNumber} , room : ${hotel.listOfRooms[i].roomNumber}
+                    ${hotel.listOfRooms[i].floorNumber} 
+                   </h2>
+               </div>
+               <div class="part-of-room">
+                   <h2>
+                      ${hotel.listOfRooms[i].roomNumber}
                    </h2>
                </div>
                <div class="part-of-contdown">
                   <h2>
-                   remaning payment : ${hotel.listOfRooms[i].remaningPayment}
+                ${hotel.listOfRooms[i].remaningPayment}$
                   </h2>
                </div>
                <div class="part-of-gender-in-clock">
                   <h2>
-                   paid payment : ${hotel.listOfRooms[i].paidPayment}
+                    ${hotel.listOfRooms[i].paidPayment}$
                   </h2>
                </div>
                <div class="part-of-country-in-clock">
                   <h2>
-                   total payment : ${hotel.listOfRooms[i].totalPayment}
+                  ${hotel.listOfRooms[i].totalPayment}$
                   </h2>
                </div>
             </div>`
