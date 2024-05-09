@@ -104,6 +104,10 @@ class Hotel {
 
 class Room {
 
+    NumberOfFemaleBeds;
+    NumberOfMaleBeds;
+    statusOfMixed;
+
     firstName;
     lastName;
     arrivalTime;
@@ -137,6 +141,8 @@ class Room {
     listOfAvailableMattresses;
 
     constructor(floorNumber, roomNumber) {
+        this.statusOfMixed = this.getRandomStatus();
+        this.NumberOfFemaleBeds = Math.floor(Math.random * 9);
         this.floorNumber = floorNumber;
         this.VipTax = Math.floor(Math.random()*100);
         this.Corrections = Math.floor(Math.random()*100);
@@ -145,7 +151,8 @@ class Room {
         this.isReserved = getStatusOfReserved();
         this.resident = getRandomResident(this.isReserved);
         this.price = 0;
-        this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
+        this.numberOfBeds = 2 + Math.floor(Math.random() * 7);
+        this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
 
@@ -169,6 +176,11 @@ class Room {
         this.totalPayment = 100 + Math.floor(Math.random() * 900);
         this.remaningPayment = Math.floor(Math.random() * this.totalPayment);
         this.paidPayment = this.totalPayment - this.remaningPayment;
+    }
+
+     getRandomStatus () {
+        var ans = [true , false];
+        return ans[Math.floor(Math.random() * ans.length)];
     }
 
     setCreditCardNumber(value) {

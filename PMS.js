@@ -16,6 +16,13 @@ var currentPage;
 //
 var selectedRoom;
 //
+
+var roomtypes = [
+'vip' , '8 bed mixed room' , '6 bed female room' , '6 bed mixed room' ,
+ '4 bed mixed room'
+];
+
+/////////
 var currentUser = 'admin';
 var names = [];
 var admin = { id: 0, name: "admin", password: "12" };
@@ -55,6 +62,7 @@ window.onload = function () {
     rempleID();
     goToPMS();
 }
+
 
 function initilaizeNames() {
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
