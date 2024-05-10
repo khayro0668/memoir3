@@ -144,7 +144,7 @@ function reserveSelectedRoom() {
             </div>
         </div>
         <div class="button-container1">
-            <button class="btn-of-reserve" type="button" id="reserveButton" disabled onclick="reserveRoom()">Reserve</button>
+            <button class="btn-of-reserve" type="button" onclick="ReserverThisRoom(selectedRoom)" id="reserveButton" >Reserve</button>
             <button class="btn-of-reserve" type="button">Cancel</button>
         </div>
     </div>
@@ -333,5 +333,19 @@ function generateFirstPage() {
                 <span class="label">Employee</span>
             </div>
     `;
+
+}
+function ReserverThisRoom(selectedRoom){
+    
+    selectedRoom.setFirstName(document.getElementById('input1').value);
+    selectedRoom.setLastName(document.getElementById('input2').value);
+    selectedRoom.setDuration(parseInt(document.getElementById('input3').value));
+    selectedRoom.setStartDate(new Date(document.getElementById('input4').value));
+    selectedRoom.setEmail(document.getElementById('input5').value);
+    selectedRoom.setArrivalTime(document.getElementById('input6').value);
+    selectedRoom.setCreditCardNumber(document.getElementById('input7').value);
+    selectedRoom.setCountry(document.getElementById('input8').value);
+    selectedRoom.isReserved = 'Reserved';
+    console.log('its done ');
 
 }
