@@ -46,13 +46,13 @@ var valueOfTypeRoomDropDown = -1;
 var valueOfMixedStatus = -1;
 
 var arrayOfRoomTypes = [
-    {type : "All" , femaleBeds :-1 , maleBeds :-1 , isMixed : true} ,
-    {type : "Private mixed room" , femaleBeds :1 , maleBeds :1 , isMixed : true} ,
-    {type : "Private un mixed room" , femaleBeds :2 , maleBeds :2 , isMixed : false} ,
-    {type : "8 bed mixed room" , femaleBeds :8 , maleBeds :8 , isMixed : true} ,
-    {type : "6 bed female room" , femaleBeds : 6 , maleBeds : 0 , isMixed : false} ,
-    {type : "6 bed mixed room" , femaleBeds : 6 , maleBeds : 6 , isMixed : true} ,
-    {type : "4 bed mixed room" , femaleBeds : 4 , maleBeds : 4 , isMixed : false} ,
+    {type : "All" , femaleBeds :-1 , maleBeds :-1 , isMixed : true , numberOfAllBeds : -1} ,
+    {type : "Private mixed room" , femaleBeds :1 , maleBeds :1 , isMixed : true , numberOfAllBeds : 2} ,
+    {type : "Private un mixed room" , femaleBeds :2 , maleBeds :2 , isMixed : false , numberOfAllBeds : 2} ,
+    {type : "8 bed mixed room" , femaleBeds :8 , maleBeds :8 , isMixed : true , numberOfAllBeds : 8} ,
+    {type : "6 bed female room" , femaleBeds : 6 , maleBeds : 0 , isMixed : false , numberOfAllBeds : 6} ,
+    {type : "6 bed mixed room" , femaleBeds : 6 , maleBeds : 6 , isMixed : true , numberOfAllBeds : 6} ,
+    {type : "4 bed mixed room" , femaleBeds : 4 , maleBeds : 4 , isMixed : true , numberOfAllBeds : 4} ,
 ];
 
 //onload function

@@ -111,15 +111,44 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
     const checkEquality = (firstValue, secondValue) => {
         return secondValue === -1 || firstValue === secondValue;
     }
-    
-    var ans = true;
 
-    if(valueOfMixedStatus !== -1){
-        ans &= room.statusOfMixed === room.statusOfMixed;
+    var ans = true;
+    console.log(room.NumberOfFemaleBeds + ' ' + room.NumberOfMaleBeds + ' ' + room.numberOfBeds);
+    ans &= (room.NumberOfFemaleBeds + room.NumberOfMaleBeds ===  room.numberOfBeds);
+    if (valueOfMixedStatus !== -1) {
+        if(valueOfMixedStatus === 'mixed'){
+         if(room.statusOfMixed){
+          ans = true;
+         }else{
+           ans = false;
+         }
+        }else {
+            if(room.statusOfMixed){
+                ans = false;
+               }else{
+                 ans = true;
+               }
+        }
     }
 
-    if(valueOfTypeRoomDropDown !== -1){
-        
+    if (valueOfTypeRoomDropDown !== -1) {
+        for (let i = 0; i < arrayOfRoomTypes.length; i++) {
+            if (arrayOfRoomTypes[i].type === valueOfTypeRoomDropDown) {
+                if (room.statusOfMixed !== arrayOfRoomTypes[i].isMixed) {
+                    ans = false;
+                } else {
+                    if (arrayOfRoomTypes[i].isMixed) {
+                        ans &= room.numberOfBeds === arrayOfRoomTypes[i].numberOfAllBeds;
+                        ans &= arrayOfRoomTypes[i].maleBeds * arrayOfRoomTypes[i].femaleBeds !== 0;
+                    } else {
+                        ans &= arrayOfRoomTypes[i].femaleBeds === room.NumberOfFemaleBeds;
+                        ans &= arrayOfRoomTypes[i].maleBeds === room.NumberOfMaleBeds;
+                        ans &= room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds;
+                    }
+                }
+             break;
+            }
+        }
     }
 
     ans &= checkEquality(room.numberOfBeds, numberOdBeds);
@@ -156,9 +185,9 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
     for (let i = minNumberOfBeds; i <= maxNumberOfBeds; i++) {
         divOfBads += `<option value="${i}">${i}</option>`;
     }
-    
+
     var divOfTypes = ``;
-    for(let i = 0 ; i < arrayOfRoomTypes.length ; i++){
+    for (let i = 0; i < arrayOfRoomTypes.length; i++) {
         divOfTypes += `<option value="${i}">${arrayOfRoomTypes[i].type}</option>`
     }
     var UI = `
@@ -191,13 +220,15 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
             </div>
             <div class="dropdown-wrapper2" display: flex;>
              <button class="text-of-select">mixed:</button>
-                <select class="dropdown" id="dropdown1">
-                   ${divOfFloors}
+                <select class="dropdown" id="dropdown5">
+                <option value="0">All</option>
+                <option value="1">mixed</option>
+                <option value="2">un mixed</option>
                 </select>
             </div>
             <div class="dropdown-wrapper2" display: flex;>
              <button class="text-of-select">types:</button>
-                <select class="dropdown" id="dropdown1">
+                <select class="dropdown" id="dropdown6">
                    ${divOfTypes}
                 </select>
             </div>
@@ -222,6 +253,8 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                 case 'dropdown2': valueOfRoomNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
                 case 'dropdown3': valueOfBedsNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
                 case 'dropdown4': valueOfReservedDropdawn = getValueOfSelectionDropdown(selectedOption, false); break;
+                case 'dropdown5': valueOfMixedStatus = getValueOfSelectionDropdown(selectedOption, false); break;
+                case 'dropdown6': valueOfTypeRoomDropDown = getValueOfSelectionDropdown(selectedOption , false);break;
             }
             generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
         });
@@ -231,6 +264,8 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
     initilaizeDropdawn('dropdown3');
     initilaizeDropdawn('dropdown2');
     initilaizeDropdawn('dropdown1');
+    initilaizeDropdawn('dropdown5');
+    initilaizeDropdawn('dropdown6');
 }
 
 //create bar of settings of selected room
@@ -729,7 +764,7 @@ function generateClock() {
     </div>
     <div class="scrollable-content">
 `;
-    
+
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
             page += `
@@ -767,7 +802,7 @@ function generateClock() {
             </div>`;
         }
     }
-      for (let i = 0; i < targetResidents.length; i++) {
+    for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
             page += `
             <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
@@ -804,9 +839,9 @@ function generateClock() {
             </div>`;
         }
     }
-    
+
     document.getElementById('show-current-residents').innerHTML = page;
-    
+
 }
 
 //get info of selected resident
@@ -1459,27 +1494,44 @@ function generatePageOfAccountEmployesSettings(listOfAccount) {
 
 
 //khayro trolling trying to creat a function of update room
-  
-function updateInformationOfResedent(){
-var lastName = document.getElementById("last-name-modification").value;
-var email =  document.getElementById("email-modification").value;
-var duration = document.getElementById("duration-modification").value;
-var pillow = document.getElementById("pillow-modification").value;
-var firstName = document.getElementById("first-name-modification").value;
-var chair = document.getElementById("chair-modification").value;
-var snack = document.getElementById("snack-modification").value;
-var beds = document.getElementById("beds-modification").value;
 
-selectedRoom.setLastName(lastName);
-selectedRoom.setResidentEmail(email);
-selectedRoom.setDurationOfReservation(duration);
-selectedRoom.setFirstName(firstName);
-selectedRoom.listOfAvailablePillows.push(pillow);
-selectedRoom.setNumberOfBeds(beds);
-selectedRoom.setChairs(chair);
-selectedRoom.setSnacks(snack);
-selectedRoom.setResident(firstName);
-var endDate = calculateEndDate(selectedRoom.startDate,duration)
-selectedRoom.setEndDate(endDate);
-generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+function updateInformationOfResedent() {
+    var lastName = document.getElementById("last-name-modification").value;
+    var email = document.getElementById("email-modification").value;
+    var duration = document.getElementById("duration-modification").value;
+    var pillow = document.getElementById("pillow-modification").value;
+    var firstName = document.getElementById("first-name-modification").value;
+    var chair = document.getElementById("chair-modification").value;
+    var snack = document.getElementById("snack-modification").value;
+    var beds = document.getElementById("beds-modification").value;
+
+    selectedRoom.setLastName(lastName);
+    selectedRoom.setResidentEmail(email);
+    selectedRoom.setDurationOfReservation(duration);
+    selectedRoom.setFirstName(firstName);
+    selectedRoom.listOfAvailablePillows.push(pillow);
+    selectedRoom.setNumberOfBeds(beds);
+    selectedRoom.setChairs(chair);
+    selectedRoom.setSnacks(snack);
+    selectedRoom.setResident(firstName);
+    var endDate = calculateEndDate(selectedRoom.startDate, duration)
+    selectedRoom.setEndDate(endDate);
+    generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+}
+
+//add a new type from here
+function addNewRoomType(){
+    var newTypeName;
+    var newTypeFemaleBeds;
+    var newTypeMaleBeds;
+    var newTypeStausMixed;
+    var newTypeNumberOfAllBeds;
+
+    arrayOfRoomTypes.push({
+        type : newTypeName ,
+        femaleBeds : newTypeFemaleBeds ,
+        maleBeds : newTypeMaleBeds ,
+        isMixed : newTypeStausMixed ,
+        numberOfAllBeds : newTypeNumberOfAllBeds
+    });
 }
