@@ -42,14 +42,19 @@ var selectedGender = -1;
 var typeOfSort = -1;
 var listOfNames = [];
 
+var valueOfTypeRoomDropDown = -1;
+var valueOfMixedStatus = -1;
+
 var arrayOfRoomTypes = [
-    {type : "Private mixed room" , femaleBeds :-1 , maleBeds :-1 , isMixed : true} ,
-    {type : "Private un mixed room" , femaleBeds :-1 , maleBeds :-1 , isMixed : false} ,
-    {type : "8 bed mixed room" , femaleBeds :-1 , maleBeds :-1 , isMixed : true} ,
-    {type : "6 bed female room" , femaleBeds : 8 , maleBeds : 0 , isMixed : false} ,
-    {type : "6 bed mixed room" , femaleBeds : 8 , maleBeds : 0 , isMixed : true} ,
-    {type : "4 bed mixed room" , femaleBeds : 8 , maleBeds : 0 , isMixed : false} ,
-]
+    {type : "All" , femaleBeds :-1 , maleBeds :-1 , isMixed : true} ,
+    {type : "Private mixed room" , femaleBeds :1 , maleBeds :1 , isMixed : true} ,
+    {type : "Private un mixed room" , femaleBeds :2 , maleBeds :2 , isMixed : false} ,
+    {type : "8 bed mixed room" , femaleBeds :8 , maleBeds :8 , isMixed : true} ,
+    {type : "6 bed female room" , femaleBeds : 6 , maleBeds : 0 , isMixed : false} ,
+    {type : "6 bed mixed room" , femaleBeds : 6 , maleBeds : 6 , isMixed : true} ,
+    {type : "4 bed mixed room" , femaleBeds : 4 , maleBeds : 4 , isMixed : false} ,
+];
+
 //onload function
 window.onload = function () {
     hotel = new Hotel();

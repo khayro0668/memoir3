@@ -111,8 +111,17 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
     const checkEquality = (firstValue, secondValue) => {
         return secondValue === -1 || firstValue === secondValue;
     }
-
+    
     var ans = true;
+
+    if(valueOfMixedStatus !== -1){
+        ans &= room.statusOfMixed === room.statusOfMixed;
+    }
+
+    if(valueOfTypeRoomDropDown !== -1){
+        
+    }
+
     ans &= checkEquality(room.numberOfBeds, numberOdBeds);
     ans &= checkEquality(room.isReserved, reserved);
     ans &= checkEquality(room.floorNumber, floorNumber);

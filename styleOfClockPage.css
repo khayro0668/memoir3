@@ -8,6 +8,7 @@
     overflow: hidden; /* Prevents elements from overflowing */
 }
 .part-of-period {
+    border: 1px solid black;
     display: flex;
     align-items: center;
     width: 20%;

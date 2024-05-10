@@ -86,11 +86,11 @@ body {
 
 .menu-item:hover {
     background-color: white;
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 .menu-item:hover .icon-of-button i {
-    color: rgb(32, 162, 160);
+    color: rgb(251, 225, 117);
     /* Change the color of the icon on hover */
     transform: scale(1.1);
     /* Slightly enlarge the icon to highlight it */
@@ -116,9 +116,9 @@ body {
     border: none;
 }
 
-/* .menu-of-options button :hover {
+.menu-of-options button :hover {
     color: #D8F3F9;
-} */
+}
 
 .logo {
     height: 100px;
@@ -175,9 +175,6 @@ body {
 
 }
 
-/* .ptn :hover {
-    background-color: white;
-} */
 
 #container {
     width: 950px;
