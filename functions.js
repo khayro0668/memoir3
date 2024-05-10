@@ -48,7 +48,7 @@ function rempleID() {
     idOfButtons = [];
 
     idOfButtons.push('in-logo');
-    idOfButtons.push('first-hr');
+    idOfButtons.push('first-hr');style="background-color: rgb(32, 162, 160);">
     idOfButtons.push('rooms');
     idOfButtons.push('clock');
     idOfButtons.push('settings');
@@ -756,12 +756,13 @@ function generateClock() {
     var page = `
     <div class="current-resident-container">
     <div class="current-resident">
-        <div class="part-of-name-resident"><h2>Name</h2></div>
-        <div class="part-of-room"><h2>Floor</h2></div>
-        <div class="part-of-room"><h2>Room</h2></div>
-        <div class="part-of-room"><h2>Days Left</h2></div>
-        <div class="part-of-room"><h2>Gender</h2></div>
-        <div class="part-of-room"><h2>Country</h2></div>
+    <div class="part-of-name-resident" style=" background-color: rgb(32, 162, 160);"><h2 style="color: white;">First Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Last Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Floor</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Room</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Days Left</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Gender</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Country</h2></div>
     </div>
     <div class="scrollable-content">
 `;
@@ -773,6 +774,11 @@ function generateClock() {
                <div class="part-of-name-resident">
                  <h2>
                  ${targetResidents[i].resident}
+                 </h2>
+               </div>
+               <div class="part-of-room">
+                 <h2>
+                 ${targetResidents[i].lastName}
                  </h2>
                </div>
                <div class="part-of-room">
@@ -790,7 +796,7 @@ function generateClock() {
                    ${getRemaningDays(targetResidents[i].endDate)}
                   </h2>
                </div>
-               <div class="part-of-gender-in-clock">
+               <div class="part-of-gender-in-clock"style="background-color: ${targetResidents[i].genderOfResident === 'Male' ? 'blue' : 'pink'};">
                   <h2>
                    ${targetResidents[i].genderOfResident}
                   </h2>
@@ -813,6 +819,11 @@ function generateClock() {
                  </h2>
                </div>
                <div class="part-of-room">
+                 <h2>
+                 ${targetResidents[i].lastName}
+                 </h2>
+               </div>
+               <div class="part-of-room">
                    <h2>
                      ${targetResidents[i].floorNumber} 
                    </h2>
@@ -827,7 +838,7 @@ function generateClock() {
                    ${getRemaningDays(targetResidents[i].endDate)}
                   </h2>
                </div>
-               <div class="part-of-gender-in-clock">
+               <div class="part-of-gender-in-clock"style="background-color: ${targetResidents[i].genderOfResident === 'Male' ? 'blue' : 'pink'};">
                   <h2>
                    ${targetResidents[i].genderOfResident}
                   </h2>
@@ -1341,12 +1352,13 @@ function checkForm() {
 function generatePageOfPayment() {
     var page = ` <div class="current-resident-container">
     <div class="current-resident">
-        <div class="part-of-name-resident"><h2>Name</h2></div>
-        <div class="part-of-room"><h2>Floor</h2></div>
-        <div class="part-of-room"><h2>Room</h2></div>
-        <div class="part-of-contdown"><h2>remaning payment</h2></div>
-        <div class="part-of-gender-in-clock"><h2> Paid </h2></div>
-        <div class="part-of-country-in-clock"><h2> total </h2></div>
+        <div class="part-of-name-resident"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">First Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Last Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Floor</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Room</h2></div>
+        <div class="part-of-contdown"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">remaning payment</h2></div>
+        <div class="part-of-gender-in-clock"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;"> Paid </h2></div>
+        <div class="part-of-country-in-clock"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;"> total </h2></div>
     </div>
     <div class="scrollable-content">
 `;
@@ -1360,6 +1372,11 @@ function generatePageOfPayment() {
                  </h2>
                </div>
                <div class="part-of-room">
+                 <h2>
+                 ${hotel.listOfRooms[i].lastName}
+                 </h2>
+               </div>
+               <div class="part-of-room">
                    <h2>
                     ${hotel.listOfRooms[i].floorNumber} 
                    </h2>
@@ -1369,12 +1386,12 @@ function generatePageOfPayment() {
                       ${hotel.listOfRooms[i].roomNumber}
                    </h2>
                </div>
-               <div class="part-of-contdown">
+               <div class="part-of-contdown" style="background-color: red;">
                   <h2>
                 ${hotel.listOfRooms[i].remaningPayment}$
                   </h2>
                </div>
-               <div class="part-of-gender-in-clock">
+               <div class="part-of-gender-in-clock" style="background-color: green;">
                   <h2>
                     ${hotel.listOfRooms[i].paidPayment}$
                   </h2>
