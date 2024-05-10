@@ -143,7 +143,8 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
                     } else {
                         ans &= arrayOfRoomTypes[i].femaleBeds === room.NumberOfFemaleBeds;
                         ans &= arrayOfRoomTypes[i].maleBeds === room.NumberOfMaleBeds;
-                        ans &= room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds;
+                        ans &= arrayOfRoomTypes[i].numberOfAllBeds === room.numberOfBeds; 
+                       // ans &= room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds;
                     }
                 }
              break;
@@ -1473,7 +1474,7 @@ function reserveRoom() {
 
 
     selectedRoom.setResidentEmail(email);
-    selectedRoom.setDurationOfReservation(duration);
+     selectedRoom.setDurationOfReservation(duration);
     selectedRoom.setStartDate(startDate);
     selectedRoom.setIsReserved('Reserved');
     selectedRoom.setFirstName(firstName);

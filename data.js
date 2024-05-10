@@ -17,8 +17,8 @@ class Hotel {
         this.generateListOfAvailabelServices();
         this.generateArchive();
         this.generateListOfAccount();
-        this.numberOfFloors = 10;
-        this.numberOfRooms = 30;
+        this.numberOfFloors = 40;
+        this.numberOfRooms = 100;
     }
 
     generateListOfAccount() {
