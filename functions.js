@@ -449,7 +449,7 @@ function setPriceOfRooms() {
         }
     }
 
-    hotel.addEventInArchives(currentUser, 'set price');
+    hotel.addEventInArchives(currentUser, 'set price' , currentDate);
 
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
@@ -1269,7 +1269,7 @@ function generateCalendar() {
                     cur = 0;
                 }
                 page += `
-             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;">
+             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;"onclick="showInfoOfClickedResident(${JSON.stringify(hotel.listOfRooms[i]).replace(/"/g, '&quot;')})">
              </div>`;
             }
 
@@ -1535,3 +1535,36 @@ function addNewRoomType(){
         numberOfAllBeds : newTypeNumberOfAllBeds
     });
 }
+
+//show info of clicked resident
+function showInfoOfClickedResident(room) {
+    alert(room.resident)
+   var page = `
+   <div class="room-details">
+        <h2>Resident Details</h2>
+        
+        <label for="resident">Resident:</label>
+        <input type="text" id="resident" value="${room.resident}" readonly>
+        
+        <label for="floorNumber">E-mail:</label>
+        <input type="text" id="floorNumber" value="${room.residentEmail}" readonly>
+        <label for="startDate">Start Date:</label>
+        <input type="text" id="startDate" value="${room.startDate}" readonly>
+        
+        <label for="endDate">End Date:</label>
+        <input type="text" id="endDate" value="${room.endDate}" readonly>
+        
+        <label for="durationOfReservation">Duration of Reservation:</label>
+        <input type="text" id="durationOfReservation" value="${room.durationOfReservation} nights" readonly>
+    </div>
+   `;
+
+//    document.getElementById('card-of-info').style.display = 'block';
+
+}
+
+function hideInfoOfClickedResident() {
+    document.getElementById('card-of-info').style.display = 'none';
+}
+
+

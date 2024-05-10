@@ -42,10 +42,11 @@ class Hotel {
 
     generateArchive() {
         this.archives = [];
+        
     }
 
-    addEventInArchives(employe, event) {
-        var newEvent = new Event(employe, event);
+    addEventInArchives(employe, event , date) {
+        var newEvent = new Event(employe, event , date);
         this.archives.push(newEvent);
     }
 
@@ -433,8 +434,9 @@ function getRandomGender() {
 class Event {
     employe;
     event;
+    date;
 
-    constructor(employe, event) {
+    constructor(employe, event , date) {
         this.employe = employe;
         this.event = event;
     }
