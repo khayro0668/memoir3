@@ -48,7 +48,7 @@ function rempleID() {
     idOfButtons = [];
 
     idOfButtons.push('in-logo');
-    idOfButtons.push('first-hr');style="background-color: rgb(32, 162, 160);">
+    // idOfButtons.push('first-hr');style="background-color: rgb(32, 162, 160);">
     idOfButtons.push('rooms');
     idOfButtons.push('clock');
     idOfButtons.push('settings');
@@ -57,13 +57,13 @@ function rempleID() {
         idOfButtons.push('historique');
     }
     idOfButtons.push('payment');
-    idOfButtons.push('seconde-hr');
+    // idOfButtons.push('seconde-hr');
     idOfButtons.push('log-out');
 
     idOfContainerOfButtons = [];
 
     idOfContainerOfButtons.push('first-item');
-    idOfContainerOfButtons.push('container-of-part-in-options-01');
+    // idOfContainerOfButtons.push('container-of-part-in-options-01');
     idOfContainerOfButtons.push('container-of-part-in-options-02');
     idOfContainerOfButtons.push('container-of-part-in-options-03');
     idOfContainerOfButtons.push('container-of-part-in-options-04');
@@ -73,7 +73,7 @@ function rempleID() {
     }
 
     idOfContainerOfButtons.push('container-of-part-in-options-07');
-    idOfContainerOfButtons.push('container-of-part-in-options-08');
+    //  idOfContainerOfButtons.push('container-of-part-in-options-08');
     idOfContainerOfButtons.push('container-of-part-in-options-09');
 
 }
@@ -114,20 +114,20 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
 
     var ans = true;
     console.log(room.NumberOfFemaleBeds + ' ' + room.NumberOfMaleBeds + ' ' + room.numberOfBeds);
-    ans &= (room.NumberOfFemaleBeds + room.NumberOfMaleBeds ===  room.numberOfBeds);
+    ans &= (room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds);
     if (valueOfMixedStatus !== -1) {
-        if(valueOfMixedStatus === 'mixed'){
-         if(room.statusOfMixed){
-          ans = true;
-         }else{
-           ans = false;
-         }
-        }else {
-            if(room.statusOfMixed){
+        if (valueOfMixedStatus === 'mixed') {
+            if (room.statusOfMixed) {
+                ans = true;
+            } else {
                 ans = false;
-               }else{
-                 ans = true;
-               }
+            }
+        } else {
+            if (room.statusOfMixed) {
+                ans = false;
+            } else {
+                ans = true;
+            }
         }
     }
 
@@ -143,11 +143,11 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
                     } else {
                         ans &= arrayOfRoomTypes[i].femaleBeds === room.NumberOfFemaleBeds;
                         ans &= arrayOfRoomTypes[i].maleBeds === room.NumberOfMaleBeds;
-                        ans &= arrayOfRoomTypes[i].numberOfAllBeds === room.numberOfBeds; 
-                       // ans &= room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds;
+                        ans &= arrayOfRoomTypes[i].numberOfAllBeds === room.numberOfBeds;
+                        // ans &= room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds;
                     }
                 }
-             break;
+                break;
             }
         }
     }
@@ -166,7 +166,7 @@ function createCardOfRoom(room) {
         <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
             <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'red' : 'green')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
             <p class="pr">floor ${room.floorNumber}<br>room ${room.roomNumber}</p>
-            <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">${(room.isReserved === 'Unbooked' ? 'Boooked' : 'Visit')}</button>  
+            <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">${(room.isReserved === 'Unbooked' ? 'Booked' : 'Visit')}</button>  
         </div>`;
 }
 
@@ -255,7 +255,7 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                 case 'dropdown3': valueOfBedsNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
                 case 'dropdown4': valueOfReservedDropdawn = getValueOfSelectionDropdown(selectedOption, false); break;
                 case 'dropdown5': valueOfMixedStatus = getValueOfSelectionDropdown(selectedOption, false); break;
-                case 'dropdown6': valueOfTypeRoomDropDown = getValueOfSelectionDropdown(selectedOption , false);break;
+                case 'dropdown6': valueOfTypeRoomDropDown = getValueOfSelectionDropdown(selectedOption, false); break;
             }
             generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
         });
@@ -450,7 +450,7 @@ function setPriceOfRooms() {
         }
     }
 
-    hotel.addEventInArchives(currentUser, 'set price' , currentDate);
+    hotel.addEventInArchives(currentUser, 'set price', currentDate);
 
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
@@ -577,7 +577,13 @@ function checkPassword() {
         document.getElementById('result').style.display = 'none';
         showCurrentUser();
         generateMenuOfButtons();
+        rempleID();
         goToPMS();
+        if (inputPassword === admin.password) {
+            statusOfLogIn = 'admin';
+        } else {
+            statusOfLogIn = 'employe';
+        }
     } else {
         resultDiv.textContent = "wrong password";
     }
@@ -846,7 +852,16 @@ function someStyle(buttonID) {
 
     for (let i = 0; i < idOfButtons.length; i++) {
 
-        if (searchForID(idOfButtons[i]) === false || idOfButtons[i] === 'in-logo') {
+        if (searchForID(idOfButtons[i]) === false) {
+            continue;
+        }
+
+        if (idOfButtons[i] === 'in-logo') {
+            document.getElementById(idOfContainerOfButtons[i]).style.borderBottomRightRadius = '0px';
+            document.getElementById(idOfContainerOfButtons[i]).style.borderTopRightRadius = '0px';
+            document.getElementById(idOfContainerOfButtons[i]).style.backgroundColor = 'rgb(32, 162, 160)';
+            document.getElementById('in-logo').style.borderBottomRightRadius = '50px';
+            document.getElementById('in-logo').style.borderTopRightRadius = '50px';
             continue;
         }
 
@@ -871,7 +886,11 @@ function someStyle(buttonID) {
                     document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '20px';
                     document.getElementById(idOfContainerOfButtons[i - 1]).style.borderBottomRightRadius = '20px';
                 } else {
-                    document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
+                    if (idOfButtons[i - 1] === 'in-logo') {
+                        document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '50px';
+                    } else {
+                        document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
+                    }
                     document.getElementById(idOfButtons[i + 1]).style.borderTopRightRadius = '40px';
                     document.getElementById(idOfContainerOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
                     document.getElementById(idOfContainerOfButtons[i + 1]).style.borderTopRightRadius = '40px';
@@ -888,7 +907,7 @@ function someStyle(buttonID) {
 function generateMenuOfButtons() {
     var menu = `
     <div class = "container-of-part-in-options-logo" id="first-item"><div class="logo" id="in-logo"></div></div>
-    <div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>
+    <!--<div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>-->
         <div class = "container-of-part-in-options" id="container-of-part-in-options-02"><div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-04"><div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div></div>
@@ -902,7 +921,7 @@ function generateMenuOfButtons() {
 
     menu += `
     <div class = "container-of-part-in-options" id="container-of-part-in-options-07"><div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div></div>
-    <div class = "container-of-part-in-options" id="container-of-part-in-options-08"><div class="hr-of-menu" id="seconde-hr"></div></div>
+    <!--<div class = "container-of-part-in-options" id="container-of-part-in-options-08"><div class="hr-of-menu" id="seconde-hr"></div></div>-->
     <div class = "container-of-part-in-options" id="container-of-part-in-options-09"><div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div></div>
     <div class = "remaning-div" id="remaning-div"></div>
     `;
@@ -1448,7 +1467,7 @@ function reserveRoom() {
 
 
     selectedRoom.setResidentEmail(email);
-     selectedRoom.setDurationOfReservation(duration);
+    selectedRoom.setDurationOfReservation(duration);
     selectedRoom.setStartDate(startDate);
     selectedRoom.setIsReserved('Reserved');
     selectedRoom.setFirstName(firstName);
@@ -1495,7 +1514,7 @@ function updateInformationOfResedent() {
 }
 
 //add a new type from here
-function addNewRoomType(){
+function addNewRoomType() {
     var newTypeName;
     var newTypeFemaleBeds;
     var newTypeMaleBeds;
@@ -1503,18 +1522,18 @@ function addNewRoomType(){
     var newTypeNumberOfAllBeds;
 
     arrayOfRoomTypes.push({
-        type : newTypeName ,
-        femaleBeds : newTypeFemaleBeds ,
-        maleBeds : newTypeMaleBeds ,
-        isMixed : newTypeStausMixed ,
-        numberOfAllBeds : newTypeNumberOfAllBeds
+        type: newTypeName,
+        femaleBeds: newTypeFemaleBeds,
+        maleBeds: newTypeMaleBeds,
+        isMixed: newTypeStausMixed,
+        numberOfAllBeds: newTypeNumberOfAllBeds
     });
 }
 
 //show info of clicked resident
 function showInfoOfClickedResident(room) {
     alert(room.resident)
-   var page = `
+    var page = `
    <div class="room-details">
         <h2>Resident Details</h2>
         
@@ -1534,7 +1553,7 @@ function showInfoOfClickedResident(room) {
     </div>
    `;
 
-//    document.getElementById('card-of-info').style.display = 'block';
+    //    document.getElementById('card-of-info').style.display = 'block';
 
 }
 

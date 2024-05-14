@@ -73,7 +73,7 @@ window.onload = function () {
     initilaizeNames();
     generatePageOfPayment();
     rempleID();
-    goToPMS();
+     goToPMS();
 }
 
 
@@ -333,5 +333,5 @@ function generateFirstPage() {
                 <span class="label">Employee</span>
             </div>
     `;
-
+   
 }
