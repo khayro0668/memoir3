@@ -81,12 +81,17 @@ h2 {
    /* margin-right: 20px; */
 }
 .text-of-select{
-    border: 1px black solid;
+    border: none;
+    background-color: rgb(32, 162, 160);
     height: 32px;
+    color: white;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
 
+.text-of-select :hover {
+    background-color: rgb(32, 162, 160);
+}
 
 
 .dropdown-button {

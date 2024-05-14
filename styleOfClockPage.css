@@ -63,8 +63,8 @@
     border: 1px black solid;
     height: 55px;
     width: 140px;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    /* border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px; */
     display: flex;
     align-items: center;
 }

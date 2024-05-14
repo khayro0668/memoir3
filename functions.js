@@ -722,7 +722,6 @@ function showSuggestions() {
 
 
 
-
 //generate clock
 function generateClock() {
     var targetResidents = [];
@@ -767,48 +766,6 @@ function generateClock() {
     <div class="scrollable-content">
 `;
 
-    for (let i = 0; i < targetResidents.length; i++) {
-        if (targetResidents[i].isReserved === 'Reserved') {
-            page += `
-            <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
-               <div class="part-of-name-resident">
-                 <h2>
-                 ${targetResidents[i].resident}
-                 </h2>
-               </div>
-               <div class="part-of-room">
-                 <h2>
-                 ${targetResidents[i].lastName}
-                 </h2>
-               </div>
-               <div class="part-of-room">
-                   <h2>
-                     ${targetResidents[i].floorNumber} 
-                   </h2>
-               </div>
-               <div class="part-of-room">
-                   <h2>
-                   ${targetResidents[i].roomNumber}
-                   </h2>
-               </div>
-               <div class="part-of-contdown">
-                  <h2>
-                   ${getRemaningDays(targetResidents[i].endDate)}
-                  </h2>
-               </div>
-               <div class="part-of-gender-in-clock"style="background-color: ${targetResidents[i].genderOfResident === 'Male' ? 'blue' : 'pink'};">
-                  <h2>
-                   ${targetResidents[i].genderOfResident}
-                  </h2>
-               </div>
-               <div class="part-of-country-in-clock">
-                  <h2>
-                   ${targetResidents[i].countryOfResident}
-                  </h2>
-               </div>
-            </div>`;
-        }
-    }
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
             page += `
