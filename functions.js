@@ -1565,7 +1565,7 @@ function hideInfoOfClickedResident() {
 
 
 //initiliaze all information of hotel
-function addRoom(
+function addRoomInDataBase(
     NumberOfFemaleBeds ,
     NumberOfMaleBeds ,
     statusOfMixed ,
