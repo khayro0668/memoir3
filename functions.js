@@ -1562,3 +1562,41 @@ function hideInfoOfClickedResident() {
 }
 
 
+
+
+//initiliaze all information of hotel
+function addRoom(
+    NumberOfFemaleBeds ,
+    NumberOfMaleBeds ,
+    statusOfMixed ,
+    firstName ,
+    lastName ,
+    arrivalTime ,
+    creditCardNumber ,
+    floorNumber ,
+    roomNumber ,
+    id ,
+    VipTax ,
+    Corrections ,
+    resident ,
+    countryOfResident ,
+    genderOfResident ,
+    residentEmail ,
+    isReserved ,
+    price ,
+    totalPayment ,
+    remaningPayment ,
+    paidPayment ,
+    durationOfreservation ,
+    startDate ,
+    endDate ,
+    countdown ,
+    BookingLink ,
+    numberOfBeds ,
+    snacks ,
+    chairs ,
+    wayOfReservation ,
+    typeOfRoom) {
+        //here add room in data base
+    }
+

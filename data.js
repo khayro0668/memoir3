@@ -109,7 +109,6 @@ class Room {
     NumberOfFemaleBeds;
     NumberOfMaleBeds;
     statusOfMixed;
-
     firstName;
     lastName;
     arrivalTime;
@@ -132,16 +131,13 @@ class Room {
     startDate;
     endDate;
     countdown;
-    keyStatus;
     BookingLink;
     numberOfBeds;
     snacks;
     chairs;
     wayOfReservation;
     typeOfRoom;
-    listOfAvailablePillows;
-    listOfAvailableMattresses;
-
+    
     constructor(floorNumber, roomNumber) {
         this.numberOfBeds = 2 + Math.floor(Math.random() * 7);
         // this.NumberOfFemaleBeds = Math.floor(Math.random * this.numberOfBeds + 1);

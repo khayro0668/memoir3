@@ -1,24 +1,30 @@
 #type-of-search {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: space-between;
+    align-items: center; */
     height: 80px;
     width: 950px;
     border-bottom: 1px solid black;
     overflow: hidden; /* Prevents elements from overflowing */
 }
-.part-of-period {
-    border: 1px solid black;
-    display: flex;
+
+.componant-in-part-of-period {
+    /* border: 1px solid black;
     align-items: center;
-    width: 20%;
+    justify-content: center; */
+}
+.part-of-period {
+    /* display: flex;
+    align-items: center;
+    width: 20%; */
 }
 .part-of-period p {
-    margin: 0;
-    padding-right: 10px;
+    /* margin: 0;
+    padding-right: 10px; */
 }
 .part-of-period input[type="date"] {
-    width: 40%;
+    /* width: 120px;
+    margin-bottom: 90px; */
 }
 
 #show-current-residents {
@@ -35,6 +41,7 @@
     background-color: white;
     z-index: 999;
 }
+
 .scrollable-content {
     scrollbar-width: none;
     overflow-y: scroll;
@@ -42,8 +49,9 @@
     width: 950px;
     border-radius: 20px;
 }
-.current-resident {
 
+
+.current-resident {
     width: 100%;
     height: 55px;
     border-radius: 35px;
@@ -92,21 +100,21 @@
 
 .part-of-date input,
 .part-of-country select {
-    width: 100px;
+    /* width: 100px;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 4px; */
 }
 
 #type-of-search button {
-    height: 100%;
+    /* height: 100%;
 
     padding: 0 20px;
     background-color: rgb(32, 162, 160);;
     color: white;
     border: none;
     cursor: pointer;
-    width: calc(10% - 10px); /* Adjusted width to fit within the container */
+    width: calc(10% - 10px); */
 }
 
 #type-of-search button:hover {
@@ -134,7 +142,7 @@
 }
 
 #suggestions {
-    display: block;
+    /* display: block;
     position: absolute;
     top: 100%;
     left: 0;
@@ -147,8 +155,14 @@
     padding: 0;
     margin: 0;
     max-height: calc(100vh - 80px);
-    overflow-y: auto;
+    overflow-y: auto; */
 }
 
+.part-of-country {
+    /* border: 1px solid black;
+    background-color: #0056b3;
+    height: 100%;
+    width: 150px; */
+}
 
 
