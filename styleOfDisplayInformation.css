@@ -122,6 +122,9 @@ background-repeat: no-repeat;
     border-radius: 20px;
     position: relative;
 }
+#dropdown4{
+    border: black 1px solid;
+}
 
 /* ...................................................... */
 .room-details {
