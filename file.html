@@ -126,8 +126,8 @@
             <!--  -->
         </div>
 
-         <!-- display information -->
-         <div id="page-of-payment" style="display: none;">
+        <!-- display information -->
+        <div id="page-of-payment" style="display: none;">
             <!--  -->
         </div>
 
@@ -145,18 +145,22 @@
         <div id="page-of-clock" style="display: none;">
             <div id="type-of-search">
                 <div class="part-of-period">
-                    <p>First date</p>
-                    <p>Second date</p>
-                    <input type="date" id="first-date">
-                    <input type="date" id="second-date">
+                    <div class="componant-in-part-of-period">
+                        First date
+                        <input type="date" id="first-date">
+                    </div>
+                    <div  class="componant-in-part-of-period">
+                        Seconde date
+                        <input type="date" id="second-date">
+                    </div>
                 </div>
-            
+
                 <div class="part-of-country" id="part-of-country">
                     <select id="countryDropdown" onchange="showSelectedCountry()">
                         <option value="">All country</option>
                     </select>
                 </div>
-                
+
                 <div class="part-of-gender">
                     <select id="genderDropdown" onchange="displaySelectedGender()">
                         <option value="">All Gender</option>
@@ -164,7 +168,7 @@
                         <option value="Female">Female</option>
                     </select>
                 </div>
-                
+
                 <div class="type-of-sort">
                     <select id="sortDropdown" onchange="displaySelectedSort()" style="width: 100px;">
                         <option value="">Random sort</option>
@@ -175,26 +179,27 @@
                         <option value="sort-by-descending-order-start-date">sort by start date D</option>
                     </select>
                 </div>
-                
+
                 <div class="part-of-date">
                     date
                     <input type="date" id="input-date">
                 </div>
-                
+
                 <div id="searchContainer">
-                    <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search" onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
+                    <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search"
+                        onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
                     <ul id="suggestions"></ul>
                 </div>
                 <button onclick="generateClock()">Generate Clock</button>
-                
+
             </div>
-            
+
             <div id="show-current-residents">
                 <!--  -->
             </div>
         </div>
-        
-        
+
+
 
         <!-- display information -->
         <div id="page-of-calendar" style="display: none;">
@@ -209,6 +214,7 @@
         </div>
     </div>
     <div class="tooltip" id="tooltip"></div>
+    <div id="card-of-info" style="display: none;"></div>
 </body>
 
 </html>

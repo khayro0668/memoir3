@@ -85,12 +85,12 @@ body {
 }
 
 .menu-item:hover {
-    background-color: white;
-    color: rgb(0, 0, 0);
+    /* background-color: white;
+    color: white; */
 }
 
 .menu-item:hover .icon-of-button i {
-    color: rgb(32, 162, 160);
+    /* color: rgb(251, 225, 117); */
     /* Change the color of the icon on hover */
     transform: scale(1.1);
     /* Slightly enlarge the icon to highlight it */
@@ -116,9 +116,9 @@ body {
     border: none;
 }
 
-/* .menu-of-options button :hover {
-    color: #D8F3F9;
-} */
+.menu-of-options button :hover {
+    /* color: #D8F3F9; */
+}
 
 .logo {
     height: 100px;
@@ -148,7 +148,6 @@ body {
 }
 
 .icon-of-button i:hover {
-    color: rgb(32, 162, 160);
     /* Blue color on hover */
     cursor: pointer;
     /* Cursor indicates clickable item */
@@ -175,9 +174,6 @@ body {
 
 }
 
-/* .ptn :hover {
-    background-color: white;
-} */
 
 #container {
     width: 950px;

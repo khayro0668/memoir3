@@ -17,8 +17,8 @@ class Hotel {
         this.generateListOfAvailabelServices();
         this.generateArchive();
         this.generateListOfAccount();
-        this.numberOfFloors = 10;
-        this.numberOfRooms = 30;
+        this.numberOfFloors = 40;
+        this.numberOfRooms = 100;
     }
 
     generateListOfAccount() {
@@ -32,8 +32,8 @@ class Hotel {
 
     generateListOfRooms() {
         this.listOfRooms = [];
-        for (let i = 1; i <= 10; i++) {
-            for (let j = 1; j <= 30; j++) {
+        for (let i = 1; i <= 40; i++) {
+            for (let j = 1; j <= 100; j++) {
                 var room = new Room(i, j);
                 this.listOfRooms.push(room);
             }
@@ -42,10 +42,11 @@ class Hotel {
 
     generateArchive() {
         this.archives = [];
+        
     }
 
-    addEventInArchives(employe, event) {
-        var newEvent = new Event(employe, event);
+    addEventInArchives(employe, event , date) {
+        var newEvent = new Event(employe, event , date);
         this.archives.push(newEvent);
     }
 
@@ -108,7 +109,6 @@ class Room {
     NumberOfFemaleBeds;
     NumberOfMaleBeds;
     statusOfMixed;
-
     firstName;
     lastName;
     arrivalTime;
@@ -131,19 +131,24 @@ class Room {
     startDate;
     endDate;
     countdown;
-    keyStatus;
     BookingLink;
     numberOfBeds;
     snacks;
     chairs;
     wayOfReservation;
     typeOfRoom;
-    listOfAvailablePillows;
-    listOfAvailableMattresses;
-
+    
     constructor(floorNumber, roomNumber) {
+        this.numberOfBeds = 2 + Math.floor(Math.random() * 7);
+        // this.NumberOfFemaleBeds = Math.floor(Math.random * this.numberOfBeds + 1);
+        // this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
+     
+
+        this.NumberOfFemaleBeds = Math.floor(Math.random()*(this.numberOfBeds + 1));
+        this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
+
         this.statusOfMixed = this.getRandomStatus();
-        this.NumberOfFemaleBeds = Math.floor(Math.random * 9);
+    
         this.floorNumber = floorNumber;
         this.VipTax = Math.floor(Math.random()*100);
         this.Corrections = Math.floor(Math.random()*100);
@@ -152,8 +157,6 @@ class Room {
         this.isReserved = getStatusOfReserved();
         this.resident = getRandomResident(this.isReserved);
         this.price = 0;
-        this.numberOfBeds = 2 + Math.floor(Math.random() * 7);
-        this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
 
@@ -427,8 +430,9 @@ function getRandomGender() {
 class Event {
     employe;
     event;
+    date;
 
-    constructor(employe, event) {
+    constructor(employe, event , date) {
         this.employe = employe;
         this.event = event;
     }

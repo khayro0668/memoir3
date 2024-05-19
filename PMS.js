@@ -42,14 +42,19 @@ var selectedGender = -1;
 var typeOfSort = -1;
 var listOfNames = [];
 
+var valueOfTypeRoomDropDown = -1;
+var valueOfMixedStatus = -1;
+
 var arrayOfRoomTypes = [
-    {type : "Private mixed room" , femaleBeds :-1 , maleBeds :-1 , isMixed : true} ,
-    {type : "Private un mixed room" , femaleBeds :-1 , maleBeds :-1 , isMixed : false} ,
-    {type : "8 bed mixed room" , femaleBeds :-1 , maleBeds :-1 , isMixed : true} ,
-    {type : "6 bed female room" , femaleBeds : 8 , maleBeds : 0 , isMixed : false} ,
-    {type : "6 bed mixed room" , femaleBeds : 8 , maleBeds : 0 , isMixed : true} ,
-    {type : "4 bed mixed room" , femaleBeds : 8 , maleBeds : 0 , isMixed : false} ,
-]
+    {type : "All" , femaleBeds :-1 , maleBeds :-1 , isMixed : true , numberOfAllBeds : -1} ,
+    {type : "Private mixed room" , femaleBeds :1 , maleBeds :1 , isMixed : true , numberOfAllBeds : 2} ,
+    {type : "Private un mixed room" , femaleBeds :2 , maleBeds :0 , isMixed : false , numberOfAllBeds : 2} ,
+    {type : "8 bed mixed room" , femaleBeds :8 , maleBeds :8 , isMixed : true , numberOfAllBeds : 8} ,
+    {type : "6 bed female room" , femaleBeds : 6 , maleBeds : 0 , isMixed : false , numberOfAllBeds : 6} ,
+    {type : "6 bed mixed room" , femaleBeds : 6 , maleBeds : 6 , isMixed : true , numberOfAllBeds : 6} ,
+    {type : "4 bed mixed room" , femaleBeds : 4 , maleBeds : 4 , isMixed : true , numberOfAllBeds : 4} ,
+];
+
 //onload function
 window.onload = function () {
     hotel = new Hotel();
@@ -68,7 +73,7 @@ window.onload = function () {
     initilaizeNames();
     generatePageOfPayment();
     rempleID();
-    goToPMS();
+     goToPMS();
 }
 
 
@@ -139,7 +144,7 @@ function reserveSelectedRoom() {
             </div>
         </div>
         <div class="button-container1">
-            <button class="btn-of-reserve" type="button" id="reserveButton" disabled onclick="reserveRoom()">Reserve</button>
+            <button class="btn-of-reserve" type="button" onclick="reserveRoom()" id="reserveButton" >Reserve</button>
             <button class="btn-of-reserve" type="button">Cancel</button>
         </div>
     </div>
@@ -328,5 +333,5 @@ function generateFirstPage() {
                 <span class="label">Employee</span>
             </div>
     `;
-
+   
 }
