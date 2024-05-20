@@ -128,6 +128,9 @@ background-repeat: no-repeat;
     border-bottom-right-radius: 15px;
     position: relative;
 }
+#dropdown4{
+    border: black 1px solid;
+}
 
 /* ...................................................... */
 .room-details {
