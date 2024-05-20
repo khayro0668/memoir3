@@ -9,9 +9,6 @@ class Hotel {
     constructor() {
         this.nameOfHotel = "wassim hotel";
         this.generateListOfRooms();
-        this.generateListOfAvailableMattresses();
-        this.generateListOfAvailableMattresses();
-        this.generateListOfAvailabelServices();
         this.generateArchive();
         this.generateListOfAccount();
         this.numberOfFloors = 40;
