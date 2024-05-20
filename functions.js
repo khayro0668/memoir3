@@ -50,6 +50,7 @@ function rempleID() {
     idOfButtons.push('in-logo');
     // idOfButtons.push('first-hr');style="background-color: rgb(32, 162, 160);">
     idOfButtons.push('rooms');
+    idOfButtons.push('Booking');
     idOfButtons.push('clock');
     idOfButtons.push('settings');
     idOfButtons.push('calendar');
@@ -65,6 +66,7 @@ function rempleID() {
     idOfContainerOfButtons.push('first-item');
     // idOfContainerOfButtons.push('container-of-part-in-options-01');
     idOfContainerOfButtons.push('container-of-part-in-options-02');
+    idOfContainerOfButtons.push('container-of-part-in-options-Booking');
     idOfContainerOfButtons.push('container-of-part-in-options-03');
     idOfContainerOfButtons.push('container-of-part-in-options-04');
     idOfContainerOfButtons.push('container-of-part-in-options-05');
@@ -910,6 +912,7 @@ function generateMenuOfButtons() {
     <div class = "container-of-part-in-options-logo" id="first-item"><div class="logo" id="in-logo"></div></div>
     <!--<div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>-->
         <div class = "container-of-part-in-options" id="container-of-part-in-options-02"><div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div></div>
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-Booking"><div class="menu-item" id="Booking" onclick=""><div class="icon-of-button"><i class="fa-solid fa-house-signal"></i></div><div class="text-of-button">Booking</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-04"><div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-05"><div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div></div>
@@ -1600,4 +1603,3 @@ function addRoomInDataBase(
     typeOfRoom) {
         //here add room in data base
     }
-
