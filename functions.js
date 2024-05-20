@@ -1603,3 +1603,17 @@ function addRoomInDataBase(
     typeOfRoom) {
         //here add room in data base
     }
+
+
+//booking page
+function getBookingPage() {
+    var page = ``;
+
+    
+    document.getElementById(currentPage).innerHTML = page;
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-booking';
+    document.getElementById(currentPage).style.display = 'block';
+}
