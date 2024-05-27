@@ -276,18 +276,18 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
 function createBarOfOptionsOfselectedRoom() {
     var barOfReservedRoom = `
     <div class="buuton-of-room-selection-bar">
-    <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
-     <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
-     <button onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
-     <button onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
-     <button onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
-    </div>
+    <button class="barOfReservedRoom" onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
+     <button class="barOfReservedRoom" onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
+     <button class="barOfReservedRoom" onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
+     <button class="barOfReservedRoom" onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
+     <button class="barOfReservedRoom" onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+    // </div>
     `;
     var barOfUnbookedRoom = `
     <div class="buuton-of-room-selection-bar">
-    <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
-    <button onclick="reserveSelectedRoom()"><i class="fa-solid fa-user-plus"></i></button>
-     <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
+    <button class="barOfUnbookedRoom" onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
+    <button class="barOfUnbookedRoom" onclick="reserveSelectedRoom()"><i class="fa-solid fa-user-plus"></i></button>
+     <button class="barOfUnbookedRoom" onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
     </div>
     `;
     document.getElementById('room-selection-bar').innerHTML = barOfReservedRoom;
