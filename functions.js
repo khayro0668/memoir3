@@ -53,7 +53,7 @@ function rempleID() {
     idOfButtons.push('Booking');
     idOfButtons.push('clock');
     idOfButtons.push('settings');
-    idOfButtons.push('calendar');
+    // idOfButtons.push('calendar');
     if (currentUser === 'admin') {
         idOfButtons.push('historique');
     }
@@ -69,7 +69,7 @@ function rempleID() {
     idOfContainerOfButtons.push('container-of-part-in-options-Booking');
     idOfContainerOfButtons.push('container-of-part-in-options-03');
     idOfContainerOfButtons.push('container-of-part-in-options-04');
-    idOfContainerOfButtons.push('container-of-part-in-options-05');
+    // idOfContainerOfButtons.push('container-of-part-in-options-05');
     if (currentUser === 'admin') {
         idOfContainerOfButtons.push('container-of-part-in-options-06');
     }
@@ -915,7 +915,6 @@ function generateMenuOfButtons() {
         <div class = "container-of-part-in-options" id="container-of-part-in-options-Booking"><div class="menu-item" id="Booking" onclick="getBookingPage()"><div class="icon-of-button"><i class="fa-solid fa-house-signal"></i></div><div class="text-of-button">Booking</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-04"><div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div></div>
-        <div class = "container-of-part-in-options" id="container-of-part-in-options-05"><div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div></div>
         `;
 
     if (currentUser === 'admin') {

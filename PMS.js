@@ -97,9 +97,9 @@ function goToPMS() {
     document.getElementById('menu-of-options').style.display = 'block';
 
     if(currentUser === 'admin'){
-        document.getElementById('remaning-div').style.height = '50px';
-    }else {
         document.getElementById('remaning-div').style.height = '100px';
+    }else {
+        document.getElementById('remaning-div').style.height = '150px';
     }
 }
 
