@@ -472,3 +472,11 @@ input[type=submit] {
      
 }
 /* ****************************************** */
+.barOfReservedRoom{
+
+    margin-left: 10%;
+}
+.barOfUnbookedRoom{
+
+    margin-left: 20%;
+}
