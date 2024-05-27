@@ -912,7 +912,7 @@ function generateMenuOfButtons() {
     <div class = "container-of-part-in-options-logo" id="first-item"><div class="logo" id="in-logo"></div></div>
     <!--<div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>-->
         <div class = "container-of-part-in-options" id="container-of-part-in-options-02"><div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div></div>
-        <div class = "container-of-part-in-options" id="container-of-part-in-options-Booking"><div class="menu-item" id="Booking" onclick=""><div class="icon-of-button"><i class="fa-solid fa-house-signal"></i></div><div class="text-of-button">Booking</div></div></div>
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-Booking"><div class="menu-item" id="Booking" onclick="getBookingPage()"><div class="icon-of-button"><i class="fa-solid fa-house-signal"></i></div><div class="text-of-button">Booking</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-04"><div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-05"><div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div></div>
@@ -1607,10 +1607,67 @@ function addRoomInDataBase(
 
 //booking page
 function getBookingPage() {
-    var page = ``;
+    var page = `
+    <div class="table-of-booking">
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Duration</th>
+                <th>Optimal room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ahmed</td>
+                <td>lalaoui</td>
+                <td>15 days</td>
+                <td>floor 1  , room 16</td>
+            </tr>
+            <tr>
+                <td>karim</td>
+                <td>mheni</td>
+                <td>3 days</td>
+                <td>floor 1  , room 20</td>
+            </tr>
+            <tr>
+                <td>amina</td>
+                <td>krimi</td>
+                <td>10 days</td>
+                <td>floor 4  , room 4</td>
+            </tr>
+            <tr>
+                <td>rima</td>
+                <td>ourari</td>
+                <td>20 days</td>
+                <td>floor 1  , room 7</td>
+            </tr>
+            <tr>
+                <td>ramy</td>
+                <td>laiz</td>
+                <td>6 days</td>
+                <td>floor 1  , room 2</td>
+            </tr>
+            <tr>
+                <td>oussama</td>
+                <td>ben saleh</td>
+                <td>7 days</td>
+                <td>floor 5  , room 1</td>
+            </tr>
+            <tr>
+                <td>hakim</td>
+                <td>meghni</td>
+                <td>45 days</td>
+                <td>floor 2  , room 12</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    `;
 
     
-    document.getElementById(currentPage).innerHTML = page;
+    document.getElementById('page-of-booking').innerHTML = page;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
     document.getElementById(currentPage).style.display = 'none';
