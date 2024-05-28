@@ -628,7 +628,8 @@ function sortListByName(targetResidents, order) {
         }
     });
 }
-function showSuggestions() {
+
+function showSuggestions(order = 'A') { // Default order to ascending
     var input, filter, ul, li, i;
     input = document.getElementById('searchName');
     filter = input.value.toUpperCase();
@@ -636,21 +637,27 @@ function showSuggestions() {
     ul.innerHTML = '';
 
     if (filter) {
-        for (i = 0; i < listOfNames.length; i++) {
-            if (listOfNames[i].toUpperCase().includes(filter)) {
+        var filteredNames = listOfNames.filter(name => name.toUpperCase().includes(filter))
+            .map(name => ({ resident: name })); // Create objects with a 'resident' property
+        sortListByName(filteredNames, order);
+
+        filteredNames.forEach(item => {
+            var name = item.resident;
+            var isDuplicate = Array.from(ul.children).some(child => child.textContent === name);
+            if (!isDuplicate) {
                 li = document.createElement('li');
-                li.textContent = listOfNames[i];
+                li.textContent = name;
                 li.addEventListener('click', function () {
                     input.value = this.textContent;
                     ul.innerHTML = '';
                 });
                 ul.appendChild(li);
             }
-        }
-    } else {
-        ul.innerHTML = ''; // Clear suggestions if input is empty
+        });
     }
 }
+
+
 
 
 
@@ -687,7 +694,7 @@ function generateClock() {
     var page = `
     <div class="current-resident-container">
     <div class="current-resident">
-    <div class="part-of-name-resident" style=" background-color: rgb(32, 162, 160);"><h2 style="color: white;">First Name</h2></div>
+    <div class="part-of-room" style=" background-color: rgb(32, 162, 160);"><h2 style="color: white;">First Name</h2></div>
         <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Last Name</h2></div>
         <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Floor</h2></div>
         <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Room</h2></div>
@@ -702,7 +709,7 @@ function generateClock() {
         if (targetResidents[i].isReserved === 'Reserved') {
             page += `
             <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
-               <div class="part-of-name-resident">
+               <div class="part-of-room">
                  <h2>
                  ${targetResidents[i].resident}
                  </h2>
