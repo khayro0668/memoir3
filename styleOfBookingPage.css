@@ -2,6 +2,7 @@
     width: 950px;
     height: 570px;
     border-collapse: collapse;
+   
 }
 .table-of-booking th, td {
     border: 1px solid black;

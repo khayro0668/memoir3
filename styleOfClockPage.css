@@ -27,65 +27,65 @@
 }
 
 #show-current-residents {
-    /* scrollbar-width: none;
+    border: 1px  rgb(32, 162, 160);
+    scrollbar-width: none;
     overflow-y: scroll;
     height: 490px;
     width: 950px;
-    border-radius: 20px;
-    overflow-x: hidden; */
+    overflow-x: hidden; 
 }
 .current-resident-container {
-    /* position: sticky;
+     position: sticky;
     top: 0;
     background-color: white;
-    z-index: 999; */
+    z-index: 999; 
 }
 
 .scrollable-content {
-    /* scrollbar-width: none;
+     scrollbar-width: none;
     overflow-y: scroll;
     height: 490px;
     width: 950px;
-    border-radius: 20px; */
+    border-radius: 20px; 
 }
 
 
 .current-resident {
-    /* width: 100%;
+     width: 100%;
     height: 55px;
     border-radius: 35px;
     margin: 0px;
     display: flex;
     justify-content: space-between;
-    align-items: center; */
+    align-items: center; 
 
 }
 
 .part-of-name-resident h2 {
-    /* text-align: center;
-    color: black; */
+     text-align: center;
+    color: black; 
 }
 
 .part-of-name-resident {
-    /* border: 1px black solid;
+     border: 1px black solid;
     height: 55px;
     width: 140px;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     display: flex;
-    align-items: center; */
+    align-items: center; 
 }
 
 .part-of-room,
 .part-of-contdown,
 .part-of-gender-in-clock,
 .part-of-country-in-clock {
-    /* border: 1px black solid;
+     border: 1px black solid;
     height: 55px;
     width: calc(100% / 7 - 2px); /* Adjusted width to fit within the container */
     display: flex;
     align-items: center;
-    justify-content: center; */
+    justify-content: center; 
 }
 
 .part-of-room h2,
@@ -99,31 +99,33 @@
 
 .part-of-date input,
 .part-of-country select {
-    /* width: 100px;
+     width: 100px;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px; */
+    border-radius: 4px; 
 }
 
 #type-of-search button {
-    /* height: 100%;
-
-    padding: 0 20px;
-    background-color: rgb(32, 162, 160);;
+    border-radius: 10%;
+    height: 35px;
+     width: 54px;
+    background-color: rgb(176, 176, 176);
     color: white;
     border: none;
     cursor: pointer;
-    width: calc(10% - 10px); */
+    margin-top: 18px;
+    margin-left: -10px;
+   
 }
 
 #type-of-search button:hover {
-    background-color: #0056b3;
+    background-color: rgb(103, 219, 96);
 }
 
 
 #searchContainer {
   width: 200px;
-
+background-color: rgb(32, 162, 160);
 }
 
 #searchName {
@@ -144,7 +146,7 @@
 #suggestions {
     display: block;
     width: 130px;
-    margin-top: -80px;
+    margin-top: -22px;
     background-color: #bcb9b9;
     /* border: 1px solid #ccc; */
     list-style-type: none;
@@ -158,8 +160,8 @@
 
 
 .part-of-country {
-    border: 1px solid black;
-    background-color: #0056b3;
+   
+    background-color: rgb(32, 162, 160);
     width: 100px;
 }
 
@@ -169,10 +171,12 @@
 
 .first-componant {
     display: flex;
-    border: 1px solid black;
-    background-color: aquamarine;
+    border: 1px solid rgb(32, 162, 160);
+    background-color: rgb(32, 162, 160);
 }
 
 .first-componant input[type = 'date'] {
  width: 100px;
 }
+
+

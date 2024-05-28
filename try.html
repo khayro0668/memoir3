@@ -3,84 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Example</title>
+    <title>Emoji Cards</title>
     <style>
-        table {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
             width: 950px;
             height: 570px;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-          padding: 20px;
-            text-align: left;
-        }
-        th {
-            background-color: lightblue;
-        }
-        .table-of-booking{
-
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
            
+            border-radius: 10px;
+            background-color: #fff;
             
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 300px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #fafafa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .emoji {
+            font-size: 5rem;
+        }
+        .label {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="table-of-booking">
-    <table>
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Duration</th>
-                <th>Optimal room</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>ahmed</td>
-                <td>lalaoui</td>
-                <td>15 days</td>
-                <td>floor 1  , room 16</td>
-            </tr>
-            <tr>
-                <td>karim</td>
-                <td>mheni</td>
-                <td>3 days</td>
-                <td>floor 1  , room 20</td>
-            </tr>
-            <tr>
-                <td>amina</td>
-                <td>krimi</td>
-                <td>10 days</td>
-                <td>floor 4  , room 4</td>
-            </tr>
-            <tr>
-                <td>rima</td>
-                <td>ourari</td>
-                <td>20 days</td>
-                <td>floor 1  , room 7</td>
-            </tr>
-            <tr>
-                <td>ramy</td>
-                <td>laiz</td>
-                <td>6 days</td>
-                <td>floor 1  , room 2</td>
-            </tr>
-            <tr>
-                <td>oussama</td>
-                <td>ben saleh</td>
-                <td>7 days</td>
-                <td>floor 5  , room 1</td>
-            </tr>
-            <tr>
-                <td>hakim</td>
-                <td>meghni</td>
-                <td>45 days</td>
-                <td>floor 2  , room 12</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="container">
+        <div class="card">
+            <div class="emoji">🏨</div>
+            <div class="label">Hotel</div>
+        </div>
+        <div class="card">
+            <div class="emoji">👤</div>
+            <div class="label">Account</div>
+        </div>
+    </div>
 </body>
 </html>

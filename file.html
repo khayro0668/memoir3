@@ -148,22 +148,24 @@
         <div id="page-of-clock" style="display: none;">
             <div id="type-of-search">
                 <div class="first-componant">
-                        <div class="componant-in-part-of-period">
-                            First date
+                        <div class="componant-in-part-of-period" style="width :135px" >
+                               First date
                             <input type="date" id="first-date">
                         </div>
-                        <div class="componant-in-part-of-period">
+                        <div class="componant-in-part-of-period" style="width :135px" >
                             Seconde date
-                            <input type="date" id="second-date">
+                            <input type="date" id="second-date" >
                         </div>
 
-                    <div class="part-of-country" id="part-of-country">
+                    <div class="part-of-country" id="part-of-country" style="width :110px">
+                         Country
                         <select id="countryDropdown" onchange="showSelectedCountry()">
                             <option value="">All country</option>
                         </select>
                     </div>
 
-                    <div class="part-of-gender">
+                    <div class="part-of-gender" style="width :100px">
+                        Gender
                         <select id="genderDropdown" onchange="displaySelectedGender()">
                             <option value="">All Gender</option>
                             <option value="Male">Male</option>
@@ -171,7 +173,8 @@
                         </select>
                     </div>
 
-                    <div class="type-of-sort">
+                    <div class="type-of-sort" style="width :110px">
+                        Sort By
                         <select id="sortDropdown" onchange="displaySelectedSort()" style="width: 100px;">
                             <option value="">Random sort</option>
                             <option value="sort-by-date-of-arrival">sort by date of arrival</option>
@@ -182,21 +185,22 @@
                         </select>
                     </div>
 
-                    <div class="part-of-date">
+                    <div class="part-of-date"style="width :120px">
                         date
                         <input type="date" id="input-date">
                     </div>
                 </div>
             
                 <div id="searchContainer">
+                    Search by name
                     <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search"
                         onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
                     <ul id="suggestions"></ul>
                 </div>
                 
-               
-                <button onclick="generateClock()">Generate Clock</button>
-              
+                <div class="type-of-search" style="background-color: rgb(32, 162, 160)">
+                <button onclick="generateClock() ">Search</button>
+                 </div>
 
             </div>
 
