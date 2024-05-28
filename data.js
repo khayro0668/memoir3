@@ -99,7 +99,13 @@ class Hotel {
 
 
 class Room {
+    statusOfBeds = [];
+    positionOfBeds = [];
+    residentOfBeds = [];
+    durationOfReservationOfBeds = [];
+    startDateOfResidentInBeds = [];
 
+    beds;
     NumberOfFemaleBeds;
     NumberOfMaleBeds;
     statusOfMixed;
@@ -137,6 +143,7 @@ class Room {
     typeOfRoom;
     
     constructor(floorNumber, roomNumber) {
+        
         this.numberOfBeds = 2 + Math.floor(Math.random() * 7);
         // this.NumberOfFemaleBeds = Math.floor(Math.random * this.numberOfBeds + 1);
         // this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
@@ -176,6 +183,25 @@ class Room {
         this.totalPayment = 100 + Math.floor(Math.random() * 900);
         this.remaningPayment = Math.floor(Math.random() * this.totalPayment);
         this.paidPayment = this.totalPayment - this.remaningPayment;
+
+
+        for(let i = 0 ; i < this.numberOfBeds ; i++) {
+           this.statusOfBeds[i] = this.getRandomStatus();
+            if(this.statusOfBeds[i] === true) {
+                 this.startDateOfResidentInBeds[i] = getRandomStartDate();
+                var fn = getRandomResident('Reserved');
+                var ln = getRandomResident('Reserved');
+                var cont = getRandomCountry();
+                var em = fn + ln + '@gmail.com';
+                var cr = 123345656 + Math.floor(Math.random() * 12344567);
+                var arv = "00 : 00 pm";
+                var dr = 5 + Math.floor(Math.random() * 90);
+                console.log(new Resident(fn , ln , em , cont , arv , cr , dr));
+                 this.residentOfBeds[i] = new Resident(fn , ln , em , cont , arv , cr , dr);
+               // this.durationOfReservationOfBeds[i] = fn + ln + ' ' + cont + ' ' + em + ' ' + cr + ' ' + arv + ' ' + dr;
+                this.positionOfBeds[i] = getPosition();
+            }
+        }
     }
 
      getRandomStatus () {
@@ -290,6 +316,11 @@ function getwayOfResarvation(room) {
 
 function getStatusOfReserved() {
     var val = ['Reserved', 'Unbooked'];
+    return val[Math.floor(Math.random() * 2)];
+}
+
+function getPosition() {
+    var val = ['U', 'L'];
     return val[Math.floor(Math.random() * 2)];
 }
 

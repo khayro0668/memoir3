@@ -116,6 +116,25 @@ function selectRoom(room) {
         document.getElementById(currentIdInModifysettings).style.display = 'block';
         showInformationOfSelectedRoom();
     }
+
+    var res = '';
+    for(let i = 0 ; i < selectedRoom.numberOfBeds ; i++) {
+        if(selectedRoom.statusOfBeds[i] === true) {
+            res += selectedRoom.positionOfBeds[i] + '  ';
+            res += selectedRoom.startDateOfResidentInBeds[i] + ' ';
+            res += selectedRoom.residentOfBeds[i].firstName + ' ';
+            res += selectedRoom.residentOfBeds[i].lastName + ' ';
+            res += selectedRoom.residentOfBeds[i].email + ' ';
+            res += selectedRoom.residentOfBeds[i].country + ' ';
+            res += selectedRoom.residentOfBeds[i].arrivalTime + ' ';
+            res += selectedRoom.residentOfBeds[i].creditCardNumber + ' ';
+            res += selectedRoom.residentOfBeds[i].durationOfReservation + ' ';
+           // res += selectedRoom.durationOfReservationOfBeds[i] + ' ';
+            res += '\n';
+        }
+    }
+
+    alert(res);
 }
 
 //function to get a page to reserve room
