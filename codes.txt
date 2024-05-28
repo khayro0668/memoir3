@@ -1,4 +1,0 @@
-pip install fpdf
-npm install pdfkit
-npm init -y
-floor room beds reserved 

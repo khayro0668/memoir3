@@ -48,32 +48,34 @@ function rempleID() {
     idOfButtons = [];
 
     idOfButtons.push('in-logo');
-    idOfButtons.push('first-hr');
+    // idOfButtons.push('first-hr');style="background-color: rgb(32, 162, 160);">
     idOfButtons.push('rooms');
+    idOfButtons.push('Booking');
     idOfButtons.push('clock');
     idOfButtons.push('settings');
-    idOfButtons.push('calendar');
+    // idOfButtons.push('calendar');
     if (currentUser === 'admin') {
         idOfButtons.push('historique');
     }
     idOfButtons.push('payment');
-    idOfButtons.push('seconde-hr');
+    // idOfButtons.push('seconde-hr');
     idOfButtons.push('log-out');
 
     idOfContainerOfButtons = [];
 
     idOfContainerOfButtons.push('first-item');
-    idOfContainerOfButtons.push('container-of-part-in-options-01');
+    // idOfContainerOfButtons.push('container-of-part-in-options-01');
     idOfContainerOfButtons.push('container-of-part-in-options-02');
+    idOfContainerOfButtons.push('container-of-part-in-options-Booking');
     idOfContainerOfButtons.push('container-of-part-in-options-03');
     idOfContainerOfButtons.push('container-of-part-in-options-04');
-    idOfContainerOfButtons.push('container-of-part-in-options-05');
+    // idOfContainerOfButtons.push('container-of-part-in-options-05');
     if (currentUser === 'admin') {
         idOfContainerOfButtons.push('container-of-part-in-options-06');
     }
 
     idOfContainerOfButtons.push('container-of-part-in-options-07');
-    idOfContainerOfButtons.push('container-of-part-in-options-08');
+    //  idOfContainerOfButtons.push('container-of-part-in-options-08');
     idOfContainerOfButtons.push('container-of-part-in-options-09');
 
 }
@@ -82,7 +84,7 @@ function rempleID() {
 
 function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
     names = [];
-    var table = '<table>';
+    var table = '<table class="table-of-rooms">';
     let i = 0;
     while (i < listOfRooms.length) {
         table += '<tr>';
@@ -113,6 +115,45 @@ function isDesiredRoom(room, reserved, numberOdBeds, floorNumber, roomNumber) {
     }
 
     var ans = true;
+    console.log(room.NumberOfFemaleBeds + ' ' + room.NumberOfMaleBeds + ' ' + room.numberOfBeds);
+    ans &= (room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds);
+    if (valueOfMixedStatus !== -1) {
+        if (valueOfMixedStatus === 'mixed') {
+            if (room.statusOfMixed) {
+                ans = true;
+            } else {
+                ans = false;
+            }
+        } else {
+            if (room.statusOfMixed) {
+                ans = false;
+            } else {
+                ans = true;
+            }
+        }
+    }
+
+    if (valueOfTypeRoomDropDown !== -1) {
+        for (let i = 0; i < arrayOfRoomTypes.length; i++) {
+            if (arrayOfRoomTypes[i].type === valueOfTypeRoomDropDown) {
+                if (room.statusOfMixed !== arrayOfRoomTypes[i].isMixed) {
+                    ans = false;
+                } else {
+                    if (arrayOfRoomTypes[i].isMixed) {
+                        ans &= room.numberOfBeds === arrayOfRoomTypes[i].numberOfAllBeds;
+                        ans &= arrayOfRoomTypes[i].maleBeds * arrayOfRoomTypes[i].femaleBeds !== 0;
+                    } else {
+                        ans &= arrayOfRoomTypes[i].femaleBeds === room.NumberOfFemaleBeds;
+                        ans &= arrayOfRoomTypes[i].maleBeds === room.NumberOfMaleBeds;
+                        ans &= arrayOfRoomTypes[i].numberOfAllBeds === room.numberOfBeds;
+                        // ans &= room.NumberOfFemaleBeds + room.NumberOfMaleBeds === room.numberOfBeds;
+                    }
+                }
+                break;
+            }
+        }
+    }
+
     ans &= checkEquality(room.numberOfBeds, numberOdBeds);
     ans &= checkEquality(room.isReserved, reserved);
     ans &= checkEquality(room.floorNumber, floorNumber);
@@ -125,9 +166,10 @@ function createCardOfRoom(room) {
     return `
     
         <div class="box" onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})">
-            <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'red' : 'green')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
-            <p class="pr">floor ${room.floorNumber}<br>room ${room.roomNumber}</p>
-            <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">${(room.isReserved === 'Unbooked' ? 'Boooked' : 'Visit')}</button>  
+            <p class="status" style="background-color:${(room.isReserved === 'Unbooked' ? 'rgb(251,225,117)' : 'rgb(216,243,249)')}">${(room.isReserved === 'Unbooked' ? 'Unbooked' : 'Reserved')}</p>
+            <p class="pr">floor ${room.floorNumber}</p>
+            <p class="pr">room ${room.roomNumber}</p>
+            <button onclick="selectRoom(${JSON.stringify(room).replace(/"/g, '&quot;')})" id="button-of-card">${(room.isReserved === 'Unbooked' ? 'Booked' : 'Visit')}</button>  
         </div>`;
 }
 
@@ -148,9 +190,13 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
         divOfBads += `<option value="${i}">${i}</option>`;
     }
 
+    var divOfTypes = ``;
+    for (let i = 0; i < arrayOfRoomTypes.length; i++) {
+        divOfTypes += `<option value="${i}">${arrayOfRoomTypes[i].type}</option>`
+    }
     var UI = `
         <div class="dropdown-container">
-            <div class="dropdown-wrapper1" display: flex;>
+            <div class="dropdown-wrapper2" display: flex;>
              <button class="text-of-select">floor</button>
                 <select class="dropdown" id="dropdown1">
                    ${divOfFloors}
@@ -162,18 +208,32 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                    ${divOfRooms}
                 </select>
             </div>
-            <div class="dropdown-wrapper3" display: flex;>
+            <div class="dropdown-wrapper2" display: flex;>
             <button class="text-of-select">Beds</button>
                 <select class="dropdown" id="dropdown3">
                     ${divOfBads}
                 </select>
             </div>
-            <div class="dropdown-wrapper4" display: flex;>
+            <div class="dropdown-wrapper2" display: flex;>
             <button class="text-of-select">Status</button>
                 <select class="dropdown" id="dropdown4">
                     <option value="0">All</option>
                     <option value="1">Reserved</option>
                     <option value="2">Unbooked</option>
+                </select>
+            </div>
+            <div class="dropdown-wrapper2" display: flex;>
+             <button class="text-of-select">mixed:</button>
+                <select class="dropdown" id="dropdown5">
+                <option value="0">All</option>
+                <option value="1">mixed</option>
+                <option value="2">un mixed</option>
+                </select>
+            </div>
+            <div class="dropdown-wrapper2" display: flex;>
+             <button class="text-of-select">types:</button>
+                <select class="dropdown" id="dropdown6">
+                   ${divOfTypes}
                 </select>
             </div>
             
@@ -197,6 +257,8 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
                 case 'dropdown2': valueOfRoomNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
                 case 'dropdown3': valueOfBedsNumberDropdawn = getValueOfSelectionDropdown(selectedOption, true); break;
                 case 'dropdown4': valueOfReservedDropdawn = getValueOfSelectionDropdown(selectedOption, false); break;
+                case 'dropdown5': valueOfMixedStatus = getValueOfSelectionDropdown(selectedOption, false); break;
+                case 'dropdown6': valueOfTypeRoomDropDown = getValueOfSelectionDropdown(selectedOption, false); break;
             }
             generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
         });
@@ -206,24 +268,26 @@ function createNeededDropDowns(numberOfFloors, numberOfRooms, maxNumberOfBeds, m
     initilaizeDropdawn('dropdown3');
     initilaizeDropdawn('dropdown2');
     initilaizeDropdawn('dropdown1');
+    initilaizeDropdawn('dropdown5');
+    initilaizeDropdawn('dropdown6');
 }
 
 //create bar of settings of selected room
 function createBarOfOptionsOfselectedRoom() {
     var barOfReservedRoom = `
     <div class="buuton-of-room-selection-bar">
-    <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
-     <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
-     <button onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
-     <button onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
-     <button onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
-    </div>
+    <button class="barOfReservedRoom" onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
+     <button class="barOfReservedRoom" onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
+     <button class="barOfReservedRoom" onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
+     <button class="barOfReservedRoom" onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
+     <button class="barOfReservedRoom" onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+    // </div>
     `;
     var barOfUnbookedRoom = `
     <div class="buuton-of-room-selection-bar">
-    <button onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
-    <button onclick="reserveSelectedRoom()"><i class="fa-solid fa-user-plus"></i></button>
-     <button onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
+    <button class="barOfUnbookedRoom" onclick="backToHome()"><i class="fa-solid fa-left-long"></i></button>
+    <button class="barOfUnbookedRoom" onclick="reserveSelectedRoom()"><i class="fa-solid fa-user-plus"></i></button>
+     <button class="barOfUnbookedRoom" onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
     </div>
     `;
     document.getElementById('room-selection-bar').innerHTML = barOfReservedRoom;
@@ -414,11 +478,18 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
+<<<<<<< HEAD
     
     hotel.addEventInArchives(currentUser, 'set price');
     
    
     
+=======
+
+    hotel.addEventInArchives(currentUser, 'set price', new Date());
+    sendData(currentUser , 'set price');
+    // generatePageOfArchives();
+>>>>>>> d33cfbe72f8291127f0e99ee3c510e9c96288a78
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
     
     }
@@ -435,7 +506,14 @@ function setPriceOfRooms() {
 
 //convert string to pdf
 function textIntoPDF(text) {
+    function convertTextToPdf(text) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
+        doc.text(text, 10, 10);
+
+        doc.save('example.pdf');
+    }
 }
 
 //send email
@@ -546,7 +624,13 @@ function checkPassword() {
         document.getElementById('result').style.display = 'none';
         showCurrentUser();
         generateMenuOfButtons();
+        rempleID();
         goToPMS();
+        if (inputPassword === admin.password) {
+            statusOfLogIn = 'admin';
+        } else {
+            statusOfLogIn = 'employe';
+        }
     } else {
         resultDiv.textContent = "wrong password";
     }
@@ -559,83 +643,6 @@ function getPageOfAccount() {
     currentPage = 'account-of-employes';
     document.getElementById(currentPage).style.display = 'block';
 }
-
-
-const http = {
-    createServer: (handler) => {
-        const server = {
-            listen: (port, callback) => {
-                callback();
-            }
-        };
-
-        const req = {
-            url: ''
-        };
-
-        const res = {
-            writeHead: () => { },
-            write: () => { },
-            end: () => { }
-        };
-
-        handler(req, res);
-        return server;
-    }
-};
-
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-    if (req.url === '/generate-pdf') {
-        // Sample PDF content
-        const pdfContent = "This is a sample PDF document generated by Node.js.";
-
-        // Set response headers for PDF file
-        res.writeHead(200, {
-            'Content-Type': 'application/pdf',
-            'Content-Disposition': 'attachment; filename=output.pdf'
-        });
-
-        // Write PDF content to response
-        res.write(pdfContent);
-        res.end();
-    } else {
-        // Handle other routes
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Not found');
-    }
-});
-
-server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    const generatePdfButton = document.getElementById('generate-pdf-button');
-    if (generatePdfButton) {
-        generatePdfButton.addEventListener('click', function () {
-            fetch('http://localhost:3000/generate-pdf')
-                .then(response => {
-                    if (response.ok) return response.blob();
-                    throw new Error('Network response was not ok.');
-                })
-                .then(blob => {
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = url;
-                    a.download = 'output.pdf';
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                    alert('PDF downloaded successfully!');
-                })
-                .catch(error => console.error('Error downloading the PDF:', error));
-        });
-    }
-});
 
 //show current user
 function showCurrentUser() {
@@ -665,7 +672,8 @@ function sortListByName(targetResidents, order) {
         }
     });
 }
-function showSuggestions() {
+
+function showSuggestions(order = 'A') { // Default order to ascending
     var input, filter, ul, li, i;
     input = document.getElementById('searchName');
     filter = input.value.toUpperCase();
@@ -673,21 +681,26 @@ function showSuggestions() {
     ul.innerHTML = '';
 
     if (filter) {
-        for (i = 0; i < listOfNames.length; i++) {
-            if (listOfNames[i].toUpperCase().includes(filter)) {
+        var filteredNames = listOfNames.filter(name => name.toUpperCase().includes(filter))
+            .map(name => ({ resident: name })); // Create objects with a 'resident' property
+        sortListByName(filteredNames, order);
+
+        filteredNames.forEach(item => {
+            var name = item.resident;
+            var isDuplicate = Array.from(ul.children).some(child => child.textContent === name);
+            if (!isDuplicate) {
                 li = document.createElement('li');
-                li.textContent = listOfNames[i];
+                li.textContent = name;
                 li.addEventListener('click', function () {
                     input.value = this.textContent;
                     ul.innerHTML = '';
                 });
                 ul.appendChild(li);
             }
-        }
-    } else {
-        ul.innerHTML = ''; // Clear suggestions if input is empty
+        });
     }
 }
+
 
 
 
@@ -722,27 +735,50 @@ function generateClock() {
 
     sortListByName(targetResidents, 'A'); // Change 'A' to 'D' for descending order
 
-    var page = ``;
+    var page = `
+    <div class="current-resident-container">
+    <div class="current-resident">
+    <div class="part-of-room" style=" background-color: rgb(32, 162, 160);"><h2 style="color: white;">First Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Last Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Floor</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Room</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Days Left</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Gender</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Country</h2></div>
+    </div>
+    <div class="scrollable-content">
+`;
+
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
             page += `
             <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
-               <div class="part-of-name-resident">
+               <div class="part-of-room">
                  <h2>
                  ${targetResidents[i].resident}
                  </h2>
                </div>
                <div class="part-of-room">
+                 <h2>
+                 ${targetResidents[i].lastName}
+                 </h2>
+               </div>
+               <div class="part-of-room">
                    <h2>
-                     floor : ${targetResidents[i].floorNumber} , room : ${targetResidents[i].roomNumber}
+                     ${targetResidents[i].floorNumber} 
+                   </h2>
+               </div>
+               <div class="part-of-room">
+                   <h2>
+                   ${targetResidents[i].roomNumber}
                    </h2>
                </div>
                <div class="part-of-contdown">
                   <h2>
-                   ${getRemaningDays(targetResidents[i].endDate)} Days left
+                   ${getRemaningDays(targetResidents[i].endDate)}
                   </h2>
                </div>
-               <div class="part-of-gender-in-clock">
+               <div class="part-of-gender-in-clock"style="background-color: ${targetResidents[i].genderOfResident === 'Male' ? 'blue' : 'pink'};">
                   <h2>
                    ${targetResidents[i].genderOfResident}
                   </h2>
@@ -752,11 +788,12 @@ function generateClock() {
                    ${targetResidents[i].countryOfResident}
                   </h2>
                </div>
-            </div>`
+            </div>`;
         }
     }
 
     document.getElementById('show-current-residents').innerHTML = page;
+
 }
 
 //get info of selected resident
@@ -792,7 +829,16 @@ function someStyle(buttonID) {
 
     for (let i = 0; i < idOfButtons.length; i++) {
 
-        if (searchForID(idOfButtons[i]) === false || idOfButtons[i] === 'in-logo') {
+        if (searchForID(idOfButtons[i]) === false) {
+            continue;
+        }
+
+        if (idOfButtons[i] === 'in-logo') {
+            document.getElementById(idOfContainerOfButtons[i]).style.borderBottomRightRadius = '0px';
+            document.getElementById(idOfContainerOfButtons[i]).style.borderTopRightRadius = '0px';
+            document.getElementById(idOfContainerOfButtons[i]).style.backgroundColor = 'rgb(32, 162, 160)';
+            document.getElementById('in-logo').style.borderBottomRightRadius = '50px';
+            document.getElementById('in-logo').style.borderTopRightRadius = '50px';
             continue;
         }
 
@@ -817,7 +863,11 @@ function someStyle(buttonID) {
                     document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '20px';
                     document.getElementById(idOfContainerOfButtons[i - 1]).style.borderBottomRightRadius = '20px';
                 } else {
-                    document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
+                    if (idOfButtons[i - 1] === 'in-logo') {
+                        document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '50px';
+                    } else {
+                        document.getElementById(idOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
+                    }
                     document.getElementById(idOfButtons[i + 1]).style.borderTopRightRadius = '40px';
                     document.getElementById(idOfContainerOfButtons[i - 1]).style.borderBottomRightRadius = '40px';
                     document.getElementById(idOfContainerOfButtons[i + 1]).style.borderTopRightRadius = '40px';
@@ -834,11 +884,11 @@ function someStyle(buttonID) {
 function generateMenuOfButtons() {
     var menu = `
     <div class = "container-of-part-in-options-logo" id="first-item"><div class="logo" id="in-logo"></div></div>
-    <div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>
+    <!--<div class = "container-of-part-in-options" id="container-of-part-in-options-01"><div class="hr-of-menu" id="first-hr"></div></div>-->
         <div class = "container-of-part-in-options" id="container-of-part-in-options-02"><div class="menu-item" id="rooms" onclick="goToPageOfRooms()"><div class="icon-of-button"><i class="fa-solid fa-door-open"></i></div><div class="text-of-button">Rooms</div></div></div>
+        <div class = "container-of-part-in-options" id="container-of-part-in-options-Booking"><div class="menu-item" id="Booking" onclick="getBookingPage()"><div class="icon-of-button"><i class="fa-solid fa-house-signal"></i></div><div class="text-of-button">Booking</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-03"><div class="menu-item" id="clock" onclick="getPageOfClock()"><div class="icon-of-button"><i class="fa-solid fa-magnifying-glass"></i></i></div><div class="text-of-button">Search</div></div></div>
         <div class = "container-of-part-in-options" id="container-of-part-in-options-04"><div class="menu-item" id="settings" onclick="generatePageOfSettings()"><div class="icon-of-button"><i class="fa-solid fa-gear"></i></div><div class="text-of-button">Settings</div></div></div>
-        <div class = "container-of-part-in-options" id="container-of-part-in-options-05"><div class="menu-item" id="calendar" onclick="getCalendarPage()"><div class="icon-of-button"><i class="fa-regular fa-calendar"></i></div><div class="text-of-button">Calendar</div></div></div>
         `;
 
     if (currentUser === 'admin') {
@@ -848,7 +898,7 @@ function generateMenuOfButtons() {
 
     menu += `
     <div class = "container-of-part-in-options" id="container-of-part-in-options-07"><div class="menu-item" id="payment" onclick="getPageOfPayment()"><div class="icon-of-button"><i class="fa-regular fa-credit-card"></i></div><div class="text-of-button">Payment</div></div></div>
-    <div class = "container-of-part-in-options" id="container-of-part-in-options-08"><div class="hr-of-menu" id="seconde-hr"></div></div>
+    <!--<div class = "container-of-part-in-options" id="container-of-part-in-options-08"><div class="hr-of-menu" id="seconde-hr"></div></div>-->
     <div class = "container-of-part-in-options" id="container-of-part-in-options-09"><div class="menu-item" id="log-out" onclick="logOut()"><div class="icon-of-button"><i class="fa-solid fa-right-from-bracket"></i></div><div class="text-of-button">Log out</div></div></div>
     <div class = "remaning-div" id="remaning-div"></div>
     `;
@@ -891,7 +941,10 @@ function makeActive(element) {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d33cfbe72f8291127f0e99ee3c510e9c96288a78
 function handleMenuAction(id) {
 
     switch (id) {
@@ -1185,7 +1238,7 @@ function generateCalendar() {
                     cur = 0;
                 }
                 page += `
-             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;">
+             <div class="box-of-day-in-calendar" style="background-color: green;border: 1px solid green;border-top-left-radius: ${val}px;border-bottom-left-radius: ${val}px;border-top-right-radius: ${cur}px;border-bottom-right-radius: ${cur}px;"onclick="showInfoOfClickedResident(${JSON.stringify(hotel.listOfRooms[i]).replace(/"/g, '&quot;')})">
              </div>`;
             }
 
@@ -1254,7 +1307,18 @@ function checkForm() {
 
 //generate page of payment
 function generatePageOfPayment() {
-    var page = ``;
+    var page = ` <div class="current-resident-container">
+    <div class="current-resident">
+        <div class="part-of-name-resident"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">First Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Last Name</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Floor</h2></div>
+        <div class="part-of-room"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">Room</h2></div>
+        <div class="part-of-contdown"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;">remaning payment</h2></div>
+        <div class="part-of-gender-in-clock"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;"> Paid </h2></div>
+        <div class="part-of-country-in-clock"style="background-color: rgb(32, 162, 160);"><h2 style="color: white;"> total </h2></div>
+    </div>
+    <div class="scrollable-content">
+`;
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].isReserved === 'Reserved') {
             page += `
@@ -1265,23 +1329,33 @@ function generatePageOfPayment() {
                  </h2>
                </div>
                <div class="part-of-room">
+                 <h2>
+                 ${hotel.listOfRooms[i].lastName}
+                 </h2>
+               </div>
+               <div class="part-of-room">
                    <h2>
-                     floor : ${hotel.listOfRooms[i].floorNumber} , room : ${hotel.listOfRooms[i].roomNumber}
+                    ${hotel.listOfRooms[i].floorNumber} 
                    </h2>
                </div>
-               <div class="part-of-contdown">
+               <div class="part-of-room">
+                   <h2>
+                      ${hotel.listOfRooms[i].roomNumber}
+                   </h2>
+               </div>
+               <div class="part-of-contdown" style="background-color: red;">
                   <h2>
-                   remaning payment : ${hotel.listOfRooms[i].remaningPayment}
+                ${hotel.listOfRooms[i].remaningPayment}$
                   </h2>
                </div>
-               <div class="part-of-gender-in-clock">
+               <div class="part-of-gender-in-clock" style="background-color: green;">
                   <h2>
-                   paid payment : ${hotel.listOfRooms[i].paidPayment}
+                    ${hotel.listOfRooms[i].paidPayment}$
                   </h2>
                </div>
                <div class="part-of-country-in-clock">
                   <h2>
-                   total payment : ${hotel.listOfRooms[i].totalPayment}
+                  ${hotel.listOfRooms[i].totalPayment}$
                   </h2>
                </div>
             </div>`
@@ -1389,6 +1463,194 @@ function reserveRoom() {
 
 //younes
 function generatePageOfAccountEmployesSettings(listOfAccount) {
- 
+
 }
 
+<<<<<<< HEAD
+=======
+
+
+//khayro trolling trying to creat a function of update room
+
+function updateInformationOfResedent() {
+    var lastName = document.getElementById("last-name-modification").value;
+    var email = document.getElementById("email-modification").value;
+    var duration = document.getElementById("duration-modification").value;
+    var pillow = document.getElementById("pillow-modification").value;
+    var firstName = document.getElementById("first-name-modification").value;
+    var chair = document.getElementById("chair-modification").value;
+    var snack = document.getElementById("snack-modification").value;
+    var beds = document.getElementById("beds-modification").value;
+
+    selectedRoom.setLastName(lastName);
+    selectedRoom.setResidentEmail(email);
+    selectedRoom.setDurationOfReservation(duration);
+    selectedRoom.setFirstName(firstName);
+    selectedRoom.listOfAvailablePillows.push(pillow);
+    selectedRoom.setNumberOfBeds(beds);
+    selectedRoom.setChairs(chair);
+    selectedRoom.setSnacks(snack);
+    selectedRoom.setResident(firstName);
+    var endDate = calculateEndDate(selectedRoom.startDate, duration)
+    selectedRoom.setEndDate(endDate);
+    generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
+}
+
+//add a new type from here
+function addNewRoomType() {
+    var newTypeName;
+    var newTypeFemaleBeds;
+    var newTypeMaleBeds;
+    var newTypeStausMixed;
+    var newTypeNumberOfAllBeds;
+
+    arrayOfRoomTypes.push({
+        type: newTypeName,
+        femaleBeds: newTypeFemaleBeds,
+        maleBeds: newTypeMaleBeds,
+        isMixed: newTypeStausMixed,
+        numberOfAllBeds: newTypeNumberOfAllBeds
+    });
+}
+
+//show info of clicked resident
+function showInfoOfClickedResident(room) {
+    alert(room.resident)
+    var page = `
+   <div class="room-details">
+        <h2>Resident Details</h2>
+        
+        <label for="resident">Resident:</label>
+        <input type="text" id="resident" value="${room.resident}" readonly>
+        
+        <label for="floorNumber">E-mail:</label>
+        <input type="text" id="floorNumber" value="${room.residentEmail}" readonly>
+        <label for="startDate">Start Date:</label>
+        <input type="text" id="startDate" value="${room.startDate}" readonly>
+        
+        <label for="endDate">End Date:</label>
+        <input type="text" id="endDate" value="${room.endDate}" readonly>
+        
+        <label for="durationOfReservation">Duration of Reservation:</label>
+        <input type="text" id="durationOfReservation" value="${room.durationOfReservation} nights" readonly>
+    </div>
+   `;
+
+    //    document.getElementById('card-of-info').style.display = 'block';
+
+}
+
+function hideInfoOfClickedResident() {
+    document.getElementById('card-of-info').style.display = 'none';
+}
+
+
+
+
+//initiliaze all information of hotel
+function addRoomInDataBase(
+    NumberOfFemaleBeds ,
+    NumberOfMaleBeds ,
+    statusOfMixed ,
+    firstName ,
+    lastName ,
+    arrivalTime ,
+    creditCardNumber ,
+    floorNumber ,
+    roomNumber ,
+    id ,
+    VipTax ,
+    Corrections ,
+    resident ,
+    countryOfResident ,
+    genderOfResident ,
+    residentEmail ,
+    isReserved ,
+    price ,
+    totalPayment ,
+    remaningPayment ,
+    paidPayment ,
+    durationOfreservation ,
+    startDate ,
+    endDate ,
+    countdown ,
+    BookingLink ,
+    numberOfBeds ,
+    snacks ,
+    chairs ,
+    wayOfReservation ,
+    typeOfRoom) {
+        //here add room in data base
+    }
+
+
+//booking page
+function getBookingPage() {
+    var page = `
+    <div class="table-of-booking">
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Duration</th>
+                <th>Optimal room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ahmed</td>
+                <td>lalaoui</td>
+                <td>15 days</td>
+                <td>floor 1  , room 16</td>
+            </tr>
+            <tr>
+                <td>karim</td>
+                <td>mheni</td>
+                <td>3 days</td>
+                <td>floor 1  , room 20</td>
+            </tr>
+            <tr>
+                <td>amina</td>
+                <td>krimi</td>
+                <td>10 days</td>
+                <td>floor 4  , room 4</td>
+            </tr>
+            <tr>
+                <td>rima</td>
+                <td>ourari</td>
+                <td>20 days</td>
+                <td>floor 1  , room 7</td>
+            </tr>
+            <tr>
+                <td>ramy</td>
+                <td>laiz</td>
+                <td>6 days</td>
+                <td>floor 1  , room 2</td>
+            </tr>
+            <tr>
+                <td>oussama</td>
+                <td>ben saleh</td>
+                <td>7 days</td>
+                <td>floor 5  , room 1</td>
+            </tr>
+            <tr>
+                <td>hakim</td>
+                <td>meghni</td>
+                <td>45 days</td>
+                <td>floor 2  , room 12</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    `;
+
+    
+    document.getElementById('page-of-booking').innerHTML = page;
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    document.getElementById(currentIdInModifysettings).style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-booking';
+    document.getElementById(currentPage).style.display = 'block';
+}
+>>>>>>> d33cfbe72f8291127f0e99ee3c510e9c96288a78

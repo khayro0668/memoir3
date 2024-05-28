@@ -1,9 +1,6 @@
 class Hotel {
     nameOfHotel;
     listOfRooms;
-    listOfAvailablePillows;
-    listOfAvailableMattresses;
-    listOfAvailabelServices;
     archives;
     listOfAccount;
     numberOfFloors;
@@ -12,13 +9,10 @@ class Hotel {
     constructor() {
         this.nameOfHotel = "wassim hotel";
         this.generateListOfRooms();
-        this.generateListOfAvailableMattresses();
-        this.generateListOfAvailableMattresses();
-        this.generateListOfAvailabelServices();
         this.generateArchive();
         this.generateListOfAccount();
-        this.numberOfFloors = 10;
-        this.numberOfRooms = 30;
+        this.numberOfFloors = 40;
+        this.numberOfRooms = 100;
     }
 
     generateListOfAccount() {
@@ -32,8 +26,8 @@ class Hotel {
 
     generateListOfRooms() {
         this.listOfRooms = [];
-        for (let i = 1; i <= 10; i++) {
-            for (let j = 1; j <= 30; j++) {
+        for (let i = 1; i <= 40; i++) {
+            for (let j = 1; j <= 100; j++) {
                 var room = new Room(i, j);
                 this.listOfRooms.push(room);
             }
@@ -42,10 +36,11 @@ class Hotel {
 
     generateArchive() {
         this.archives = [];
+        
     }
 
-    addEventInArchives(employe, event) {
-        var newEvent = new Event(employe, event);
+    addEventInArchives(employe, event , date) {
+        var newEvent = new Event(employe, event , date);
         this.archives.push(newEvent);
     }
 
@@ -54,58 +49,72 @@ class Hotel {
         this.listOfAccount.push(newAccount);
     }
 
-    generateListOfAvailablePillows() {
-        this.listOfAvailablePillows = [];
-        this.listOfAvailablePillows.push({ type: 'vip', number: 2000, price: 0 });
-        this.listOfAvailablePillows.push({ type: 'normal', number: 2000, price: 0 });
-    }
+    // generateListOfAvailablePillows() {
+    //     this.listOfAvailablePillows = [];
+    //     this.listOfAvailablePillows.push({ type: 'vip', number: 2000, price: 0 });
+    //     this.listOfAvailablePillows.push({ type: 'normal', number: 2000, price: 0 });
+    // }
 
-    generateListOfAvailableMattresses() {
-        this.listOfAvailableMattresses = [];
-        this.listOfAvailableMattresses.push({ type: 'vip', number: 2000, price: 0 });
-        this.listOfAvailableMattresses.push({ type: 'normal', number: 2000, price: 0 });
-    }
+    // generateListOfAvailableMattresses() {
+    //     this.listOfAvailableMattresses = [];
+    //     this.listOfAvailableMattresses.push({ type: 'vip', number: 2000, price: 0 });
+    //     this.listOfAvailableMattresses.push({ type: 'normal', number: 2000, price: 0 });
+    // }
 
-    generateListOfAvailabelServices() {
-        this.listOfAvailabelServices = [];
-        this.listOfAvailabelServices.push({ type: 'vip-room', number: 2000, price: 0 });
-        this.listOfAvailabelServices.push({ type: 'normal-room', number: 2000, price: 0 });
-    }
+    // generateListOfAvailabelServices() {
+    //     this.listOfAvailabelServices = [];
+    //     this.listOfAvailabelServices.push({ type: 'vip-room', number: 2000, price: 0 });
+    //     this.listOfAvailabelServices.push({ type: 'normal-room', number: 2000, price: 0 });
+    // }
 
-    borrowingPillows(typeOfPillow, numberOfBorrowingPillows) {
-        for (let i = 0; i < this.listOfAvailablePillows.length; i++) {
-            if (this.listOfAvailablePillows[i].type === typeOfPillow) {
-                if (this.listOfAvailablePillows[i].number > 0) {
-                    if (this.listOfAvailablePillows[i].number >= numberOfBorrowingPillows) {
-                        this.listOfAvailablePillows[i].number -= numberOfBorrowingPillows;
-                        return { resulte: true, rest: 0 };
-                    } else {
-                        numberOfBorrowingPillows -= this.listOfAvailablePillows[i].number;
-                        this.listOfAvailablePillows[i].number = 0;
-                        return { resulte: true, rest: numberOfBorrowingPillows };
-                    }
-                } else {
-                    return { resulte: false, rest: 0 };
-                }
-            }
-        }
-    }
+    // borrowingPillows(typeOfPillow, numberOfBorrowingPillows) {
+    //     for (let i = 0; i < this.listOfAvailablePillows.length; i++) {
+    //         if (this.listOfAvailablePillows[i].type === typeOfPillow) {
+    //             if (this.listOfAvailablePillows[i].number > 0) {
+    //                 if (this.listOfAvailablePillows[i].number >= numberOfBorrowingPillows) {
+    //                     this.listOfAvailablePillows[i].number -= numberOfBorrowingPillows;
+    //                     return { resulte: true, rest: 0 };
+    //                 } else {
+    //                     numberOfBorrowingPillows -= this.listOfAvailablePillows[i].number;
+    //                     this.listOfAvailablePillows[i].number = 0;
+    //                     return { resulte: true, rest: numberOfBorrowingPillows };
+    //                 }
+    //             } else {
+    //                 return { resulte: false, rest: 0 };
+    //             }
+    //         }
+    //     }
+    // }
 
-    returnPillows(typeOfPillow, numberOfRecoveredPillows) {
-        for (let i = 0; i < this.listOfAvailablePillows.length; i++) {
-            if (this.listOfAvailablePillows[i].type === typeOfPillow) {
-                this.listOfAvailablePillows[i].number += numberOfRecoveredPillows;
-                break;
-            }
-        }
-    }
+    // returnPillows(typeOfPillow, numberOfRecoveredPillows) {
+    //     for (let i = 0; i < this.listOfAvailablePillows.length; i++) {
+    //         if (this.listOfAvailablePillows[i].type === typeOfPillow) {
+    //             this.listOfAvailablePillows[i].number += numberOfRecoveredPillows;
+    //             break;
+    //         }
+    //     }
+    // }
 
 }
 
-class Room {
 
+class Room {
+    statusOfBeds = [];
+    positionOfBeds = [];
+    residentOfBeds = [];
+    durationOfReservationOfBeds = [];
+    startDateOfResidentInBeds = [];
+
+    beds;
+    NumberOfFemaleBeds;
+    NumberOfMaleBeds;
+    statusOfMixed;
     firstName;
     lastName;
+    numberOfReservedFemaleBeds;
+    numberOfReservedMaleBeds;
+    numberOfFreeFemaleBeds;
+    numberOfFreeMaleBeds;
     arrivalTime;
     creditCardNumber;
     floorNumber;
@@ -126,15 +135,25 @@ class Room {
     startDate;
     endDate;
     countdown;
-    keyStatus;
     BookingLink;
     numberOfBeds;
+    snacks;
+    chairs;
     wayOfReservation;
     typeOfRoom;
-    listOfAvailablePillows;
-    listOfAvailableMattresses;
-
+    
     constructor(floorNumber, roomNumber) {
+        
+        this.numberOfBeds = 2 + Math.floor(Math.random() * 7);
+        // this.NumberOfFemaleBeds = Math.floor(Math.random * this.numberOfBeds + 1);
+        // this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
+     
+
+        this.NumberOfFemaleBeds = Math.floor(Math.random()*(this.numberOfBeds + 1));
+        this.NumberOfMaleBeds = this.numberOfBeds - this.NumberOfFemaleBeds;
+
+        this.statusOfMixed = this.getRandomStatus();
+    
         this.floorNumber = floorNumber;
         this.VipTax = Math.floor(Math.random()*100);
         this.Corrections = Math.floor(Math.random()*100);
@@ -143,7 +162,6 @@ class Room {
         this.isReserved = getStatusOfReserved();
         this.resident = getRandomResident(this.isReserved);
         this.price = 0;
-        this.numberOfBeds = 2 + Math.floor(Math.random() * 2);
         this.startDate = getRandomStartDate();
         this.endDate = getRandomEndDate();
 
@@ -160,13 +178,35 @@ class Room {
         this.residentEmail = '';
         this.wayOfReservation = getwayOfResarvation(this);
         this.typeOfRoom = 'normal';
-        this.listOfAvailableMattresses = [];
-        this.listOfAvailablePillows = [];
         this.countryOfResident = getRandomCountry();
         this.genderOfResident = getRandomGender();
         this.totalPayment = 100 + Math.floor(Math.random() * 900);
         this.remaningPayment = Math.floor(Math.random() * this.totalPayment);
         this.paidPayment = this.totalPayment - this.remaningPayment;
+
+
+        for(let i = 0 ; i < this.numberOfBeds ; i++) {
+           this.statusOfBeds[i] = this.getRandomStatus();
+            if(this.statusOfBeds[i] === true) {
+                 this.startDateOfResidentInBeds[i] = getRandomStartDate();
+                var fn = getRandomResident('Reserved');
+                var ln = getRandomResident('Reserved');
+                var cont = getRandomCountry();
+                var em = fn + ln + '@gmail.com';
+                var cr = 123345656 + Math.floor(Math.random() * 12344567);
+                var arv = "00 : 00 pm";
+                var dr = 5 + Math.floor(Math.random() * 90);
+                console.log(new Resident(fn , ln , em , cont , arv , cr , dr));
+                 this.residentOfBeds[i] = new Resident(fn , ln , em , cont , arv , cr , dr);
+               // this.durationOfReservationOfBeds[i] = fn + ln + ' ' + cont + ' ' + em + ' ' + cr + ' ' + arv + ' ' + dr;
+                this.positionOfBeds[i] = getPosition();
+            }
+        }
+    }
+
+     getRandomStatus () {
+        var ans = [true , false];
+        return ans[Math.floor(Math.random() * ans.length)];
     }
 
     setCreditCardNumber(value) {
@@ -176,6 +216,16 @@ class Room {
     setArrivalTime(value){
       this.arrivalTime = value;
     }
+    setSnacks(value){
+        this.snacks = value;
+    }
+
+    setChairs(value){
+        this.chairs = value;
+    }
+    setNumberOfBeds(value){
+        this.numberOfBeds = value;
+      }
 
     setCountryOfResident(value){
      this.countryOfResident = value;
@@ -207,7 +257,7 @@ class Room {
     }
 
     setDurationOfReservation(duration) {
-        this.durationOfReservation = 90;
+        this.durationOfReservation = duration;
     }
 
     setStartDate(date) {
@@ -269,6 +319,11 @@ function getStatusOfReserved() {
     return val[Math.floor(Math.random() * 2)];
 }
 
+function getPosition() {
+    var val = ['U', 'L'];
+    return val[Math.floor(Math.random() * 2)];
+}
+
 function getRandomDuration() {
     // Generate random duration between 1 and 10 days
     return Math.floor(Math.random() * 10) + 1;
@@ -301,6 +356,11 @@ function calculateDaysBetweenDates(startDate, endDate) {
       // إرجاع عدد الأيام المحصورة
       return Math.round(days);  // استخدم Math.round للحصول على قيمة صحيحة
   
+}
+function calculateEndDate(startDate, duration) {
+    var start = new Date(startDate);
+    var end = new Date(start.getTime() + (duration ) * 24 * 60 * 60 * 1000);
+    return end.toISOString().split('T')[0];
 }
 
 function getCountdown() {
@@ -343,16 +403,6 @@ function getRandomResident(isReserved) {
 }
 
 //calculateEndDate
-function calculateEndDate(startDate, period) {
-    // Create a new Date object from the startDate
-    let endDate = new Date(startDate);
-
-    // Add the period (in days) to the startDate
-    endDate.setDate(endDate.getDate() + parseInt(period));
-
-    // Return the new endDate
-    return endDate;
-}
 
 function getRandomCountry() {
     const countries = [
@@ -404,13 +454,16 @@ function getRandomGender() {
     const Gender = ['Female' , 'Male'];
     return Gender[Math.floor(Math.random() * Gender.length)];
 }
+
 class Event {
     employe;
     event;
+    date;
 
-    constructor(employe, event) {
+    constructor(employe, event , date) {
         this.employe = employe;
         this.event = event;
+        this.date = date;
     }
 }
 

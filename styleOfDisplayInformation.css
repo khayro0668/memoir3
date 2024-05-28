@@ -7,6 +7,7 @@
 
 .box {
     border-radius: 5px;
+    background-color:lightgoldenrodyellow;
     width: 100px;
     text-align: center;
     height: 150px;
@@ -37,7 +38,7 @@ h2 {
     border-top-right-radius: 0px;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
-    background-color: goldenrod;
+    background-color: rgb(32, 162, 160);
     padding: 7px 25px;
     cursor: pointer;
     color: white;
@@ -56,20 +57,23 @@ h2 {
 
 .dropdown-container {
     display: flex;
-    margin-left: 3px;
+    /* margin-left: 5px;
     margin-top: 5px;
-    margin-right: 35px;
-    /* border: 3px solid black; */
-}
+    margin-right: 35px; */
+    /* border: 3px solid black;*/
+} 
 
 .dropdown-wrapper1 {
-    margin-right: 160px;
+    /* margin-right: 160px; */
     display: flex;
-    margin-left: 80px;
-    /* border: 1px solid black; */
+    /* margin-left: 80px; */
+    border: 1px solid black;
 }
 .dropdown-wrapper2 {
-    /* margin-right: 160px; */
+    margin-left: 40px;
+    /* border: 1px solid black; */
+    margin-top: 3px;
+    display: flex;
 }
 .dropdown-wrapper3 {
     /* margin-right: 160px; */
@@ -78,14 +82,20 @@ h2 {
    /* margin-right: 20px; */
 }
 .text-of-select{
-    border: 1px black solid;
-    
+    border: none;
+    background-color: rgb(32, 162, 160);
+    height: 32px;
+    color: white;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.text-of-select :hover {
+    background-color: rgb(32, 162, 160);
 }
 
 
-
 .dropdown-button {
-    margin-top: 5px;
 }
 
 .dropdown{
@@ -94,6 +104,7 @@ h2 {
 background-position: right 10px center, right 15px center; /* Adjusted position of arrows */
 background-size: 5px 5px, 5px 5px; /* Size of the arrows */
 background-repeat: no-repeat;
+
 }
 .dropdown::-ms-expand {
     display: none; /* Hide the default arrow in IE/Edge */
@@ -102,19 +113,24 @@ background-repeat: no-repeat;
     background-color: rgb(230, 245, 245); /* Lighter tint for hover */
 }
 .dropdown {
-    margin: 0 10px; /* Adds horizontal spacing between selects */
-    padding: 8px 30px 8px 10px; /* Increased right padding for separation */
-    border: 2px solid rgb(32, 162, 160); /* Stylish border color */
-    background-color: #fff; /* White background for contrast */
-    color: rgb(32, 162, 160); /* Text color to match the theme */
-    font-size: 16px; /* Larger font for better readability */
-    cursor: pointer; /* Cursor indicates it's selectable */
-    border-radius: 5px; /* Rounded corners */
-    -webkit-appearance: none; /* Removes default styling by the browser */
+    /* margin: 0 10px;  */
+    /* padding: 8px 30px 8px 10px; */
+    border: 2px solid rgb(32, 162, 160);
+    background-color: #fff; 
+    color: rgb(32, 162, 160); 
+    font-size: 16px; 
+    cursor: pointer; 
+    width: 60px;
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    outline: none; /* Removes the outline to keep styling neat */
-    position: relative; /* For absolute positioning of the arrow */
+    outline: none; 
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
+}
+#dropdown4{
+    /* border: black 1px solid; */
 }
 
 /* ...................................................... */
@@ -149,7 +165,7 @@ background-repeat: no-repeat;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    box-sizing: border-box; /* Prevents padding from increasing the total width */
+    box-sizing: border-box; 
 }
 
 .room-details input[type="text"][readonly] {
@@ -175,47 +191,47 @@ background-repeat: no-repeat;
     background-color: #008c8d;
 }
 .select-style {
-    width: 100%; /* Ensures the select box spans the width of its container */
-    padding: 8px; /* Adds some padding inside the select box for better readability */
-    margin: 10px 0; /* Adds some margin for spacing */
-    border-radius: 4px; /* Rounds the corners */
-    border: 1px solid #ddd; /* Sets a light border for the element */
-    box-shadow: 0 2px 3px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for depth */
-    background-color: white; /* Sets a background color */
-    font-family: Helvetica, Arial, sans-serif; /* Ensures the text matches the rest of the form */
-    font-size: 16px; /* Sets a readable default font size */
-    cursor: pointer; /* Changes the cursor to indicate it's selectable */
+    width: 100%; 
+    padding: 8px; 
+    margin: 10px 0; 
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1); 
+    background-color: white; 
+    font-family: Helvetica, Arial, sans-serif; 
+    font-size: 16px; 
+    cursor: pointer; 
 }
 
 .select-style:hover {
-    border-color: #bbb; /* Darkens the border on hover for visual feedback */
+    border-color: #bbb;
 }
 
 /* Focus style for accessibility */
 .select-style:focus {
-    outline: none; /* Removes the default focus outline */
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1); /* Adds a blue glow to indicate focus */
+    outline: none; 
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1); 
 }
 
 
 #saveRoomDetailsButton {
-    background-color: #00A3A2; /* Teal color; adjust to match your 'Book Now' link */
-    color: white; /* Text color */
-    padding: 10px 15px; /* Padding; adjust based on your preferences */
-    border: none; /* Removes the default border */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 17px; /* Text size; adjust as needed */
-    cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
-    text-decoration: none; /* Removes underline from text */
-    font-family: 'Helvetica', 'Arial', sans-serif; /* Font family */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: adds a shadow for depth */
+    background-color: #00A3A2; 
+    color: white;
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 4px; 
+    font-size: 17px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
+    text-decoration: none; 
+    font-family: 'Helvetica', 'Arial', sans-serif; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 #saveRoomDetailsButton:hover {
-    background-color: #008c8d; /* Darker shade on hover; adjust to match your design */
-    transform: translateY(-2px); /* Slight lift effect on hover */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Larger shadow on hover for depth */
+    background-color: #008c8d; 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -264,8 +280,8 @@ input[type=submit] {
 #modify-room-information {
     direction: rtl;
     font-family: Arial, sans-serif;
-    background-color: #FFFFFF; /* خلفية بيضاء */
-    color: #005A9C; /* نص باللون الأزرق */
+    background-color: #FFFFFF;  
+    color: #005A9C; 
 }
 
 #modify-room-information button:hover {
@@ -312,16 +328,16 @@ input[type=submit] {
 
 .button-container {
     display: flex;
-    justify-content: center; /* Aligns buttons in the center */
-    gap: 8px; /* Adjust this to set the desired space between the buttons */
-    margin-top: 20px; /* Add margin-top to position the container closer to the input field */
+    justify-content: center; 
+    gap: 8px; 
+    margin-top: 20px; 
 }
 
 .action-button {
     
     background-color: #00A3A2;
     color: white;
-    padding: 10px 20px; /* Adjust padding for button size */
+    padding: 10px 20px;
     text-decoration: none;
     border-radius: 4px;
     font-weight: bold;
@@ -337,7 +353,7 @@ input[type=submit] {
 /*******************************************************/
 .container11 {
     width: 950px;
-    height: 500px; /* Adjusted for content */
+    height: 500px;
     background-color:white;
 }
 .container22 {
@@ -408,37 +424,59 @@ input[type=submit] {
 .container6 {
     
     padding: 20px;
-    background: white; /* White background for the content area */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 550px; /* Reduced width */
+    background: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 550px; 
     margin-left: 190px;
 }
 .h2-of-bill {
     text-align: center;
-    color: #37474f; /* Dark grey color for the title */
-    margin-bottom: 20px; /* Adds space below the title */
+    color: #37474f; 
+    margin-bottom: 20px; 
 }
 .table-of-bill {
-    width: 90%; /* Full width of its container */
-    border-collapse: collapse; /* Collapses border so they become one */
+    width: 90%;
+    border-collapse: collapse; 
     margin: auto;
 }
 .th-of-bill, .td-of-bill {
-    padding: 12px; /* Increased padding for better cell spacing */
-    border-bottom: 1px solid #ccc; /* Light grey border for a subtle look */
-    text-align: left; /* Aligns text to the left */
+    padding: 12px; 
+    border-bottom: 1px solid #ccc; 
+    text-align: left; 
 }
 .th-of-bill {
-    background-color: #cfd8dc; /* Light blue-grey for header cells */
+    background-color: #cfd8dc; 
 }
 .td-of-bill {
-    background-color: #fafafa; /* Slightly off-white for a soft contrast */
-    color: #455a64; /* Dark blue-grey text for readability */
+    background-color: #fafafa; 
+    color: #455a64; 
 }
 .total12 {
-    font-weight: bold; /* Keeps the total row bold */
-    background-color: #b0bec5; /* Medium blue-grey background for the total row */
-    color: #263238; /* Nearly black for high contrast text */
+    font-weight: bold; 
+    background-color: #b0bec5; 
+    color: #263238; 
 }
 
 /******************************************************/
+
+#card-of-info {
+    height: 500px;
+    width: 1000px;
+    border: 1px solid black;
+}
+
+/*********************************************/
+/*style of the floor and the room*/
+.pr{
+     font-family: monospace ;
+     
+}
+/* ****************************************** */
+.barOfReservedRoom{
+
+    margin-left: 10%;
+}
+.barOfUnbookedRoom{
+
+    margin-left: 20%;
+}

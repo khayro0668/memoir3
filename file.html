@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="x-icon" href="434741953_908476244407691_3458671040561510092_n.jpg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="styleOfContentDisplayPage.css">
     <link rel="stylesheet" href="styleOfModifySettings.css">
     <link rel="stylesheet" href="styleOfDisplayInformation.css">
     <link rel="stylesheet" href="styleOfLoginPage.css">
+    <link rel="stylesheet" href="styleOfBookingPage.css">
     <link rel="stylesheet" href="styleOfPageOfSettings.css">
     <link rel="stylesheet" href="popUpLogInStyle.css">
     <link rel="stylesheet" href="styleOfArchivesPage.css">
@@ -20,6 +22,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+    <script src="sendData.js"></script>
+    <script src="Resident.js"></script>
+    <script src="Booking.js"></script>
     <script src="data.js"></script>
     <script src="functions.js"></script>
     <script src="PMS.js"></script>
@@ -126,8 +131,8 @@
             <!--  -->
         </div>
 
-         <!-- display information -->
-         <div id="page-of-payment" style="display: none;">
+        <!-- display information -->
+        <div id="page-of-payment" style="display: none;">
             <!--  -->
         </div>
 
@@ -144,57 +149,69 @@
         <!-- display information -->
         <div id="page-of-clock" style="display: none;">
             <div id="type-of-search">
-                <div class="part-of-period">
-                    <p>First date</p>
-                    <p>Second date</p>
-                    <input type="date" id="first-date">
-                    <input type="date" id="second-date">
+                <div class="first-componant">
+                        <div class="componant-in-part-of-period" style="width :135px" >
+                               First date
+                            <input type="date" id="first-date">
+                        </div>
+                        <div class="componant-in-part-of-period" style="width :135px" >
+                            Seconde date
+                            <input type="date" id="second-date" >
+                        </div>
+
+                    <div class="part-of-country" id="part-of-country" style="width :110px">
+                         Country
+                        <select id="countryDropdown" onchange="showSelectedCountry()">
+                            <option value="">All country</option>
+                        </select>
+                    </div>
+
+                    <div class="part-of-gender" style="width :100px">
+                        Gender
+                        <select id="genderDropdown" onchange="displaySelectedGender()">
+                            <option value="">All Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="type-of-sort" style="width :110px">
+                        Sort By
+                        <select id="sortDropdown" onchange="displaySelectedSort()" style="width: 100px;">
+                            <option value="">Random sort</option>
+                            <option value="sort-by-date-of-arrival">sort by date of arrival</option>
+                            <option value="sort-by-ascending-order-booking-period">sort by duration A</option>
+                            <option value="sort-by-descending-order-booking-period">sort by duration D</option>
+                            <option value="sort-by-ascending-order-start-date">sort by start date A</option>
+                            <option value="sort-by-descending-order-start-date">sort by start date D</option>
+                        </select>
+                    </div>
+
+                    <div class="part-of-date"style="width :120px">
+                        date
+                        <input type="date" id="input-date">
+                    </div>
                 </div>
             
-                <div class="part-of-country" id="part-of-country">
-                    <select id="countryDropdown" onchange="showSelectedCountry()">
-                        <option value="">All country</option>
-                    </select>
-                </div>
-                
-                <div class="part-of-gender">
-                    <select id="genderDropdown" onchange="displaySelectedGender()">
-                        <option value="">All Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-                
-                <div class="type-of-sort">
-                    <select id="sortDropdown" onchange="displaySelectedSort()" style="width: 100px;">
-                        <option value="">Random sort</option>
-                        <option value="sort-by-date-of-arrival">sort by date of arrival</option>
-                        <option value="sort-by-ascending-order-booking-period">sort by duration A</option>
-                        <option value="sort-by-descending-order-booking-period">sort by duration D</option>
-                        <option value="sort-by-ascending-order-start-date">sort by start date A</option>
-                        <option value="sort-by-descending-order-start-date">sort by start date D</option>
-                    </select>
-                </div>
-                
-                <div class="part-of-date">
-                    date
-                    <input type="date" id="input-date">
-                </div>
-                
                 <div id="searchContainer">
-                    <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search" onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
+                    Search by name
+                    <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search"
+                        onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
                     <ul id="suggestions"></ul>
                 </div>
-                <button onclick="generateClock()">Generate Clock</button>
                 
+                <div class="type-of-search" style="background-color: rgb(32, 162, 160)">
+                <button onclick="generateClock() ">Search</button>
+                 </div>
+
             </div>
-            
+
             <div id="show-current-residents">
                 <!--  -->
             </div>
         </div>
-        
-        
+
+
 
         <!-- display information -->
         <div id="page-of-calendar" style="display: none;">
@@ -207,7 +224,20 @@
                 <!--  -->
             </div>
         </div>
+
+        <!-- display information -->
+        <div id="page-of-booking" style="display: none;">
+            <div id="show-resident-in-booking">
+
+            </div>
+            <div id="confirm-resident">
+                <button>confirm</button>
+            </div>
+        </div>
     </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <div id="card-of-info" style="display: none;"></div>
 
 </body>
 

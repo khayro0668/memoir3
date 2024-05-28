@@ -3,20 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convert Text to PDF</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <title>Emoji Cards</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 950px;
+            height: 570px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+           
+            border-radius: 10px;
+            background-color: #fff;
+            
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 300px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #fafafa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .emoji {
+            font-size: 5rem;
+        }
+        .label {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <button onclick="convertTextToPdf('')">Convert Text to PDF</button>
-
-    <script>
-        function convertTextToPdf(text) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            doc.text(text, 10, 10);
-            doc.save('example.pdf');
-        }
-    </script>
+    <div class="container">
+        <div class="card">
+            <div class="emoji">🏨</div>
+            <div class="label">Hotel</div>
+        </div>
+        <div class="card">
+            <div class="emoji">👤</div>
+            <div class="label">Account</div>
+        </div>
+    </div>
 </body>
 </html>
