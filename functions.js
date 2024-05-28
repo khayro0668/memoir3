@@ -453,8 +453,8 @@ function setPriceOfRooms() {
         }
     }
 
-    hotel.addEventInArchives(currentUser, 'set price', currentDate);
-
+    hotel.addEventInArchives(currentUser, 'set price', new Date());
+    sendData(currentUser , 'set price');
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
