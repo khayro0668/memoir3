@@ -1,0 +1,211 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        /* Style for the account table */
+        #account-of-employees {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        #account-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #account-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .card-acc {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-of-acc {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+            background-size: cover;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .card-of-acc img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .submit button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the edit form */
+        #edit-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+
+        #edit-form h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #edit-account-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #edit-account-form input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #edit-account-form button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #edit-account-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Accounts</h1>
+
+    <div id="account-of-employees">
+        <table id="account-table"></table>
+    </div>
+
+    <!-- Edit Form -->
+    <div id="edit-form">
+        <h2>Edit Account</h2>
+        <form id="edit-account-form">
+            <label for="edit-account-id">ID:</label>
+            <input type="text" id="edit-account-id" readonly><br>
+            <label for="edit-account-name">Name:</label>
+            <input type="text" id="edit-account-name"><br>
+            <label for="edit-account-password">Password:</label>
+            <input type="text" id="edit-account-password"><br>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <script>
+        // Define your accounts array here
+        var accounts = [
+            { id: 1, name: "wassim", password: "1" },
+            { id: 2, name: "mostafa", password: "1" },
+            { id: 3, name: "khayrou", password: "1" },
+            { id: 4, name: "younes", password: "1" },
+            { id: 4, name: "younes", password: "1" },
+            { id: 4, name: "younes", password: "1" },
+            { id: 4, name: "younes", password: "1" }
+            // Add more accounts as needed
+        ];
+
+        var page = '<tr><td colspan="4"><button class="go-back-button" onclick="backToFirstPage()">⇐</button></td></tr>';
+        for (let i = 0; i < accounts.length; i += 4) {
+            page += '<tr>';
+            for (let j = i; j < i + 4 && j < accounts.length; j++) {
+                let valueOfMargin = (j % 4 === 0 ? 0 : 47);
+                page += `<td>
+                            <div class="card-acc" style="margin-left: ${valueOfMargin}px;">
+                                <div class="card-of-acc" style="background-image: url('f${j + 1}.png');"></div>
+                                <p>${accounts[j].name}</p>
+                                <div class="submit" onclick="showEditForm(${accounts[j].id},'${accounts[j].name}','${accounts[j].password}')"><button>Edit</button></div>
+                            </div>
+                        </td>`;
+            }
+            page += '</tr>';
+        }
+        document.getElementById('account-table').innerHTML = page;
+
+        // Function to show the edit form with account details
+        function showEditForm(accountId, accountName, accountPassword) {
+            document.getElementById('edit-account-id').value = accountId;
+            document.getElementById('edit-account-name').value = accountName;
+            document.getElementById('edit-account-password').value = accountPassword;
+            document.getElementById('edit-form').style.display = 'block';
+        }
+
+        // Define the backToFirstPage function
+        function backToFirstPage() {
+            // Implement your logic here
+        }
+
+        // Define the saveChanges function (for the edit form)
+        document.getElementById('edit-account-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            var accountId = document.getElementById('edit-account-id').value;
+            var newName = document.getElementById('edit-account-name').value;
+            var newPassword = document.getElementById('edit-account-password').value;
+            
+            // Update the account details in the accounts array
+            for (var i = 0; i < accounts.length; i++) {
+                if (accounts[i].id == accountId) {
+                    accounts[i].name = newName;
+                    accounts[i].password = newPassword;
+                    break;
+                }
+            }
+
+            console.log("Updated accounts array:", accounts);
+
+            // Close the edit form after saving changes
+            document.getElementById('edit-form').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+=======
+>>>>>>> d33cfbe72f8291127f0e99ee3c510e9c96288a78
