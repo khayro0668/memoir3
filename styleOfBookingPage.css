@@ -2,12 +2,13 @@
     width: 950px;
     height: 570px;
     border-collapse: collapse;
-   
+  
 }
 .table-of-booking th, td {
     border: 1px solid black;
      padding: 20px;
     text-align: left;
+ 
 }
 .table-of-booking th {
     background-color: lightblue;

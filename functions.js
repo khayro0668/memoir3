@@ -280,7 +280,7 @@ function createBarOfOptionsOfselectedRoom() {
      <button class="barOfReservedRoom" onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
      <button class="barOfReservedRoom" onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
      <button class="barOfReservedRoom" onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
-     <button class="barOfReservedRoom" onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+     <button class="barOfReservedRoom" onclick="generatePageOfBeds()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
     // </div>
     `;
     var barOfUnbookedRoom = `
@@ -1317,6 +1317,81 @@ function generatePageOfPayment() {
     document.getElementById('page-of-payment').innerHTML = page;
 }
 
+
+function generatePageOfBeds() {
+    var page = `
+        <div class="current-resident-container">
+            <div class="current-resident">
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160); width : 157px; "><h2 style="color: white;">Confirm</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Duration</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Position</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Bed Number</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Last Name</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 155px;"><h2 style="color: white;">First Name</h2></div>
+            </div>
+            <div class="scrollable-content">
+    `;
+
+    for (let i = 0; i < selectedRoom.numberOfBeds; i++) {
+        if (selectedRoom.statusOfBeds[i] === true) {
+            page += `
+                <div class="current-resident">
+                    <div class="part-of-country-in-clock" style="background-color: white; width : 157px  ;">
+                        <button  onclick="modifyDuration(${i})" style="width : 153px ; height: 56px ; "  id="ConfirmationForBeds">Confirm</button>
+                    </div>
+                    <div class="part-of-room" style=" width: 157px;">
+                    <input class="input-of-reserve" type="number"  id="durationinput" style="width: 150px; height: 45px; font-size: 30px; margin: 0; padding: 0;" 
+                    value="${selectedRoom.residentOfBeds[i].durationOfReservation}">
+                    
+                    </input>
+                    </div>
+                    <div class="part-of-room" style="width : 157px;">
+                        <h2>${selectedRoom.positionOfBeds[i]}</h2>
+                    </div>
+                    <div class="part-of-room" style="width : 157px;">
+                        <h2>${i + 1}</h2>
+                    </div>
+                    <div class="part-of-room"style="width : 157px;">
+                        <h2>${selectedRoom.residentOfBeds[i].lastName}</h2>
+                    </div>
+                    <div class="part-of-room"style="width : 155px;">
+                        <h2>${selectedRoom.residentOfBeds[i].firstName}</h2>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    page += `</div></div>`;
+
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    currentIdInDisplayInformation = 'modify-room-information';
+    document.getElementById(currentIdInDisplayInformation).innerHTML = page;
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+}
+
+
+
+
+function modifyDuration(bedIndex) {
+    const inputElement = document.getElementById(`durationinput-${bedIndex}`).value;
+    console.log(`Duration for bed ${inputElement} `);
+    if (inputElement) {
+        var newDuration = inputElement;
+        selectedRoom.residentOfBeds[bedIndex].durationOfReservation = newDuration;
+        console.log(`Duration for bed ${bedIndex} updated to ${newDuration}`);
+
+        // Optionally, you can update the UI or perform any other necessary actions here
+
+    } else {
+        console.log(`Duration for bed ${bedIndex} not updated to ${newDuration}`);
+       
+    }
+}
+
+
+
+
 //get page of payment
 function getPageOfPayment() {
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
@@ -1411,6 +1486,9 @@ function reserveRoom() {
 
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
+
+
+
 
 
 //younes

@@ -117,7 +117,7 @@ function selectRoom(room) {
         showInformationOfSelectedRoom();
     }
 
-    var res = '';
+   /* var res = '';
     for(let i = 0 ; i < selectedRoom.numberOfBeds ; i++) {
         if(selectedRoom.statusOfBeds[i] === true) {
             res += selectedRoom.positionOfBeds[i] + '  ';
@@ -134,7 +134,7 @@ function selectRoom(room) {
         }
     }
 
-    alert(res);
+    alert(res);*/
 }
 
 //function to get a page to reserve room
