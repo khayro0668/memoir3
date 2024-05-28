@@ -105,6 +105,10 @@ class Room {
     statusOfMixed;
     firstName;
     lastName;
+    numberOfReservedFemaleBeds;
+    numberOfReservedMaleBeds;
+    numberOfFreeFemaleBeds;
+    numberOfFreeMaleBeds;
     arrivalTime;
     creditCardNumber;
     floorNumber;

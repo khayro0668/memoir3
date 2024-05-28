@@ -1,14 +1,14 @@
-#page-of-booking table {
+.table-of-booking table {
     width: 950px;
     height: 570px;
     border-collapse: collapse;
    
 }
-#page-of-booking th, td {
+.table-of-booking th, td {
     border: 1px solid black;
-  padding: 20px;
+     padding: 20px;
     text-align: left;
 }
-#page-of-booking th {
+.table-of-booking th {
     background-color: lightblue;
 }
