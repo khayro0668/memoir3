@@ -1331,12 +1331,12 @@ function generatePageOfPayment() {
                       ${hotel.listOfRooms[i].roomNumber}
                    </h2>
                </div>
-               <div class="part-of-contdown" style="background-color: red;">
+               <div class="part-of-contdown">
                   <h2>
                 ${hotel.listOfRooms[i].remaningPayment}$
                   </h2>
                </div>
-               <div class="part-of-gender-in-clock" style="background-color: green;">
+               <div class="part-of-gender-in-clock" >
                   <h2>
                     ${hotel.listOfRooms[i].paidPayment}$
                   </h2>
