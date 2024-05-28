@@ -3,66 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Cards</title>
+    <title>Enter Number of Floors in Hotel</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            width: 950px;
-            height: 570px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-           
-            border-radius: 10px;
-            background-color: #fff;
-            
-        }
-        .card {
+        
+        .central-card {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            width: 200px;
-            height: 300px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            background-color: #fafafa;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            align-items: center;
             text-align: center;
-            font-family: Arial, sans-serif;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        .central-card input[type="number"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            box-sizing: border-box;
         }
-        .emoji {
-            font-size: 5rem;
+        .central-card button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
-        .label {
-            margin-top: 10px;
-            font-size: 1.5rem;
-            color: #333;
+
+        .central-card button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="emoji">🏨</div>
-            <div class="label">Hotel</div>
-        </div>
-        <div class="card">
-            <div class="emoji">👤</div>
-            <div class="label">Account</div>
-        </div>
+    <div class="central-card">
+        <h1>Enter Number of Floors in Hotel</h1>
+        <input type="number" id="floors" name="floors" placeholder="Enter number of floors">
+        <button onclick="confirmFloors()">Confirm</button>
     </div>
+
+    <script>
+        function confirmFloors() {
+            const floors = document.getElementById('floors').value;
+            alert(`The number of floors entered is: ${floors}`);
+        }
+    </script>
 </body>
 </html>

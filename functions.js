@@ -343,7 +343,7 @@ function generatePageOfSettings() {
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
     document.getElementById(currentPage).style.display = 'none';
-    currentPage = 'page-of-settings';
+    currentPage = 'page-of-settings11';
     document.getElementById(currentPage).style.display = 'flex';
 }
 
@@ -1410,22 +1410,16 @@ function generatePageOfBeds() {
 
 
 function modifyDuration(bedIndex) {
-    const inputElement = document.getElementById(`durationinput-${bedIndex}`).value;
-    console.log(`Duration for bed ${inputElement} `);
+    const inputElement = document.getElementById('durationinput').value;
     if (inputElement) {
         var newDuration = inputElement;
         selectedRoom.residentOfBeds[bedIndex].durationOfReservation = newDuration;
         console.log(`Duration for bed ${bedIndex} updated to ${newDuration}`);
 
-        // Optionally, you can update the UI or perform any other necessary actions here
-
     } else {
         console.log(`Duration for bed ${bedIndex} not updated to ${newDuration}`);
-       
     }
 }
-
-
 
 
 //get page of payment
@@ -1717,3 +1711,12 @@ function getBookingPage() {
     currentPage = 'page-of-booking';
     document.getElementById(currentPage).style.display = 'block';
 }
+
+
+///////////////////////////////////////////////////////
+function generatePageOfCreateHotel() {
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'container-create-hotel';
+    document.getElementById(currentPage).style.display = 'flex';
+}
+///////////////////////////////////////////////////////
