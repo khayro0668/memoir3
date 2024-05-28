@@ -80,6 +80,7 @@
 .part-of-contdown,
 .part-of-gender-in-clock,
 .part-of-country-in-clock {
+    border-radius:0%;
      border: 1px black solid;
     height: 55px;
     width: calc(100% / 7 - 2px); /* Adjusted width to fit within the container */
