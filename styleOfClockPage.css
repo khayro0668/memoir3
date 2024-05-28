@@ -110,8 +110,8 @@
     border-radius: 10%;
     height: 35px;
      width: 54px;
-    background-color: rgb(176, 176, 176);
-    color: white;
+    background-color: rgb(251, 225, 117);
+    color: black;
     border: none;
     cursor: pointer;
     margin-top: 18px;
@@ -120,7 +120,7 @@
 }
 
 #type-of-search button:hover {
-    background-color: rgb(103, 219, 96);
+    background-color: rgb(216, 243, 249);
 }
 
 
