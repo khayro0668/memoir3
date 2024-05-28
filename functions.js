@@ -84,7 +84,7 @@ function rempleID() {
 
 function generateTableOfRooms(listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn) {
     names = [];
-    var table = '<table>';
+    var table = '<table class="table-of-rooms">';
     let i = 0;
     while (i < listOfRooms.length) {
         table += '<tr>';
