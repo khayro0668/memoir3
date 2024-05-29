@@ -1707,34 +1707,31 @@ function generatePageOfCreateHotel() {
 
 //add number of floor and rooms in db
 function addNumberFloorAndRooms() {
-    var floors;
-    var roomsPerFloor;
-    floors=document.getElementById("floors").value;
-    roomsPerFloor=document.getElementById("roomsPerFloor").value;
-    console.log(floors);
-    var newData = {
-        userName:"moris",
-        floor:floors,
-        rooms:roomsPerFloor,
+    // var floors;
+    // var roomsPerFloor;
+    // floors=document.getElementById("floors").value;
+    // roomsPerFloor=document.getElementById("roomsPerFloor").value;
+    // console.log(floors);
+    // var newData = {
+    //     userName:"moris",
+    //     floor:floors,
+    //     rooms:roomsPerFloor,
        
        
-    };
-    $.ajax({
-        url: "addHotel.php",
-        method: "post",
-        data: newData,
-        success: function (res) {
-            console.log("Response from PHP script1:", res);
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    // };
+    // $.ajax({
+    //     url: "addHotel.php",
+    //     method: "post",
+    //     data: newData,
+    //     success: function (res) {
+    //         console.log("Response from PHP script1:", res);
+    //     },
+    //     error: function (xhr, status, error) {
+    //         console.error("Error:", error);
+    //     }
+    // });
 
 
-
-
-    
     document.getElementById('set-type-of-rooms').style.display = 'block';
     document.getElementById('central-card').style.display = 'none';
 }
