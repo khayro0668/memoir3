@@ -1,3 +1,115 @@
-Hotel
- id   name   numberoffloor    numberofroomsINfloor  
- 1    nik mathom  10             20
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 500px;
+            height: 350px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow-y: auto;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section p {
+            margin: 0 0 10px 0;
+        }
+        .section select {
+            width: calc(50% - 10px);
+            padding: 5px;
+            margin: 5px;
+        }
+        .section button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .section button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <p>Section 1: Choose values</p>
+            <select id="section1-dropdown1"></select>
+            <select id="section1-dropdown2"></select>
+        </div>
+        <div class="section">
+            <p>Section 2: Select options</p>
+            <select id="section2-dropdown1"></select>
+            <select id="section2-dropdown2"></select>
+        </div>
+        <div class="section">
+            <p>Section 3: Pick numbers</p>
+            <select id="section3-dropdown1"></select>
+            <select id="section3-dropdown2"></select>
+        </div>
+        <div class="section">
+            <p>Section 4: Choose digits</p>
+            <select id="section4-dropdown1"></select>
+            <select id="section4-dropdown2"></select>
+        </div>
+        <div class="section">
+            <p>Section 5: Select values</p>
+            <select id="section5-dropdown1"></select>
+            <select id="section5-dropdown2"></select>
+        </div>
+        <div class="section">
+            <button onclick="showSelectedValues()">Confirm</button>
+        </div>
+    </div>
+    <script>
+        const n = 10;  // Set your value of n here
+
+        function populateDropdowns() {
+            for (let i = 1; i <= n; i++) {
+                for (let j = 1; j <= 5; j++) {
+                    let dropdown1 = document.getElementById(`section${j}-dropdown1`);
+                    let dropdown2 = document.getElementById(`section${j}-dropdown2`);
+                    
+                    let option1 = document.createElement("option");
+                    option1.value = i;
+                    option1.text = i;
+                    dropdown1.appendChild(option1);
+                    
+                    let option2 = document.createElement("option");
+                    option2.value = i;
+                    option2.text = i;
+                    dropdown2.appendChild(option2);
+                }
+            }
+        }
+
+        function showSelectedValues() {
+            let selectedValues = [];
+            for (let i = 1; i <= 5; i++) {
+                let dropdown1 = document.getElementById(`section${i}-dropdown1`).value;
+                let dropdown2 = document.getElementById(`section${i}-dropdown2`).value;
+                selectedValues.push(`Section ${i}: ${dropdown1}, ${dropdown2}`);
+            }
+            alert(selectedValues.join('\n'));
+        }
+
+        window.onload = populateDropdowns;
+    </script>
+</body>
+</html>

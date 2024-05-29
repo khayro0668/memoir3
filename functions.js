@@ -1704,3 +1704,8 @@ function generatePageOfCreateHotel() {
     document.getElementById(currentPage).style.display = 'flex';
 }
 ///////////////////////////////////////////////////////
+
+//add number of floor and rooms in db
+function addNumberFloorAndRooms() {
+    
+}
