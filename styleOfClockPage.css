@@ -80,6 +80,7 @@
 .part-of-contdown,
 .part-of-gender-in-clock,
 .part-of-country-in-clock {
+    border-radius:0%;
      border: 1px black solid;
     height: 55px;
     width: calc(100% / 7 - 2px); /* Adjusted width to fit within the container */
@@ -99,7 +100,7 @@
 
 .part-of-date input,
 .part-of-country select {
-     width: 100px;
+     width: 100px;/***/
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px; 
@@ -109,8 +110,8 @@
     border-radius: 10%;
     height: 35px;
      width: 54px;
-    background-color: rgb(176, 176, 176);
-    color: white;
+    background-color: rgb(251, 225, 117);
+    color: black;
     border: none;
     cursor: pointer;
     margin-top: 18px;
@@ -119,7 +120,7 @@
 }
 
 #type-of-search button:hover {
-    background-color: rgb(103, 219, 96);
+    background-color: rgb(216, 243, 249);
 }
 
 

@@ -280,7 +280,7 @@ function createBarOfOptionsOfselectedRoom() {
      <button class="barOfReservedRoom" onclick="showInformationOfSelectedRoom()"><i class="fa-solid fa-circle-info"></i></button>
      <button class="barOfReservedRoom" onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
      <button class="barOfReservedRoom" onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
-     <button class="barOfReservedRoom" onclick="modifyInformationOfSelectedRoom()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
+     <button class="barOfReservedRoom" onclick="generatePageOfBeds()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
     // </div>
     `;
     var barOfUnbookedRoom = `
@@ -343,7 +343,7 @@ function generatePageOfSettings() {
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
     document.getElementById(currentPage).style.display = 'none';
-    currentPage = 'page-of-settings';
+    currentPage = 'page-of-settings11';
     document.getElementById(currentPage).style.display = 'flex';
 }
 
@@ -1315,12 +1315,12 @@ function generatePageOfPayment() {
                       ${hotel.listOfRooms[i].roomNumber}
                    </h2>
                </div>
-               <div class="part-of-contdown" style="background-color: red;">
+               <div class="part-of-contdown">
                   <h2>
                 ${hotel.listOfRooms[i].remaningPayment}$
                   </h2>
                </div>
-               <div class="part-of-gender-in-clock" style="background-color: green;">
+               <div class="part-of-gender-in-clock" >
                   <h2>
                     ${hotel.listOfRooms[i].paidPayment}$
                   </h2>
@@ -1336,6 +1336,75 @@ function generatePageOfPayment() {
 
     document.getElementById('page-of-payment').innerHTML = page;
 }
+
+
+function generatePageOfBeds() {
+    var page = `
+        <div class="current-resident-container">
+            <div class="current-resident">
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160); width : 157px; "><h2 style="color: white;">Confirm</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Duration</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Position</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Bed Number</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 157px;"><h2 style="color: white;">Last Name</h2></div>
+                <div class="part-of-room" style="background-color: rgb(32, 162, 160);width : 155px;"><h2 style="color: white;">First Name</h2></div>
+            </div>
+            <div class="scrollable-content">
+    `;
+
+    for (let i = 0; i < selectedRoom.numberOfBeds; i++) {
+        if (selectedRoom.statusOfBeds[i] === true) {
+            page += `
+                <div class="current-resident">
+                    <div class="part-of-country-in-clock" style="background-color: white; width : 157px  ;">
+                        <button  onclick="modifyDuration(${i})" style="width : 153px ; height: 56px ; "  id="ConfirmationForBeds">Confirm</button>
+                    </div>
+                    <div class="part-of-room" style=" width: 157px;">
+                    <input class="input-of-reserve" type="number"  id="durationinput" style="width: 150px; height: 45px; font-size: 30px; margin: 0; padding: 0;" 
+                    value="${selectedRoom.residentOfBeds[i].durationOfReservation}">
+                    
+                    </input>
+                    </div>
+                    <div class="part-of-room" style="width : 157px;">
+                        <h2>${selectedRoom.positionOfBeds[i]}</h2>
+                    </div>
+                    <div class="part-of-room" style="width : 157px;">
+                        <h2>${i + 1}</h2>
+                    </div>
+                    <div class="part-of-room"style="width : 157px;">
+                        <h2>${selectedRoom.residentOfBeds[i].lastName}</h2>
+                    </div>
+                    <div class="part-of-room"style="width : 155px;">
+                        <h2>${selectedRoom.residentOfBeds[i].firstName}</h2>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    page += `</div></div>`;
+
+    document.getElementById(currentIdInDisplayInformation).style.display = 'none';
+    currentIdInDisplayInformation = 'modify-room-information';
+    document.getElementById(currentIdInDisplayInformation).innerHTML = page;
+    document.getElementById(currentIdInDisplayInformation).style.display = 'block';
+}
+
+
+
+
+function modifyDuration(bedIndex) {
+    const inputElement = document.getElementById('durationinput').value;
+    if (inputElement) {
+        var newDuration = inputElement;
+        selectedRoom.residentOfBeds[bedIndex].durationOfReservation = newDuration;
+        console.log(`Duration for bed ${bedIndex} updated to ${newDuration}`);
+
+    } else {
+        console.log(`Duration for bed ${bedIndex} not updated to ${newDuration}`);
+    }
+}
+
 
 //get page of payment
 function getPageOfPayment() {
@@ -1431,6 +1500,9 @@ function reserveRoom() {
 
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
 }
+
+
+
 
 
 //younes
@@ -1623,3 +1695,15 @@ function getBookingPage() {
     currentPage = 'page-of-booking';
     document.getElementById(currentPage).style.display = 'block';
 }
+<<<<<<< HEAD
+=======
+
+
+///////////////////////////////////////////////////////
+function generatePageOfCreateHotel() {
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'container-create-hotel';
+    document.getElementById(currentPage).style.display = 'flex';
+}
+///////////////////////////////////////////////////////
+>>>>>>> ae8d9ec9db4497873dea16008381dfa80f2b4398

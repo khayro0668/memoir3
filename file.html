@@ -24,8 +24,8 @@
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
     <script src="sendData.js"></script>
     <script src="Resident.js"></script>
-    <script src="Booking.js"></script>
     <script src="data.js"></script>
+    
     <script src="functions.js"></script>
     <script src="PMS.js"></script>
     <title>PMS</title>
@@ -78,6 +78,19 @@
             <div class="display-information" id="reservation-of-room" style="display: none;"></div>
         </div>
 
+         <!-- display information -->
+         <div class="container-of-card-of-settings" id="page-of-settings11" style="display: none;">
+            <div class="card-of-setting-type" onclick="generatePageOfCreateHotel()">
+                <div class="emoji">🏨</div> <!-- You may change the emoji if needed -->
+                <span class="label">Hotel</span>
+            </div>
+
+            <div class="card-of-setting-type" onclick="getPageOfQuantiteSettings()">
+                <div class="emoji">👤</div> <!-- You may change the emoji if needed -->
+                <span class="label">Accounts</span>
+            </div>
+        </div>
+
         <!-- display information -->
         <div class="container-of-card-of-settings" id="page-of-settings" style="display: none;">
             <div class="card-of-setting-type" onclick="getPageOfPriceSettings()">
@@ -125,7 +138,14 @@
             </div>
         </div>
 
-
+        <!-- display information -->
+        <div class="container-create-hotel" id="container-create-hotel" style="display: none;">
+            <div class="central-card">
+                <h1>Enter Number of Floors in Hotel</h1>
+                <input type="number" id="floors" name="floors" placeholder="Enter number of floors">
+                <button onclick="">Confirm</button>
+            </div>
+        </div>
         <!-- display information -->
         <div class="page-of-price-settings" id="page-of-price-of-rooms-settings" style="display: none;">
             <!--  -->
