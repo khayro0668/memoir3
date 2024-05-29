@@ -1,0 +1,42 @@
+.container-create-hotel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 570px;
+    width: 950px;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+.central-card {
+    width: 500px;
+    height: 350px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+.central-card h1 {
+    margin-bottom: 20px;
+}
+.central-card input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.central-card button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.central-card button:hover {
+    background-color: #0056b3;
+}
+.result {
+    margin-top: 20px;
+}

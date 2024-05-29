@@ -1695,8 +1695,6 @@ function getBookingPage() {
     currentPage = 'page-of-booking';
     document.getElementById(currentPage).style.display = 'block';
 }
-<<<<<<< HEAD
-=======
 
 
 ///////////////////////////////////////////////////////
@@ -1706,4 +1704,3 @@ function generatePageOfCreateHotel() {
     document.getElementById(currentPage).style.display = 'flex';
 }
 ///////////////////////////////////////////////////////
->>>>>>> ae8d9ec9db4497873dea16008381dfa80f2b4398

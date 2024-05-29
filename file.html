@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styleOfBookingPage.css">
     <link rel="stylesheet" href="styleOfPageOfSettings.css">
     <link rel="stylesheet" href="popUpLogInStyle.css">
+    <link rel="stylesheet" href="styleOfCreateHotel.css">
     <link rel="stylesheet" href="styleOfArchivesPage.css">
     <link rel="stylesheet" href="styleOfClockPage.css">
     <link rel="stylesheet" href="styleOfPaymentPage.css">
@@ -141,9 +142,13 @@
         <!-- display information -->
         <div class="container-create-hotel" id="container-create-hotel" style="display: none;">
             <div class="central-card">
-                <h1>Enter Number of Floors in Hotel</h1>
-                <input type="number" id="floors" name="floors" placeholder="Enter number of floors">
-                <button onclick="">Confirm</button>
+                <div class="container">
+                    <h1>Hotel Information</h1>
+                    <input type="number" id="floors" placeholder="Number of floors">
+                    <input type="number" id="roomsPerFloor" placeholder="Number of rooms per floor">
+                    <button onclick="showInfo()">Confirm</button>
+                    <div class="result" id="result"></div>
+                </div>
             </div>
         </div>
         <!-- display information -->
