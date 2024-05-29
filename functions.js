@@ -1707,5 +1707,6 @@ function generatePageOfCreateHotel() {
 
 //add number of floor and rooms in db
 function addNumberFloorAndRooms() {
-    
+    document.getElementById('set-type-of-rooms').style.display = 'block';
+    document.getElementById('central-card').style.display = 'none';
 }
