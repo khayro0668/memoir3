@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styleOfContentDisplayPage.css">
     <link rel="stylesheet" href="styleOfModifySettings.css">
     <link rel="stylesheet" href="styleOfDisplayInformation.css">
+    <link rel="stylesheet" href="setTypeOfRoomsStyle.css">
     <link rel="stylesheet" href="styleOfLoginPage.css">
     <link rel="stylesheet" href="styleOfBookingPage.css">
     <link rel="stylesheet" href="styleOfPageOfSettings.css">
@@ -26,7 +27,7 @@
     <script src="sendData.js"></script>
     <script src="Resident.js"></script>
     <script src="data.js"></script>
-    
+
     <script src="functions.js"></script>
     <script src="PMS.js"></script>
     <title>PMS</title>
@@ -79,8 +80,8 @@
             <div class="display-information" id="reservation-of-room" style="display: none;"></div>
         </div>
 
-         <!-- display information -->
-         <div class="container-of-card-of-settings" id="page-of-settings11" style="display: none;">
+        <!-- display information -->
+        <div class="container-of-card-of-settings" id="page-of-settings11" style="display: none;">
             <div class="card-of-setting-type" onclick="generatePageOfCreateHotel()">
                 <div class="emoji">🏨</div> <!-- You may change the emoji if needed -->
                 <span class="label">Hotel</span>
@@ -141,6 +142,7 @@
 
         <!-- display information -->
         <div class="container-create-hotel" id="container-create-hotel" style="display: none;">
+<<<<<<< HEAD
             <div class="central-card">
                 <div class="container">
                     <h1>Hotel Information</h1>
@@ -148,6 +150,43 @@
                     <input type="number" id="roomsPerFloor" placeholder="Number of rooms per floor">
                     <button onclick="addNumberFloorAndRooms()">Confirm</button>
                     <div class="result" id="result"></div>
+=======
+            <div class="central-card" id="central-card">
+                <h1>Hotel Information</h1>
+                <input type="number" id="floors" placeholder="Number of floors">
+                <input type="number" id="roomsPerFloor" placeholder="Number of rooms per floor">
+                <button onclick="addNumberFloorAndRooms()">Confirm</button>
+                <div class="result" id="result"></div>
+            </div>
+            <div id="set-type-of-rooms" style="display: none;">
+                <div class="section111">
+                    <p>Private room</p>
+                    <select id="section1-dropdown1"></select>
+                    <select id="section1-dropdown2"></select>
+                </div>
+                <div class="section111">
+                    <p>8 bed mixed room</p>
+                    <select id="section2-dropdown1"></select>
+                    <select id="section2-dropdown2"></select>
+                </div>
+                <div class="section111">
+                    <p>6 bed female room</p>
+                    <select id="section3-dropdown1"></select>
+                    <select id="section3-dropdown2"></select>
+                </div>
+                <div class="section111">
+                    <p>6 bed mixed room</p>
+                    <select id="section4-dropdown1"></select>
+                    <select id="section4-dropdown2"></select>
+                </div>
+                <div class="section111">
+                    <p>4 bed mixed room</p>
+                    <select id="section5-dropdown1"></select>
+                    <select id="section5-dropdown2"></select>
+                </div>
+                <div class="section111">
+                    <button onclick="showSelectedValues()">Confirm</button>
+>>>>>>> 86d602fa4ea8e44e2f52ed2f42ab14af4b376d54
                 </div>
             </div>
         </div>
@@ -175,17 +214,17 @@
         <div id="page-of-clock" style="display: none;">
             <div id="type-of-search">
                 <div class="first-componant">
-                        <div class="componant-in-part-of-period" style="width :135px" >
-                               First date
-                            <input type="date" id="first-date">
-                        </div>
-                        <div class="componant-in-part-of-period" style="width :135px" >
-                            Seconde date
-                            <input type="date" id="second-date" >
-                        </div>
+                    <div class="componant-in-part-of-period" style="width :135px">
+                        First date
+                        <input type="date" id="first-date">
+                    </div>
+                    <div class="componant-in-part-of-period" style="width :135px">
+                        Seconde date
+                        <input type="date" id="second-date">
+                    </div>
 
                     <div class="part-of-country" id="part-of-country" style="width :110px">
-                         Country
+                        Country
                         <select id="countryDropdown" onchange="showSelectedCountry()">
                             <option value="">All country</option>
                         </select>
@@ -212,22 +251,22 @@
                         </select>
                     </div>
 
-                    <div class="part-of-date"style="width :120px">
+                    <div class="part-of-date" style="width :120px">
                         date
                         <input type="date" id="input-date">
                     </div>
                 </div>
-            
+
                 <div id="searchContainer">
                     Search by name
                     <input id="searchName" type="text" oninput="showSuggestions()" placeholder="Search"
                         onkeydown="if (event.keyCode == 13) { generateClock(); return false; }">
                     <ul id="suggestions"></ul>
                 </div>
-                
+
                 <div class="type-of-search" style="background-color: rgb(32, 162, 160)">
-                <button onclick="generateClock() ">Search</button>
-                 </div>
+                    <button onclick="generateClock() ">Search</button>
+                </div>
 
             </div>
 
