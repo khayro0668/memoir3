@@ -436,28 +436,12 @@ function createSettingPricePage(numberOfFloors, numberOfRooms) {
 function setPriceOfRooms() {
     
         
-    function sendData(name,event_changes){
-        console.log(currentUser);
-        var newData = {
-            user: name,
-            event:event_changes,
-           
-        };
-        $.ajax({
-            url: "readJson.php",
-            method: "post",
-            data: newData,
-            success: function (res) {
-                console.log("Response from PHP script1:", res);
-            },
-            error: function (xhr, status, error) {
-                console.error("Error:", error);
-            }
-        });
+    
+    deleteAccount("wassim");
+    //modifyAccount("khayro","33","kkkk");
 
 
-
-    } 
+    
     
     const isDesiredRoomInSettings = (room, floorNumber, roomNumber) => {
         
@@ -478,18 +462,10 @@ function setPriceOfRooms() {
             hotel.listOfRooms[i].setPrice(document.getElementById('new-price-from-settings').value);
         }
     }
-<<<<<<< HEAD
-    
-    hotel.addEventInArchives(currentUser, 'set price');
-    
-   
-    
-=======
 
     hotel.addEventInArchives(currentUser, 'set price', new Date());
     sendData(currentUser , 'set price');
     // generatePageOfArchives();
->>>>>>> d33cfbe72f8291127f0e99ee3c510e9c96288a78
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
     
     }
@@ -941,10 +917,6 @@ function makeActive(element) {
     }
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d33cfbe72f8291127f0e99ee3c510e9c96288a78
 function handleMenuAction(id) {
 
     switch (id) {
@@ -1466,8 +1438,6 @@ function generatePageOfAccountEmployesSettings(listOfAccount) {
 
 }
 
-<<<<<<< HEAD
-=======
 
 
 //khayro trolling trying to creat a function of update room
@@ -1653,4 +1623,3 @@ function getBookingPage() {
     currentPage = 'page-of-booking';
     document.getElementById(currentPage).style.display = 'block';
 }
->>>>>>> d33cfbe72f8291127f0e99ee3c510e9c96288a78

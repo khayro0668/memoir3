@@ -1,68 +1,88 @@
+
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Cards</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            width: 950px;
-            height: 570px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-           
-            border-radius: 10px;
-            background-color: #fff;
-            
-        }
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            height: 300px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            background-color: #fafafa;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            font-family: Arial, sans-serif;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .emoji {
-            font-size: 5rem;
-        }
-        .label {
-            margin-top: 10px;
-            font-size: 1.5rem;
-            color: #333;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Accounts</title>
+<!-- Include Font Awesome library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    table {
+        width:950px;
+        border-collapse: collapse;
+
+    }
+    th, td {
+
+        
+        padding: 8px;
+        text-align: left;
+        width: 10px;
+        padding-top: 30px;
+        
+        
+    }
+    td:last-child {
+        border-bottom: none; /* Remove border for the last column */
+    }
+    .delete-btn {
+        padding: 5px 10px;
+        background-color: rgb(32, 162, 160);
+        color: white;
+        border: none;
+        cursor: pointer;
+
+    }
+    .delete-btn:hover {
+        
+        background-color: #dc3545;
+
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="emoji">🏨</div>
-            <div class="label">Hotel</div>
-        </div>
-        <div class="card">
-            <div class="emoji">👤</div>
-            <div class="label">Account</div>
-        </div>
-    </div>
+
+<table>
+    <tbody>
+        <h2>archive:</h2>
+        <!-- Randomly generated rows -->
+        <tr>
+            
+            <td>the admin set the price (50£) for the room number 10 at  2024-05-15 10:30:00</td>
+            
+            <td><button class="delete-btn"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>
+        <tr>
+            <td>wassim  set the price (24£) for the room number 16 at  2024-02-11 11:22:11</td>
+            
+            <td><button class="delete-btn"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>
+         <tr>
+            <td>wassim  set the price (110£) for the room number 30 at  2024-02-10 01:30:21</td>
+            
+            <td><button class="delete-btn"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>
+         <tr>
+            <td>khayro  set the price (67£) for the room number 20 at  2024-02-07 11:22:11</td>
+            
+            <td><button class="delete-btn"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>
+          <tr>
+            <td>admin  set the price (67£) for the room number 22 at  2024-02-01 16:42:01</td>
+            
+            <td><button class="delete-btn"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>
+          <tr>
+            <td>mostafa  set the price (110£) for the room number 33 at  2024-01-22 20:55:32</td>
+            
+            <td><button class="delete-btn"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>
+        <!-- Add more rows -->
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+
 </body>
 </html>
