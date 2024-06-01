@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -67,10 +68,46 @@
         }
         .bbuttons-of-pass button:hover {
             background-color: #0056b3;
+=======
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة اختيارات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .item {
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            user-select: none;
+        }
+        .item.selected {
+            background-color: #b3d9ff;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        #result {
+            margin-top: 20px;
+>>>>>>> 305f243e39ae4fa9e998339489e09904c5e59efe
         }
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <div class="card-of-pass">
         <div class="label-container-pass">
             <label>
@@ -93,3 +130,38 @@
     </div>
 </body>
 </html>
+=======
+    <h1>قائمة الاختيارات</h1>
+    <div class="container" id="choice-container">
+        <!-- عناصر الاختيارات -->
+    </div>
+    <div class="button-container">
+        <button onclick="showSelections()">عرض</button>
+    </div>
+    <div id="result"></div>
+    
+    <script>
+        // إنشاء قائمة الاختيارات
+        const choices = ['اختيار 1', 'اختيار 2', 'اختيار 3', 'اختيار 4', 'اختيار 5', 'اختيار 6', 'اختيار 7', 'اختيار 8', 'اختيار 9'];
+        const choiceContainer = document.getElementById('choice-container');
+
+        choices.forEach(choice => {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.textContent = choice;
+            div.onclick = () => {
+                div.classList.toggle('selected');
+            };
+            choiceContainer.appendChild(div);
+        });
+        
+        function showSelections() {
+            const selectedItems = document.querySelectorAll('.item.selected');
+            const resultContainer = document.getElementById('result');
+            const selections = Array.from(selectedItems).map(item => item.textContent);
+            resultContainer.textContent = selections.length > 0 ? 'الاختيارات المحددة: ' + selections.join(', ') : 'لم يتم اختيار أي عنصر';
+        }
+    </script>
+</body>
+</html>
+>>>>>>> 305f243e39ae4fa9e998339489e09904c5e59efe

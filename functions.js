@@ -776,7 +776,6 @@ function generateClock() {
 function getInfoOfSelectedResident(id) {
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].id === id) {
-            alert(hotel.listOfRooms[i].durationOfReservation);
             break;
         }
     }
@@ -1629,7 +1628,7 @@ function addRoomInDataBase(
 //booking page
 function getBookingPage() {
     var page = `
-    <div class="table-of-booking">
+    <div class="table-of-booking123">
     <table>
         <thead>
             <tr>
@@ -1731,10 +1730,13 @@ function addNumberFloorAndRooms() {
     //     }
     // });
 
-
-    document.getElementById('set-type-of-rooms').style.display = 'block';
+    // document.getElementById('set-type-of-rooms').style.display = 'block';
     document.getElementById('central-card').style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'selection-page';
+    document.getElementById(currentPage).style.display = 'flex';
 }
+<<<<<<< HEAD
 /***************************************************/
 function jame3(){
   var mostafa=`
@@ -1765,3 +1767,10 @@ function jame3(){
   document.getElementById(currentPage).style.display = 'flex';
 }
 /***************************************************/
+=======
+
+
+//generate page of selection 
+function generateSelectionPage() {
+}
+>>>>>>> 305f243e39ae4fa9e998339489e09904c5e59efe
