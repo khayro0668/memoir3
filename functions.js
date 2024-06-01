@@ -1736,7 +1736,6 @@ function addNumberFloorAndRooms() {
     currentPage = 'selection-page';
     document.getElementById(currentPage).style.display = 'flex';
 }
-<<<<<<< HEAD
 /***************************************************/
 function jame3(){
   var mostafa=`
@@ -1767,14 +1766,11 @@ function jame3(){
   document.getElementById(currentPage).style.display = 'flex';
 }
 /***************************************************/
-=======
 
 
 //generate page of selection 
 function generateSelectionPage() {
 }
-<<<<<<< HEAD
-
 
 
 //my server
@@ -1808,6 +1804,3 @@ function myAllocator() {
 
   }
 }
-=======
->>>>>>> 305f243e39ae4fa9e998339489e09904c5e59efe
->>>>>>> 97bcd07d31065a4085eb7f1039ae49278370fc7b
