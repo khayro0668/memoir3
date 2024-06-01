@@ -57,6 +57,7 @@ var arrayOfRoomTypes = [
 
 //onload function
 window.onload = function () {
+    getNumberOfFloor();
     hotel = new Hotel();
     numberOfFloors = hotel.numberOfFloors;
     numberOfRooms = hotel.numberOfRooms;
