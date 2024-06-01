@@ -1735,3 +1735,33 @@ function addNumberFloorAndRooms() {
     document.getElementById('set-type-of-rooms').style.display = 'block';
     document.getElementById('central-card').style.display = 'none';
 }
+/***************************************************/
+function jame3(){
+  var mostafa=`
+  <div class="card-of-pass">
+  <div class="label-container-pass">
+      <label>
+          <span>Username</span>
+          <input type="text">
+      </label>
+      <label>
+          <span>Password</span>
+          <input type="text">
+      </label>
+      <label>
+          <span>Confirm password</span>
+          <input type="text">
+      </label>
+  </div>
+  <div class="buttons-of-pass">
+      <button>Confirm</button>
+      <button>Cancel</button>
+  </div>
+</div>
+  `;
+  document.getElementById('page-of-add-acc').innerHTML = mostafa;
+  document.getElementById(currentPage).style.display = 'none';
+  currentPage = 'page-of-add-acc';
+  document.getElementById(currentPage).style.display = 'flex';
+}
+/***************************************************/
