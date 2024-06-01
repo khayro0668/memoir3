@@ -25,7 +25,6 @@ function getNumberOfRoom() {
         method: "GET",
         data: { name: hotelName },
         success: function (response) {
-            alert(response.rooms);
             console.log("Number of rooms:", response.rooms);
         },
         error: function (xhr, status, error) {

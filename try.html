@@ -1,21 +1,71 @@
-<<<<<<< HEAD
-=======
-Account
-usrename password status id
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة اختيارات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .item {
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            user-select: none;
+        }
+        .item.selected {
+            background-color: #b3d9ff;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>قائمة الاختيارات</h1>
+    <div class="container" id="choice-container">
+        <!-- عناصر الاختيارات -->
+    </div>
+    <div class="button-container">
+        <button onclick="showSelections()">عرض</button>
+    </div>
+    <div id="result"></div>
+    
+    <script>
+        // إنشاء قائمة الاختيارات
+        const choices = ['اختيار 1', 'اختيار 2', 'اختيار 3', 'اختيار 4', 'اختيار 5', 'اختيار 6', 'اختيار 7', 'اختيار 8', 'اختيار 9'];
+        const choiceContainer = document.getElementById('choice-container');
 
-event 
-id user time status event
-
-Hotel
-id name  floor room 
-
-rooms
-numberFloor numberRoom id idRoom   Type  s1 s2 s3 s4 s5 s6 s7 s8
-
-
-residents
-lastname  firstName  id  idBed startDate  duration email  country arrivalTime  
-
-createRoom(nf , nr , type , idRoom , )
-
->>>>>>> 8ff2f8583fede35264ce435d4cde88dffe34c4d3
+        choices.forEach(choice => {
+            const div = document.createElement('div');
+            div.classList.add('item');
+            div.textContent = choice;
+            div.onclick = () => {
+                div.classList.toggle('selected');
+            };
+            choiceContainer.appendChild(div);
+        });
+        
+        function showSelections() {
+            const selectedItems = document.querySelectorAll('.item.selected');
+            const resultContainer = document.getElementById('result');
+            const selections = Array.from(selectedItems).map(item => item.textContent);
+            resultContainer.textContent = selections.length > 0 ? 'الاختيارات المحددة: ' + selections.join(', ') : 'لم يتم اختيار أي عنصر';
+        }
+    </script>
+</body>
+</html>

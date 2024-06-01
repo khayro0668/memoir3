@@ -1,0 +1,19 @@
+.selection-page {
+    border: 1px solid black;
+    /* display: flex; */
+    height: 570px;
+    width: 950px;
+    background-color: aquamarine;
+}
+
+.fist-part {
+  height: 70px;
+  width: 950px;
+  background-color: black;
+}
+
+.seconde-part {
+    height: 450px;
+    width: 950px;
+    background-color: red; 
+}
