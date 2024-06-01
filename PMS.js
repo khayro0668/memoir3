@@ -96,7 +96,7 @@ function goToPMS() {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     document.getElementById('menu-of-options').style.display = 'block';
 
-    if(currentUser === 'admin'){
+    if(currentUser === 'admin') {
         document.getElementById('remaning-div').style.height = '100px';
     }else {
         document.getElementById('remaning-div').style.height = '150px';
