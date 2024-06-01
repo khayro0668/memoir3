@@ -1741,3 +1741,37 @@ function addNumberFloorAndRooms() {
 //generate page of selection 
 function generateSelectionPage() {
 }
+
+
+
+//my server
+var visitedRoom = [];
+function initVisitedRoom() {
+    var nbFloor = 40;
+    var nbRoom = 100;
+
+    for(let i = 0 ; i <= nbFloor ; i++) {
+        visitedRoom[i] = [];
+        for(let j = 0 ; j <= nbRoom ; j++){
+            visitedRoom[i][j] = [];
+            for(let k = 0 ; k <= 8 ; k++) {
+               visitedRoom[i][j][k] = false;
+            }
+        }
+    }
+}
+
+function getListOfResident() {
+    var res = [];
+    let nbr = Math.floor(Math.random() % 30);
+
+    for(let i = 0 ; i < nbr ; i++) {
+        
+    }
+}
+function myAllocator() {
+  var listOfResidents = getListOfResident();
+  for(let i = 0 ; i < listOfResidents.length ; i++) {
+
+  }
+}
