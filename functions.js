@@ -688,6 +688,7 @@ function generateClock() {
 
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (isDesiredResident(hotel.listOfRooms[i]) && hotel.listOfRooms[i].resident.toUpperCase().includes(searchName)) {
+            if(getRemaningDays(hotel.listOfRooms[i].endDate)>0)
             targetResidents.push(hotel.listOfRooms[i]);
         }
     }
