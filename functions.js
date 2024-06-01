@@ -776,7 +776,6 @@ function generateClock() {
 function getInfoOfSelectedResident(id) {
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
         if (hotel.listOfRooms[i].id === id) {
-            alert(hotel.listOfRooms[i].durationOfReservation);
             break;
         }
     }
@@ -1629,7 +1628,7 @@ function addRoomInDataBase(
 //booking page
 function getBookingPage() {
     var page = `
-    <div class="table-of-booking">
+    <div class="table-of-booking123">
     <table>
         <thead>
             <tr>
@@ -1707,34 +1706,101 @@ function generatePageOfCreateHotel() {
 
 //add number of floor and rooms in db
 function addNumberFloorAndRooms() {
-    var floors;
-    var roomsPerFloor;
-    floors=document.getElementById("floors").value;
-    roomsPerFloor=document.getElementById("roomsPerFloor").value;
-    console.log(floors);
-    var newData = {
-        userName:"moris",
-        floor:floors,
-        rooms:roomsPerFloor,
+    // var floors;
+    // var roomsPerFloor;
+    // floors=document.getElementById("floors").value;
+    // roomsPerFloor=document.getElementById("roomsPerFloor").value;
+    // console.log(floors);
+    // var newData = {
+    //     userName:"moris",
+    //     floor:floors,
+    //     rooms:roomsPerFloor,
        
        
-    };
-    $.ajax({
-        url: "addHotel.php",
-        method: "post",
-        data: newData,
-        success: function (res) {
-            console.log("Response from PHP script1:", res);
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    // };
+    // $.ajax({
+    //     url: "addHotel.php",
+    //     method: "post",
+    //     data: newData,
+    //     success: function (res) {
+    //         console.log("Response from PHP script1:", res);
+    //     },
+    //     error: function (xhr, status, error) {
+    //         console.error("Error:", error);
+    //     }
+    // });
 
-
-
-
-    
-    document.getElementById('set-type-of-rooms').style.display = 'block';
+    // document.getElementById('set-type-of-rooms').style.display = 'block';
     document.getElementById('central-card').style.display = 'none';
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'selection-page';
+    document.getElementById(currentPage).style.display = 'flex';
+}
+/***************************************************/
+function jame3(){
+  var mostafa=`
+  <div class="card-of-pass">
+  <div class="label-container-pass">
+      <label>
+          <span>Username</span>
+          <input type="text">
+      </label>
+      <label>
+          <span>Password</span>
+          <input type="text">
+      </label>
+      <label>
+          <span>Confirm password</span>
+          <input type="text">
+      </label>
+  </div>
+  <div class="buttons-of-pass">
+      <button>Confirm</button>
+      <button>Cancel</button>
+  </div>
+</div>
+  `;
+  document.getElementById('page-of-add-acc').innerHTML = mostafa;
+  document.getElementById(currentPage).style.display = 'none';
+  currentPage = 'page-of-add-acc';
+  document.getElementById(currentPage).style.display = 'flex';
+}
+/***************************************************/
+
+
+//generate page of selection 
+function generateSelectionPage() {
+}
+
+
+//my server
+var visitedRoom = [];
+function initVisitedRoom() {
+    var nbFloor = 40;
+    var nbRoom = 100;
+
+    for(let i = 0 ; i <= nbFloor ; i++) {
+        visitedRoom[i] = [];
+        for(let j = 0 ; j <= nbRoom ; j++){
+            visitedRoom[i][j] = [];
+            for(let k = 0 ; k <= 8 ; k++) {
+               visitedRoom[i][j][k] = false;
+            }
+        }
+    }
+}
+
+function getListOfResident() {
+    var res = [];
+    let nbr = Math.floor(Math.random() % 30);
+
+    for(let i = 0 ; i < nbr ; i++) {
+        
+    }
+}
+function myAllocator() {
+  var listOfResidents = getListOfResident();
+  for(let i = 0 ; i < listOfResidents.length ; i++) {
+
+  }
 }

@@ -1,17 +1,23 @@
-.table-of-booking table {
+.table-of-booking123 table {
     width: 950px;
     height: 570px;
     border-collapse: collapse;
    
   
 }
-.table-of-booking th, td {
+.table-of-booking123 th {
     
     border: 1px solid black;
      padding: 20px;
     text-align: left;
  
 }
-.table-of-booking th {
+.table-of-booking123 th {
     background-color: lightblue;
+}
+
+.table-of-booking123 td {
+    
+    border: 1px solid black;
+ 
 }

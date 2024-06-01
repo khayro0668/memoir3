@@ -1,0 +1,64 @@
+.page-of-add-acc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 570px;
+    width: 950px;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+.card-of-pass {
+    width: 500px;
+    height: 400px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.label-container-pass {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.label-container-pass label {
+    width: 90%;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.2em; /* Increase font size */
+}
+.label-container-pass label span {
+    display: block;
+    margin-bottom: 5px;
+}
+.label-container-pass input {
+    width: 100%;
+    padding: 10px; /* Increase padding */
+    border: 2px solid #ccc; /* Increase border size */
+    border-radius: 5px; /* Optional: add rounded corners */
+    font-size: 1em; /* Optional: increase font size */
+}
+.buttons-of-pass {
+    display: flex;
+    gap: 20px;
+}
+.buttons-of-pass button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+}
+.bbuttons-of-pass button:hover {
+    background-color: #0056b3;
+}
