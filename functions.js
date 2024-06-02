@@ -1706,36 +1706,66 @@ function generatePageOfCreateHotel() {
 
 //add number of floor and rooms in db
 function addNumberFloorAndRooms() {
-    // var floors;
-    // var roomsPerFloor;
-    // floors=document.getElementById("floors").value;
-    // roomsPerFloor=document.getElementById("roomsPerFloor").value;
-    // console.log(floors);
-    // var newData = {
-    //     userName:"moris",
-    //     floor:floors,
-    //     rooms:roomsPerFloor,
-       
-       
-    // };
-    // $.ajax({
-    //     url: "addHotel.php",
-    //     method: "post",
-    //     data: newData,
-    //     success: function (res) {
-    //         console.log("Response from PHP script1:", res);
-    //     },
-    //     error: function (xhr, status, error) {
-    //         console.error("Error:", error);
-    //     }
-    // });
+    var nfloor = parseInt(document.getElementById('floors').value, 10);
+    var nroom = parseInt(document.getElementById('roomsPerFloor').value, 10);
+    nfloor = nfloor * 100;
+    nroom = nroom + nfloor;
+    var roomnumber, floornumber, roomtype, tmp = 0;
+    console.log(hotel.listOfRooms);
 
-    // document.getElementById('set-type-of-rooms').style.display = 'block';
-    document.getElementById('central-card').style.display = 'none';
-    document.getElementById(currentPage).style.display = 'none';
-    currentPage = 'selection-page';
-    document.getElementById(currentPage).style.display = 'flex';
+    for (var i = nfloor; i < nroom; i++) {
+        $.ajax({
+            url: "fillRooms.php", // URL to the PHP script
+            method: "post", // HTTP method
+            data: {
+                idofroom: i,
+                type: hotel.listOfRooms[tmp].typeOfRoom,
+                numberfloor: hotel.listOfRooms[tmp].floorNumber,
+                numberofroom: hotel.listOfRooms[tmp].roomNumber,
+                s1: "1",
+                s2: "1",
+                s3: "1",
+                s4: "1",
+                s5: "1",
+                s6: "1",
+                s7: "1",
+                s8: "1"
+            }, // Data to send to the server
+            success: function (res) {
+                console.log("Response from PHP script:", res);
+                // Handle successful response here
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+                // Handle error here
+            }
+        });
+
+        tmp++;
+    }
+
+    // Add success image after the AJAX calls are completed
+    
+    var selectionPageDiv = document.getElementById('selection-page');
+    var successImage = document.createElement('img');
+    selectionPageDiv.innerHTML=' ';
+    successImage.src = 'success-icon-10.png';
+    successImage.alt = 'Success Image';
+    successImage.style.width = '400px';  // Set width to 400px
+    successImage.style.height = '400px'; // Set height to 400px
+    successImage.style.display = 'block'; // Ensure block-level element
+    successImage.style.margin = 'auto'; // Center the image horizontally
+    successImage.style.marginTop = '50px'; // Adjust margin-top to center vertically
+    selectionPageDiv.appendChild(successImage);
+
+    // Display the selection-page
+    selectionPageDiv.style.display = 'block';
+    currentPage='selection-page';
+    
+    document.querySelector('.container-create-hotel').style.display = 'none';
+    
 }
+
 /***************************************************/
 function jame3(){
   var mostafa=`
