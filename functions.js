@@ -281,7 +281,7 @@ function createBarOfOptionsOfselectedRoom() {
      <button class="barOfReservedRoom" onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
      <button class="barOfReservedRoom" onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
      <button class="barOfReservedRoom" onclick="generatePageOfBeds()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
-    // </div>
+     </div>
     `;
     var barOfUnbookedRoom = `
     <div class="buuton-of-room-selection-bar">
@@ -434,17 +434,17 @@ function createSettingPricePage(numberOfFloors, numberOfRooms) {
 
 //function to set price of selected rooms from settings
 function setPriceOfRooms() {
-    
-        
-    
+
+
+
     deleteAccount("wassim");
     //modifyAccount("khayro","33","kkkk");
 
 
-    
-    
+
+
     const isDesiredRoomInSettings = (room, floorNumber, roomNumber) => {
-        
+
         const checkEquality = (firstValue, secondValue) => {
             return secondValue === -1 || firstValue === secondValue;
 
@@ -464,19 +464,19 @@ function setPriceOfRooms() {
     }
 
     hotel.addEventInArchives(currentUser, 'set price', new Date());
-    sendData(currentUser , 'set price');
+    sendData(currentUser, 'set price');
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
-    
-    }
+
+}
 
 
 
-    
-    
-    // generatePageOfArchives();
-    
-    
+
+
+// generatePageOfArchives();
+
+
 
 
 
@@ -728,16 +728,20 @@ function generateClock() {
 
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
+         for (let k = 0; k < targetResidents[i].numberOfBeds ; k++) {
+            if(targetResidents[i].statusOfBeds[k] === false )
+                continue;
+            
             page += `
             <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
                <div class="part-of-room">
                  <h2>
-                 ${targetResidents[i].resident}
+                 ${targetResidents[i].residentOfBeds[k].firstName}
                  </h2>
                </div>
                <div class="part-of-room">
                  <h2>
-                 ${targetResidents[i].lastName}
+                 ${targetResidents[i].residentOfBeds[k].lastName}
                  </h2>
                </div>
                <div class="part-of-room">
@@ -752,7 +756,7 @@ function generateClock() {
                </div>
                <div class="part-of-contdown">
                   <h2>
-                   ${getRemaningDays(targetResidents[i].endDate)}
+                   ${1+Math.floor(Math.random()*100)}
                   </h2>
                </div>
                <div class="part-of-gender-in-clock"style="background-color: ${targetResidents[i].genderOfResident === 'Male' ? 'blue' : 'pink'};">
@@ -762,11 +766,13 @@ function generateClock() {
                </div>
                <div class="part-of-country-in-clock">
                   <h2>
-                   ${targetResidents[i].countryOfResident}
+                   ${targetResidents[i].residentOfBeds[k].country}
                   </h2>
                </div>
             </div>`;
         }
+
+    }
     }
 
     document.getElementById('show-current-residents').innerHTML = page;
@@ -1292,17 +1298,21 @@ function generatePageOfPayment() {
     <div class="scrollable-content">
 `;
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
-        if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+        // if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+        for (let k = 0; k < hotel.listOfRooms[i].numberOfBeds ; k++) {
+            if (hotel.listOfRooms[i].statusOfBeds[k] === false)
+                continue;
+
             page += `
             <div class="current-resident">
                <div class="part-of-name-resident">
                  <h2>
-                 ${hotel.listOfRooms[i].resident}
+                 ${hotel.listOfRooms[i].residentOfBeds[k].firstName}
                  </h2>
                </div>
                <div class="part-of-room">
                  <h2>
-                 ${hotel.listOfRooms[i].lastName}
+                 ${hotel.listOfRooms[i].residentOfBeds[k].lastName}
                  </h2>
                </div>
                <div class="part-of-room">
@@ -1317,17 +1327,17 @@ function generatePageOfPayment() {
                </div>
                <div class="part-of-contdown">
                   <h2>
-                ${hotel.listOfRooms[i].remaningPayment}$
+                ${hotel.listOfRooms[i].residentOfBeds[k].remaningPayment}$
                   </h2>
                </div>
                <div class="part-of-gender-in-clock" >
                   <h2>
-                    ${hotel.listOfRooms[i].paidPayment}$
+                    ${hotel.listOfRooms[i].residentOfBeds[k].paidPayment}$
                   </h2>
                </div>
                <div class="part-of-country-in-clock">
                   <h2>
-                  ${hotel.listOfRooms[i].totalPayment}$
+                  ${hotel.listOfRooms[i].residentOfBeds[k].totalPayment}$
                   </h2>
                </div>
             </div>`
@@ -1591,39 +1601,39 @@ function hideInfoOfClickedResident() {
 
 //initiliaze all information of hotel
 function addRoomInDataBase(
-    NumberOfFemaleBeds ,
-    NumberOfMaleBeds ,
-    statusOfMixed ,
-    firstName ,
-    lastName ,
-    arrivalTime ,
-    creditCardNumber ,
-    floorNumber ,
-    roomNumber ,
-    id ,
-    VipTax ,
-    Corrections ,
-    resident ,
-    countryOfResident ,
-    genderOfResident ,
-    residentEmail ,
-    isReserved ,
-    price ,
-    totalPayment ,
-    remaningPayment ,
-    paidPayment ,
-    durationOfreservation ,
-    startDate ,
-    endDate ,
-    countdown ,
-    BookingLink ,
-    numberOfBeds ,
-    snacks ,
-    chairs ,
-    wayOfReservation ,
+    NumberOfFemaleBeds,
+    NumberOfMaleBeds,
+    statusOfMixed,
+    firstName,
+    lastName,
+    arrivalTime,
+    creditCardNumber,
+    floorNumber,
+    roomNumber,
+    id,
+    VipTax,
+    Corrections,
+    resident,
+    countryOfResident,
+    genderOfResident,
+    residentEmail,
+    isReserved,
+    price,
+    totalPayment,
+    remaningPayment,
+    paidPayment,
+    durationOfreservation,
+    startDate,
+    endDate,
+    countdown,
+    BookingLink,
+    numberOfBeds,
+    snacks,
+    chairs,
+    wayOfReservation,
     typeOfRoom) {
-        //here add room in data base
-    }
+    //here add room in data base
+}
 
 
 //booking page
@@ -1687,7 +1697,7 @@ function getBookingPage() {
 </div>
     `;
 
-    
+
     document.getElementById('page-of-booking').innerHTML = page;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
@@ -1716,8 +1726,8 @@ function addNumberFloorAndRooms() {
     //     userName:"moris",
     //     floor:floors,
     //     rooms:roomsPerFloor,
-       
-       
+
+
     // };
     // $.ajax({
     //     url: "addHotel.php",
@@ -1731,14 +1741,124 @@ function addNumberFloorAndRooms() {
     //     }
     // });
 
-    // document.getElementById('set-type-of-rooms').style.display = 'block';
-    document.getElementById('central-card').style.display = 'none';
+    for (var i = nfloor; i < nroom; i++) {
+        $.ajax({
+            url: "fillRooms.php", // URL to the PHP script
+            method: "post", // HTTP method
+            data: {
+                idofroom: i,
+                type: hotel.listOfRooms[tmp].typeOfRoom,
+                numberfloor: hotel.listOfRooms[tmp].floorNumber,
+                numberofroom: hotel.listOfRooms[tmp].roomNumber,
+                s1: "1",
+                s2: "1",
+                s3: "1",
+                s4: "1",
+                s5: "1",
+                s6: "1",
+                s7: "1",
+                s8: "1"
+            }, // Data to send to the server
+            success: function (res) {
+                console.log("Response from PHP script:", res);
+                // Handle successful response here
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+                // Handle error here
+            }
+        });
+
+        tmp++;
+    }
+
+    // Add success image after the AJAX calls are completed
+    
+    var selectionPageDiv = document.getElementById('selection-page');
+    var successImage = document.createElement('img');
+    selectionPageDiv.innerHTML=' ';
+    successImage.src = 'success-icon-10.png';
+    successImage.alt = 'Success Image';
+    successImage.style.width = '400px';  // Set width to 400px
+    successImage.style.height = '400px'; // Set height to 400px
+    successImage.style.display = 'block'; // Ensure block-level element
+    successImage.style.margin = 'auto'; // Center the image horizontally
+    successImage.style.marginTop = '50px'; // Adjust margin-top to center vertically
+    selectionPageDiv.appendChild(successImage);
+
+    // Display the selection-page
+    selectionPageDiv.style.display = 'block';
+    currentPage='selection-page';
+    
+    document.querySelector('.container-create-hotel').style.display = 'none';
+    
+}
+
+/***************************************************/
+function jame3() {
+    var mostafa = `
+  <div class="card-of-pass">
+  <div class="label-container-pass">
+      <label>
+          <span>Username</span>
+          <input type="text">
+      </label>
+      <label>
+          <span>Password</span>
+          <input type="text">
+      </label>
+      <label>
+          <span>Confirm password</span>
+          <input type="text">
+      </label>
+  </div>
+  <div class="buttons-of-pass">
+      <button>Confirm</button>
+      <button>Cancel</button>
+  </div>
+</div>
+  `;
+    document.getElementById('page-of-add-acc').innerHTML = mostafa;
     document.getElementById(currentPage).style.display = 'none';
-    currentPage = 'selection-page';
+    currentPage = 'page-of-add-acc';
     document.getElementById(currentPage).style.display = 'flex';
 }
+/***************************************************/
 
 
 //generate page of selection 
 function generateSelectionPage() {
+}
+
+
+//my server
+var visitedRoom = [];
+function initVisitedRoom() {
+    var nbFloor = 40;
+    var nbRoom = 100;
+
+    for (let i = 0; i <= nbFloor; i++) {
+        visitedRoom[i] = [];
+        for (let j = 0; j <= nbRoom; j++) {
+            visitedRoom[i][j] = [];
+            for (let k = 0; k <= 8; k++) {
+                visitedRoom[i][j][k] = false;
+            }
+        }
+    }
+}
+
+function getListOfResident() {
+    var res = [];
+    let nbr = Math.floor(Math.random() % 30);
+
+    for (let i = 0; i < nbr; i++) {
+
+    }
+}
+function myAllocator() {
+    var listOfResidents = getListOfResident();
+    for (let i = 0; i < listOfResidents.length; i++) {
+
+    }
 }

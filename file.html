@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styleOfModifySettings.css">
     <link rel="stylesheet" href="styleOfDisplayInformation.css">
     <link rel="stylesheet" href="setTypeOfRoomsStyle.css">
+    <link rel="stylesheet" href="styleOfAddAccPage.css">
     <link rel="stylesheet" href="styleOfLoginPage.css">
     <link rel="stylesheet" href="styleOfSelectionDB.css">
     <link rel="stylesheet" href="styleOfBookingPage.css">
@@ -113,7 +114,7 @@
             <button class="go-back-button" onclick="generatePageOfSettings()">⇐</button>
             <div class="container-of-card-of-settings2">
                 <div class="card-of-setting1-type" onclick="getPageOfPriceRoomsSettings()">
-                    <div class="emoji1">🚪</div>
+                    <div class="emoji1">oo</div>
                     <span class="label">Room</span>
                 </div>
                 <div style="margin-left: 50px;">
@@ -129,30 +130,22 @@
         <div class="card-of-price-settings1" id="page-of-quantite-settings" style="display: none;">
             <button class="go-back-button" onclick="generatePageOfSettings()">⇐</button>
             <div class="container-of-card-of-settings2">
-                <div class="card-of-setting1-type" onclick="">
-                    <div class="emoji1">🚪</div>
-                    <span class="label">Room</span>
+                <div class="card-of-setting1-type" onclick="jame3()">
+                    <div class="emoji1">👥</div>
+                    <span class="label">Add account</span>
                 </div>
                 <div style="margin-left: 50px;">
-                    <div class="card-of-setting1-type" onclick="getPageOfOthers()">
-                        <div class="emoji2">・・・</div>
-                        <span class="label">Others</span>
-                    </div>
+                    <!-- <div class="card-of-setting1-type" onclick="getPageOfOthers()">
+                        <div class="emoji2">✍🏻</div>
+                        <span class="label">Edit account</span>
+                    </div> -->
                 </div>
             </div>
         </div>
 
         <!-- selection page -->
         <div class="selection-page" id="selection-page" style="display: none;">
-          <div class="fist-part" id="fist-part">
-            <!-- <h1>pivate room</h1> -->
-          </div>
-          <div class="seconde-part" id="seconde-part">
-            <!-- filling by js code -->
-          </div>
-          <div class="third-part" id="third-part">
-            <!-- <button>confim</button> -->
-          </div>
+          
         </div>
         <!-- display information -->
         <div class="container-create-hotel" id="container-create-hotel" style="display: none;">
@@ -212,6 +205,8 @@
         <!-- display information -->
         <div class="page-of-archives" id="page-of-archives" style="display: none;">
             <!-- page of archives -->
+           
+            
         </div>
 
         <!-- display information -->
@@ -301,6 +296,10 @@
             <div id="confirm-resident">
                 <button>confirm</button>
             </div>
+        </div>
+
+        <div class="page-of-add-acc" id="page-of-add-acc" style="display: none;">
+
         </div>
     </div>
 

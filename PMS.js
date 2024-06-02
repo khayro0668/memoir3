@@ -57,8 +57,8 @@ var arrayOfRoomTypes = [
 
 //onload function
 window.onload = function () {
+    getNumberOfFloor();
     hotel = new Hotel();
-    getNumberOfRoom();
     numberOfFloors = hotel.numberOfFloors;
     numberOfRooms = hotel.numberOfRooms;
     currentPage = 'login-page';
@@ -74,7 +74,7 @@ window.onload = function () {
     initilaizeNames();
     generatePageOfPayment();
     rempleID();
-     goToPMS();
+    goToPMS();
 }
 
 
@@ -97,7 +97,7 @@ function goToPMS() {
     document.getElementById(currentIdInModifysettings).style.display = 'block';
     document.getElementById('menu-of-options').style.display = 'block';
 
-    if(currentUser === 'admin'){
+    if(currentUser === 'admin') {
         document.getElementById('remaning-div').style.height = '100px';
     }else {
         document.getElementById('remaning-div').style.height = '150px';
@@ -187,25 +187,31 @@ function reserveSelectedRoom() {
 
 //create a page to display the resident information of selected room
 function showInformationOfResidentInSelectedRoom() {
-    var pageOfInformation = `
-    <div class="room-details">
+    var rsdnt = ``;
+    for(let i = 0 ; i < selectedRoom.numberOfBeds ; i++) {
+        if(selectedRoom.statusOfBeds[i] === false)
+            continue;
+     
+        rsdnt += 
+        `
+        <div class="room-details">
         <h2>Resident Details</h2>
         
-        <label for="resident">Resident:</label>
-        <input type="text" id="resident" value="${selectedRoom.resident}" readonly>
-        
+        <label for="resident">Residents </label>
+        <input type="text" id="resident" value="${selectedRoom.residentOfBeds[i].firstName}" readonly>
+        <input type="text" id="resident" value="${selectedRoom.residentOfBeds[i].lastName}" readonly>
         <label for="floorNumber">E-mail:</label>
-        <input type="text" id="floorNumber" value="${selectedRoom.residentEmail}" readonly>
+        <input type="text" id="floorNumber" value="${selectedRoom.residentOfBeds[i].email}" readonly>
         <label for="startDate">Start Date:</label>
-        <input type="text" id="startDate" value="${selectedRoom.startDate}" readonly>
-        
-        <label for="endDate">End Date:</label>
-        <input type="text" id="endDate" value="${selectedRoom.endDate}" readonly>
+        <input type="text" id="startDate" value="${selectedRoom.residentOfBeds[i].startDate}" readonly>
         
         <label for="durationOfReservation">Duration of Reservation:</label>
-        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfReservation} nights" readonly>
+        <input type="text" id="durationOfReservation" value="${selectedRoom.durationOfReservationOfBeds[i]} nights" readonly>
     </div>
     `;
+    }
+
+    var pageOfInformation = rsdnt;
 
     document.getElementById('view-resident-information').innerHTML = pageOfInformation;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
