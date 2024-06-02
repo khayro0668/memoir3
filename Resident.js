@@ -9,6 +9,8 @@ class Resident {
     totalPayment;
     remaningPayment;
     paidPayment;
+    startDate;
+
     constructor(firstName , lastName , email ,
         country , arrivalTime , creditCardNumber , durationOfReservation
     ) {
@@ -22,5 +24,6 @@ class Resident {
         this.totalPayment = 100 + Math.floor(Math.random() * 900);
         this.remaningPayment = Math.floor(Math.random() * this.totalPayment);
         this.paidPayment = this.totalPayment - this.remaningPayment;
+        this.startDate = new Date() + 1 + Math.floor(Math.random() * 23); 
     }
 }

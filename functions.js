@@ -281,7 +281,7 @@ function createBarOfOptionsOfselectedRoom() {
      <button class="barOfReservedRoom" onclick="getInformationOfPayment()"><i class="fa-solid fa-credit-card"></i></button>
      <button class="barOfReservedRoom" onclick="showInformationOfResidentInSelectedRoom()"><i class="fa-solid fa-person"></i></button>
      <button class="barOfReservedRoom" onclick="generatePageOfBeds()"><i class="fa-solid fa-screwdriver-wrench"></i></button>
-    // </div>
+     </div>
     `;
     var barOfUnbookedRoom = `
     <div class="buuton-of-room-selection-bar">

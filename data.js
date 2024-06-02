@@ -198,7 +198,7 @@ class Room {
                 var dr = 5 + Math.floor(Math.random() * 90);
                  
                  this.residentOfBeds[i] = new Resident(fn , ln , em , cont , arv , cr , dr);
-               // this.durationOfReservationOfBeds[i] = fn + ln + ' ' + cont + ' ' + em + ' ' + cr + ' ' + arv + ' ' + dr;
+                this.durationOfReservationOfBeds[i] = 1 + Math.floor(Math.random() * 200);;
                 this.positionOfBeds[i] = getPosition();
             }
         }
