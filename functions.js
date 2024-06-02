@@ -434,17 +434,17 @@ function createSettingPricePage(numberOfFloors, numberOfRooms) {
 
 //function to set price of selected rooms from settings
 function setPriceOfRooms() {
-    
-        
-    
+
+
+
     deleteAccount("wassim");
     //modifyAccount("khayro","33","kkkk");
 
 
-    
-    
+
+
     const isDesiredRoomInSettings = (room, floorNumber, roomNumber) => {
-        
+
         const checkEquality = (firstValue, secondValue) => {
             return secondValue === -1 || firstValue === secondValue;
 
@@ -464,19 +464,19 @@ function setPriceOfRooms() {
     }
 
     hotel.addEventInArchives(currentUser, 'set price', new Date());
-    sendData(currentUser , 'set price');
+    sendData(currentUser, 'set price');
     // generatePageOfArchives();
     generateTableOfRooms(hotel.listOfRooms, valueOfReservedDropdawn, valueOfBedsNumberDropdawn, valueOfFloorNumberDropdawn, valueOfRoomNumberDropdawn);
-    
-    }
+
+}
 
 
 
-    
-    
-    // generatePageOfArchives();
-    
-    
+
+
+// generatePageOfArchives();
+
+
 
 
 
@@ -1291,17 +1291,21 @@ function generatePageOfPayment() {
     <div class="scrollable-content">
 `;
     for (let i = 0; i < hotel.listOfRooms.length; i++) {
-        if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+        // if (hotel.listOfRooms[i].isReserved === 'Reserved') {
+        for (let k = 0; k < hotel.listOfRooms[i].numberOfBeds ; k++) {
+            if (hotel.listOfRooms[i].statusOfBeds[k] === false)
+                continue;
+
             page += `
             <div class="current-resident">
                <div class="part-of-name-resident">
                  <h2>
-                 ${hotel.listOfRooms[i].resident}
+                 ${hotel.listOfRooms[i].residentOfBeds[k].firstName}
                  </h2>
                </div>
                <div class="part-of-room">
                  <h2>
-                 ${hotel.listOfRooms[i].lastName}
+                 ${hotel.listOfRooms[i].residentOfBeds[k].lastName}
                  </h2>
                </div>
                <div class="part-of-room">
@@ -1316,17 +1320,17 @@ function generatePageOfPayment() {
                </div>
                <div class="part-of-contdown">
                   <h2>
-                ${hotel.listOfRooms[i].remaningPayment}$
+                ${hotel.listOfRooms[i].residentOfBeds[k].remaningPayment}$
                   </h2>
                </div>
                <div class="part-of-gender-in-clock" >
                   <h2>
-                    ${hotel.listOfRooms[i].paidPayment}$
+                    ${hotel.listOfRooms[i].residentOfBeds[k].paidPayment}$
                   </h2>
                </div>
                <div class="part-of-country-in-clock">
                   <h2>
-                  ${hotel.listOfRooms[i].totalPayment}$
+                  ${hotel.listOfRooms[i].residentOfBeds[k].totalPayment}$
                   </h2>
                </div>
             </div>`
@@ -1590,39 +1594,39 @@ function hideInfoOfClickedResident() {
 
 //initiliaze all information of hotel
 function addRoomInDataBase(
-    NumberOfFemaleBeds ,
-    NumberOfMaleBeds ,
-    statusOfMixed ,
-    firstName ,
-    lastName ,
-    arrivalTime ,
-    creditCardNumber ,
-    floorNumber ,
-    roomNumber ,
-    id ,
-    VipTax ,
-    Corrections ,
-    resident ,
-    countryOfResident ,
-    genderOfResident ,
-    residentEmail ,
-    isReserved ,
-    price ,
-    totalPayment ,
-    remaningPayment ,
-    paidPayment ,
-    durationOfreservation ,
-    startDate ,
-    endDate ,
-    countdown ,
-    BookingLink ,
-    numberOfBeds ,
-    snacks ,
-    chairs ,
-    wayOfReservation ,
+    NumberOfFemaleBeds,
+    NumberOfMaleBeds,
+    statusOfMixed,
+    firstName,
+    lastName,
+    arrivalTime,
+    creditCardNumber,
+    floorNumber,
+    roomNumber,
+    id,
+    VipTax,
+    Corrections,
+    resident,
+    countryOfResident,
+    genderOfResident,
+    residentEmail,
+    isReserved,
+    price,
+    totalPayment,
+    remaningPayment,
+    paidPayment,
+    durationOfreservation,
+    startDate,
+    endDate,
+    countdown,
+    BookingLink,
+    numberOfBeds,
+    snacks,
+    chairs,
+    wayOfReservation,
     typeOfRoom) {
-        //here add room in data base
-    }
+    //here add room in data base
+}
 
 
 //booking page
@@ -1686,7 +1690,7 @@ function getBookingPage() {
 </div>
     `;
 
-    
+
     document.getElementById('page-of-booking').innerHTML = page;
     document.getElementById(currentIdInDisplayInformation).style.display = 'none';
     document.getElementById(currentIdInModifysettings).style.display = 'none';
@@ -1706,12 +1710,29 @@ function generatePageOfCreateHotel() {
 
 //add number of floor and rooms in db
 function addNumberFloorAndRooms() {
-    var nfloor = parseInt(document.getElementById('floors').value, 10);
-    var nroom = parseInt(document.getElementById('roomsPerFloor').value, 10);
-    nfloor = nfloor * 100;
-    nroom = nroom + nfloor;
-    var roomnumber, floornumber, roomtype, tmp = 0;
-    console.log(hotel.listOfRooms);
+    // var floors;
+    // var roomsPerFloor;
+    // floors=document.getElementById("floors").value;
+    // roomsPerFloor=document.getElementById("roomsPerFloor").value;
+    // console.log(floors);
+    // var newData = {
+    //     userName:"moris",
+    //     floor:floors,
+    //     rooms:roomsPerFloor,
+
+
+    // };
+    // $.ajax({
+    //     url: "addHotel.php",
+    //     method: "post",
+    //     data: newData,
+    //     success: function (res) {
+    //         console.log("Response from PHP script1:", res);
+    //     },
+    //     error: function (xhr, status, error) {
+    //         console.error("Error:", error);
+    //     }
+    // });
 
     for (var i = nfloor; i < nroom; i++) {
         $.ajax({
@@ -1767,8 +1788,8 @@ function addNumberFloorAndRooms() {
 }
 
 /***************************************************/
-function jame3(){
-  var mostafa=`
+function jame3() {
+    var mostafa = `
   <div class="card-of-pass">
   <div class="label-container-pass">
       <label>
@@ -1790,10 +1811,10 @@ function jame3(){
   </div>
 </div>
   `;
-  document.getElementById('page-of-add-acc').innerHTML = mostafa;
-  document.getElementById(currentPage).style.display = 'none';
-  currentPage = 'page-of-add-acc';
-  document.getElementById(currentPage).style.display = 'flex';
+    document.getElementById('page-of-add-acc').innerHTML = mostafa;
+    document.getElementById(currentPage).style.display = 'none';
+    currentPage = 'page-of-add-acc';
+    document.getElementById(currentPage).style.display = 'flex';
 }
 /***************************************************/
 
@@ -1809,12 +1830,12 @@ function initVisitedRoom() {
     var nbFloor = 40;
     var nbRoom = 100;
 
-    for(let i = 0 ; i <= nbFloor ; i++) {
+    for (let i = 0; i <= nbFloor; i++) {
         visitedRoom[i] = [];
-        for(let j = 0 ; j <= nbRoom ; j++){
+        for (let j = 0; j <= nbRoom; j++) {
             visitedRoom[i][j] = [];
-            for(let k = 0 ; k <= 8 ; k++) {
-               visitedRoom[i][j][k] = false;
+            for (let k = 0; k <= 8; k++) {
+                visitedRoom[i][j][k] = false;
             }
         }
     }
@@ -1824,13 +1845,13 @@ function getListOfResident() {
     var res = [];
     let nbr = Math.floor(Math.random() % 30);
 
-    for(let i = 0 ; i < nbr ; i++) {
-        
+    for (let i = 0; i < nbr; i++) {
+
     }
 }
 function myAllocator() {
-  var listOfResidents = getListOfResident();
-  for(let i = 0 ; i < listOfResidents.length ; i++) {
+    var listOfResidents = getListOfResident();
+    for (let i = 0; i < listOfResidents.length; i++) {
 
-  }
+    }
 }
