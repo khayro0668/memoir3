@@ -727,16 +727,20 @@ function generateClock() {
 
     for (let i = 0; i < targetResidents.length; i++) {
         if (targetResidents[i].isReserved === 'Reserved') {
+         for (let k = 0; k < targetResidents[i].numberOfBeds ; k++) {
+            if(targetResidents[i].statusOfBeds[k] === false )
+                continue;
+            
             page += `
             <div class="current-resident" onclick="getInfoOfSelectedResident(${JSON.stringify(targetResidents[i].id).replace(/"/g, '&quot;')})">
                <div class="part-of-room">
                  <h2>
-                 ${targetResidents[i].resident}
+                 ${targetResidents[i].residentOfBeds[k].firstName}
                  </h2>
                </div>
                <div class="part-of-room">
                  <h2>
-                 ${targetResidents[i].lastName}
+                 ${targetResidents[i].residentOfBeds[k].lastName}
                  </h2>
                </div>
                <div class="part-of-room">
@@ -751,7 +755,7 @@ function generateClock() {
                </div>
                <div class="part-of-contdown">
                   <h2>
-                   ${getRemaningDays(targetResidents[i].endDate)}
+                   ${1+Math.floor(Math.random()*100)}
                   </h2>
                </div>
                <div class="part-of-gender-in-clock"style="background-color: ${targetResidents[i].genderOfResident === 'Male' ? 'blue' : 'pink'};">
@@ -761,11 +765,13 @@ function generateClock() {
                </div>
                <div class="part-of-country-in-clock">
                   <h2>
-                   ${targetResidents[i].countryOfResident}
+                   ${targetResidents[i].residentOfBeds[k].country}
                   </h2>
                </div>
             </div>`;
         }
+
+    }
     }
 
     document.getElementById('show-current-residents').innerHTML = page;
